@@ -8,6 +8,7 @@ class TestingCadenceView extends WatchUi.View {
 
     private var _cadenceDisplay;
     private var _refreshTimer;
+    private var _heartrateDisplay;
 
     function initialize() {
         View.initialize();
@@ -19,6 +20,7 @@ class TestingCadenceView extends WatchUi.View {
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.MainLayout(dc));
         _cadenceDisplay = findDrawableById("cadence_text");
+        _heartrateDisplay = findDrawableById("heartrate_text");
     }
 
     // Called when this View is brought to the foreground. Restore
@@ -47,11 +49,18 @@ class TestingCadenceView extends WatchUi.View {
 
     function displayCadence() as Void{
         var info = Activity.getActivityInfo();
+        
 
         if (info != null && info.currentCadence != null){
             _cadenceDisplay.setText(info.currentCadence.toString());
         }else{
             _cadenceDisplay.setText("--");
+        }
+
+        if (info != null && info.currentHeartRate != null){
+            _heartrateDisplay.setText(info.currentHeartRate.toString());
+        }else{
+            _heartrateDisplay.setText("--");
         }
         
     }

@@ -6,14 +6,28 @@ using Toybox.Graphics as Gfx;
 
 module Rez {
     module Drawables {
+        (:initialized) var cadence_icon as ResourceId;
+        (:initialized) var heartrate_icon as ResourceId;
         (:initialized) var LauncherIcon as ResourceId;
     } // Drawables
 
     module Layouts {
         function MainLayout(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
-            var rez_cmp_local_text_cadence_text = new WatchUi.Text({:identifier=>"cadence_text", :color=>Gfx.COLOR_WHITE, :locX=>(dc.getWidth() * 0.5), :locY=>((dc.getHeight() - dc.getFontHeight(Gfx.FONT_NUMBER_THAI_HOT)) * 0.5), :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_NUMBER_THAI_HOT});
+            var rez_cmp_local_var_dc_getHeight = dc.getHeight();
 
-            return [rez_cmp_local_text_cadence_text] as Array<WatchUi.Drawable>;
+            var rez_cmp_local_var_dc_getWidth = dc.getWidth();
+
+            var rez_cmp_local_text_cadence_text = new WatchUi.Text({:identifier=>"cadence_text", :color=>Gfx.COLOR_WHITE, :locX=>(rez_cmp_local_var_dc_getWidth * (60 / 100.0)), :locY=>(rez_cmp_local_var_dc_getHeight * (20 / 100.0)), :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_NUMBER_MEDIUM});
+
+            var rez_cmp_local_text_heartrate_text = new WatchUi.Text({:identifier=>"heartrate_text", :color=>Gfx.COLOR_WHITE, :locX=>(rez_cmp_local_var_dc_getWidth * (60 / 100.0)), :locY=>(rez_cmp_local_var_dc_getHeight * (55 / 100.0)), :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_NUMBER_MEDIUM});
+
+            var rez_cmp_local_bitmap_cadence_icon = new WatchUi.Bitmap({:identifier=>"cadence_icon", :rezId=>$.Rez.Drawables.cadence_icon, :locX=>(rez_cmp_local_var_dc_getWidth * (20 / 100.0)), :locY=>(rez_cmp_local_var_dc_getHeight * (25 / 100.0))});
+            rez_cmp_local_bitmap_cadence_icon.setLocation((rez_cmp_local_var_dc_getWidth * (20 / 100.0)), (rez_cmp_local_var_dc_getHeight * (25 / 100.0)));
+
+            var rez_cmp_local_bitmap_heartrate_icon = new WatchUi.Bitmap({:identifier=>"heartrate_icon", :rezId=>$.Rez.Drawables.heartrate_icon, :locX=>(rez_cmp_local_var_dc_getWidth * (20 / 100.0)), :locY=>(rez_cmp_local_var_dc_getHeight * (60 / 100.0))});
+            rez_cmp_local_bitmap_heartrate_icon.setLocation((rez_cmp_local_var_dc_getWidth * (20 / 100.0)), (rez_cmp_local_var_dc_getHeight * (60 / 100.0)));
+
+            return [rez_cmp_local_text_cadence_text, rez_cmp_local_text_heartrate_text, rez_cmp_local_bitmap_cadence_icon, rez_cmp_local_bitmap_heartrate_icon] as Array<WatchUi.Drawable>;
         }
     } // Layouts
 

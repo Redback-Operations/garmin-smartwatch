@@ -1,8 +1,22 @@
 <layout id="MainLayout" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
     <label id="cadence_text" 
-           x="center" 
-           y="center" 
-           font="Gfx.FONT_NUMBER_THAI_HOT" 
-           justification="Gfx.TEXT_JUSTIFY_CENTER" 
-           color="Gfx.COLOR_WHITE" />
+        x="60%" 
+        y="20%" 
+        font="Gfx.FONT_NUMBER_MEDIUM" 
+        justification="Gfx.TEXT_JUSTIFY_CENTER" 
+        color="Gfx.COLOR_WHITE" />
+    <label id="heartrate_text" 
+        x="60%" 
+        y="55%" 
+        font="Gfx.FONT_NUMBER_MEDIUM" 
+        justification="Gfx.TEXT_JUSTIFY_CENTER" 
+        color="Gfx.COLOR_WHITE" />
+    <bitmap id="cadence_icon" 
+        x="20%"
+        y="25%"
+        filename="../drawables/cadence_icon.png" />
+    <bitmap id="heartrate_icon" 
+        x="20%"
+        y="60%"
+        filename="../drawables/heartrate_icon.png" />
 </layout>

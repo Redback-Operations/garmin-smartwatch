@@ -23,165 +23,225 @@ class TestingCadenceView extends WatchUi.View {
     [ @file = "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc"; @line = 10; @position = 16; @symbol_vardef = [_refreshTimer,10,16,29]; ]
     private
     var _refreshTimer;
-    [ @file = "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc"; @line = 12; @symbol_functiondef = [initialize,12,13,23]; ]
+    [ @file = "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc"; @line = 11; @position = 16; @symbol_vardef = [_heartrateDisplay,11,16,33]; ]
+    private
+    var _heartrateDisplay;
+    [ @file = "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc"; @line = 13; @symbol_functiondef = [initialize,13,13,23]; ]
     function initialize() as Void {
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_12_26_16_4_start:
-[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 13 8 ]
-        symbol [ View %tmp.2 13 8 12 ];
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_13_26_17_4_start:
+[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 14 8 ]
+        symbol [ View %tmp.2 14 8 12 ];
         %tmp.2 = getv ? :View;
-        symbol [ initialize %tmp.3 13 13 23 ];
+        symbol [ initialize %tmp.3 14 13 23 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 14 8 ]
-        symbol [ Timer %tmp.6 14 28 33 ];
+[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 15 8 ]
+        symbol [ Timer %tmp.6 15 28 33 ];
         %tmp.6 = getm $.Toybox.Timer;
-        symbol [ Timer %tmp.7 14 34 39 ];
+        symbol [ Timer %tmp.7 15 34 39 ];
         %tmp.7 = getv function ? %tmp.6 :Timer;
         %tmp.4 = newc %tmp.7 ();
-        symbol [ _refreshTimer ? 14 8 21 ];
+        symbol [ _refreshTimer ? 15 8 21 ];
         putv self :_refreshTimer %tmp.4;
-[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 15 8 ]
-        symbol [ _refreshTimer %tmp.9 15 8 21 ];
+[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 16 8 ]
+        symbol [ _refreshTimer %tmp.9 16 8 21 ];
         %tmp.9 = getv ? :_refreshTimer;
-        symbol [ start %tmp.10 15 22 27 ];
+        symbol [ start %tmp.10 16 22 27 ];
         %tmp.10 = getv function %tmp.9 :start;
         %tmp.11 = self;
-        symbol [ method %tmp.12 15 28 34 ];
+        symbol [ method %tmp.12 16 28 34 ];
         %tmp.12 = getv function %tmp.11 :method;
         %tmp.14 = const :refreshScreen;
-        symbol [ refreshScreen %tmp.14 15 36 49 const ];
+        symbol [ refreshScreen %tmp.14 16 36 49 const ];
         %tmp.15 = invoke %tmp.11 %tmp.12(%tmp.14);
         %tmp.16 = 1000;
         %tmp.17 = true;
         invoke %tmp.9 %tmp.10(%tmp.15, %tmp.16, %tmp.17);
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_12_26_16_4_stop:
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_13_26_17_4_stop:
     }
-    [ @file = "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc"; @line = 19; @symbol_functiondef = [onLayout,19,13,21]; @symbol_param<0> = [dc,19,22,24]; @symbol_param<0>_type<0> = [Dc,19,28,30]; ]
+    [ @file = "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc"; @line = 20; @symbol_functiondef = [onLayout,20,13,21]; @symbol_param<0> = [dc,20,22,24]; @symbol_param<0>_type<0> = [Dc,20,28,30]; ]
     function onLayout(dc as Dc) as Void {
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_19_40_22_4_start:
-[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 20 8 ]
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_20_40_24_4_start:
+[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 21 8 ]
         %tmp.1 = self;
-        symbol [ setLayout %tmp.2 20 8 17 ];
+        symbol [ setLayout %tmp.2 21 8 17 ];
         %tmp.2 = getv function %tmp.1 :setLayout;
-        symbol [ Rez %tmp.4 20 18 21 ];
+        symbol [ Rez %tmp.4 21 18 21 ];
         %tmp.4 = getv ? :Rez;
-        symbol [ Layouts %tmp.5 20 22 29 ];
+        symbol [ Layouts %tmp.5 21 22 29 ];
         %tmp.5 = getv %tmp.4 :Layouts;
-        symbol [ MainLayout %tmp.6 20 30 40 ];
+        symbol [ MainLayout %tmp.6 21 30 40 ];
         %tmp.6 = getv function %tmp.5 :MainLayout;
         %tmp.7 = lgetv %dc;
-        symbol [ dc %tmp.7 20 41 43 ];
+        symbol [ dc %tmp.7 21 41 43 ];
         %tmp.8 = invoke %tmp.5 %tmp.6(%tmp.7);
         invoke %tmp.1 %tmp.2(%tmp.8);
-[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 21 8 ]
+[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 22 8 ]
         %tmp.9 = self;
-        symbol [ findDrawableById %tmp.10 21 26 42 ];
+        symbol [ findDrawableById %tmp.10 22 26 42 ];
         %tmp.10 = getv function %tmp.9 :findDrawableById;
         %tmp.11 = "cadence_text";
         %tmp.12 = invoke %tmp.9 %tmp.10(%tmp.11);
-        symbol [ _cadenceDisplay ? 21 8 23 ];
+        symbol [ _cadenceDisplay ? 22 8 23 ];
         putv self :_cadenceDisplay %tmp.12;
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_19_40_22_4_stop:
+[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 23 8 ]
+        %tmp.13 = self;
+        symbol [ findDrawableById %tmp.14 23 28 44 ];
+        %tmp.14 = getv function %tmp.13 :findDrawableById;
+        %tmp.15 = "heartrate_text";
+        %tmp.16 = invoke %tmp.13 %tmp.14(%tmp.15);
+        symbol [ _heartrateDisplay ? 23 8 25 ];
+        putv self :_heartrateDisplay %tmp.16;
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_20_40_24_4_stop:
     }
-    [ @file = "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc"; @line = 27; @symbol_functiondef = [onShow,27,13,19]; ]
+    [ @file = "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc"; @line = 29; @symbol_functiondef = [onShow,29,13,19]; ]
     function onShow() as Void {
     }
-    [ @file = "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc"; @line = 31; @symbol_functiondef = [onUpdate,31,13,21]; @symbol_param<0> = [dc,31,22,24]; @symbol_param<0>_type<0> = [Dc,31,28,30]; ]
+    [ @file = "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc"; @line = 33; @symbol_functiondef = [onUpdate,33,13,21]; @symbol_param<0> = [dc,33,22,24]; @symbol_param<0>_type<0> = [Dc,33,28,30]; ]
     function onUpdate(dc as Dc) as Void {
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_31_40_36_4_start:
-[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 33 8 ]
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_33_40_38_4_start:
+[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 35 8 ]
         %tmp.1 = self;
-        symbol [ displayCadence %tmp.2 33 8 22 ];
+        symbol [ displayCadence %tmp.2 35 8 22 ];
         %tmp.2 = getv function %tmp.1 :displayCadence;
         invoke %tmp.1 %tmp.2();
-[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 35 8 ]
-        symbol [ View %tmp.4 35 8 12 ];
+[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 37 8 ]
+        symbol [ View %tmp.4 37 8 12 ];
         %tmp.4 = getv ? :View;
-        symbol [ onUpdate %tmp.5 35 13 21 ];
+        symbol [ onUpdate %tmp.5 37 13 21 ];
         %tmp.5 = getv function %tmp.4 :onUpdate;
         %tmp.6 = lgetv %dc;
-        symbol [ dc %tmp.6 35 22 24 ];
+        symbol [ dc %tmp.6 37 22 24 ];
         invoke %tmp.4 %tmp.5(%tmp.6);
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_31_40_36_4_stop:
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_33_40_38_4_stop:
     }
-    [ @file = "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc"; @line = 41; @symbol_functiondef = [onHide,41,13,19]; ]
+    [ @file = "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc"; @line = 43; @symbol_functiondef = [onHide,43,13,19]; ]
     function onHide() as Void {
     }
-    [ @file = "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc"; @line = 44; @symbol_functiondef = [refreshScreen,44,13,26]; ]
+    [ @file = "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc"; @line = 46; @symbol_functiondef = [refreshScreen,46,13,26]; ]
     function refreshScreen() as Void {
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_44_36_46_4_start:
-[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 45 8 ]
-        symbol [ WatchUi %tmp.1 45 8 15 ];
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_46_36_48_4_start:
+[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 47 8 ]
+        symbol [ WatchUi %tmp.1 47 8 15 ];
         %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.2 45 16 29 ];
+        symbol [ requestUpdate %tmp.2 47 16 29 ];
         %tmp.2 = getv function %tmp.1 :requestUpdate;
         invoke %tmp.1 %tmp.2();
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_44_36_46_4_stop:
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_46_36_48_4_stop:
     }
-    [ @file = "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc"; @line = 48; @symbol_functiondef = [displayCadence,48,13,27]; ]
+    [ @file = "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc"; @line = 50; @symbol_functiondef = [displayCadence,50,13,27]; ]
     function displayCadence() as Void {
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_48_37_57_4_start:
-[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 49 8 ]
-        [ "C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_48_37_57_4_start" "C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_48_37_57_4_stop" ]
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_50_37_66_4_start:
+[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 51 8 ]
+        [ "C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_50_37_66_4_start" "C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_50_37_66_4_stop" ]
         %info.1 = local;
-        symbol [ info %info.1 49 12 16 ];
-        symbol [ Activity %tmp.1 49 19 27 ];
+        symbol [ info %info.1 51 12 16 ];
+        symbol [ Activity %tmp.1 51 19 27 ];
         %tmp.1 = getm $.Toybox.Activity;
-        symbol [ getActivityInfo %tmp.2 49 28 43 ];
+        symbol [ getActivityInfo %tmp.2 51 28 43 ];
         %tmp.2 = getv function %tmp.1 :getActivityInfo;
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %info.1 %tmp.3;
-        symbol [ info %info.1 49 12 16 ];
-[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 51 8 ]
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_51_8_55_8_if_stmt:
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_51_12_51_51_begin:
+        symbol [ info %info.1 51 12 16 ];
+[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 54 8 ]
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_54_8_58_8_if_stmt:
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_54_12_54_51_begin:
         %tmp.4 = lgetv %info.1;
-        symbol [ info %tmp.4 51 12 16 ];
+        symbol [ info %tmp.4 54 12 16 ];
         %tmp.5 = null;
         %tmp.6 = ne %tmp.4 %tmp.5;
-        bf %tmp.6 @C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_51_8_55_8_if_else_false;
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_51_28_51_51_true:
+        bf %tmp.6 @C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_54_8_58_8_if_else_false;
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_54_28_54_51_true:
         %tmp.7 = lgetv %info.1;
-        symbol [ info %tmp.7 51 28 32 ];
+        symbol [ info %tmp.7 54 28 32 ];
         %tmp.8 = as %tmp.7 { (!Null) };
-        symbol [ currentCadence %tmp.9 51 33 47 ];
+        symbol [ currentCadence %tmp.9 54 33 47 ];
         %tmp.9 = getv %tmp.8 :currentCadence;
         %tmp.10 = null;
         %tmp.11 = ne %tmp.9 %tmp.10;
         push %tmp.11;
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_51_28_51_51_end:
-        %tmp.12 = phi [%tmp.6 @C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_51_12_51_51_begin] [%tmp.11 @C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_51_28_51_51_true] [%tmp.12 @C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_51_28_51_51_end];
-        bf %tmp.12 @C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_51_8_55_8_if_else_false;
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_51_8_55_8_if_true:
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_51_56_53_8_start:
-[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 52 12 ]
-        symbol [ _cadenceDisplay %tmp.14 52 12 27 ];
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_54_28_54_51_end:
+        %tmp.12 = phi [%tmp.6 @C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_54_12_54_51_begin] [%tmp.11 @C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_54_28_54_51_true] [%tmp.12 @C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_54_28_54_51_end];
+        bf %tmp.12 @C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_54_8_58_8_if_else_false;
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_54_8_58_8_if_true:
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_54_56_56_8_start:
+[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 55 12 ]
+        symbol [ _cadenceDisplay %tmp.14 55 12 27 ];
         %tmp.14 = getv ? :_cadenceDisplay;
-        symbol [ setText %tmp.15 52 28 35 ];
+        symbol [ setText %tmp.15 55 28 35 ];
         %tmp.15 = getv function %tmp.14 :setText;
         %tmp.16 = lgetv %info.1;
-        symbol [ info %tmp.16 52 36 40 ];
+        symbol [ info %tmp.16 55 36 40 ];
         %tmp.17 = as %tmp.16 { (!Null) };
-        symbol [ currentCadence %tmp.18 52 41 55 ];
+        symbol [ currentCadence %tmp.18 55 41 55 ];
         %tmp.18 = getv %tmp.17 :currentCadence;
-        symbol [ toString %tmp.19 52 56 64 ];
+        symbol [ toString %tmp.19 55 56 64 ];
         %tmp.19 = getv function %tmp.18 :toString;
         %tmp.20 = invoke %tmp.18 %tmp.19();
         invoke %tmp.14 %tmp.15(%tmp.20);
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_51_56_53_8_stop:
-        goto @C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_51_8_55_8_if_end;
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_51_8_55_8_if_else_false:
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_53_13_55_8_start:
-[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 54 12 ]
-        symbol [ _cadenceDisplay %tmp.22 54 12 27 ];
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_54_56_56_8_stop:
+        goto @C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_54_8_58_8_if_end;
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_54_8_58_8_if_else_false:
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_56_13_58_8_start:
+[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 57 12 ]
+        symbol [ _cadenceDisplay %tmp.22 57 12 27 ];
         %tmp.22 = getv ? :_cadenceDisplay;
-        symbol [ setText %tmp.23 54 28 35 ];
+        symbol [ setText %tmp.23 57 28 35 ];
         %tmp.23 = getv function %tmp.22 :setText;
         %tmp.24 = "--";
         invoke %tmp.22 %tmp.23(%tmp.24);
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_53_13_55_8_stop:
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_51_8_55_8_if_end:
-C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_48_37_57_4_stop:
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_56_13_58_8_stop:
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_54_8_58_8_if_end:
+[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 60 8 ]
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_60_8_64_8_if_stmt:
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_60_12_60_53_begin:
+        %tmp.25 = lgetv %info.1;
+        symbol [ info %tmp.25 60 12 16 ];
+        %tmp.26 = null;
+        %tmp.27 = ne %tmp.25 %tmp.26;
+        bf %tmp.27 @C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_60_8_64_8_if_else_false;
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_60_28_60_53_true:
+        %tmp.28 = lgetv %info.1;
+        symbol [ info %tmp.28 60 28 32 ];
+        %tmp.29 = as %tmp.28 { (!Null) };
+        symbol [ currentHeartRate %tmp.30 60 33 49 ];
+        %tmp.30 = getv %tmp.29 :currentHeartRate;
+        %tmp.31 = null;
+        %tmp.32 = ne %tmp.30 %tmp.31;
+        push %tmp.32;
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_60_28_60_53_end:
+        %tmp.33 = phi [%tmp.27 @C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_60_12_60_53_begin] [%tmp.32 @C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_60_28_60_53_true] [%tmp.33 @C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_60_28_60_53_end];
+        bf %tmp.33 @C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_60_8_64_8_if_else_false;
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_60_8_64_8_if_true:
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_60_58_62_8_start:
+[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 61 12 ]
+        symbol [ _heartrateDisplay %tmp.35 61 12 29 ];
+        %tmp.35 = getv ? :_heartrateDisplay;
+        symbol [ setText %tmp.36 61 30 37 ];
+        %tmp.36 = getv function %tmp.35 :setText;
+        %tmp.37 = lgetv %info.1;
+        symbol [ info %tmp.37 61 38 42 ];
+        %tmp.38 = as %tmp.37 { (!Null) };
+        symbol [ currentHeartRate %tmp.39 61 43 59 ];
+        %tmp.39 = getv %tmp.38 :currentHeartRate;
+        symbol [ toString %tmp.40 61 60 68 ];
+        %tmp.40 = getv function %tmp.39 :toString;
+        %tmp.41 = invoke %tmp.39 %tmp.40();
+        invoke %tmp.35 %tmp.36(%tmp.41);
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_60_58_62_8_stop:
+        goto @C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_60_8_64_8_if_end;
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_60_8_64_8_if_else_false:
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_62_13_64_8_start:
+[ "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc" 63 12 ]
+        symbol [ _heartrateDisplay %tmp.43 63 12 29 ];
+        %tmp.43 = getv ? :_heartrateDisplay;
+        symbol [ setText %tmp.44 63 30 37 ];
+        %tmp.44 = getv function %tmp.43 :setText;
+        %tmp.45 = "--";
+        invoke %tmp.43 %tmp.44(%tmp.45);
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_62_13_64_8_stop:
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_60_8_64_8_if_end:
+C__Users_Jack_Desktop_GarminTesting_TestingCadence_source_TestingCadenceView_mc_50_37_66_4_stop:
     }
 }
 [ @file = "C:\Users\Jack\Desktop\GarminTesting\TestingCadence\source\TestingCadenceView.mc"; @line = 1; ]
