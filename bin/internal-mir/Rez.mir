@@ -109,8 +109,8 @@ c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_0
             symbol [ font %tmp.48 20 274 278 const ];
             symbol [ Gfx %tmp.49 20 280 283 ];
             %tmp.49 = getm $.Toybox.Graphics;
-            symbol [ FONT_SMALL %tmp.50 20 284 294 ];
-            %tmp.50 = getv %tmp.49 :FONT_SMALL;
+            symbol [ FONT_XTINY %tmp.50 20 284 294 ];
+            %tmp.50 = getv %tmp.49 :FONT_XTINY;
             %tmp.51 = dup %tmp.46;
             %tmp.52 = aputv %tmp.51 %tmp.48 %tmp.50;
             %tmp.7 = newc %tmp.10 (%tmp.52);
@@ -170,8 +170,8 @@ c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_0
             symbol [ font %tmp.94 22 275 279 const ];
             symbol [ Gfx %tmp.95 22 281 284 ];
             %tmp.95 = getm $.Toybox.Graphics;
-            symbol [ FONT_SMALL %tmp.96 22 285 295 ];
-            %tmp.96 = getv %tmp.95 :FONT_SMALL;
+            symbol [ FONT_XTINY %tmp.96 22 285 295 ];
+            %tmp.96 = getv %tmp.95 :FONT_XTINY;
             %tmp.97 = dup %tmp.92;
             %tmp.98 = aputv %tmp.97 %tmp.94 %tmp.96;
             %tmp.53 = newc %tmp.56 (%tmp.98);
@@ -298,8 +298,8 @@ c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_0
             symbol [ font %tmp.188 27 280 284 const ];
             symbol [ Gfx %tmp.189 27 286 289 ];
             %tmp.189 = getm $.Toybox.Graphics;
-            symbol [ FONT_SMALL %tmp.190 27 290 300 ];
-            %tmp.190 = getv %tmp.189 :FONT_SMALL;
+            symbol [ FONT_XTINY %tmp.190 27 290 300 ];
+            %tmp.190 = getv %tmp.189 :FONT_XTINY;
             %tmp.191 = dup %tmp.186;
             %tmp.192 = aputv %tmp.191 %tmp.188 %tmp.190;
             %tmp.147 = newc %tmp.150 (%tmp.192);
@@ -426,8 +426,8 @@ c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_0
             symbol [ font %tmp.282 32 276 280 const ];
             symbol [ Gfx %tmp.283 32 282 285 ];
             %tmp.283 = getm $.Toybox.Graphics;
-            symbol [ FONT_SMALL %tmp.284 32 286 296 ];
-            %tmp.284 = getv %tmp.283 :FONT_SMALL;
+            symbol [ FONT_XTINY %tmp.284 32 286 296 ];
+            %tmp.284 = getv %tmp.283 :FONT_XTINY;
             %tmp.285 = dup %tmp.280;
             %tmp.286 = aputv %tmp.285 %tmp.282 %tmp.284;
             %tmp.241 = newc %tmp.244 (%tmp.286);
@@ -487,8 +487,8 @@ c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_0
             symbol [ font %tmp.328 34 269 273 const ];
             symbol [ Gfx %tmp.329 34 275 278 ];
             %tmp.329 = getm $.Toybox.Graphics;
-            symbol [ FONT_SMALL %tmp.330 34 279 289 ];
-            %tmp.330 = getv %tmp.329 :FONT_SMALL;
+            symbol [ FONT_XTINY %tmp.330 34 279 289 ];
+            %tmp.330 = getv %tmp.329 :FONT_XTINY;
             %tmp.331 = dup %tmp.326;
             %tmp.332 = aputv %tmp.331 %tmp.328 %tmp.330;
             %tmp.287 = newc %tmp.290 (%tmp.332);

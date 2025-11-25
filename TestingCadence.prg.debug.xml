@@ -127,23 +127,23 @@
         <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="16" parent="globals/Rez/Layouts" pc="268437316" symbol="MainLayout"/>
         <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="18" parent="globals/Rez/Layouts" pc="268437325" symbol="MainLayout"/>
         <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="20" parent="globals/Rez/Layouts" pc="268437334" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="22" parent="globals/Rez/Layouts" pc="268437428" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="24" parent="globals/Rez/Layouts" pc="268437523" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="25" parent="globals/Rez/Layouts" pc="268437616" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="27" parent="globals/Rez/Layouts" pc="268437642" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="29" parent="globals/Rez/Layouts" pc="268437737" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="30" parent="globals/Rez/Layouts" pc="268437830" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="32" parent="globals/Rez/Layouts" pc="268437856" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="34" parent="globals/Rez/Layouts" pc="268437950" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="36" parent="globals/Rez/Layouts" pc="268438045" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="28" lineNum="41" parent="globals/Rez/Menus/MainMenu" pc="268438085" symbol="&lt;init&gt;"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="42" parent="globals/Rez/Menus/MainMenu" pc="268438097" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="43" parent="globals/Rez/Menus/MainMenu" pc="268438099" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="44" parent="globals/Rez/Menus/MainMenu" pc="268438111" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="45" parent="globals/Rez/Menus/MainMenu" pc="268438156" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="46" parent="globals/Rez/Menus/MainMenu" pc="268438201" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="47" parent="globals/Rez/Menus/MainMenu" pc="268438246" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="48" parent="globals/Rez/Menus/MainMenu" pc="268438291" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="22" parent="globals/Rez/Layouts" pc="268437427" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="24" parent="globals/Rez/Layouts" pc="268437521" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="25" parent="globals/Rez/Layouts" pc="268437614" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="27" parent="globals/Rez/Layouts" pc="268437640" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="29" parent="globals/Rez/Layouts" pc="268437734" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="30" parent="globals/Rez/Layouts" pc="268437827" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="32" parent="globals/Rez/Layouts" pc="268437853" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="34" parent="globals/Rez/Layouts" pc="268437946" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="36" parent="globals/Rez/Layouts" pc="268438040" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="28" lineNum="41" parent="globals/Rez/Menus/MainMenu" pc="268438080" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="42" parent="globals/Rez/Menus/MainMenu" pc="268438092" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="43" parent="globals/Rez/Menus/MainMenu" pc="268438094" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="44" parent="globals/Rez/Menus/MainMenu" pc="268438106" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="45" parent="globals/Rez/Menus/MainMenu" pc="268438151" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="46" parent="globals/Rez/Menus/MainMenu" pc="268438196" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="47" parent="globals/Rez/Menus/MainMenu" pc="268438241" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="48" parent="globals/Rez/Menus/MainMenu" pc="268438286" symbol="initialize"/>
     </pcToLineNum>
     <symbolTable>
         <entry id="8388639" module="true" symbol="Graphics"/>
@@ -251,16 +251,16 @@
         <entry endPc="268437009" name="secs" stackId="12" startPc="268436901"/>
         <entry arg="true" endPc="268437168" name="dc" stackId="1" startPc="268437033"/>
         <entry arg="true" endPc="268437304" name="dc" stackId="1" startPc="268437279"/>
-        <entry arg="true" endPc="268438084" name="dc" stackId="1" startPc="268437305"/>
-        <entry endPc="268438084" name="rez_cmp_local_var_dc_getHeight" stackId="2" startPc="268437316"/>
-        <entry endPc="268438084" name="rez_cmp_local_var_dc_getWidth" stackId="3" startPc="268437316"/>
-        <entry endPc="268438084" name="rez_cmp_local_text_cadence_text" stackId="4" startPc="268437316"/>
-        <entry endPc="268438084" name="rez_cmp_local_text_cadence_zone" stackId="5" startPc="268437316"/>
-        <entry endPc="268438084" name="rez_cmp_local_bitmap_cadence_icon" stackId="6" startPc="268437316"/>
-        <entry endPc="268438084" name="rez_cmp_local_text_heartrate_text" stackId="7" startPc="268437316"/>
-        <entry endPc="268438084" name="rez_cmp_local_bitmap_heartrate_icon" stackId="8" startPc="268437316"/>
-        <entry endPc="268438084" name="rez_cmp_local_text_distance_text" stackId="9" startPc="268437316"/>
-        <entry endPc="268438084" name="rez_cmp_local_text_time_text" stackId="10" startPc="268437316"/>
+        <entry arg="true" endPc="268438079" name="dc" stackId="1" startPc="268437305"/>
+        <entry endPc="268438079" name="rez_cmp_local_var_dc_getHeight" stackId="2" startPc="268437316"/>
+        <entry endPc="268438079" name="rez_cmp_local_var_dc_getWidth" stackId="3" startPc="268437316"/>
+        <entry endPc="268438079" name="rez_cmp_local_text_cadence_text" stackId="4" startPc="268437316"/>
+        <entry endPc="268438079" name="rez_cmp_local_text_cadence_zone" stackId="5" startPc="268437316"/>
+        <entry endPc="268438079" name="rez_cmp_local_bitmap_cadence_icon" stackId="6" startPc="268437316"/>
+        <entry endPc="268438079" name="rez_cmp_local_text_heartrate_text" stackId="7" startPc="268437316"/>
+        <entry endPc="268438079" name="rez_cmp_local_bitmap_heartrate_icon" stackId="8" startPc="268437316"/>
+        <entry endPc="268438079" name="rez_cmp_local_text_distance_text" stackId="9" startPc="268437316"/>
+        <entry endPc="268438079" name="rez_cmp_local_text_time_text" stackId="10" startPc="268437316"/>
     </localVars>
     <annotations>
         <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="LauncherIcon"/>
@@ -389,14 +389,14 @@
             <param id="dc"/>
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268438084" name="MainLayout" parent="Layouts" startPc="268437305">
+        <functionEntry accessMode="public" endPc="268438079" name="MainLayout" parent="Layouts" startPc="268437305">
             <param id="dc"/>
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268438096" name="&lt;init&gt;" parent="MainMenu" startPc="268438085">
+        <functionEntry accessMode="public" endPc="268438091" name="&lt;init&gt;" parent="MainMenu" startPc="268438080">
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268438336" name="initialize" parent="MainMenu" startPc="268438097">
+        <functionEntry accessMode="public" endPc="268438331" name="initialize" parent="MainMenu" startPc="268438092">
             <documentation/>
         </functionEntry>
     </functions>
