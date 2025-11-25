@@ -1,46 +1,40 @@
-[ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+[ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
 import Toybox.Lang;
-[ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 2; @symbol_usingdef<0> = [Toybox,2,6,12]; @symbol_usingdef<1> = [WatchUi,2,13,20]; ]
+[ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 2; @symbol_usingdef<0> = [Toybox,2,6,12]; @symbol_usingdef<1> = [WatchUi,2,13,20]; ]
 using Toybox.WatchUi;
-[ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 3; @symbol_usingdef<0> = [Toybox,3,6,12]; @symbol_usingdef<1> = [WatchUi,3,13,20]; @symbol_usingAlias = [Ui,3,24,26]; ]
+[ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 3; @symbol_usingdef<0> = [Toybox,3,6,12]; @symbol_usingdef<1> = [WatchUi,3,13,20]; @symbol_usingAlias = [Ui,3,24,26]; ]
 using Toybox.WatchUi as :Ui;
-[ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 4; @symbol_usingdef<0> = [Toybox,4,6,12]; @symbol_usingdef<1> = [Graphics,4,13,21]; ]
+[ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 4; @symbol_usingdef<0> = [Toybox,4,6,12]; @symbol_usingdef<1> = [Graphics,4,13,21]; ]
 using Toybox.Graphics;
-[ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 5; @symbol_usingdef<0> = [Toybox,5,6,12]; @symbol_usingdef<1> = [Graphics,5,13,21]; @symbol_usingAlias = [Gfx,5,25,28]; ]
+[ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 5; @symbol_usingdef<0> = [Toybox,5,6,12]; @symbol_usingdef<1> = [Graphics,5,13,21]; @symbol_usingAlias = [Gfx,5,25,28]; ]
 using Toybox.Graphics as :Gfx;
-[ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 7; @symbol_moduledef = [Rez,7,7,10]; ]
+[ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 7; @symbol_moduledef = [Rez,7,7,10]; ]
 module Rez {
-    [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 7; ]
+    [ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 7; ]
     <init> {
     }
-    [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 8; @symbol_moduledef = [Drawables,8,11,20]; ]
+    [ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 8; @symbol_moduledef = [Drawables,8,11,20]; ]
     module Drawables {
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 8; ]
+        [ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 8; ]
         <init> {
         }
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 9; @position = 27; initialized = true; @symbol_vardef = [cadence_icon,9,27,39]; @symbol_type<0> = [ResourceId,9,43,53]; ]
+        [ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 9; @position = 27; initialized = true; @symbol_vardef = [cadence_icon,9,27,39]; @symbol_type<0> = [ResourceId,9,43,53]; ]
         var cadence_icon as ResourceId;
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 10; @position = 27; initialized = true; @symbol_vardef = [heartrate_icon,10,27,41]; @symbol_type<0> = [ResourceId,10,45,55]; ]
+        [ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 10; @position = 27; initialized = true; @symbol_vardef = [heartrate_icon,10,27,41]; @symbol_type<0> = [ResourceId,10,45,55]; ]
         var heartrate_icon as ResourceId;
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 11; @position = 27; initialized = true; @symbol_vardef = [LauncherIcon,11,27,39]; @symbol_type<0> = [ResourceId,11,43,53]; ]
+        [ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 11; @position = 27; initialized = true; @symbol_vardef = [LauncherIcon,11,27,39]; @symbol_type<0> = [ResourceId,11,43,53]; ]
         var LauncherIcon as ResourceId;
     }
-    [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 14; @symbol_moduledef = [Layouts,14,11,18]; ]
+    [ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 14; @symbol_moduledef = [Layouts,14,11,18]; ]
     module Layouts {
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 14; ]
+        [ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 14; ]
         <init> {
         }
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 15; @symbol_functiondef = [MainLayout,15,17,27]; @symbol_param<0> = [dc,15,28,30]; @symbol_param<0>_type<0> = [Graphics,15,34,42]; @symbol_param<0>_type<1> = [Dc,15,43,45]; @symbol_return<0> = [Array,15,50,55]; @symbol_return<1> = [WatchUi,15,56,63]; @symbol_return<2> = [Drawable,15,64,72]; ]
+        [ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 15; @symbol_functiondef = [MainLayout,15,17,27]; @symbol_param<0> = [dc,15,28,30]; @symbol_param<0>_type<0> = [Graphics,15,34,42]; @symbol_param<0>_type<1> = [Dc,15,43,45]; @symbol_return<0> = [Array,15,50,55]; @symbol_return<1> = [WatchUi,15,56,63]; @symbol_return<2> = [Drawable,15,64,72]; ]
         function MainLayout(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
-<<<<<<< HEAD
 C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_start:
 [ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen" 16 12 ]
             [ "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_start" "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_stop" ]
-=======
-C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_start:
-[ "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen" 16 12 ]
-            [ "C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_start" "C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_stop" ]
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
             %rez_cmp_local_var_dc_getHeight.1 = local;
             symbol [ rez_cmp_local_var_dc_getHeight %rez_cmp_local_var_dc_getHeight.1 16 16 46 ];
             %tmp.1 = lgetv %dc;
@@ -50,13 +44,8 @@ C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Re
             %tmp.3 = invoke %tmp.1 %tmp.2();
             lputv %rez_cmp_local_var_dc_getHeight.1 %tmp.3;
             symbol [ rez_cmp_local_var_dc_getHeight %rez_cmp_local_var_dc_getHeight.1 16 16 46 ];
-<<<<<<< HEAD
 [ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen" 18 12 ]
             [ "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_start" "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_stop" ]
-=======
-[ "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen" 18 12 ]
-            [ "C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_start" "C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_stop" ]
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
             %rez_cmp_local_var_dc_getWidth.2 = local;
             symbol [ rez_cmp_local_var_dc_getWidth %rez_cmp_local_var_dc_getWidth.2 18 16 45 ];
             %tmp.4 = lgetv %dc;
@@ -66,19 +55,11 @@ C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Re
             %tmp.6 = invoke %tmp.4 %tmp.5();
             lputv %rez_cmp_local_var_dc_getWidth.2 %tmp.6;
             symbol [ rez_cmp_local_var_dc_getWidth %rez_cmp_local_var_dc_getWidth.2 18 16 45 ];
-<<<<<<< HEAD
 [ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen" 20 12 ]
             [ "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_start" "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_stop" ]
             %rez_cmp_local_bitmap_cadence_icon.3 = local;
             symbol [ rez_cmp_local_bitmap_cadence_icon %rez_cmp_local_bitmap_cadence_icon.3 20 16 49 ];
             symbol [ WatchUi %tmp.9 20 56 63 ];
-=======
-[ "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen" 20 12 ]
-            [ "C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_start" "C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_stop" ]
-            %rez_cmp_local_text_cadence_text.3 = local;
-            symbol [ rez_cmp_local_text_cadence_text %rez_cmp_local_text_cadence_text.3 20 16 47 ];
-            symbol [ WatchUi %tmp.9 20 54 61 ];
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
             %tmp.9 = getm $.Toybox.WatchUi;
             symbol [ Bitmap %tmp.10 20 64 70 ];
             %tmp.10 = getv function ? %tmp.9 :Bitmap;
@@ -88,7 +69,6 @@ C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Re
             %tmp.14 = "cadence_icon";
             %tmp.15 = dup %tmp.11;
             %tmp.16 = aputv %tmp.15 %tmp.13 %tmp.14;
-<<<<<<< HEAD
             %tmp.18 = const :rezId;
             symbol [ rezId %tmp.18 20 102 107 const ];
             symbol [ $ %tmp.19 20 109 110 ];
@@ -230,170 +210,21 @@ C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Re
             %tmp.119 = lgetv %rez_cmp_local_var_dc_getWidth.2;
             symbol [ rez_cmp_local_var_dc_getWidth %tmp.119 25 130 159 ];
             %tmp.120 = 60;
-=======
-            %tmp.18 = const :color;
-            symbol [ color %tmp.18 20 98 103 const ];
-            symbol [ Gfx %tmp.19 20 105 108 ];
-            %tmp.19 = getm $.Toybox.Graphics;
-            symbol [ COLOR_GREEN %tmp.20 20 109 120 ];
-            %tmp.20 = getv %tmp.19 :COLOR_GREEN;
-            %tmp.21 = dup %tmp.16;
-            %tmp.22 = aputv %tmp.21 %tmp.18 %tmp.20;
-            %tmp.24 = const :locX;
-            symbol [ locX %tmp.24 20 123 127 const ];
-            %tmp.25 = lgetv %rez_cmp_local_var_dc_getWidth.2;
-            symbol [ rez_cmp_local_var_dc_getWidth %tmp.25 20 130 159 ];
-            %tmp.26 = 60;
-            %tmp.27 = 100.0;
-            %tmp.28 = div %tmp.26 %tmp.27;
-            %tmp.29 = mul %tmp.25 %tmp.28;
-            %tmp.30 = dup %tmp.22;
-            %tmp.31 = aputv %tmp.30 %tmp.24 %tmp.29;
-            %tmp.33 = const :locY;
-            symbol [ locY %tmp.33 20 178 182 const ];
-            %tmp.34 = lgetv %rez_cmp_local_var_dc_getHeight.1;
-            symbol [ rez_cmp_local_var_dc_getHeight %tmp.34 20 185 215 ];
-            %tmp.35 = 6;
-            %tmp.36 = 100.0;
-            %tmp.37 = div %tmp.35 %tmp.36;
-            %tmp.38 = mul %tmp.34 %tmp.37;
-            %tmp.39 = dup %tmp.31;
-            %tmp.40 = aputv %tmp.39 %tmp.33 %tmp.38;
-            %tmp.42 = const :justification;
-            symbol [ justification %tmp.42 20 233 246 const ];
-            symbol [ Gfx %tmp.43 20 248 251 ];
-            %tmp.43 = getm $.Toybox.Graphics;
-            symbol [ TEXT_JUSTIFY_CENTER %tmp.44 20 252 271 ];
-            %tmp.44 = getv %tmp.43 :TEXT_JUSTIFY_CENTER;
-            %tmp.45 = dup %tmp.40;
-            %tmp.46 = aputv %tmp.45 %tmp.42 %tmp.44;
-            %tmp.48 = const :font;
-            symbol [ font %tmp.48 20 274 278 const ];
-            symbol [ Gfx %tmp.49 20 280 283 ];
-            %tmp.49 = getm $.Toybox.Graphics;
-            symbol [ FONT_SMALL %tmp.50 20 284 294 ];
-            %tmp.50 = getv %tmp.49 :FONT_SMALL;
-            %tmp.51 = dup %tmp.46;
-            %tmp.52 = aputv %tmp.51 %tmp.48 %tmp.50;
-            %tmp.7 = newc %tmp.10 (%tmp.52);
-            lputv %rez_cmp_local_text_cadence_text.3 %tmp.7;
-            symbol [ rez_cmp_local_text_cadence_text %rez_cmp_local_text_cadence_text.3 20 16 47 ];
-[ "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen" 22 12 ]
-            [ "C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_start" "C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_stop" ]
-            %rez_cmp_local_text_cadence_zone.4 = local;
-            symbol [ rez_cmp_local_text_cadence_zone %rez_cmp_local_text_cadence_zone.4 22 16 47 ];
-            symbol [ WatchUi %tmp.55 22 54 61 ];
-            %tmp.55 = getm $.Toybox.WatchUi;
-            symbol [ Text %tmp.56 22 62 66 ];
-            %tmp.56 = getv function ? %tmp.55 :Text;
-            %tmp.57 = newd 6;
-            %tmp.59 = const :identifier;
-            symbol [ identifier %tmp.59 22 69 79 const ];
-            %tmp.60 = "cadence_zone";
-            %tmp.61 = dup %tmp.57;
-            %tmp.62 = aputv %tmp.61 %tmp.59 %tmp.60;
-            %tmp.64 = const :color;
-            symbol [ color %tmp.64 22 98 103 const ];
-            symbol [ Gfx %tmp.65 22 105 108 ];
-            %tmp.65 = getm $.Toybox.Graphics;
-            symbol [ COLOR_WHITE %tmp.66 22 109 120 ];
-            %tmp.66 = getv %tmp.65 :COLOR_WHITE;
-            %tmp.67 = dup %tmp.62;
-            %tmp.68 = aputv %tmp.67 %tmp.64 %tmp.66;
-            %tmp.70 = const :locX;
-            symbol [ locX %tmp.70 22 123 127 const ];
-            %tmp.71 = lgetv %rez_cmp_local_var_dc_getWidth.2;
-            symbol [ rez_cmp_local_var_dc_getWidth %tmp.71 22 130 159 ];
-            %tmp.72 = 60;
-            %tmp.73 = 100.0;
-            %tmp.74 = div %tmp.72 %tmp.73;
-            %tmp.75 = mul %tmp.71 %tmp.74;
-            %tmp.76 = dup %tmp.68;
-            %tmp.77 = aputv %tmp.76 %tmp.70 %tmp.75;
-            %tmp.79 = const :locY;
-            symbol [ locY %tmp.79 22 178 182 const ];
-            %tmp.80 = lgetv %rez_cmp_local_var_dc_getHeight.1;
-            symbol [ rez_cmp_local_var_dc_getHeight %tmp.80 22 185 215 ];
-            %tmp.81 = 14;
-            %tmp.82 = 100.0;
-            %tmp.83 = div %tmp.81 %tmp.82;
-            %tmp.84 = mul %tmp.80 %tmp.83;
-            %tmp.85 = dup %tmp.77;
-            %tmp.86 = aputv %tmp.85 %tmp.79 %tmp.84;
-            %tmp.88 = const :justification;
-            symbol [ justification %tmp.88 22 234 247 const ];
-            symbol [ Gfx %tmp.89 22 249 252 ];
-            %tmp.89 = getm $.Toybox.Graphics;
-            symbol [ TEXT_JUSTIFY_CENTER %tmp.90 22 253 272 ];
-            %tmp.90 = getv %tmp.89 :TEXT_JUSTIFY_CENTER;
-            %tmp.91 = dup %tmp.86;
-            %tmp.92 = aputv %tmp.91 %tmp.88 %tmp.90;
-            %tmp.94 = const :font;
-            symbol [ font %tmp.94 22 275 279 const ];
-            symbol [ Gfx %tmp.95 22 281 284 ];
-            %tmp.95 = getm $.Toybox.Graphics;
-            symbol [ FONT_SMALL %tmp.96 22 285 295 ];
-            %tmp.96 = getv %tmp.95 :FONT_SMALL;
-            %tmp.97 = dup %tmp.92;
-            %tmp.98 = aputv %tmp.97 %tmp.94 %tmp.96;
-            %tmp.53 = newc %tmp.56 (%tmp.98);
-            lputv %rez_cmp_local_text_cadence_zone.4 %tmp.53;
-            symbol [ rez_cmp_local_text_cadence_zone %rez_cmp_local_text_cadence_zone.4 22 16 47 ];
-[ "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen" 24 12 ]
-            [ "C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_start" "C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_stop" ]
-            %rez_cmp_local_bitmap_cadence_icon.5 = local;
-            symbol [ rez_cmp_local_bitmap_cadence_icon %rez_cmp_local_bitmap_cadence_icon.5 24 16 49 ];
-            symbol [ WatchUi %tmp.101 24 56 63 ];
-            %tmp.101 = getm $.Toybox.WatchUi;
-            symbol [ Bitmap %tmp.102 24 64 70 ];
-            %tmp.102 = getv function ? %tmp.101 :Bitmap;
-            %tmp.103 = newd 4;
-            %tmp.105 = const :identifier;
-            symbol [ identifier %tmp.105 24 73 83 const ];
-            %tmp.106 = "cadence_icon";
-            %tmp.107 = dup %tmp.103;
-            %tmp.108 = aputv %tmp.107 %tmp.105 %tmp.106;
-            %tmp.110 = const :rezId;
-            symbol [ rezId %tmp.110 24 102 107 const ];
-            symbol [ $ %tmp.111 24 109 110 ];
-            %tmp.111 = getm $;
-            symbol [ Rez %tmp.112 24 111 114 ];
-            %tmp.112 = getv %tmp.111 :Rez;
-            symbol [ Drawables %tmp.113 24 115 124 ];
-            %tmp.113 = getv %tmp.112 :Drawables;
-            symbol [ cadence_icon %tmp.114 24 125 137 ];
-            %tmp.114 = getv %tmp.113 :cadence_icon;
-            %tmp.115 = dup %tmp.108;
-            %tmp.116 = aputv %tmp.115 %tmp.110 %tmp.114;
-            %tmp.118 = const :locX;
-            symbol [ locX %tmp.118 24 140 144 const ];
-            %tmp.119 = lgetv %rez_cmp_local_var_dc_getWidth.2;
-            symbol [ rez_cmp_local_var_dc_getWidth %tmp.119 24 147 176 ];
-            %tmp.120 = 18;
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
             %tmp.121 = 100.0;
             %tmp.122 = div %tmp.120 %tmp.121;
             %tmp.123 = mul %tmp.119 %tmp.122;
             %tmp.124 = dup %tmp.116;
             %tmp.125 = aputv %tmp.124 %tmp.118 %tmp.123;
             %tmp.127 = const :locY;
-<<<<<<< HEAD
             symbol [ locY %tmp.127 25 178 182 const ];
             %tmp.128 = lgetv %rez_cmp_local_var_dc_getHeight.1;
             symbol [ rez_cmp_local_var_dc_getHeight %tmp.128 25 185 215 ];
             %tmp.129 = 20;
-=======
-            symbol [ locY %tmp.127 24 195 199 const ];
-            %tmp.128 = lgetv %rez_cmp_local_var_dc_getHeight.1;
-            symbol [ rez_cmp_local_var_dc_getHeight %tmp.128 24 202 232 ];
-            %tmp.129 = 10;
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
             %tmp.130 = 100.0;
             %tmp.131 = div %tmp.129 %tmp.130;
             %tmp.132 = mul %tmp.128 %tmp.131;
             %tmp.133 = dup %tmp.125;
             %tmp.134 = aputv %tmp.133 %tmp.127 %tmp.132;
-<<<<<<< HEAD
             %tmp.136 = const :justification;
             symbol [ justification %tmp.136 25 234 247 const ];
             symbol [ Gfx %tmp.137 25 249 252 ];
@@ -418,44 +249,15 @@ C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Re
             %rez_cmp_local_bitmap_heartrate_icon.6 = local;
             symbol [ rez_cmp_local_bitmap_heartrate_icon %rez_cmp_local_bitmap_heartrate_icon.6 27 16 51 ];
             symbol [ WatchUi %tmp.149 27 58 65 ];
-=======
-            %tmp.99 = newc %tmp.102 (%tmp.134);
-            lputv %rez_cmp_local_bitmap_cadence_icon.5 %tmp.99;
-            symbol [ rez_cmp_local_bitmap_cadence_icon %rez_cmp_local_bitmap_cadence_icon.5 24 16 49 ];
-[ "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen" 25 12 ]
-            %tmp.135 = lgetv %rez_cmp_local_bitmap_cadence_icon.5;
-            symbol [ rez_cmp_local_bitmap_cadence_icon %tmp.135 25 12 45 ];
-            symbol [ setLocation %tmp.136 25 46 57 ];
-            %tmp.136 = getv function %tmp.135 :setLocation;
-            %tmp.137 = lgetv %rez_cmp_local_var_dc_getWidth.2;
-            symbol [ rez_cmp_local_var_dc_getWidth %tmp.137 25 59 88 ];
-            %tmp.138 = 18;
-            %tmp.139 = 100.0;
-            %tmp.140 = div %tmp.138 %tmp.139;
-            %tmp.141 = mul %tmp.137 %tmp.140;
-            %tmp.142 = lgetv %rez_cmp_local_var_dc_getHeight.1;
-            symbol [ rez_cmp_local_var_dc_getHeight %tmp.142 25 107 137 ];
-            %tmp.143 = 10;
-            %tmp.144 = 100.0;
-            %tmp.145 = div %tmp.143 %tmp.144;
-            %tmp.146 = mul %tmp.142 %tmp.145;
-            invoke %tmp.135 %tmp.136(%tmp.141, %tmp.146);
-[ "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen" 27 12 ]
-            [ "C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_start" "C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_stop" ]
-            %rez_cmp_local_text_heartrate_text.6 = local;
-            symbol [ rez_cmp_local_text_heartrate_text %rez_cmp_local_text_heartrate_text.6 27 16 49 ];
-            symbol [ WatchUi %tmp.149 27 56 63 ];
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
             %tmp.149 = getm $.Toybox.WatchUi;
-            symbol [ Text %tmp.150 27 64 68 ];
-            %tmp.150 = getv function ? %tmp.149 :Text;
-            %tmp.151 = newd 6;
+            symbol [ Bitmap %tmp.150 27 66 72 ];
+            %tmp.150 = getv function ? %tmp.149 :Bitmap;
+            %tmp.151 = newd 4;
             %tmp.153 = const :identifier;
-            symbol [ identifier %tmp.153 27 71 81 const ];
-            %tmp.154 = "heartrate_text";
+            symbol [ identifier %tmp.153 27 75 85 const ];
+            %tmp.154 = "heartrate_icon";
             %tmp.155 = dup %tmp.151;
             %tmp.156 = aputv %tmp.155 %tmp.153 %tmp.154;
-<<<<<<< HEAD
             %tmp.158 = const :rezId;
             symbol [ rezId %tmp.158 27 106 111 const ];
             symbol [ $ %tmp.159 27 113 114 ];
@@ -536,109 +338,21 @@ C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Re
             %tmp.213 = lgetv %rez_cmp_local_var_dc_getWidth.2;
             symbol [ rez_cmp_local_var_dc_getWidth %tmp.213 30 135 164 ];
             %tmp.214 = 60;
-=======
-            %tmp.158 = const :color;
-            symbol [ color %tmp.158 27 102 107 const ];
-            symbol [ Gfx %tmp.159 27 109 112 ];
-            %tmp.159 = getm $.Toybox.Graphics;
-            symbol [ COLOR_DK_RED %tmp.160 27 113 125 ];
-            %tmp.160 = getv %tmp.159 :COLOR_DK_RED;
-            %tmp.161 = dup %tmp.156;
-            %tmp.162 = aputv %tmp.161 %tmp.158 %tmp.160;
-            %tmp.164 = const :locX;
-            symbol [ locX %tmp.164 27 128 132 const ];
-            %tmp.165 = lgetv %rez_cmp_local_var_dc_getWidth.2;
-            symbol [ rez_cmp_local_var_dc_getWidth %tmp.165 27 135 164 ];
-            %tmp.166 = 60;
-            %tmp.167 = 100.0;
-            %tmp.168 = div %tmp.166 %tmp.167;
-            %tmp.169 = mul %tmp.165 %tmp.168;
-            %tmp.170 = dup %tmp.162;
-            %tmp.171 = aputv %tmp.170 %tmp.164 %tmp.169;
-            %tmp.173 = const :locY;
-            symbol [ locY %tmp.173 27 183 187 const ];
-            %tmp.174 = lgetv %rez_cmp_local_var_dc_getHeight.1;
-            symbol [ rez_cmp_local_var_dc_getHeight %tmp.174 27 190 220 ];
-            %tmp.175 = 26;
-            %tmp.176 = 100.0;
-            %tmp.177 = div %tmp.175 %tmp.176;
-            %tmp.178 = mul %tmp.174 %tmp.177;
-            %tmp.179 = dup %tmp.171;
-            %tmp.180 = aputv %tmp.179 %tmp.173 %tmp.178;
-            %tmp.182 = const :justification;
-            symbol [ justification %tmp.182 27 239 252 const ];
-            symbol [ Gfx %tmp.183 27 254 257 ];
-            %tmp.183 = getm $.Toybox.Graphics;
-            symbol [ TEXT_JUSTIFY_CENTER %tmp.184 27 258 277 ];
-            %tmp.184 = getv %tmp.183 :TEXT_JUSTIFY_CENTER;
-            %tmp.185 = dup %tmp.180;
-            %tmp.186 = aputv %tmp.185 %tmp.182 %tmp.184;
-            %tmp.188 = const :font;
-            symbol [ font %tmp.188 27 280 284 const ];
-            symbol [ Gfx %tmp.189 27 286 289 ];
-            %tmp.189 = getm $.Toybox.Graphics;
-            symbol [ FONT_SMALL %tmp.190 27 290 300 ];
-            %tmp.190 = getv %tmp.189 :FONT_SMALL;
-            %tmp.191 = dup %tmp.186;
-            %tmp.192 = aputv %tmp.191 %tmp.188 %tmp.190;
-            %tmp.147 = newc %tmp.150 (%tmp.192);
-            lputv %rez_cmp_local_text_heartrate_text.6 %tmp.147;
-            symbol [ rez_cmp_local_text_heartrate_text %rez_cmp_local_text_heartrate_text.6 27 16 49 ];
-[ "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen" 29 12 ]
-            [ "C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_start" "C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_stop" ]
-            %rez_cmp_local_bitmap_heartrate_icon.7 = local;
-            symbol [ rez_cmp_local_bitmap_heartrate_icon %rez_cmp_local_bitmap_heartrate_icon.7 29 16 51 ];
-            symbol [ WatchUi %tmp.195 29 58 65 ];
-            %tmp.195 = getm $.Toybox.WatchUi;
-            symbol [ Bitmap %tmp.196 29 66 72 ];
-            %tmp.196 = getv function ? %tmp.195 :Bitmap;
-            %tmp.197 = newd 4;
-            %tmp.199 = const :identifier;
-            symbol [ identifier %tmp.199 29 75 85 const ];
-            %tmp.200 = "heartrate_icon";
-            %tmp.201 = dup %tmp.197;
-            %tmp.202 = aputv %tmp.201 %tmp.199 %tmp.200;
-            %tmp.204 = const :rezId;
-            symbol [ rezId %tmp.204 29 106 111 const ];
-            symbol [ $ %tmp.205 29 113 114 ];
-            %tmp.205 = getm $;
-            symbol [ Rez %tmp.206 29 115 118 ];
-            %tmp.206 = getv %tmp.205 :Rez;
-            symbol [ Drawables %tmp.207 29 119 128 ];
-            %tmp.207 = getv %tmp.206 :Drawables;
-            symbol [ heartrate_icon %tmp.208 29 129 143 ];
-            %tmp.208 = getv %tmp.207 :heartrate_icon;
-            %tmp.209 = dup %tmp.202;
-            %tmp.210 = aputv %tmp.209 %tmp.204 %tmp.208;
-            %tmp.212 = const :locX;
-            symbol [ locX %tmp.212 29 146 150 const ];
-            %tmp.213 = lgetv %rez_cmp_local_var_dc_getWidth.2;
-            symbol [ rez_cmp_local_var_dc_getWidth %tmp.213 29 153 182 ];
-            %tmp.214 = 18;
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
             %tmp.215 = 100.0;
             %tmp.216 = div %tmp.214 %tmp.215;
             %tmp.217 = mul %tmp.213 %tmp.216;
             %tmp.218 = dup %tmp.210;
             %tmp.219 = aputv %tmp.218 %tmp.212 %tmp.217;
             %tmp.221 = const :locY;
-<<<<<<< HEAD
             symbol [ locY %tmp.221 30 183 187 const ];
             %tmp.222 = lgetv %rez_cmp_local_var_dc_getHeight.1;
             symbol [ rez_cmp_local_var_dc_getHeight %tmp.222 30 190 220 ];
             %tmp.223 = 35;
-=======
-            symbol [ locY %tmp.221 29 201 205 const ];
-            %tmp.222 = lgetv %rez_cmp_local_var_dc_getHeight.1;
-            symbol [ rez_cmp_local_var_dc_getHeight %tmp.222 29 208 238 ];
-            %tmp.223 = 30;
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
             %tmp.224 = 100.0;
             %tmp.225 = div %tmp.223 %tmp.224;
             %tmp.226 = mul %tmp.222 %tmp.225;
             %tmp.227 = dup %tmp.219;
             %tmp.228 = aputv %tmp.227 %tmp.221 %tmp.226;
-<<<<<<< HEAD
             %tmp.230 = const :justification;
             symbol [ justification %tmp.230 30 239 252 const ];
             symbol [ Gfx %tmp.231 30 254 257 ];
@@ -660,31 +374,6 @@ C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Re
             symbol [ rez_cmp_local_text_heartrate_text %rez_cmp_local_text_heartrate_text.7 30 16 49 ];
 [ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen" 32 12 ]
             [ "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_start" "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_stop" ]
-=======
-            %tmp.193 = newc %tmp.196 (%tmp.228);
-            lputv %rez_cmp_local_bitmap_heartrate_icon.7 %tmp.193;
-            symbol [ rez_cmp_local_bitmap_heartrate_icon %rez_cmp_local_bitmap_heartrate_icon.7 29 16 51 ];
-[ "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen" 30 12 ]
-            %tmp.229 = lgetv %rez_cmp_local_bitmap_heartrate_icon.7;
-            symbol [ rez_cmp_local_bitmap_heartrate_icon %tmp.229 30 12 47 ];
-            symbol [ setLocation %tmp.230 30 48 59 ];
-            %tmp.230 = getv function %tmp.229 :setLocation;
-            %tmp.231 = lgetv %rez_cmp_local_var_dc_getWidth.2;
-            symbol [ rez_cmp_local_var_dc_getWidth %tmp.231 30 61 90 ];
-            %tmp.232 = 18;
-            %tmp.233 = 100.0;
-            %tmp.234 = div %tmp.232 %tmp.233;
-            %tmp.235 = mul %tmp.231 %tmp.234;
-            %tmp.236 = lgetv %rez_cmp_local_var_dc_getHeight.1;
-            symbol [ rez_cmp_local_var_dc_getHeight %tmp.236 30 109 139 ];
-            %tmp.237 = 30;
-            %tmp.238 = 100.0;
-            %tmp.239 = div %tmp.237 %tmp.238;
-            %tmp.240 = mul %tmp.236 %tmp.239;
-            invoke %tmp.229 %tmp.230(%tmp.235, %tmp.240);
-[ "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen" 32 12 ]
-            [ "C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_start" "C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_stop" ]
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
             %rez_cmp_local_text_distance_text.8 = local;
             symbol [ rez_cmp_local_text_distance_text %rez_cmp_local_text_distance_text.8 32 16 48 ];
             symbol [ WatchUi %tmp.243 32 55 62 ];
@@ -719,11 +408,7 @@ C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Re
             symbol [ locY %tmp.267 32 179 183 const ];
             %tmp.268 = lgetv %rez_cmp_local_var_dc_getHeight.1;
             symbol [ rez_cmp_local_var_dc_getHeight %tmp.268 32 186 216 ];
-<<<<<<< HEAD
             %tmp.269 = 55;
-=======
-            %tmp.269 = 50;
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
             %tmp.270 = 100.0;
             %tmp.271 = div %tmp.269 %tmp.270;
             %tmp.272 = mul %tmp.268 %tmp.271;
@@ -748,13 +433,8 @@ C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Re
             %tmp.241 = newc %tmp.244 (%tmp.286);
             lputv %rez_cmp_local_text_distance_text.8 %tmp.241;
             symbol [ rez_cmp_local_text_distance_text %rez_cmp_local_text_distance_text.8 32 16 48 ];
-<<<<<<< HEAD
 [ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen" 34 12 ]
             [ "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_start" "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_stop" ]
-=======
-[ "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen" 34 12 ]
-            [ "C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_start" "C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_stop" ]
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
             %rez_cmp_local_text_time_text.9 = local;
             symbol [ rez_cmp_local_text_time_text %rez_cmp_local_text_time_text.9 34 16 44 ];
             symbol [ WatchUi %tmp.289 34 51 58 ];
@@ -789,11 +469,7 @@ C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Re
             symbol [ locY %tmp.313 34 172 176 const ];
             %tmp.314 = lgetv %rez_cmp_local_var_dc_getHeight.1;
             symbol [ rez_cmp_local_var_dc_getHeight %tmp.314 34 179 209 ];
-<<<<<<< HEAD
             %tmp.315 = 75;
-=======
-            %tmp.315 = 70;
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
             %tmp.316 = 100.0;
             %tmp.317 = div %tmp.315 %tmp.316;
             %tmp.318 = mul %tmp.314 %tmp.317;
@@ -818,16 +494,11 @@ C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Re
             %tmp.287 = newc %tmp.290 (%tmp.332);
             lputv %rez_cmp_local_text_time_text.9 %tmp.287;
             symbol [ rez_cmp_local_text_time_text %rez_cmp_local_text_time_text.9 34 16 44 ];
-<<<<<<< HEAD
 [ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen" 36 12 ]
-=======
-[ "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen" 36 12 ]
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
             %tmp.333 = newa 7 Array<WatchUi.Drawable>;
             symbol [ Array %tmp.333 36 260 265 ];
             symbol [ WatchUi %tmp.333 36 266 273 ];
             symbol [ Drawable %tmp.333 36 274 282 ];
-<<<<<<< HEAD
             %tmp.334 = lgetv %rez_cmp_local_bitmap_cadence_icon.3;
             symbol [ rez_cmp_local_bitmap_cadence_icon %tmp.334 36 20 53 ];
             %tmp.335 = dup %tmp.333;
@@ -846,26 +517,6 @@ C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Re
             %tmp.345 = aputv %tmp.344 3 %tmp.343;
             %tmp.346 = lgetv %rez_cmp_local_text_heartrate_text.7;
             symbol [ rez_cmp_local_text_heartrate_text %tmp.346 36 158 191 ];
-=======
-            %tmp.334 = lgetv %rez_cmp_local_text_cadence_text.3;
-            symbol [ rez_cmp_local_text_cadence_text %tmp.334 36 20 51 ];
-            %tmp.335 = dup %tmp.333;
-            %tmp.336 = aputv %tmp.335 0 %tmp.334;
-            %tmp.337 = lgetv %rez_cmp_local_text_cadence_zone.4;
-            symbol [ rez_cmp_local_text_cadence_zone %tmp.337 36 53 84 ];
-            %tmp.338 = dup %tmp.336;
-            %tmp.339 = aputv %tmp.338 1 %tmp.337;
-            %tmp.340 = lgetv %rez_cmp_local_bitmap_cadence_icon.5;
-            symbol [ rez_cmp_local_bitmap_cadence_icon %tmp.340 36 86 119 ];
-            %tmp.341 = dup %tmp.339;
-            %tmp.342 = aputv %tmp.341 2 %tmp.340;
-            %tmp.343 = lgetv %rez_cmp_local_text_heartrate_text.6;
-            symbol [ rez_cmp_local_text_heartrate_text %tmp.343 36 121 154 ];
-            %tmp.344 = dup %tmp.342;
-            %tmp.345 = aputv %tmp.344 3 %tmp.343;
-            %tmp.346 = lgetv %rez_cmp_local_bitmap_heartrate_icon.7;
-            symbol [ rez_cmp_local_bitmap_heartrate_icon %tmp.346 36 156 191 ];
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
             %tmp.347 = dup %tmp.345;
             %tmp.348 = aputv %tmp.347 4 %tmp.346;
             %tmp.349 = lgetv %rez_cmp_local_text_distance_text.8;
@@ -877,7 +528,6 @@ C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Re
             %tmp.353 = dup %tmp.351;
             %tmp.354 = aputv %tmp.353 6 %tmp.352;
             ret %tmp.354;
-<<<<<<< HEAD
 C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_stop:
         }
     }
@@ -899,39 +549,12 @@ C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_gen_no_de
             function initialize() as Void {
 C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_gen_no_device_source_Rez_mcgen_42_34_49_12_start:
 [ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen" 43 16 ]
-=======
-C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_15_74_37_8_stop:
-        }
-    }
-    [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 40; @symbol_moduledef = [Menus,40,11,16]; ]
-    module Menus {
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 40; ]
-        <init> {
-        }
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 41; @symbol_classdef = [MainMenu,41,14,22]; @symbol_extends<0> = [WatchUi,41,31,38]; @symbol_extends<1> = [Menu,41,39,43]; ]
-        class MainMenu extends WatchUi.Menu {
-            [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 41; ]
-            <init> {
-            }
-            [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 41; ]
-            static
-            <init> {
-            }
-            [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 42; @symbol_functiondef = [initialize,42,21,31]; ]
-            function initialize() as Void {
-C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_42_34_49_12_start:
-[ "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen" 43 16 ]
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
                 symbol [ Menu %tmp.2 43 16 20 ];
                 %tmp.2 = getv ? :Menu;
                 symbol [ initialize %tmp.3 43 21 31 ];
                 %tmp.3 = getv function %tmp.2 :initialize;
                 invoke %tmp.2 %tmp.3();
-<<<<<<< HEAD
 [ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen" 44 16 ]
-=======
-[ "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen" 44 16 ]
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
                 %tmp.4 = self;
                 symbol [ addItem %tmp.5 44 16 23 ];
                 %tmp.5 = getv function %tmp.4 :addItem;
@@ -953,11 +576,7 @@ C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Re
                 %tmp.15 = const :item_inc_min;
                 symbol [ item_inc_min %tmp.15 44 87 99 const ];
                 invoke %tmp.4 %tmp.5(%tmp.13, %tmp.15);
-<<<<<<< HEAD
 [ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen" 45 16 ]
-=======
-[ "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen" 45 16 ]
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
                 %tmp.16 = self;
                 symbol [ addItem %tmp.17 45 16 23 ];
                 %tmp.17 = getv function %tmp.16 :addItem;
@@ -979,11 +598,7 @@ C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Re
                 %tmp.27 = const :item_dec_min;
                 symbol [ item_dec_min %tmp.27 45 87 99 const ];
                 invoke %tmp.16 %tmp.17(%tmp.25, %tmp.27);
-<<<<<<< HEAD
 [ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen" 46 16 ]
-=======
-[ "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen" 46 16 ]
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
                 %tmp.28 = self;
                 symbol [ addItem %tmp.29 46 16 23 ];
                 %tmp.29 = getv function %tmp.28 :addItem;
@@ -1005,11 +620,7 @@ C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Re
                 %tmp.39 = const :item_inc_max;
                 symbol [ item_inc_max %tmp.39 46 87 99 const ];
                 invoke %tmp.28 %tmp.29(%tmp.37, %tmp.39);
-<<<<<<< HEAD
 [ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen" 47 16 ]
-=======
-[ "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen" 47 16 ]
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
                 %tmp.40 = self;
                 symbol [ addItem %tmp.41 47 16 23 ];
                 %tmp.41 = getv function %tmp.40 :addItem;
@@ -1031,11 +642,7 @@ C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Re
                 %tmp.51 = const :item_dec_max;
                 symbol [ item_dec_max %tmp.51 47 87 99 const ];
                 invoke %tmp.40 %tmp.41(%tmp.49, %tmp.51);
-<<<<<<< HEAD
 [ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen" 48 16 ]
-=======
-[ "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen" 48 16 ]
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
                 %tmp.52 = self;
                 symbol [ addItem %tmp.53 48 16 23 ];
                 %tmp.53 = getv function %tmp.52 :addItem;
@@ -1057,7 +664,6 @@ C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Re
                 %tmp.63 = const :item_reset_zones;
                 symbol [ item_reset_zones %tmp.63 48 91 107 const ];
                 invoke %tmp.52 %tmp.53(%tmp.61, %tmp.63);
-<<<<<<< HEAD
 C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_gen_no_device_source_Rez_mcgen_42_34_49_12_stop:
             }
         }
@@ -1088,41 +694,9 @@ C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_gen_no_de
         [ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 63; @position = 27; initialized = true; @symbol_vardef = [AppName,63,27,34]; @symbol_type<0> = [ResourceId,63,38,48]; ]
         var AppName as ResourceId;
         [ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 64; @position = 27; initialized = true; @symbol_vardef = [zone_out,64,27,35]; @symbol_type<0> = [ResourceId,64,39,49]; ]
-=======
-C__Users_teapot_Documents_Projects_GitHub_TestingCadence_gen_no_device_source_Rez_mcgen_42_34_49_12_stop:
-            }
-        }
-    }
-    [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 53; @symbol_moduledef = [Strings,53,11,18]; ]
-    module Strings {
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 53; ]
-        <init> {
-        }
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 54; @position = 27; initialized = true; @symbol_vardef = [menu_reset_zones,54,27,43]; @symbol_type<0> = [ResourceId,54,47,57]; ]
-        var menu_reset_zones as ResourceId;
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 55; @position = 27; initialized = true; @symbol_vardef = [menu_inc_max,55,27,39]; @symbol_type<0> = [ResourceId,55,43,53]; ]
-        var menu_inc_max as ResourceId;
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 56; @position = 27; initialized = true; @symbol_vardef = [menu_inc_min,56,27,39]; @symbol_type<0> = [ResourceId,56,43,53]; ]
-        var menu_inc_min as ResourceId;
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 57; @position = 27; initialized = true; @symbol_vardef = [zone_in,57,27,34]; @symbol_type<0> = [ResourceId,57,38,48]; ]
-        var zone_in as ResourceId;
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 58; @position = 27; initialized = true; @symbol_vardef = [menu_label_1,58,27,39]; @symbol_type<0> = [ResourceId,58,43,53]; ]
-        var menu_label_1 as ResourceId;
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 59; @position = 27; initialized = true; @symbol_vardef = [menu_label_2,59,27,39]; @symbol_type<0> = [ResourceId,59,43,53]; ]
-        var menu_label_2 as ResourceId;
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 60; @position = 27; initialized = true; @symbol_vardef = [menu_dec_max,60,27,39]; @symbol_type<0> = [ResourceId,60,43,53]; ]
-        var menu_dec_max as ResourceId;
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 61; @position = 27; initialized = true; @symbol_vardef = [prompt,61,27,33]; @symbol_type<0> = [ResourceId,61,37,47]; ]
-        var prompt as ResourceId;
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 62; @position = 27; initialized = true; @symbol_vardef = [menu_dec_min,62,27,39]; @symbol_type<0> = [ResourceId,62,43,53]; ]
-        var menu_dec_min as ResourceId;
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 63; @position = 27; initialized = true; @symbol_vardef = [AppName,63,27,34]; @symbol_type<0> = [ResourceId,63,38,48]; ]
-        var AppName as ResourceId;
-        [ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 64; @position = 27; initialized = true; @symbol_vardef = [zone_out,64,27,35]; @symbol_type<0> = [ResourceId,64,39,49]; ]
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
         var zone_out as ResourceId;
     }
 }
-[ @file = "C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 1; ]
+[ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\gen\no-device\source\Rez.mcgen"; @line = 1; ]
 <init> {
 }

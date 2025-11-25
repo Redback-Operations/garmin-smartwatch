@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <debugInfo>
-    <manifest filename="C:\Users\teapot\Documents\Projects\GitHub\TestingCadence\manifest.xml"/>
+    <manifest filename="C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\manifest.xml"/>
     <pcToLineNum>
-<<<<<<< HEAD
         <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceApp.mc" id="1" lineNum="44" parent="globals" pc="268435460" symbol="getApp"/>
         <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceApp.mc" id="1" lineNum="45" parent="globals" pc="268435470" symbol="getApp"/>
         <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="2" lineNum="7" parent="globals/Rez" pc="268435481" symbol="&lt;init&gt;"/>
@@ -145,150 +144,6 @@
         <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="46" parent="globals/Rez/Menus/MainMenu" pc="268438201" symbol="initialize"/>
         <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="47" parent="globals/Rez/Menus/MainMenu" pc="268438246" symbol="initialize"/>
         <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="48" parent="globals/Rez/Menus/MainMenu" pc="268438291" symbol="initialize"/>
-=======
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceApp.mc" id="1" lineNum="44" parent="globals" pc="268435460" symbol="getApp"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceApp.mc" id="1" lineNum="45" parent="globals" pc="268435470" symbol="getApp"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="2" lineNum="7" parent="globals/Rez" pc="268435481" symbol="&lt;init&gt;"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceApp.mc" id="3" lineNum="5" parent="globals/TestingCadenceApp" pc="268435501" symbol="&lt;init&gt;"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="4" lineNum="5" parent="globals/TestingCadenceMenuDelegate" pc="268435513" symbol="&lt;init&gt;"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceDelegate.mc" id="5" lineNum="4" parent="globals/TestingCadenceDelegate" pc="268435525" symbol="&lt;init&gt;"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="6" lineNum="8" parent="globals/TestingCadenceView" pc="268435537" symbol="&lt;init&gt;"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="6" lineNum="17" parent="globals/TestingCadenceView" pc="268435548" symbol="&lt;init&gt;"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceApp.mc" id="7" lineNum="33" parent="globals/TestingCadenceApp" pc="268435578" symbol="setMaxCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceApp.mc" id="7" lineNum="34" parent="globals/TestingCadenceApp" pc="268435580" symbol="setMaxCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceApp.mc" id="8" lineNum="12" parent="globals/TestingCadenceApp" pc="268435590" symbol="onStart"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceApp.mc" id="9" lineNum="21" parent="globals/TestingCadenceApp" pc="268435593" symbol="getMinCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceApp.mc" id="9" lineNum="22" parent="globals/TestingCadenceApp" pc="268435595" symbol="getMinCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceApp.mc" id="10" lineNum="29" parent="globals/TestingCadenceApp" pc="268435601" symbol="setMinCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceApp.mc" id="10" lineNum="30" parent="globals/TestingCadenceApp" pc="268435603" symbol="setMinCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceApp.mc" id="11" lineNum="38" parent="globals/TestingCadenceApp" pc="268435613" symbol="getInitialView"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceApp.mc" id="11" lineNum="39" parent="globals/TestingCadenceApp" pc="268435615" symbol="getInitialView"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceApp.mc" id="12" lineNum="25" parent="globals/TestingCadenceApp" pc="268435662" symbol="getMaxCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceApp.mc" id="12" lineNum="26" parent="globals/TestingCadenceApp" pc="268435664" symbol="getMaxCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceApp.mc" id="13" lineNum="7" parent="globals/TestingCadenceApp" pc="268435670" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceApp.mc" id="13" lineNum="8" parent="globals/TestingCadenceApp" pc="268435672" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceApp.mc" id="14" lineNum="16" parent="globals/TestingCadenceApp" pc="268435685" symbol="onStop"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="11" parent="globals/TestingCadenceMenuDelegate" pc="268435688" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="12" parent="globals/TestingCadenceMenuDelegate" pc="268435691" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="13" parent="globals/TestingCadenceMenuDelegate" pc="268435699" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="14" parent="globals/TestingCadenceMenuDelegate" pc="268435710" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="15" parent="globals/TestingCadenceMenuDelegate" pc="268435722" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="16" parent="globals/TestingCadenceMenuDelegate" pc="268435735" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="18" parent="globals/TestingCadenceMenuDelegate" pc="268435750" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="19" parent="globals/TestingCadenceMenuDelegate" pc="268435762" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="20" parent="globals/TestingCadenceMenuDelegate" pc="268435791" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="21" parent="globals/TestingCadenceMenuDelegate" pc="268435802" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="22" parent="globals/TestingCadenceMenuDelegate" pc="268435814" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="23" parent="globals/TestingCadenceMenuDelegate" pc="268435821" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="25" parent="globals/TestingCadenceMenuDelegate" pc="268435827" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="26" parent="globals/TestingCadenceMenuDelegate" pc="268435839" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="27" parent="globals/TestingCadenceMenuDelegate" pc="268435868" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="28" parent="globals/TestingCadenceMenuDelegate" pc="268435879" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="29" parent="globals/TestingCadenceMenuDelegate" pc="268435891" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="30" parent="globals/TestingCadenceMenuDelegate" pc="268435903" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="31" parent="globals/TestingCadenceMenuDelegate" pc="268435932" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="32" parent="globals/TestingCadenceMenuDelegate" pc="268435943" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="33" parent="globals/TestingCadenceMenuDelegate" pc="268435955" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="34" parent="globals/TestingCadenceMenuDelegate" pc="268435968" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="36" parent="globals/TestingCadenceMenuDelegate" pc="268435983" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="37" parent="globals/TestingCadenceMenuDelegate" pc="268435995" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="38" parent="globals/TestingCadenceMenuDelegate" pc="268436024" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="39" parent="globals/TestingCadenceMenuDelegate" pc="268436035" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="40" parent="globals/TestingCadenceMenuDelegate" pc="268436047" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="41" parent="globals/TestingCadenceMenuDelegate" pc="268436060" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="44" parent="globals/TestingCadenceMenuDelegate" pc="268436081" symbol="onMenuItem"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="16" lineNum="7" parent="globals/TestingCadenceMenuDelegate" pc="268436093" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="16" lineNum="8" parent="globals/TestingCadenceMenuDelegate" pc="268436095" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceDelegate.mc" id="17" lineNum="10" parent="globals/TestingCadenceDelegate" pc="268436108" symbol="onMenu"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceDelegate.mc" id="17" lineNum="11" parent="globals/TestingCadenceDelegate" pc="268436110" symbol="onMenu"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceDelegate.mc" id="17" lineNum="12" parent="globals/TestingCadenceDelegate" pc="268436175" symbol="onMenu"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceDelegate.mc" id="18" lineNum="6" parent="globals/TestingCadenceDelegate" pc="268436177" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceDelegate.mc" id="18" lineNum="7" parent="globals/TestingCadenceDelegate" pc="268436179" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="67" parent="globals/TestingCadenceView" pc="268436192" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="68" parent="globals/TestingCadenceView" pc="268436195" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="71" parent="globals/TestingCadenceView" pc="268436207" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="72" parent="globals/TestingCadenceView" pc="268436224" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="74" parent="globals/TestingCadenceView" pc="268436254" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="78" parent="globals/TestingCadenceView" pc="268436273" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="79" parent="globals/TestingCadenceView" pc="268436287" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="80" parent="globals/TestingCadenceView" pc="268436301" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="81" parent="globals/TestingCadenceView" pc="268436308" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="82" parent="globals/TestingCadenceView" pc="268436325" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="83" parent="globals/TestingCadenceView" pc="268436334" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="84" parent="globals/TestingCadenceView" pc="268436350" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="86" parent="globals/TestingCadenceView" pc="268436420" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="89" parent="globals/TestingCadenceView" pc="268436490" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="91" parent="globals/TestingCadenceView" pc="268436525" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="92" parent="globals/TestingCadenceView" pc="268436534" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="96" parent="globals/TestingCadenceView" pc="268436553" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="97" parent="globals/TestingCadenceView" pc="268436556" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="98" parent="globals/TestingCadenceView" pc="268436573" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="99" parent="globals/TestingCadenceView" pc="268436582" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="100" parent="globals/TestingCadenceView" pc="268436590" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="101" parent="globals/TestingCadenceView" pc="268436597" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="102" parent="globals/TestingCadenceView" pc="268436605" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="104" parent="globals/TestingCadenceView" pc="268436612" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="108" parent="globals/TestingCadenceView" pc="268436618" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="109" parent="globals/TestingCadenceView" pc="268436629" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="112" parent="globals/TestingCadenceView" pc="268436637" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="113" parent="globals/TestingCadenceView" pc="268436658" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="116" parent="globals/TestingCadenceView" pc="268436666" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="117" parent="globals/TestingCadenceView" pc="268436684" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="119" parent="globals/TestingCadenceView" pc="268436718" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="122" parent="globals/TestingCadenceView" pc="268436730" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="123" parent="globals/TestingCadenceView" pc="268436747" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="125" parent="globals/TestingCadenceView" pc="268436777" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="129" parent="globals/TestingCadenceView" pc="268436796" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="130" parent="globals/TestingCadenceView" pc="268436813" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="131" parent="globals/TestingCadenceView" pc="268436828" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="133" parent="globals/TestingCadenceView" pc="268436865" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="137" parent="globals/TestingCadenceView" pc="268436884" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="138" parent="globals/TestingCadenceView" pc="268436901" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="139" parent="globals/TestingCadenceView" pc="268436914" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="140" parent="globals/TestingCadenceView" pc="268436922" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="141" parent="globals/TestingCadenceView" pc="268436933" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="142" parent="globals/TestingCadenceView" pc="268436940" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="144" parent="globals/TestingCadenceView" pc="268437013" symbol="displayCadence"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="21" lineNum="34" parent="globals/TestingCadenceView" pc="268437033" symbol="onLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="21" lineNum="35" parent="globals/TestingCadenceView" pc="268437035" symbol="onLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="21" lineNum="36" parent="globals/TestingCadenceView" pc="268437068" symbol="onLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="21" lineNum="37" parent="globals/TestingCadenceView" pc="268437088" symbol="onLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="21" lineNum="38" parent="globals/TestingCadenceView" pc="268437108" symbol="onLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="21" lineNum="39" parent="globals/TestingCadenceView" pc="268437128" symbol="onLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="21" lineNum="40" parent="globals/TestingCadenceView" pc="268437148" symbol="onLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="22" lineNum="19" parent="globals/TestingCadenceView" pc="268437169" symbol="_secondVibe"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="22" lineNum="23" parent="globals/TestingCadenceView" pc="268437171" symbol="_secondVibe"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="23" lineNum="26" parent="globals/TestingCadenceView" pc="268437190" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="23" lineNum="27" parent="globals/TestingCadenceView" pc="268437192" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="23" lineNum="28" parent="globals/TestingCadenceView" pc="268437204" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="23" lineNum="30" parent="globals/TestingCadenceView" pc="268437233" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="25" lineNum="63" parent="globals/TestingCadenceView" pc="268437265" symbol="refreshScreen"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="25" lineNum="64" parent="globals/TestingCadenceView" pc="268437267" symbol="refreshScreen"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="26" lineNum="50" parent="globals/TestingCadenceView" pc="268437279" symbol="onUpdate"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="26" lineNum="52" parent="globals/TestingCadenceView" pc="268437281" symbol="onUpdate"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\source\\TestingCadenceView.mc" id="26" lineNum="54" parent="globals/TestingCadenceView" pc="268437288" symbol="onUpdate"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="15" parent="globals/Rez/Layouts" pc="268437305" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="16" parent="globals/Rez/Layouts" pc="268437316" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="18" parent="globals/Rez/Layouts" pc="268437325" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="20" parent="globals/Rez/Layouts" pc="268437334" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="22" parent="globals/Rez/Layouts" pc="268437428" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="24" parent="globals/Rez/Layouts" pc="268437523" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="25" parent="globals/Rez/Layouts" pc="268437616" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="27" parent="globals/Rez/Layouts" pc="268437642" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="29" parent="globals/Rez/Layouts" pc="268437737" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="30" parent="globals/Rez/Layouts" pc="268437830" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="32" parent="globals/Rez/Layouts" pc="268437856" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="34" parent="globals/Rez/Layouts" pc="268437950" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="36" parent="globals/Rez/Layouts" pc="268438045" symbol="MainLayout"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="28" lineNum="41" parent="globals/Rez/Menus/MainMenu" pc="268438085" symbol="&lt;init&gt;"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="42" parent="globals/Rez/Menus/MainMenu" pc="268438097" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="43" parent="globals/Rez/Menus/MainMenu" pc="268438099" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="44" parent="globals/Rez/Menus/MainMenu" pc="268438111" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="45" parent="globals/Rez/Menus/MainMenu" pc="268438156" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="46" parent="globals/Rez/Menus/MainMenu" pc="268438201" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="47" parent="globals/Rez/Menus/MainMenu" pc="268438246" symbol="initialize"/>
-        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GitHub\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="48" parent="globals/Rez/Menus/MainMenu" pc="268438291" symbol="initialize"/>
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
     </pcToLineNum>
     <symbolTable>
         <entry id="8388639" module="true" symbol="Graphics"/>
@@ -399,19 +254,11 @@
         <entry arg="true" endPc="268438084" name="dc" stackId="1" startPc="268437305"/>
         <entry endPc="268438084" name="rez_cmp_local_var_dc_getHeight" stackId="2" startPc="268437316"/>
         <entry endPc="268438084" name="rez_cmp_local_var_dc_getWidth" stackId="3" startPc="268437316"/>
-<<<<<<< HEAD
         <entry endPc="268438084" name="rez_cmp_local_bitmap_cadence_icon" stackId="4" startPc="268437316"/>
         <entry endPc="268438084" name="rez_cmp_local_text_cadence_text" stackId="5" startPc="268437316"/>
         <entry endPc="268438084" name="rez_cmp_local_text_cadence_zone" stackId="6" startPc="268437316"/>
         <entry endPc="268438084" name="rez_cmp_local_bitmap_heartrate_icon" stackId="7" startPc="268437316"/>
         <entry endPc="268438084" name="rez_cmp_local_text_heartrate_text" stackId="8" startPc="268437316"/>
-=======
-        <entry endPc="268438084" name="rez_cmp_local_text_cadence_text" stackId="4" startPc="268437316"/>
-        <entry endPc="268438084" name="rez_cmp_local_text_cadence_zone" stackId="5" startPc="268437316"/>
-        <entry endPc="268438084" name="rez_cmp_local_bitmap_cadence_icon" stackId="6" startPc="268437316"/>
-        <entry endPc="268438084" name="rez_cmp_local_text_heartrate_text" stackId="7" startPc="268437316"/>
-        <entry endPc="268438084" name="rez_cmp_local_bitmap_heartrate_icon" stackId="8" startPc="268437316"/>
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
         <entry endPc="268438084" name="rez_cmp_local_text_distance_text" stackId="9" startPc="268437316"/>
         <entry endPc="268438084" name="rez_cmp_local_text_time_text" stackId="10" startPc="268437316"/>
     </localVars>

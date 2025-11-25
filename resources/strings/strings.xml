@@ -11,9 +11,5 @@
     <string id="menu_dec_max">Decrease Max Cadence</string>
     <string id="menu_reset_zones">Reset Cadence Zones</string>
     <string id="zone_in">In Zone</string>
-<<<<<<< HEAD
     <string id="zone_out">OutZone</string>
-=======
-    <string id="zone_out">Out of Zone</string>
->>>>>>> b1fede500a07cfab45a1285d557345c08ffdc36b
 </strings>
