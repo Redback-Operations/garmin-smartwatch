@@ -1,0 +1,7 @@
+<menu id="MainMenu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <menu-item id="item_inc_min" label="@Strings.menu_inc_min" />
+    <menu-item id="item_dec_min" label="@Strings.menu_dec_min" />
+    <menu-item id="item_inc_max" label="@Strings.menu_inc_max" />
+    <menu-item id="item_dec_max" label="@Strings.menu_dec_max" />
+    <menu-item id="item_reset_zones" label="@Strings.menu_reset_zones" />
+</menu>

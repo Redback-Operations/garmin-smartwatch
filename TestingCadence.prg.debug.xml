@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<debugInfo>
+    <manifest filename="C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\manifest.xml"/>
+    <pcToLineNum>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceApp.mc" id="1" lineNum="44" parent="globals" pc="268435460" symbol="getApp"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceApp.mc" id="1" lineNum="45" parent="globals" pc="268435470" symbol="getApp"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="2" lineNum="7" parent="globals/Rez" pc="268435481" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceApp.mc" id="3" lineNum="5" parent="globals/TestingCadenceApp" pc="268435501" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="4" lineNum="5" parent="globals/TestingCadenceMenuDelegate" pc="268435513" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceDelegate.mc" id="5" lineNum="4" parent="globals/TestingCadenceDelegate" pc="268435525" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="6" lineNum="8" parent="globals/TestingCadenceView" pc="268435537" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="6" lineNum="17" parent="globals/TestingCadenceView" pc="268435548" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceApp.mc" id="7" lineNum="33" parent="globals/TestingCadenceApp" pc="268435578" symbol="setMaxCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceApp.mc" id="7" lineNum="34" parent="globals/TestingCadenceApp" pc="268435580" symbol="setMaxCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceApp.mc" id="8" lineNum="12" parent="globals/TestingCadenceApp" pc="268435590" symbol="onStart"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceApp.mc" id="9" lineNum="21" parent="globals/TestingCadenceApp" pc="268435593" symbol="getMinCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceApp.mc" id="9" lineNum="22" parent="globals/TestingCadenceApp" pc="268435595" symbol="getMinCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceApp.mc" id="10" lineNum="29" parent="globals/TestingCadenceApp" pc="268435601" symbol="setMinCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceApp.mc" id="10" lineNum="30" parent="globals/TestingCadenceApp" pc="268435603" symbol="setMinCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceApp.mc" id="11" lineNum="38" parent="globals/TestingCadenceApp" pc="268435613" symbol="getInitialView"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceApp.mc" id="11" lineNum="39" parent="globals/TestingCadenceApp" pc="268435615" symbol="getInitialView"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceApp.mc" id="12" lineNum="25" parent="globals/TestingCadenceApp" pc="268435662" symbol="getMaxCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceApp.mc" id="12" lineNum="26" parent="globals/TestingCadenceApp" pc="268435664" symbol="getMaxCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceApp.mc" id="13" lineNum="7" parent="globals/TestingCadenceApp" pc="268435670" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceApp.mc" id="13" lineNum="8" parent="globals/TestingCadenceApp" pc="268435672" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceApp.mc" id="14" lineNum="16" parent="globals/TestingCadenceApp" pc="268435685" symbol="onStop"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="11" parent="globals/TestingCadenceMenuDelegate" pc="268435688" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="12" parent="globals/TestingCadenceMenuDelegate" pc="268435691" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="13" parent="globals/TestingCadenceMenuDelegate" pc="268435699" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="14" parent="globals/TestingCadenceMenuDelegate" pc="268435710" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="15" parent="globals/TestingCadenceMenuDelegate" pc="268435722" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="16" parent="globals/TestingCadenceMenuDelegate" pc="268435735" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="18" parent="globals/TestingCadenceMenuDelegate" pc="268435750" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="19" parent="globals/TestingCadenceMenuDelegate" pc="268435762" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="20" parent="globals/TestingCadenceMenuDelegate" pc="268435791" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="21" parent="globals/TestingCadenceMenuDelegate" pc="268435802" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="22" parent="globals/TestingCadenceMenuDelegate" pc="268435814" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="23" parent="globals/TestingCadenceMenuDelegate" pc="268435821" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="25" parent="globals/TestingCadenceMenuDelegate" pc="268435827" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="26" parent="globals/TestingCadenceMenuDelegate" pc="268435839" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="27" parent="globals/TestingCadenceMenuDelegate" pc="268435868" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="28" parent="globals/TestingCadenceMenuDelegate" pc="268435879" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="29" parent="globals/TestingCadenceMenuDelegate" pc="268435891" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="30" parent="globals/TestingCadenceMenuDelegate" pc="268435903" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="31" parent="globals/TestingCadenceMenuDelegate" pc="268435932" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="32" parent="globals/TestingCadenceMenuDelegate" pc="268435943" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="33" parent="globals/TestingCadenceMenuDelegate" pc="268435955" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="34" parent="globals/TestingCadenceMenuDelegate" pc="268435968" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="36" parent="globals/TestingCadenceMenuDelegate" pc="268435983" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="37" parent="globals/TestingCadenceMenuDelegate" pc="268435995" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="38" parent="globals/TestingCadenceMenuDelegate" pc="268436024" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="39" parent="globals/TestingCadenceMenuDelegate" pc="268436035" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="40" parent="globals/TestingCadenceMenuDelegate" pc="268436047" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="41" parent="globals/TestingCadenceMenuDelegate" pc="268436060" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="15" lineNum="44" parent="globals/TestingCadenceMenuDelegate" pc="268436081" symbol="onMenuItem"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="16" lineNum="7" parent="globals/TestingCadenceMenuDelegate" pc="268436093" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceMenuDelegate.mc" id="16" lineNum="8" parent="globals/TestingCadenceMenuDelegate" pc="268436095" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceDelegate.mc" id="17" lineNum="10" parent="globals/TestingCadenceDelegate" pc="268436108" symbol="onMenu"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceDelegate.mc" id="17" lineNum="11" parent="globals/TestingCadenceDelegate" pc="268436110" symbol="onMenu"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceDelegate.mc" id="17" lineNum="12" parent="globals/TestingCadenceDelegate" pc="268436175" symbol="onMenu"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceDelegate.mc" id="18" lineNum="6" parent="globals/TestingCadenceDelegate" pc="268436177" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceDelegate.mc" id="18" lineNum="7" parent="globals/TestingCadenceDelegate" pc="268436179" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="67" parent="globals/TestingCadenceView" pc="268436192" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="68" parent="globals/TestingCadenceView" pc="268436195" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="71" parent="globals/TestingCadenceView" pc="268436207" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="72" parent="globals/TestingCadenceView" pc="268436224" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="74" parent="globals/TestingCadenceView" pc="268436254" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="78" parent="globals/TestingCadenceView" pc="268436273" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="79" parent="globals/TestingCadenceView" pc="268436287" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="80" parent="globals/TestingCadenceView" pc="268436301" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="81" parent="globals/TestingCadenceView" pc="268436308" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="82" parent="globals/TestingCadenceView" pc="268436325" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="83" parent="globals/TestingCadenceView" pc="268436334" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="84" parent="globals/TestingCadenceView" pc="268436350" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="86" parent="globals/TestingCadenceView" pc="268436420" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="89" parent="globals/TestingCadenceView" pc="268436490" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="91" parent="globals/TestingCadenceView" pc="268436525" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="92" parent="globals/TestingCadenceView" pc="268436534" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="96" parent="globals/TestingCadenceView" pc="268436553" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="97" parent="globals/TestingCadenceView" pc="268436556" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="98" parent="globals/TestingCadenceView" pc="268436573" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="99" parent="globals/TestingCadenceView" pc="268436582" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="100" parent="globals/TestingCadenceView" pc="268436590" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="101" parent="globals/TestingCadenceView" pc="268436597" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="102" parent="globals/TestingCadenceView" pc="268436605" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="104" parent="globals/TestingCadenceView" pc="268436612" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="108" parent="globals/TestingCadenceView" pc="268436618" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="109" parent="globals/TestingCadenceView" pc="268436629" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="112" parent="globals/TestingCadenceView" pc="268436637" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="113" parent="globals/TestingCadenceView" pc="268436658" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="116" parent="globals/TestingCadenceView" pc="268436666" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="117" parent="globals/TestingCadenceView" pc="268436684" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="119" parent="globals/TestingCadenceView" pc="268436718" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="122" parent="globals/TestingCadenceView" pc="268436730" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="123" parent="globals/TestingCadenceView" pc="268436747" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="125" parent="globals/TestingCadenceView" pc="268436777" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="129" parent="globals/TestingCadenceView" pc="268436796" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="130" parent="globals/TestingCadenceView" pc="268436813" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="131" parent="globals/TestingCadenceView" pc="268436828" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="133" parent="globals/TestingCadenceView" pc="268436865" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="137" parent="globals/TestingCadenceView" pc="268436884" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="138" parent="globals/TestingCadenceView" pc="268436901" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="139" parent="globals/TestingCadenceView" pc="268436914" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="140" parent="globals/TestingCadenceView" pc="268436922" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="141" parent="globals/TestingCadenceView" pc="268436933" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="142" parent="globals/TestingCadenceView" pc="268436940" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="20" lineNum="144" parent="globals/TestingCadenceView" pc="268437013" symbol="displayCadence"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="21" lineNum="34" parent="globals/TestingCadenceView" pc="268437033" symbol="onLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="21" lineNum="35" parent="globals/TestingCadenceView" pc="268437035" symbol="onLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="21" lineNum="36" parent="globals/TestingCadenceView" pc="268437068" symbol="onLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="21" lineNum="37" parent="globals/TestingCadenceView" pc="268437088" symbol="onLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="21" lineNum="38" parent="globals/TestingCadenceView" pc="268437108" symbol="onLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="21" lineNum="39" parent="globals/TestingCadenceView" pc="268437128" symbol="onLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="21" lineNum="40" parent="globals/TestingCadenceView" pc="268437148" symbol="onLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="22" lineNum="19" parent="globals/TestingCadenceView" pc="268437169" symbol="_secondVibe"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="22" lineNum="23" parent="globals/TestingCadenceView" pc="268437171" symbol="_secondVibe"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="23" lineNum="26" parent="globals/TestingCadenceView" pc="268437190" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="23" lineNum="27" parent="globals/TestingCadenceView" pc="268437192" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="23" lineNum="28" parent="globals/TestingCadenceView" pc="268437204" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="23" lineNum="30" parent="globals/TestingCadenceView" pc="268437233" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="25" lineNum="63" parent="globals/TestingCadenceView" pc="268437265" symbol="refreshScreen"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="25" lineNum="64" parent="globals/TestingCadenceView" pc="268437267" symbol="refreshScreen"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="26" lineNum="50" parent="globals/TestingCadenceView" pc="268437279" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="26" lineNum="52" parent="globals/TestingCadenceView" pc="268437281" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\source\\TestingCadenceView.mc" id="26" lineNum="54" parent="globals/TestingCadenceView" pc="268437288" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="15" parent="globals/Rez/Layouts" pc="268437305" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="16" parent="globals/Rez/Layouts" pc="268437316" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="18" parent="globals/Rez/Layouts" pc="268437325" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="20" parent="globals/Rez/Layouts" pc="268437334" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="21" parent="globals/Rez/Layouts" pc="268437427" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="23" parent="globals/Rez/Layouts" pc="268437453" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="25" parent="globals/Rez/Layouts" pc="268437547" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="27" parent="globals/Rez/Layouts" pc="268437642" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="28" parent="globals/Rez/Layouts" pc="268437735" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="30" parent="globals/Rez/Layouts" pc="268437761" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="32" parent="globals/Rez/Layouts" pc="268437856" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="34" parent="globals/Rez/Layouts" pc="268437950" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="27" lineNum="36" parent="globals/Rez/Layouts" pc="268438045" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="28" lineNum="41" parent="globals/Rez/Menus/MainMenu" pc="268438085" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="42" parent="globals/Rez/Menus/MainMenu" pc="268438097" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="43" parent="globals/Rez/Menus/MainMenu" pc="268438099" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="44" parent="globals/Rez/Menus/MainMenu" pc="268438111" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="45" parent="globals/Rez/Menus/MainMenu" pc="268438156" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="46" parent="globals/Rez/Menus/MainMenu" pc="268438201" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="47" parent="globals/Rez/Menus/MainMenu" pc="268438246" symbol="initialize"/>
+        <entry filename="C:\\Users\\teapot\\Documents\\Projects\\GarminCadenceMonitor\\TestingCadence\\gen\\no-device\\source\\Rez.mcgen" id="29" lineNum="48" parent="globals/Rez/Menus/MainMenu" pc="268438291" symbol="initialize"/>
+    </pcToLineNum>
+    <symbolTable>
+        <entry id="8388639" module="true" symbol="Graphics"/>
+        <entry field="true" id="32" symbol="heartrate_icon"/>
+        <entry id="8388632" method="true" symbol="&lt;init&gt;"/>
+        <entry id="5" module="true" symbol="globals/Rez/Menus"/>
+        <entry id="33" method="true" symbol="MainLayout"/>
+        <entry id="28" method="true" symbol="displayCadence"/>
+        <entry field="true" id="24" symbol="&lt;globals/TestingCadenceView/&lt;&gt;_refreshTimer&gt;"/>
+        <entry id="17" method="true" symbol="setMaxCadence"/>
+        <entry field="true" id="13" symbol="&lt;globals/TestingCadenceApp/&lt;&gt;_maxCadence&gt;"/>
+        <entry field="true" id="22" symbol="&lt;globals/TestingCadenceView/&lt;&gt;_heartrateDisplay&gt;"/>
+        <entry field="true" id="8388611" module="true" symbol="Toybox"/>
+        <entry id="47" symbol="item_dec_min"/>
+        <entry id="49" symbol="item_dec_max"/>
+        <entry field="true" id="35" symbol="AppName"/>
+        <entry field="true" id="31" symbol="cadence_icon"/>
+        <entry id="6" module="true" symbol="globals/Rez/Strings"/>
+        <entry id="8389080" method="true" symbol="onMenu"/>
+        <entry id="18" method="true" symbol="setMinCadence"/>
+        <entry id="8389345" symbol="rezId"/>
+        <entry field="true" id="42" symbol="menu_reset_zones"/>
+        <entry id="8388631" module="true" symbol="Activity"/>
+        <entry id="8388648" module="true" symbol="WatchUi"/>
+        <entry id="2" module="true" symbol="globals/Rez"/>
+        <entry id="25" method="true" symbol="_secondVibe"/>
+        <entry field="true" id="43" symbol="prompt"/>
+        <entry field="true" id="45" symbol="zone_out"/>
+        <entry field="true" id="14" symbol="&lt;globals/TestingCadenceApp/&lt;&gt;_minCadence&gt;"/>
+        <entry id="8389124" method="true" symbol="onUpdate"/>
+        <entry field="true" id="8389065" symbol="locY"/>
+        <entry field="true" id="8389064" symbol="locX"/>
+        <entry id="15" method="true" symbol="getMaxCadence"/>
+        <entry field="true" id="39" symbol="menu_inc_min"/>
+        <entry field="true" id="21" symbol="&lt;globals/TestingCadenceView/&lt;&gt;_distanceDisplay&gt;"/>
+        <entry id="8388771" module="true" object="true" symbol="Drawables"/>
+        <entry id="8389348" symbol="font"/>
+        <entry id="12" module="true" symbol="Menus"/>
+        <entry id="8389275" method="true" symbol="getApp"/>
+        <entry id="4" module="true" symbol="globals/Rez/Layouts"/>
+        <entry field="true" id="38" symbol="menu_inc_max"/>
+        <entry field="true" id="44" symbol="zone_in"/>
+        <entry id="8389122" method="true" symbol="onLayout"/>
+        <entry field="true" id="8389063" symbol="identifier"/>
+        <entry id="8389349" symbol="justification"/>
+        <entry id="16" method="true" symbol="getMinCadence"/>
+        <entry field="true" id="20" symbol="&lt;globals/TestingCadenceView/&lt;&gt;_cadenceZoneDisplay&gt;"/>
+        <entry id="3" module="true" symbol="globals/Rez/Drawables"/>
+        <entry id="34" object="true" symbol="MainMenu"/>
+        <entry id="8388644" module="true" symbol="System"/>
+        <entry id="8388769" module="true" object="true" symbol="Rez"/>
+        <entry id="8388640" module="true" symbol="Lang"/>
+        <entry id="46" symbol="item_inc_min"/>
+        <entry field="true" id="30" symbol="LauncherIcon"/>
+        <entry id="8388610" symbol="statics"/>
+        <entry id="8389123" method="true" symbol="onShow"/>
+        <entry id="9" object="true" symbol="TestingCadenceMenuDelegate"/>
+        <entry id="48" symbol="item_inc_max"/>
+        <entry field="true" id="26" symbol="&lt;globals/TestingCadenceView/&lt;&gt;_timeDisplay&gt;"/>
+        <entry id="8389350" module="true" symbol="globals"/>
+        <entry id="8388770" module="true" object="true" symbol="Strings"/>
+        <entry id="8388702" method="true" symbol="initialize"/>
+        <entry id="8" object="true" symbol="TestingCadenceDelegate"/>
+        <entry field="true" id="19" symbol="&lt;globals/TestingCadenceView/&lt;&gt;_cadenceDisplay&gt;"/>
+        <entry id="50" symbol="item_reset_zones"/>
+        <entry id="8389279" method="true" symbol="onStart"/>
+        <entry field="true" id="27" symbol="&lt;globals/TestingCadenceView/&lt;&gt;_vibeTimer&gt;"/>
+        <entry id="8389280" method="true" symbol="getInitialView"/>
+        <entry id="8389281" method="true" symbol="onStop"/>
+        <entry id="8389109" method="true" symbol="onMenuItem"/>
+        <entry field="true" id="8389347" symbol="color"/>
+        <entry id="8388646" module="true" object="true" symbol="Timer"/>
+        <entry id="11" module="true" symbol="Layouts"/>
+        <entry id="10" object="true" symbol="TestingCadenceView"/>
+        <entry field="true" id="37" symbol="menu_dec_min"/>
+        <entry id="29" method="true" symbol="refreshScreen"/>
+        <entry field="true" id="36" symbol="menu_dec_max"/>
+        <entry id="7" object="true" symbol="TestingCadenceApp"/>
+        <entry id="8389125" method="true" symbol="onHide"/>
+        <entry field="true" id="23" symbol="&lt;globals/TestingCadenceView/&lt;&gt;_lastZoneState&gt;"/>
+        <entry id="8388635" module="true" symbol="Application"/>
+        <entry field="true" id="41" symbol="menu_label_2"/>
+        <entry field="true" id="40" symbol="menu_label_1"/>
+    </symbolTable>
+    <localVars>
+        <entry arg="true" endPc="268435589" name="val" stackId="1" startPc="268435578"/>
+        <entry arg="true" endPc="268435612" name="val" stackId="1" startPc="268435601"/>
+        <entry arg="true" endPc="268436092" name="item" stackId="1" startPc="268435688"/>
+        <entry endPc="268436091" name="app" stackId="2" startPc="268435691"/>
+        <entry endPc="268435787" name="v" stackId="3" startPc="268435710"/>
+        <entry endPc="268435864" name="v" stackId="4" startPc="268435802"/>
+        <entry endPc="268435928" name="v" stackId="5" startPc="268435879"/>
+        <entry endPc="268436020" name="v" stackId="6" startPc="268435943"/>
+        <entry endPc="268437031" name="info" stackId="1" startPc="268436195"/>
+        <entry endPc="268437031" name="minZone" stackId="2" startPc="268436195"/>
+        <entry endPc="268437031" name="maxZone" stackId="3" startPc="268436195"/>
+        <entry endPc="268437031" name="zoneText" stackId="4" startPc="268436195"/>
+        <entry endPc="268436486" name="c" stackId="5" startPc="268436325"/>
+        <entry endPc="268437031" name="newZoneState" stackId="6" startPc="268436195"/>
+        <entry endPc="268436614" name="c" stackId="7" startPc="268436573"/>
+        <entry endPc="268436861" name="distanceKm" stackId="8" startPc="268436813"/>
+        <entry endPc="268437009" name="seconds" stackId="9" startPc="268436901"/>
+        <entry endPc="268437009" name="hours" stackId="10" startPc="268436901"/>
+        <entry endPc="268437009" name="minutes" stackId="11" startPc="268436901"/>
+        <entry endPc="268437009" name="secs" stackId="12" startPc="268436901"/>
+        <entry arg="true" endPc="268437168" name="dc" stackId="1" startPc="268437033"/>
+        <entry arg="true" endPc="268437304" name="dc" stackId="1" startPc="268437279"/>
+        <entry arg="true" endPc="268438084" name="dc" stackId="1" startPc="268437305"/>
+        <entry endPc="268438084" name="rez_cmp_local_var_dc_getHeight" stackId="2" startPc="268437316"/>
+        <entry endPc="268438084" name="rez_cmp_local_var_dc_getWidth" stackId="3" startPc="268437316"/>
+        <entry endPc="268438084" name="rez_cmp_local_bitmap_cadence_icon" stackId="4" startPc="268437316"/>
+        <entry endPc="268438084" name="rez_cmp_local_text_cadence_text" stackId="5" startPc="268437316"/>
+        <entry endPc="268438084" name="rez_cmp_local_text_cadence_zone" stackId="6" startPc="268437316"/>
+        <entry endPc="268438084" name="rez_cmp_local_bitmap_heartrate_icon" stackId="7" startPc="268437316"/>
+        <entry endPc="268438084" name="rez_cmp_local_text_heartrate_text" stackId="8" startPc="268437316"/>
+        <entry endPc="268438084" name="rez_cmp_local_text_distance_text" stackId="9" startPc="268437316"/>
+        <entry endPc="268438084" name="rez_cmp_local_text_time_text" stackId="10" startPc="268437316"/>
+    </localVars>
+    <annotations>
+        <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="LauncherIcon"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="zone_in"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="menu_dec_max"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="AppName"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="zone_out"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="menu_dec_min"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="menu_reset_zones"/>
+        <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="cadence_icon"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="menu_label_2"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="menu_inc_min"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="menu_label_1"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="prompt"/>
+        <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="heartrate_icon"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="menu_inc_max"/>
+    </annotations>
+    <dataEntryOffsetMappings>
+        <dataEntry label="globals" offset="67" parentId="" symbolId="globals" type="module"/>
+        <dataEntry label="globals/Rez" offset="152" parentId="globals" symbolId="Rez" type="module"/>
+        <dataEntry label="globals/TestingCadenceApp" offset="214" parentId="globals" symbolId="TestingCadenceApp" type="class"/>
+        <dataEntry label="globals/TestingCadenceMenuDelegate" offset="339" parentId="globals" symbolId="TestingCadenceMenuDelegate" type="class"/>
+        <dataEntry label="globals/TestingCadenceDelegate" offset="392" parentId="globals" symbolId="TestingCadenceDelegate" type="class"/>
+        <dataEntry label="globals/TestingCadenceView" offset="445" parentId="globals" symbolId="TestingCadenceView" type="class"/>
+        <dataEntry label="globals/Rez/Drawables" offset="624" parentId="Rez" symbolId="Drawables" type="module"/>
+        <dataEntry label="globals/Rez/Layouts" offset="677" parentId="Rez" symbolId="Layouts" type="module"/>
+        <dataEntry label="globals/Rez/Menus" offset="712" parentId="Rez" symbolId="Menus" type="module"/>
+        <dataEntry label="globals/Rez/Strings" offset="747" parentId="Rez" symbolId="Strings" type="module"/>
+        <dataEntry label="globals/Rez/Menus/MainMenu" offset="872" parentId="Menus" symbolId="MainMenu" type="class"/>
+    </dataEntryOffsetMappings>
+    <functions>
+        <functionEntry accessMode="public" endPc="268435480" name="getApp" startPc="268435460">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435500" name="&lt;init&gt;" parent="Rez" startPc="268435481">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435512" name="&lt;init&gt;" parent="TestingCadenceApp" startPc="268435501">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435524" name="&lt;init&gt;" parent="TestingCadenceMenuDelegate" startPc="268435513">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435536" name="&lt;init&gt;" parent="TestingCadenceDelegate" startPc="268435525">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435577" name="&lt;init&gt;" parent="TestingCadenceView" startPc="268435537">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Drawables">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Layouts">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Menus">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Strings">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435589" name="setMaxCadence" parent="TestingCadenceApp" startPc="268435578">
+            <param id="val"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435592" name="onStart" parent="TestingCadenceApp" startPc="268435590">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435600" name="getMinCadence" parent="TestingCadenceApp" startPc="268435593">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435612" name="setMinCadence" parent="TestingCadenceApp" startPc="268435601">
+            <param id="val"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435661" name="getInitialView" parent="TestingCadenceApp" startPc="268435613">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435669" name="getMaxCadence" parent="TestingCadenceApp" startPc="268435662">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435684" name="initialize" parent="TestingCadenceApp" startPc="268435670">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435687" name="onStop" parent="TestingCadenceApp" startPc="268435685">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436092" name="onMenuItem" parent="TestingCadenceMenuDelegate" startPc="268435688">
+            <param id="item"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436107" name="initialize" parent="TestingCadenceMenuDelegate" startPc="268436093">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436176" name="onMenu" parent="TestingCadenceDelegate" startPc="268436108">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436191" name="initialize" parent="TestingCadenceDelegate" startPc="268436177">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onShow" parent="TestingCadenceView">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437032" name="displayCadence" parent="TestingCadenceView" startPc="268436192">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437168" name="onLayout" parent="TestingCadenceView" startPc="268437033">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437189" name="_secondVibe" parent="TestingCadenceView" startPc="268437169">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437264" name="initialize" parent="TestingCadenceView" startPc="268437190">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onHide" parent="TestingCadenceView">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437278" name="refreshScreen" parent="TestingCadenceView" startPc="268437265">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437304" name="onUpdate" parent="TestingCadenceView" startPc="268437279">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438084" name="MainLayout" parent="Layouts" startPc="268437305">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438096" name="&lt;init&gt;" parent="MainMenu" startPc="268438085">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438336" name="initialize" parent="MainMenu" startPc="268438097">
+            <documentation/>
+        </functionEntry>
+    </functions>
+</debugInfo>

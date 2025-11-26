@@ -1,0 +1,2129 @@
+[ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 2; @symbol_usingdef<0> = [Toybox,2,6,12]; @symbol_usingdef<1> = [WatchUi,2,13,20]; ]
+using Toybox.WatchUi;
+[ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 3; @symbol_usingdef<0> = [Toybox,3,6,12]; @symbol_usingdef<1> = [WatchUi,3,13,20]; @symbol_usingAlias = [Ui,3,24,26]; ]
+using Toybox.WatchUi as :Ui;
+[ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 4; @symbol_usingdef<0> = [Toybox,4,6,12]; @symbol_usingdef<1> = [Graphics,4,13,21]; ]
+using Toybox.Graphics;
+[ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 5; @symbol_usingdef<0> = [Toybox,5,6,12]; @symbol_usingdef<1> = [Graphics,5,13,21]; @symbol_usingAlias = [Gfx,5,25,28]; ]
+using Toybox.Graphics as :Gfx;
+[ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 7; @symbol_moduledef = [Rez,7,7,10]; ]
+module Rez {
+    [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 7; ]
+    <init> {
+    }
+    [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 8; @symbol_moduledef = [Drawables,8,11,20]; ]
+    module Drawables {
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 8; ]
+        <init> {
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 9; @position = 27; initialized = true; @symbol_vardef = [cadence_icon,9,27,39]; @symbol_type<0> = [ResourceId,9,43,53]; ]
+        var cadence_icon as ResourceId;
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 10; @position = 27; initialized = true; @symbol_vardef = [heartrate_icon,10,27,41]; @symbol_type<0> = [ResourceId,10,45,55]; ]
+        var heartrate_icon as ResourceId;
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 11; @position = 27; initialized = true; @symbol_vardef = [LauncherIcon,11,27,39]; @symbol_type<0> = [ResourceId,11,43,53]; ]
+        var LauncherIcon as ResourceId;
+    }
+    [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 14; @symbol_moduledef = [Layouts,14,11,18]; ]
+    module Layouts {
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 14; ]
+        <init> {
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 15; @symbol_functiondef = [MainLayout,15,17,27]; @symbol_param<0> = [dc,15,28,30]; @symbol_param<0>_type<0> = [Graphics,15,34,42]; @symbol_param<0>_type<1> = [Dc,15,43,45]; @symbol_return<0> = [Array,15,50,55]; @symbol_return<1> = [WatchUi,15,56,63]; @symbol_return<2> = [Drawable,15,64,72]; ]
+        function MainLayout(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_start:
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 16 12 ]
+            [ "c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_start" "c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_stop" ]
+            %rez_cmp_local_var_dc_getHeight.1 = local;
+            symbol [ rez_cmp_local_var_dc_getHeight %rez_cmp_local_var_dc_getHeight.1 16 16 46 ];
+            %tmp.1 = lgetv %dc;
+            symbol [ dc %tmp.1 16 49 51 ];
+            symbol [ getHeight %tmp.2 16 52 61 ];
+            %tmp.2 = getv function %tmp.1 :getHeight;
+            %tmp.3 = invoke %tmp.1 %tmp.2();
+            lputv %rez_cmp_local_var_dc_getHeight.1 %tmp.3;
+            symbol [ rez_cmp_local_var_dc_getHeight %rez_cmp_local_var_dc_getHeight.1 16 16 46 ];
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 18 12 ]
+            [ "c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_start" "c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_stop" ]
+            %rez_cmp_local_var_dc_getWidth.2 = local;
+            symbol [ rez_cmp_local_var_dc_getWidth %rez_cmp_local_var_dc_getWidth.2 18 16 45 ];
+            %tmp.4 = lgetv %dc;
+            symbol [ dc %tmp.4 18 48 50 ];
+            symbol [ getWidth %tmp.5 18 51 59 ];
+            %tmp.5 = getv function %tmp.4 :getWidth;
+            %tmp.6 = invoke %tmp.4 %tmp.5();
+            lputv %rez_cmp_local_var_dc_getWidth.2 %tmp.6;
+            symbol [ rez_cmp_local_var_dc_getWidth %rez_cmp_local_var_dc_getWidth.2 18 16 45 ];
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 20 12 ]
+            [ "c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_start" "c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_stop" ]
+            %rez_cmp_local_bitmap_cadence_icon.3 = local;
+            symbol [ rez_cmp_local_bitmap_cadence_icon %rez_cmp_local_bitmap_cadence_icon.3 20 16 49 ];
+            symbol [ WatchUi %tmp.9 20 56 63 ];
+            %tmp.9 = getm $.Toybox.WatchUi;
+            symbol [ Bitmap %tmp.10 20 64 70 ];
+            %tmp.10 = getv function ? %tmp.9 :Bitmap;
+            %tmp.11 = newd 4;
+            %tmp.13 = const :identifier;
+            symbol [ identifier %tmp.13 20 73 83 const ];
+            %tmp.14 = "cadence_icon";
+            %tmp.15 = dup %tmp.11;
+            %tmp.16 = aputv %tmp.15 %tmp.13 %tmp.14;
+            %tmp.18 = const :rezId;
+            symbol [ rezId %tmp.18 20 102 107 const ];
+            symbol [ $ %tmp.19 20 109 110 ];
+            %tmp.19 = getm $;
+            symbol [ Rez %tmp.20 20 111 114 ];
+            %tmp.20 = getv %tmp.19 :Rez;
+            symbol [ Drawables %tmp.21 20 115 124 ];
+            %tmp.21 = getv %tmp.20 :Drawables;
+            symbol [ cadence_icon %tmp.22 20 125 137 ];
+            %tmp.22 = getv %tmp.21 :cadence_icon;
+            %tmp.23 = dup %tmp.16;
+            %tmp.24 = aputv %tmp.23 %tmp.18 %tmp.22;
+            %tmp.26 = const :locX;
+            symbol [ locX %tmp.26 20 140 144 const ];
+            %tmp.27 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.27 20 147 176 ];
+            %tmp.28 = 25;
+            %tmp.29 = 100.0;
+            %tmp.30 = div %tmp.28 %tmp.29;
+            %tmp.31 = mul %tmp.27 %tmp.30;
+            %tmp.32 = dup %tmp.24;
+            %tmp.33 = aputv %tmp.32 %tmp.26 %tmp.31;
+            %tmp.35 = const :locY;
+            symbol [ locY %tmp.35 20 195 199 const ];
+            %tmp.36 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.36 20 202 232 ];
+            %tmp.37 = 8;
+            %tmp.38 = 100.0;
+            %tmp.39 = div %tmp.37 %tmp.38;
+            %tmp.40 = mul %tmp.36 %tmp.39;
+            %tmp.41 = dup %tmp.33;
+            %tmp.42 = aputv %tmp.41 %tmp.35 %tmp.40;
+            %tmp.7 = newc %tmp.10 (%tmp.42);
+            lputv %rez_cmp_local_bitmap_cadence_icon.3 %tmp.7;
+            symbol [ rez_cmp_local_bitmap_cadence_icon %rez_cmp_local_bitmap_cadence_icon.3 20 16 49 ];
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 21 12 ]
+            %tmp.43 = lgetv %rez_cmp_local_bitmap_cadence_icon.3;
+            symbol [ rez_cmp_local_bitmap_cadence_icon %tmp.43 21 12 45 ];
+            symbol [ setLocation %tmp.44 21 46 57 ];
+            %tmp.44 = getv function %tmp.43 :setLocation;
+            %tmp.45 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.45 21 59 88 ];
+            %tmp.46 = 25;
+            %tmp.47 = 100.0;
+            %tmp.48 = div %tmp.46 %tmp.47;
+            %tmp.49 = mul %tmp.45 %tmp.48;
+            %tmp.50 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.50 21 107 137 ];
+            %tmp.51 = 8;
+            %tmp.52 = 100.0;
+            %tmp.53 = div %tmp.51 %tmp.52;
+            %tmp.54 = mul %tmp.50 %tmp.53;
+            invoke %tmp.43 %tmp.44(%tmp.49, %tmp.54);
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 23 12 ]
+            [ "c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_start" "c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_stop" ]
+            %rez_cmp_local_text_cadence_text.4 = local;
+            symbol [ rez_cmp_local_text_cadence_text %rez_cmp_local_text_cadence_text.4 23 16 47 ];
+            symbol [ WatchUi %tmp.57 23 54 61 ];
+            %tmp.57 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.58 23 62 66 ];
+            %tmp.58 = getv function ? %tmp.57 :Text;
+            %tmp.59 = newd 6;
+            %tmp.61 = const :identifier;
+            symbol [ identifier %tmp.61 23 69 79 const ];
+            %tmp.62 = "cadence_text";
+            %tmp.63 = dup %tmp.59;
+            %tmp.64 = aputv %tmp.63 %tmp.61 %tmp.62;
+            %tmp.66 = const :color;
+            symbol [ color %tmp.66 23 98 103 const ];
+            symbol [ Gfx %tmp.67 23 105 108 ];
+            %tmp.67 = getm $.Toybox.Graphics;
+            symbol [ COLOR_GREEN %tmp.68 23 109 120 ];
+            %tmp.68 = getv %tmp.67 :COLOR_GREEN;
+            %tmp.69 = dup %tmp.64;
+            %tmp.70 = aputv %tmp.69 %tmp.66 %tmp.68;
+            %tmp.72 = const :locX;
+            symbol [ locX %tmp.72 23 123 127 const ];
+            %tmp.73 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.73 23 130 159 ];
+            %tmp.74 = 60;
+            %tmp.75 = 100.0;
+            %tmp.76 = div %tmp.74 %tmp.75;
+            %tmp.77 = mul %tmp.73 %tmp.76;
+            %tmp.78 = dup %tmp.70;
+            %tmp.79 = aputv %tmp.78 %tmp.72 %tmp.77;
+            %tmp.81 = const :locY;
+            symbol [ locY %tmp.81 23 178 182 const ];
+            %tmp.82 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.82 23 185 215 ];
+            %tmp.83 = 10;
+            %tmp.84 = 100.0;
+            %tmp.85 = div %tmp.83 %tmp.84;
+            %tmp.86 = mul %tmp.82 %tmp.85;
+            %tmp.87 = dup %tmp.79;
+            %tmp.88 = aputv %tmp.87 %tmp.81 %tmp.86;
+            %tmp.90 = const :justification;
+            symbol [ justification %tmp.90 23 234 247 const ];
+            symbol [ Gfx %tmp.91 23 249 252 ];
+            %tmp.91 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_CENTER %tmp.92 23 253 272 ];
+            %tmp.92 = getv %tmp.91 :TEXT_JUSTIFY_CENTER;
+            %tmp.93 = dup %tmp.88;
+            %tmp.94 = aputv %tmp.93 %tmp.90 %tmp.92;
+            %tmp.96 = const :font;
+            symbol [ font %tmp.96 23 275 279 const ];
+            symbol [ Gfx %tmp.97 23 281 284 ];
+            %tmp.97 = getm $.Toybox.Graphics;
+            symbol [ FONT_SMALL %tmp.98 23 285 295 ];
+            %tmp.98 = getv %tmp.97 :FONT_SMALL;
+            %tmp.99 = dup %tmp.94;
+            %tmp.100 = aputv %tmp.99 %tmp.96 %tmp.98;
+            %tmp.55 = newc %tmp.58 (%tmp.100);
+            lputv %rez_cmp_local_text_cadence_text.4 %tmp.55;
+            symbol [ rez_cmp_local_text_cadence_text %rez_cmp_local_text_cadence_text.4 23 16 47 ];
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 25 12 ]
+            [ "c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_start" "c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_stop" ]
+            %rez_cmp_local_text_cadence_zone.5 = local;
+            symbol [ rez_cmp_local_text_cadence_zone %rez_cmp_local_text_cadence_zone.5 25 16 47 ];
+            symbol [ WatchUi %tmp.103 25 54 61 ];
+            %tmp.103 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.104 25 62 66 ];
+            %tmp.104 = getv function ? %tmp.103 :Text;
+            %tmp.105 = newd 6;
+            %tmp.107 = const :identifier;
+            symbol [ identifier %tmp.107 25 69 79 const ];
+            %tmp.108 = "cadence_zone";
+            %tmp.109 = dup %tmp.105;
+            %tmp.110 = aputv %tmp.109 %tmp.107 %tmp.108;
+            %tmp.112 = const :color;
+            symbol [ color %tmp.112 25 98 103 const ];
+            symbol [ Gfx %tmp.113 25 105 108 ];
+            %tmp.113 = getm $.Toybox.Graphics;
+            symbol [ COLOR_WHITE %tmp.114 25 109 120 ];
+            %tmp.114 = getv %tmp.113 :COLOR_WHITE;
+            %tmp.115 = dup %tmp.110;
+            %tmp.116 = aputv %tmp.115 %tmp.112 %tmp.114;
+            %tmp.118 = const :locX;
+            symbol [ locX %tmp.118 25 123 127 const ];
+            %tmp.119 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.119 25 130 159 ];
+            %tmp.120 = 60;
+            %tmp.121 = 100.0;
+            %tmp.122 = div %tmp.120 %tmp.121;
+            %tmp.123 = mul %tmp.119 %tmp.122;
+            %tmp.124 = dup %tmp.116;
+            %tmp.125 = aputv %tmp.124 %tmp.118 %tmp.123;
+            %tmp.127 = const :locY;
+            symbol [ locY %tmp.127 25 178 182 const ];
+            %tmp.128 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.128 25 185 215 ];
+            %tmp.129 = 20;
+            %tmp.130 = 100.0;
+            %tmp.131 = div %tmp.129 %tmp.130;
+            %tmp.132 = mul %tmp.128 %tmp.131;
+            %tmp.133 = dup %tmp.125;
+            %tmp.134 = aputv %tmp.133 %tmp.127 %tmp.132;
+            %tmp.136 = const :justification;
+            symbol [ justification %tmp.136 25 234 247 const ];
+            symbol [ Gfx %tmp.137 25 249 252 ];
+            %tmp.137 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_CENTER %tmp.138 25 253 272 ];
+            %tmp.138 = getv %tmp.137 :TEXT_JUSTIFY_CENTER;
+            %tmp.139 = dup %tmp.134;
+            %tmp.140 = aputv %tmp.139 %tmp.136 %tmp.138;
+            %tmp.142 = const :font;
+            symbol [ font %tmp.142 25 275 279 const ];
+            symbol [ Gfx %tmp.143 25 281 284 ];
+            %tmp.143 = getm $.Toybox.Graphics;
+            symbol [ FONT_TINY %tmp.144 25 285 294 ];
+            %tmp.144 = getv %tmp.143 :FONT_TINY;
+            %tmp.145 = dup %tmp.140;
+            %tmp.146 = aputv %tmp.145 %tmp.142 %tmp.144;
+            %tmp.101 = newc %tmp.104 (%tmp.146);
+            lputv %rez_cmp_local_text_cadence_zone.5 %tmp.101;
+            symbol [ rez_cmp_local_text_cadence_zone %rez_cmp_local_text_cadence_zone.5 25 16 47 ];
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 27 12 ]
+            [ "c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_start" "c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_stop" ]
+            %rez_cmp_local_bitmap_heartrate_icon.6 = local;
+            symbol [ rez_cmp_local_bitmap_heartrate_icon %rez_cmp_local_bitmap_heartrate_icon.6 27 16 51 ];
+            symbol [ WatchUi %tmp.149 27 58 65 ];
+            %tmp.149 = getm $.Toybox.WatchUi;
+            symbol [ Bitmap %tmp.150 27 66 72 ];
+            %tmp.150 = getv function ? %tmp.149 :Bitmap;
+            %tmp.151 = newd 4;
+            %tmp.153 = const :identifier;
+            symbol [ identifier %tmp.153 27 75 85 const ];
+            %tmp.154 = "heartrate_icon";
+            %tmp.155 = dup %tmp.151;
+            %tmp.156 = aputv %tmp.155 %tmp.153 %tmp.154;
+            %tmp.158 = const :rezId;
+            symbol [ rezId %tmp.158 27 106 111 const ];
+            symbol [ $ %tmp.159 27 113 114 ];
+            %tmp.159 = getm $;
+            symbol [ Rez %tmp.160 27 115 118 ];
+            %tmp.160 = getv %tmp.159 :Rez;
+            symbol [ Drawables %tmp.161 27 119 128 ];
+            %tmp.161 = getv %tmp.160 :Drawables;
+            symbol [ heartrate_icon %tmp.162 27 129 143 ];
+            %tmp.162 = getv %tmp.161 :heartrate_icon;
+            %tmp.163 = dup %tmp.156;
+            %tmp.164 = aputv %tmp.163 %tmp.158 %tmp.162;
+            %tmp.166 = const :locX;
+            symbol [ locX %tmp.166 27 146 150 const ];
+            %tmp.167 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.167 27 153 182 ];
+            %tmp.168 = 25;
+            %tmp.169 = 100.0;
+            %tmp.170 = div %tmp.168 %tmp.169;
+            %tmp.171 = mul %tmp.167 %tmp.170;
+            %tmp.172 = dup %tmp.164;
+            %tmp.173 = aputv %tmp.172 %tmp.166 %tmp.171;
+            %tmp.175 = const :locY;
+            symbol [ locY %tmp.175 27 201 205 const ];
+            %tmp.176 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.176 27 208 238 ];
+            %tmp.177 = 32;
+            %tmp.178 = 100.0;
+            %tmp.179 = div %tmp.177 %tmp.178;
+            %tmp.180 = mul %tmp.176 %tmp.179;
+            %tmp.181 = dup %tmp.173;
+            %tmp.182 = aputv %tmp.181 %tmp.175 %tmp.180;
+            %tmp.147 = newc %tmp.150 (%tmp.182);
+            lputv %rez_cmp_local_bitmap_heartrate_icon.6 %tmp.147;
+            symbol [ rez_cmp_local_bitmap_heartrate_icon %rez_cmp_local_bitmap_heartrate_icon.6 27 16 51 ];
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 28 12 ]
+            %tmp.183 = lgetv %rez_cmp_local_bitmap_heartrate_icon.6;
+            symbol [ rez_cmp_local_bitmap_heartrate_icon %tmp.183 28 12 47 ];
+            symbol [ setLocation %tmp.184 28 48 59 ];
+            %tmp.184 = getv function %tmp.183 :setLocation;
+            %tmp.185 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.185 28 61 90 ];
+            %tmp.186 = 25;
+            %tmp.187 = 100.0;
+            %tmp.188 = div %tmp.186 %tmp.187;
+            %tmp.189 = mul %tmp.185 %tmp.188;
+            %tmp.190 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.190 28 109 139 ];
+            %tmp.191 = 32;
+            %tmp.192 = 100.0;
+            %tmp.193 = div %tmp.191 %tmp.192;
+            %tmp.194 = mul %tmp.190 %tmp.193;
+            invoke %tmp.183 %tmp.184(%tmp.189, %tmp.194);
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 30 12 ]
+            [ "c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_start" "c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_stop" ]
+            %rez_cmp_local_text_heartrate_text.7 = local;
+            symbol [ rez_cmp_local_text_heartrate_text %rez_cmp_local_text_heartrate_text.7 30 16 49 ];
+            symbol [ WatchUi %tmp.197 30 56 63 ];
+            %tmp.197 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.198 30 64 68 ];
+            %tmp.198 = getv function ? %tmp.197 :Text;
+            %tmp.199 = newd 6;
+            %tmp.201 = const :identifier;
+            symbol [ identifier %tmp.201 30 71 81 const ];
+            %tmp.202 = "heartrate_text";
+            %tmp.203 = dup %tmp.199;
+            %tmp.204 = aputv %tmp.203 %tmp.201 %tmp.202;
+            %tmp.206 = const :color;
+            symbol [ color %tmp.206 30 102 107 const ];
+            symbol [ Gfx %tmp.207 30 109 112 ];
+            %tmp.207 = getm $.Toybox.Graphics;
+            symbol [ COLOR_DK_RED %tmp.208 30 113 125 ];
+            %tmp.208 = getv %tmp.207 :COLOR_DK_RED;
+            %tmp.209 = dup %tmp.204;
+            %tmp.210 = aputv %tmp.209 %tmp.206 %tmp.208;
+            %tmp.212 = const :locX;
+            symbol [ locX %tmp.212 30 128 132 const ];
+            %tmp.213 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.213 30 135 164 ];
+            %tmp.214 = 60;
+            %tmp.215 = 100.0;
+            %tmp.216 = div %tmp.214 %tmp.215;
+            %tmp.217 = mul %tmp.213 %tmp.216;
+            %tmp.218 = dup %tmp.210;
+            %tmp.219 = aputv %tmp.218 %tmp.212 %tmp.217;
+            %tmp.221 = const :locY;
+            symbol [ locY %tmp.221 30 183 187 const ];
+            %tmp.222 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.222 30 190 220 ];
+            %tmp.223 = 35;
+            %tmp.224 = 100.0;
+            %tmp.225 = div %tmp.223 %tmp.224;
+            %tmp.226 = mul %tmp.222 %tmp.225;
+            %tmp.227 = dup %tmp.219;
+            %tmp.228 = aputv %tmp.227 %tmp.221 %tmp.226;
+            %tmp.230 = const :justification;
+            symbol [ justification %tmp.230 30 239 252 const ];
+            symbol [ Gfx %tmp.231 30 254 257 ];
+            %tmp.231 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_CENTER %tmp.232 30 258 277 ];
+            %tmp.232 = getv %tmp.231 :TEXT_JUSTIFY_CENTER;
+            %tmp.233 = dup %tmp.228;
+            %tmp.234 = aputv %tmp.233 %tmp.230 %tmp.232;
+            %tmp.236 = const :font;
+            symbol [ font %tmp.236 30 280 284 const ];
+            symbol [ Gfx %tmp.237 30 286 289 ];
+            %tmp.237 = getm $.Toybox.Graphics;
+            symbol [ FONT_SMALL %tmp.238 30 290 300 ];
+            %tmp.238 = getv %tmp.237 :FONT_SMALL;
+            %tmp.239 = dup %tmp.234;
+            %tmp.240 = aputv %tmp.239 %tmp.236 %tmp.238;
+            %tmp.195 = newc %tmp.198 (%tmp.240);
+            lputv %rez_cmp_local_text_heartrate_text.7 %tmp.195;
+            symbol [ rez_cmp_local_text_heartrate_text %rez_cmp_local_text_heartrate_text.7 30 16 49 ];
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 32 12 ]
+            [ "c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_start" "c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_stop" ]
+            %rez_cmp_local_text_distance_text.8 = local;
+            symbol [ rez_cmp_local_text_distance_text %rez_cmp_local_text_distance_text.8 32 16 48 ];
+            symbol [ WatchUi %tmp.243 32 55 62 ];
+            %tmp.243 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.244 32 63 67 ];
+            %tmp.244 = getv function ? %tmp.243 :Text;
+            %tmp.245 = newd 6;
+            %tmp.247 = const :identifier;
+            symbol [ identifier %tmp.247 32 70 80 const ];
+            %tmp.248 = "distance_text";
+            %tmp.249 = dup %tmp.245;
+            %tmp.250 = aputv %tmp.249 %tmp.247 %tmp.248;
+            %tmp.252 = const :color;
+            symbol [ color %tmp.252 32 100 105 const ];
+            symbol [ Gfx %tmp.253 32 107 110 ];
+            %tmp.253 = getm $.Toybox.Graphics;
+            symbol [ COLOR_BLUE %tmp.254 32 111 121 ];
+            %tmp.254 = getv %tmp.253 :COLOR_BLUE;
+            %tmp.255 = dup %tmp.250;
+            %tmp.256 = aputv %tmp.255 %tmp.252 %tmp.254;
+            %tmp.258 = const :locX;
+            symbol [ locX %tmp.258 32 124 128 const ];
+            %tmp.259 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.259 32 131 160 ];
+            %tmp.260 = 60;
+            %tmp.261 = 100.0;
+            %tmp.262 = div %tmp.260 %tmp.261;
+            %tmp.263 = mul %tmp.259 %tmp.262;
+            %tmp.264 = dup %tmp.256;
+            %tmp.265 = aputv %tmp.264 %tmp.258 %tmp.263;
+            %tmp.267 = const :locY;
+            symbol [ locY %tmp.267 32 179 183 const ];
+            %tmp.268 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.268 32 186 216 ];
+            %tmp.269 = 55;
+            %tmp.270 = 100.0;
+            %tmp.271 = div %tmp.269 %tmp.270;
+            %tmp.272 = mul %tmp.268 %tmp.271;
+            %tmp.273 = dup %tmp.265;
+            %tmp.274 = aputv %tmp.273 %tmp.267 %tmp.272;
+            %tmp.276 = const :justification;
+            symbol [ justification %tmp.276 32 235 248 const ];
+            symbol [ Gfx %tmp.277 32 250 253 ];
+            %tmp.277 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_CENTER %tmp.278 32 254 273 ];
+            %tmp.278 = getv %tmp.277 :TEXT_JUSTIFY_CENTER;
+            %tmp.279 = dup %tmp.274;
+            %tmp.280 = aputv %tmp.279 %tmp.276 %tmp.278;
+            %tmp.282 = const :font;
+            symbol [ font %tmp.282 32 276 280 const ];
+            symbol [ Gfx %tmp.283 32 282 285 ];
+            %tmp.283 = getm $.Toybox.Graphics;
+            symbol [ FONT_SMALL %tmp.284 32 286 296 ];
+            %tmp.284 = getv %tmp.283 :FONT_SMALL;
+            %tmp.285 = dup %tmp.280;
+            %tmp.286 = aputv %tmp.285 %tmp.282 %tmp.284;
+            %tmp.241 = newc %tmp.244 (%tmp.286);
+            lputv %rez_cmp_local_text_distance_text.8 %tmp.241;
+            symbol [ rez_cmp_local_text_distance_text %rez_cmp_local_text_distance_text.8 32 16 48 ];
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 34 12 ]
+            [ "c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_start" "c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_stop" ]
+            %rez_cmp_local_text_time_text.9 = local;
+            symbol [ rez_cmp_local_text_time_text %rez_cmp_local_text_time_text.9 34 16 44 ];
+            symbol [ WatchUi %tmp.289 34 51 58 ];
+            %tmp.289 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.290 34 59 63 ];
+            %tmp.290 = getv function ? %tmp.289 :Text;
+            %tmp.291 = newd 6;
+            %tmp.293 = const :identifier;
+            symbol [ identifier %tmp.293 34 66 76 const ];
+            %tmp.294 = "time_text";
+            %tmp.295 = dup %tmp.291;
+            %tmp.296 = aputv %tmp.295 %tmp.293 %tmp.294;
+            %tmp.298 = const :color;
+            symbol [ color %tmp.298 34 92 97 const ];
+            symbol [ Gfx %tmp.299 34 99 102 ];
+            %tmp.299 = getm $.Toybox.Graphics;
+            symbol [ COLOR_WHITE %tmp.300 34 103 114 ];
+            %tmp.300 = getv %tmp.299 :COLOR_WHITE;
+            %tmp.301 = dup %tmp.296;
+            %tmp.302 = aputv %tmp.301 %tmp.298 %tmp.300;
+            %tmp.304 = const :locX;
+            symbol [ locX %tmp.304 34 117 121 const ];
+            %tmp.305 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.305 34 124 153 ];
+            %tmp.306 = 60;
+            %tmp.307 = 100.0;
+            %tmp.308 = div %tmp.306 %tmp.307;
+            %tmp.309 = mul %tmp.305 %tmp.308;
+            %tmp.310 = dup %tmp.302;
+            %tmp.311 = aputv %tmp.310 %tmp.304 %tmp.309;
+            %tmp.313 = const :locY;
+            symbol [ locY %tmp.313 34 172 176 const ];
+            %tmp.314 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.314 34 179 209 ];
+            %tmp.315 = 75;
+            %tmp.316 = 100.0;
+            %tmp.317 = div %tmp.315 %tmp.316;
+            %tmp.318 = mul %tmp.314 %tmp.317;
+            %tmp.319 = dup %tmp.311;
+            %tmp.320 = aputv %tmp.319 %tmp.313 %tmp.318;
+            %tmp.322 = const :justification;
+            symbol [ justification %tmp.322 34 228 241 const ];
+            symbol [ Gfx %tmp.323 34 243 246 ];
+            %tmp.323 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_CENTER %tmp.324 34 247 266 ];
+            %tmp.324 = getv %tmp.323 :TEXT_JUSTIFY_CENTER;
+            %tmp.325 = dup %tmp.320;
+            %tmp.326 = aputv %tmp.325 %tmp.322 %tmp.324;
+            %tmp.328 = const :font;
+            symbol [ font %tmp.328 34 269 273 const ];
+            symbol [ Gfx %tmp.329 34 275 278 ];
+            %tmp.329 = getm $.Toybox.Graphics;
+            symbol [ FONT_SMALL %tmp.330 34 279 289 ];
+            %tmp.330 = getv %tmp.329 :FONT_SMALL;
+            %tmp.331 = dup %tmp.326;
+            %tmp.332 = aputv %tmp.331 %tmp.328 %tmp.330;
+            %tmp.287 = newc %tmp.290 (%tmp.332);
+            lputv %rez_cmp_local_text_time_text.9 %tmp.287;
+            symbol [ rez_cmp_local_text_time_text %rez_cmp_local_text_time_text.9 34 16 44 ];
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 36 12 ]
+            %tmp.333 = newa 7 Array<WatchUi.Drawable>;
+            symbol [ Array %tmp.333 36 260 265 ];
+            symbol [ WatchUi %tmp.333 36 266 273 ];
+            symbol [ Drawable %tmp.333 36 274 282 ];
+            %tmp.334 = lgetv %rez_cmp_local_bitmap_cadence_icon.3;
+            symbol [ rez_cmp_local_bitmap_cadence_icon %tmp.334 36 20 53 ];
+            %tmp.335 = dup %tmp.333;
+            %tmp.336 = aputv %tmp.335 0 %tmp.334;
+            %tmp.337 = lgetv %rez_cmp_local_text_cadence_text.4;
+            symbol [ rez_cmp_local_text_cadence_text %tmp.337 36 55 86 ];
+            %tmp.338 = dup %tmp.336;
+            %tmp.339 = aputv %tmp.338 1 %tmp.337;
+            %tmp.340 = lgetv %rez_cmp_local_text_cadence_zone.5;
+            symbol [ rez_cmp_local_text_cadence_zone %tmp.340 36 88 119 ];
+            %tmp.341 = dup %tmp.339;
+            %tmp.342 = aputv %tmp.341 2 %tmp.340;
+            %tmp.343 = lgetv %rez_cmp_local_bitmap_heartrate_icon.6;
+            symbol [ rez_cmp_local_bitmap_heartrate_icon %tmp.343 36 121 156 ];
+            %tmp.344 = dup %tmp.342;
+            %tmp.345 = aputv %tmp.344 3 %tmp.343;
+            %tmp.346 = lgetv %rez_cmp_local_text_heartrate_text.7;
+            symbol [ rez_cmp_local_text_heartrate_text %tmp.346 36 158 191 ];
+            %tmp.347 = dup %tmp.345;
+            %tmp.348 = aputv %tmp.347 4 %tmp.346;
+            %tmp.349 = lgetv %rez_cmp_local_text_distance_text.8;
+            symbol [ rez_cmp_local_text_distance_text %tmp.349 36 193 225 ];
+            %tmp.350 = dup %tmp.348;
+            %tmp.351 = aputv %tmp.350 5 %tmp.349;
+            %tmp.352 = lgetv %rez_cmp_local_text_time_text.9;
+            symbol [ rez_cmp_local_text_time_text %tmp.352 36 227 255 ];
+            %tmp.353 = dup %tmp.351;
+            %tmp.354 = aputv %tmp.353 6 %tmp.352;
+            ret %tmp.354;
+c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_15_74_37_8_stop:
+        }
+    }
+    [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 40; @symbol_moduledef = [Menus,40,11,16]; ]
+    module Menus {
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 40; ]
+        <init> {
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 41; @symbol_classdef = [MainMenu,41,14,22]; @symbol_extends<0> = [WatchUi,41,31,38]; @symbol_extends<1> = [Menu,41,39,43]; ]
+        class MainMenu extends WatchUi.Menu {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 41; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 41; ]
+            static
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 42; @symbol_functiondef = [initialize,42,21,31]; ]
+            function initialize() as Void {
+c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_42_34_49_12_start:
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 43 16 ]
+                symbol [ Menu %tmp.2 43 16 20 ];
+                %tmp.2 = getv ? :Menu;
+                symbol [ initialize %tmp.3 43 21 31 ];
+                %tmp.3 = getv function %tmp.2 :initialize;
+                invoke %tmp.2 %tmp.3();
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 44 16 ]
+                %tmp.4 = self;
+                symbol [ addItem %tmp.5 44 16 23 ];
+                %tmp.5 = getv function %tmp.4 :addItem;
+                symbol [ WatchUi %tmp.6 44 25 32 ];
+                %tmp.6 = getm $.Toybox.WatchUi;
+                symbol [ loadResource %tmp.7 44 33 45 ];
+                %tmp.7 = getv function %tmp.6 :loadResource;
+                symbol [ $ %tmp.8 44 46 47 ];
+                %tmp.8 = getm $;
+                symbol [ Rez %tmp.9 44 48 51 ];
+                %tmp.9 = getv %tmp.8 :Rez;
+                symbol [ Strings %tmp.10 44 52 59 ];
+                %tmp.10 = getv %tmp.9 :Strings;
+                symbol [ menu_inc_min %tmp.11 44 60 72 ];
+                %tmp.11 = getv %tmp.10 :menu_inc_min;
+                %tmp.12 = invoke %tmp.6 %tmp.7(%tmp.11);
+                %tmp.13 = as %tmp.12 String;
+                symbol [ String %tmp.13 44 77 83 ];
+                %tmp.15 = const :item_inc_min;
+                symbol [ item_inc_min %tmp.15 44 87 99 const ];
+                invoke %tmp.4 %tmp.5(%tmp.13, %tmp.15);
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 45 16 ]
+                %tmp.16 = self;
+                symbol [ addItem %tmp.17 45 16 23 ];
+                %tmp.17 = getv function %tmp.16 :addItem;
+                symbol [ WatchUi %tmp.18 45 25 32 ];
+                %tmp.18 = getm $.Toybox.WatchUi;
+                symbol [ loadResource %tmp.19 45 33 45 ];
+                %tmp.19 = getv function %tmp.18 :loadResource;
+                symbol [ $ %tmp.20 45 46 47 ];
+                %tmp.20 = getm $;
+                symbol [ Rez %tmp.21 45 48 51 ];
+                %tmp.21 = getv %tmp.20 :Rez;
+                symbol [ Strings %tmp.22 45 52 59 ];
+                %tmp.22 = getv %tmp.21 :Strings;
+                symbol [ menu_dec_min %tmp.23 45 60 72 ];
+                %tmp.23 = getv %tmp.22 :menu_dec_min;
+                %tmp.24 = invoke %tmp.18 %tmp.19(%tmp.23);
+                %tmp.25 = as %tmp.24 String;
+                symbol [ String %tmp.25 45 77 83 ];
+                %tmp.27 = const :item_dec_min;
+                symbol [ item_dec_min %tmp.27 45 87 99 const ];
+                invoke %tmp.16 %tmp.17(%tmp.25, %tmp.27);
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 46 16 ]
+                %tmp.28 = self;
+                symbol [ addItem %tmp.29 46 16 23 ];
+                %tmp.29 = getv function %tmp.28 :addItem;
+                symbol [ WatchUi %tmp.30 46 25 32 ];
+                %tmp.30 = getm $.Toybox.WatchUi;
+                symbol [ loadResource %tmp.31 46 33 45 ];
+                %tmp.31 = getv function %tmp.30 :loadResource;
+                symbol [ $ %tmp.32 46 46 47 ];
+                %tmp.32 = getm $;
+                symbol [ Rez %tmp.33 46 48 51 ];
+                %tmp.33 = getv %tmp.32 :Rez;
+                symbol [ Strings %tmp.34 46 52 59 ];
+                %tmp.34 = getv %tmp.33 :Strings;
+                symbol [ menu_inc_max %tmp.35 46 60 72 ];
+                %tmp.35 = getv %tmp.34 :menu_inc_max;
+                %tmp.36 = invoke %tmp.30 %tmp.31(%tmp.35);
+                %tmp.37 = as %tmp.36 String;
+                symbol [ String %tmp.37 46 77 83 ];
+                %tmp.39 = const :item_inc_max;
+                symbol [ item_inc_max %tmp.39 46 87 99 const ];
+                invoke %tmp.28 %tmp.29(%tmp.37, %tmp.39);
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 47 16 ]
+                %tmp.40 = self;
+                symbol [ addItem %tmp.41 47 16 23 ];
+                %tmp.41 = getv function %tmp.40 :addItem;
+                symbol [ WatchUi %tmp.42 47 25 32 ];
+                %tmp.42 = getm $.Toybox.WatchUi;
+                symbol [ loadResource %tmp.43 47 33 45 ];
+                %tmp.43 = getv function %tmp.42 :loadResource;
+                symbol [ $ %tmp.44 47 46 47 ];
+                %tmp.44 = getm $;
+                symbol [ Rez %tmp.45 47 48 51 ];
+                %tmp.45 = getv %tmp.44 :Rez;
+                symbol [ Strings %tmp.46 47 52 59 ];
+                %tmp.46 = getv %tmp.45 :Strings;
+                symbol [ menu_dec_max %tmp.47 47 60 72 ];
+                %tmp.47 = getv %tmp.46 :menu_dec_max;
+                %tmp.48 = invoke %tmp.42 %tmp.43(%tmp.47);
+                %tmp.49 = as %tmp.48 String;
+                symbol [ String %tmp.49 47 77 83 ];
+                %tmp.51 = const :item_dec_max;
+                symbol [ item_dec_max %tmp.51 47 87 99 const ];
+                invoke %tmp.40 %tmp.41(%tmp.49, %tmp.51);
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 48 16 ]
+                %tmp.52 = self;
+                symbol [ addItem %tmp.53 48 16 23 ];
+                %tmp.53 = getv function %tmp.52 :addItem;
+                symbol [ WatchUi %tmp.54 48 25 32 ];
+                %tmp.54 = getm $.Toybox.WatchUi;
+                symbol [ loadResource %tmp.55 48 33 45 ];
+                %tmp.55 = getv function %tmp.54 :loadResource;
+                symbol [ $ %tmp.56 48 46 47 ];
+                %tmp.56 = getm $;
+                symbol [ Rez %tmp.57 48 48 51 ];
+                %tmp.57 = getv %tmp.56 :Rez;
+                symbol [ Strings %tmp.58 48 52 59 ];
+                %tmp.58 = getv %tmp.57 :Strings;
+                symbol [ menu_reset_zones %tmp.59 48 60 76 ];
+                %tmp.59 = getv %tmp.58 :menu_reset_zones;
+                %tmp.60 = invoke %tmp.54 %tmp.55(%tmp.59);
+                %tmp.61 = as %tmp.60 String;
+                symbol [ String %tmp.61 48 81 87 ];
+                %tmp.63 = const :item_reset_zones;
+                symbol [ item_reset_zones %tmp.63 48 91 107 const ];
+                invoke %tmp.52 %tmp.53(%tmp.61, %tmp.63);
+c__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_bin_gen_006_B4432_00_source_Rez_mcgen_42_34_49_12_stop:
+            }
+        }
+    }
+    [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 53; @symbol_moduledef = [Strings,53,11,18]; ]
+    module Strings {
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 53; ]
+        <init> {
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 54; @position = 27; initialized = true; @symbol_vardef = [menu_reset_zones,54,27,43]; @symbol_type<0> = [ResourceId,54,47,57]; ]
+        var menu_reset_zones as ResourceId;
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 55; @position = 27; initialized = true; @symbol_vardef = [menu_inc_max,55,27,39]; @symbol_type<0> = [ResourceId,55,43,53]; ]
+        var menu_inc_max as ResourceId;
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 56; @position = 27; initialized = true; @symbol_vardef = [menu_inc_min,56,27,39]; @symbol_type<0> = [ResourceId,56,43,53]; ]
+        var menu_inc_min as ResourceId;
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 57; @position = 27; initialized = true; @symbol_vardef = [zone_in,57,27,34]; @symbol_type<0> = [ResourceId,57,38,48]; ]
+        var zone_in as ResourceId;
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 58; @position = 27; initialized = true; @symbol_vardef = [menu_label_1,58,27,39]; @symbol_type<0> = [ResourceId,58,43,53]; ]
+        var menu_label_1 as ResourceId;
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 59; @position = 27; initialized = true; @symbol_vardef = [menu_label_2,59,27,39]; @symbol_type<0> = [ResourceId,59,43,53]; ]
+        var menu_label_2 as ResourceId;
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 60; @position = 27; initialized = true; @symbol_vardef = [menu_dec_max,60,27,39]; @symbol_type<0> = [ResourceId,60,43,53]; ]
+        var menu_dec_max as ResourceId;
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 61; @position = 27; initialized = true; @symbol_vardef = [prompt,61,27,33]; @symbol_type<0> = [ResourceId,61,37,47]; ]
+        var prompt as ResourceId;
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 62; @position = 27; initialized = true; @symbol_vardef = [menu_dec_min,62,27,39]; @symbol_type<0> = [ResourceId,62,43,53]; ]
+        var menu_dec_min as ResourceId;
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 63; @position = 27; initialized = true; @symbol_vardef = [AppName,63,27,34]; @symbol_type<0> = [ResourceId,63,38,48]; ]
+        var AppName as ResourceId;
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 64; @position = 27; initialized = true; @symbol_vardef = [zone_out,64,27,35]; @symbol_type<0> = [ResourceId,64,39,49]; ]
+        var zone_out as ResourceId;
+    }
+    [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 67; @symbol_moduledef = [Styles,67,11,17]; ]
+    module Styles {
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 67; ]
+        <init> {
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 68; @symbol_moduledef = [prompt_font_enhanced_readability__body_with_title,68,15,64]; ]
+        module prompt_font_enhanced_readability__body_with_title {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 68; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 69; @position = 18; @symbol_constdef = [exclude,69,18,25]; @symbol_type<0> = [Boolean,69,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 72; @symbol_moduledef = [system_size__menu_header,72,15,39]; ]
+        module system_size__menu_header {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 72; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 73; @position = 18; @symbol_constdef = [width,73,18,23]; @symbol_type<0> = [Number,73,27,33]; ]
+            const width as Number = 390;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 74; @position = 18; @symbol_constdef = [height,74,18,24]; @symbol_type<0> = [Number,74,28,34]; ]
+            const height as Number = 121;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 77; @symbol_moduledef = [system_loc__hint_button_left_bottom,77,15,50]; ]
+        module system_loc__hint_button_left_bottom {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 77; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 78; @position = 18; @symbol_constdef = [x,78,18,19]; @symbol_type<0> = [Number,78,23,29]; ]
+            const x as Number = 12;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 79; @position = 18; @symbol_constdef = [y,79,18,19]; @symbol_type<0> = [Number,79,23,29]; ]
+            const y as Number = 252;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 82; @symbol_moduledef = [prompt_font_enhanced_readability__body_no_title,82,15,62]; ]
+        module prompt_font_enhanced_readability__body_no_title {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 82; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 83; @position = 18; @symbol_constdef = [exclude,83,18,25]; @symbol_type<0> = [Boolean,83,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 86; @symbol_moduledef = [prompt_loc__body_no_title,86,15,40]; ]
+        module prompt_loc__body_no_title {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 86; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 87; @position = 18; @symbol_constdef = [x,87,18,19]; @symbol_type<0> = [Number,87,23,29]; ]
+            const x as Number = 65;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 88; @position = 18; @symbol_constdef = [y,88,18,19]; @symbol_type<0> = [Number,88,23,29]; ]
+            const y as Number = 60;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 91; @symbol_moduledef = [system_icon_dark__about,91,15,38]; ]
+        module system_icon_dark__about {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 91; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 92; @position = 18; @symbol_constdef = [filename,92,18,26]; @symbol_type<0> = [String,92,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_dark__about.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 93; @position = 18; @symbol_constdef = [compress,93,18,26]; @symbol_type<0> = [String,93,30,36]; ]
+            const compress as String = "true";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 94; @position = 18; @symbol_constdef = [dithering,94,18,27]; @symbol_type<0> = [String,94,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 95; @position = 18; @symbol_constdef = [automaticPalette,95,18,34]; @symbol_type<0> = [String,95,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 98; @symbol_moduledef = [system_icon_light__question,98,15,42]; ]
+        module system_icon_light__question {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 98; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 99; @position = 18; @symbol_constdef = [filename,99,18,26]; @symbol_type<0> = [String,99,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_light__question.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 100; @position = 18; @symbol_constdef = [compress,100,18,26]; @symbol_type<0> = [String,100,30,36]; ]
+            const compress as String = "true";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 101; @position = 18; @symbol_constdef = [dithering,101,18,27]; @symbol_type<0> = [String,101,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 102; @position = 18; @symbol_constdef = [automaticPalette,102,18,34]; @symbol_type<0> = [String,102,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 105; @symbol_moduledef = [system_loc__hint_button_left_top,105,15,47]; ]
+        module system_loc__hint_button_left_top {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 105; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 106; @position = 18; @symbol_constdef = [exclude,106,18,25]; @symbol_type<0> = [Boolean,106,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 109; @symbol_moduledef = [prompt_font__title,109,15,33]; ]
+        module prompt_font__title {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 109; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 110 18 ]
+                symbol [ Graphics %tmp.64 110 34 42 ];
+                %tmp.64 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.65 110 43 62 ];
+                %tmp.65 = getv %tmp.64 :TEXT_JUSTIFY_CENTER;
+                symbol [ Graphics %tmp.66 110 63 71 ];
+                %tmp.66 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_VCENTER %tmp.67 110 72 92 ];
+                %tmp.67 = getv %tmp.66 :TEXT_JUSTIFY_VCENTER;
+                %tmp.68 = bitor %tmp.65 %tmp.67;
+                putv self :justification %tmp.68;
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 111 18 ]
+                symbol [ Graphics %tmp.69 111 25 33 ];
+                %tmp.69 = getm $.Toybox.Graphics;
+                symbol [ FONT_TINY %tmp.70 111 34 43 ];
+                %tmp.70 = getv %tmp.69 :FONT_TINY;
+                putv self :font %tmp.70;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 110; @position = 18; @symbol_constdef = [justification,110,18,31]; ]
+            const justification;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 111; @position = 18; @symbol_constdef = [font,111,18,22]; ]
+            const font;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 114; @symbol_moduledef = [system_icon_dark__discard,114,15,40]; ]
+        module system_icon_dark__discard {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 114; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 115; @position = 18; @symbol_constdef = [filename,115,18,26]; @symbol_type<0> = [String,115,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_dark__discard.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 116; @position = 18; @symbol_constdef = [compress,116,18,26]; @symbol_type<0> = [String,116,30,36]; ]
+            const compress as String = "true";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 117; @position = 18; @symbol_constdef = [dithering,117,18,27]; @symbol_type<0> = [String,117,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 118; @position = 18; @symbol_constdef = [automaticPalette,118,18,34]; @symbol_type<0> = [String,118,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 121; @symbol_moduledef = [system_size__menu_item,121,15,37]; ]
+        module system_size__menu_item {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 121; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 122; @position = 18; @symbol_constdef = [width,122,18,23]; @symbol_type<0> = [Number,122,27,33]; ]
+            const width as Number = 390;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 123; @position = 18; @symbol_constdef = [height,123,18,24]; @symbol_type<0> = [Number,123,28,34]; ]
+            const height as Number = 93;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 126; @symbol_moduledef = [system_color_dark__text,126,15,38]; ]
+        module system_color_dark__text {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 126; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 128 18 ]
+                symbol [ Graphics %tmp.71 128 31 39 ];
+                %tmp.71 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.72 128 40 57 ];
+                %tmp.72 = getv %tmp.71 :COLOR_TRANSPARENT;
+                putv self :background %tmp.72;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 127; @position = 18; @symbol_constdef = [color,127,18,23]; @symbol_type<0> = [Number,127,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 128; @position = 18; @symbol_constdef = [background,128,18,28]; ]
+            const background;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 131; @symbol_moduledef = [system_icon_destructive__discard,131,15,47]; ]
+        module system_icon_destructive__discard {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 131; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 132; @position = 18; @symbol_constdef = [filename,132,18,26]; @symbol_type<0> = [String,132,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_destructive__discard.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 133; @position = 18; @symbol_constdef = [dithering,133,18,27]; @symbol_type<0> = [String,133,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 136; @symbol_moduledef = [system_icon_dark__hint_action_menu,136,15,49]; ]
+        module system_icon_dark__hint_action_menu {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 136; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 137; @position = 18; @symbol_constdef = [filename,137,18,26]; @symbol_type<0> = [String,137,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_dark__hint_button_right_top.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 138; @position = 18; @symbol_constdef = [dithering,138,18,27]; @symbol_type<0> = [String,138,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 141; @symbol_moduledef = [prompt_size__title,141,15,33]; ]
+        module prompt_size__title {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 141; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 142; @position = 18; @symbol_constdef = [width,142,18,23]; @symbol_type<0> = [Number,142,27,33]; ]
+            const width as Number = 248;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 143; @position = 18; @symbol_constdef = [height,143,18,24]; @symbol_type<0> = [Number,143,28,34]; ]
+            const height as Number = 83;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 146; @symbol_moduledef = [confirmation_font__body,146,15,38]; ]
+        module confirmation_font__body {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 146; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 147 18 ]
+                symbol [ Graphics %tmp.73 147 34 42 ];
+                %tmp.73 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.74 147 43 62 ];
+                %tmp.74 = getv %tmp.73 :TEXT_JUSTIFY_CENTER;
+                symbol [ Graphics %tmp.75 147 63 71 ];
+                %tmp.75 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_VCENTER %tmp.76 147 72 92 ];
+                %tmp.76 = getv %tmp.75 :TEXT_JUSTIFY_VCENTER;
+                %tmp.77 = bitor %tmp.74 %tmp.76;
+                putv self :justification %tmp.77;
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 148 18 ]
+                symbol [ Graphics %tmp.78 148 25 33 ];
+                %tmp.78 = getm $.Toybox.Graphics;
+                symbol [ FONT_TINY %tmp.79 148 34 43 ];
+                %tmp.79 = getv %tmp.78 :FONT_TINY;
+                putv self :font %tmp.79;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 147; @position = 18; @symbol_constdef = [justification,147,18,31]; ]
+            const justification;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 148; @position = 18; @symbol_constdef = [font,148,18,22]; ]
+            const font;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 151; @symbol_moduledef = [system_color_dark__background,151,15,44]; ]
+        module system_color_dark__background {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 151; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 152; @position = 18; @symbol_constdef = [color,152,18,23]; @symbol_type<0> = [Number,152,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 153; @position = 18; @symbol_constdef = [background,153,18,28]; @symbol_type<0> = [Number,153,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 156; @symbol_moduledef = [system_icon_destructive__hint_button_left_top,156,15,60]; ]
+        module system_icon_destructive__hint_button_left_top {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 156; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 157; @position = 18; @symbol_constdef = [exclude,157,18,25]; @symbol_type<0> = [Boolean,157,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 160; @symbol_moduledef = [system_size__launch_icon,160,15,39]; ]
+        module system_size__launch_icon {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 160; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 161; @position = 18; @symbol_constdef = [scaleX,161,18,24]; @symbol_type<0> = [Number,161,28,34]; ]
+            const scaleX as Number = 54;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 162; @position = 18; @symbol_constdef = [scaleY,162,18,24]; @symbol_type<0> = [Number,162,28,34]; ]
+            const scaleY as Number = 54;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 163; @position = 18; @symbol_constdef = [scaleRelativeTo,163,18,33]; @symbol_type<0> = [String,163,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 166; @symbol_moduledef = [confirmation_input__confirm,166,15,42]; ]
+        module confirmation_input__confirm {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 166; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 167 18 ]
+                symbol [ WatchUi %tmp.80 167 27 34 ];
+                %tmp.80 = getm $.Toybox.WatchUi;
+                symbol [ KEY_ENTER %tmp.81 167 35 44 ];
+                %tmp.81 = getv %tmp.80 :KEY_ENTER;
+                putv self :button %tmp.81;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 167; @position = 18; @symbol_constdef = [button,167,18,24]; ]
+            const button;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 170; @symbol_moduledef = [prompt_font__body_with_title,170,15,43]; ]
+        module prompt_font__body_with_title {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 170; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 171 18 ]
+                symbol [ Graphics %tmp.82 171 34 42 ];
+                %tmp.82 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.83 171 43 62 ];
+                %tmp.83 = getv %tmp.82 :TEXT_JUSTIFY_CENTER;
+                putv self :justification %tmp.83;
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 172 18 ]
+                symbol [ Graphics %tmp.84 172 25 33 ];
+                %tmp.84 = getm $.Toybox.Graphics;
+                symbol [ FONT_XTINY %tmp.85 172 34 44 ];
+                %tmp.85 = getv %tmp.84 :FONT_XTINY;
+                putv self :font %tmp.85;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 171; @position = 18; @symbol_constdef = [justification,171,18,31]; ]
+            const justification;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 172; @position = 18; @symbol_constdef = [font,172,18,22]; ]
+            const font;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 175; @symbol_moduledef = [confirmation_loc__body,175,15,37]; ]
+        module confirmation_loc__body {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 175; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 176; @position = 18; @symbol_constdef = [x,176,18,19]; @symbol_type<0> = [Number,176,23,29]; ]
+            const x as Number = 61;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 177; @position = 18; @symbol_constdef = [y,177,18,19]; @symbol_type<0> = [Number,177,23,29]; ]
+            const y as Number = 89;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 180; @symbol_moduledef = [system_icon_destructive__hint_button_left_bottom,180,15,63]; ]
+        module system_icon_destructive__hint_button_left_bottom {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 180; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 181; @position = 18; @symbol_constdef = [filename,181,18,26]; @symbol_type<0> = [String,181,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_destructive__hint_button_left_bottom.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 182; @position = 18; @symbol_constdef = [dithering,182,18,27]; @symbol_type<0> = [String,182,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 185; @symbol_moduledef = [prompt_color_dark__background,185,15,44]; ]
+        module prompt_color_dark__background {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 185; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 186; @position = 18; @symbol_constdef = [color,186,18,23]; @symbol_type<0> = [Number,186,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 187; @position = 18; @symbol_constdef = [background,187,18,28]; @symbol_type<0> = [Number,187,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 190; @symbol_moduledef = [system_icon_destructive__hint_action_menu,190,15,56]; ]
+        module system_icon_destructive__hint_action_menu {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 190; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 191; @position = 18; @symbol_constdef = [filename,191,18,26]; @symbol_type<0> = [String,191,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_destructive__hint_button_right_top.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 192; @position = 18; @symbol_constdef = [dithering,192,18,27]; @symbol_type<0> = [String,192,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 195; @symbol_moduledef = [system_loc__hint_action_menu,195,15,43]; ]
+        module system_loc__hint_action_menu {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 195; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 196; @position = 18; @symbol_constdef = [x,196,18,19]; @symbol_type<0> = [Number,196,23,29]; ]
+            const x as Number = 323;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 197; @position = 18; @symbol_constdef = [y,197,18,19]; @symbol_type<0> = [Number,197,23,29]; ]
+            const y as Number = 73;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 200; @symbol_moduledef = [confirmation_icon__hint_confirm,200,15,46]; ]
+        module confirmation_icon__hint_confirm {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 200; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 201; @position = 18; @symbol_constdef = [filename,201,18,26]; @symbol_type<0> = [String,201,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\confirmation_icon__hint_completion.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 202; @position = 18; @symbol_constdef = [dithering,202,18,27]; @symbol_type<0> = [String,202,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 205; @symbol_moduledef = [system_loc__hint_button_left_middle,205,15,50]; ]
+        module system_loc__hint_button_left_middle {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 205; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 206; @position = 18; @symbol_constdef = [x,206,18,19]; @symbol_type<0> = [Number,206,23,29]; ]
+            const x as Number = 2;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 207; @position = 18; @symbol_constdef = [y,207,18,19]; @symbol_type<0> = [Number,207,23,29]; ]
+            const y as Number = 157;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 210; @symbol_moduledef = [prompt_size__body_no_title,210,15,41]; ]
+        module prompt_size__body_no_title {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 210; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 211; @position = 18; @symbol_constdef = [width,211,18,23]; @symbol_type<0> = [Number,211,27,33]; ]
+            const width as Number = 260;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 212; @position = 18; @symbol_constdef = [height,212,18,24]; @symbol_type<0> = [Number,212,28,34]; ]
+            const height as Number = 270;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 215; @symbol_moduledef = [system_icon_light__hint_button_left_top,215,15,54]; ]
+        module system_icon_light__hint_button_left_top {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 215; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 216; @position = 18; @symbol_constdef = [exclude,216,18,25]; @symbol_type<0> = [Boolean,216,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 219; @symbol_moduledef = [prompt_color_light__background,219,15,45]; ]
+        module prompt_color_light__background {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 219; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 220; @position = 18; @symbol_constdef = [color,220,18,23]; @symbol_type<0> = [Number,220,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 221; @position = 18; @symbol_constdef = [background,221,18,28]; @symbol_type<0> = [Number,221,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 224; @symbol_moduledef = [confirmation_input__delete,224,15,41]; ]
+        module confirmation_input__delete {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 224; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 225 18 ]
+                symbol [ WatchUi %tmp.86 225 27 34 ];
+                %tmp.86 = getm $.Toybox.WatchUi;
+                symbol [ KEY_DOWN %tmp.87 225 35 43 ];
+                %tmp.87 = getv %tmp.86 :KEY_DOWN;
+                putv self :button %tmp.87;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 225; @position = 18; @symbol_constdef = [button,225,18,24]; ]
+            const button;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 228; @symbol_moduledef = [system_icon_dark__hint_button_left_top,228,15,53]; ]
+        module system_icon_dark__hint_button_left_top {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 228; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 229; @position = 18; @symbol_constdef = [exclude,229,18,25]; @symbol_type<0> = [Boolean,229,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 232; @symbol_moduledef = [system_input__action_menu,232,15,40]; ]
+        module system_input__action_menu {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 232; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 233 18 ]
+                symbol [ WatchUi %tmp.88 233 27 34 ];
+                %tmp.88 = getm $.Toybox.WatchUi;
+                symbol [ KEY_ENTER %tmp.89 233 35 44 ];
+                %tmp.89 = getv %tmp.88 :KEY_ENTER;
+                putv self :button %tmp.89;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 233; @position = 18; @symbol_constdef = [button,233,18,24]; ]
+            const button;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 236; @symbol_moduledef = [system_icon_light__save,236,15,38]; ]
+        module system_icon_light__save {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 236; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 237; @position = 18; @symbol_constdef = [filename,237,18,26]; @symbol_type<0> = [String,237,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_light__save.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 238; @position = 18; @symbol_constdef = [compress,238,18,26]; @symbol_type<0> = [String,238,30,36]; ]
+            const compress as String = "true";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 239; @position = 18; @symbol_constdef = [dithering,239,18,27]; @symbol_type<0> = [String,239,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 240; @position = 18; @symbol_constdef = [automaticPalette,240,18,34]; @symbol_type<0> = [String,240,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 243; @symbol_moduledef = [prompt_color_light__body,243,15,39]; ]
+        module prompt_color_light__body {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 243; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 245 18 ]
+                symbol [ Graphics %tmp.90 245 31 39 ];
+                %tmp.90 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.91 245 40 57 ];
+                %tmp.91 = getv %tmp.90 :COLOR_TRANSPARENT;
+                putv self :background %tmp.91;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 244; @position = 18; @symbol_constdef = [color,244,18,23]; @symbol_type<0> = [Number,244,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 245; @position = 18; @symbol_constdef = [background,245,18,28]; ]
+            const background;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 248; @symbol_moduledef = [system_loc__subwindow,248,15,36]; ]
+        module system_loc__subwindow {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 248; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 249; @position = 18; @symbol_constdef = [exclude,249,18,25]; @symbol_type<0> = [Boolean,249,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 252; @symbol_moduledef = [system_icon_light__warning,252,15,41]; ]
+        module system_icon_light__warning {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 252; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 253; @position = 18; @symbol_constdef = [filename,253,18,26]; @symbol_type<0> = [String,253,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_light__warning.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 254; @position = 18; @symbol_constdef = [compress,254,18,26]; @symbol_type<0> = [String,254,30,36]; ]
+            const compress as String = "true";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 255; @position = 18; @symbol_constdef = [dithering,255,18,27]; @symbol_type<0> = [String,255,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 256; @position = 18; @symbol_constdef = [automaticPalette,256,18,34]; @symbol_type<0> = [String,256,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 259; @symbol_moduledef = [confirmation_color_light__body,259,15,45]; ]
+        module confirmation_color_light__body {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 259; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 261 18 ]
+                symbol [ Graphics %tmp.92 261 31 39 ];
+                %tmp.92 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.93 261 40 57 ];
+                %tmp.93 = getv %tmp.92 :COLOR_TRANSPARENT;
+                putv self :background %tmp.93;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 260; @position = 18; @symbol_constdef = [color,260,18,23]; @symbol_type<0> = [Number,260,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 261; @position = 18; @symbol_constdef = [background,261,18,28]; ]
+            const background;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 264; @symbol_moduledef = [confirmation_icon_light__hint_keep,264,15,49]; ]
+        module confirmation_icon_light__hint_keep {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 264; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 265; @position = 18; @symbol_constdef = [filename,265,18,26]; @symbol_type<0> = [String,265,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\confirmation_icon__hint_keep.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 266; @position = 18; @symbol_constdef = [dithering,266,18,27]; @symbol_type<0> = [String,266,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 269; @symbol_moduledef = [activity_color_light__background,269,15,47]; ]
+        module activity_color_light__background {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 269; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 270; @position = 18; @symbol_constdef = [color,270,18,23]; @symbol_type<0> = [Number,270,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 271; @position = 18; @symbol_constdef = [background,271,18,28]; @symbol_type<0> = [Number,271,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 274; @symbol_moduledef = [system_icon_positive__hint_button_right_top,274,15,58]; ]
+        module system_icon_positive__hint_button_right_top {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 274; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 275; @position = 18; @symbol_constdef = [filename,275,18,26]; @symbol_type<0> = [String,275,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_positive__hint_button_right_top.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 276; @position = 18; @symbol_constdef = [dithering,276,18,27]; @symbol_type<0> = [String,276,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 279; @symbol_moduledef = [system_size__screen,279,15,34]; ]
+        module system_size__screen {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 279; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 280; @position = 18; @symbol_constdef = [width,280,18,23]; @symbol_type<0> = [Number,280,27,33]; ]
+            const width as Number = 390;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 281; @position = 18; @symbol_constdef = [height,281,18,24]; @symbol_type<0> = [Number,281,28,34]; ]
+            const height as Number = 390;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 284; @symbol_moduledef = [system_icon_destructive__hint_button_right_bottom,284,15,64]; ]
+        module system_icon_destructive__hint_button_right_bottom {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 284; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 285; @position = 18; @symbol_constdef = [filename,285,18,26]; @symbol_type<0> = [String,285,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_destructive__hint_button_right_bottom.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 286; @position = 18; @symbol_constdef = [dithering,286,18,27]; @symbol_type<0> = [String,286,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 289; @symbol_moduledef = [system_color_light__background,289,15,45]; ]
+        module system_color_light__background {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 289; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 290; @position = 18; @symbol_constdef = [color,290,18,23]; @symbol_type<0> = [Number,290,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 291; @position = 18; @symbol_constdef = [background,291,18,28]; @symbol_type<0> = [Number,291,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 294; @symbol_moduledef = [system_icon_destructive__hint_button_right_top,294,15,61]; ]
+        module system_icon_destructive__hint_button_right_top {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 294; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 295; @position = 18; @symbol_constdef = [filename,295,18,26]; @symbol_type<0> = [String,295,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_destructive__hint_button_right_top.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 296; @position = 18; @symbol_constdef = [dithering,296,18,27]; @symbol_type<0> = [String,296,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 299; @symbol_moduledef = [confirmation_loc__hint_confirm,299,15,45]; ]
+        module confirmation_loc__hint_confirm {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 299; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 300; @position = 18; @symbol_constdef = [x,300,18,19]; @symbol_type<0> = [Number,300,23,29]; ]
+            const x as Number = 323;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 301; @position = 18; @symbol_constdef = [y,301,18,19]; @symbol_type<0> = [Number,301,23,29]; ]
+            const y as Number = 75;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 304; @symbol_moduledef = [activity_color_dark__text,304,15,40]; ]
+        module activity_color_dark__text {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 304; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 306 18 ]
+                symbol [ Graphics %tmp.94 306 31 39 ];
+                %tmp.94 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.95 306 40 57 ];
+                %tmp.95 = getv %tmp.94 :COLOR_TRANSPARENT;
+                putv self :background %tmp.95;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 305; @position = 18; @symbol_constdef = [color,305,18,23]; @symbol_type<0> = [Number,305,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 306; @position = 18; @symbol_constdef = [background,306,18,28]; ]
+            const background;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 309; @symbol_moduledef = [confirmation_input__keep,309,15,39]; ]
+        module confirmation_input__keep {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 309; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 310 18 ]
+                symbol [ WatchUi %tmp.96 310 27 34 ];
+                %tmp.96 = getm $.Toybox.WatchUi;
+                symbol [ KEY_ESC %tmp.97 310 35 42 ];
+                %tmp.97 = getv %tmp.96 :KEY_ESC;
+                putv self :button %tmp.97;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 310; @position = 18; @symbol_constdef = [button,310,18,24]; ]
+            const button;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 313; @symbol_moduledef = [prompt_loc__body_with_title,313,15,42]; ]
+        module prompt_loc__body_with_title {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 313; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 314; @position = 18; @symbol_constdef = [x,314,18,19]; @symbol_type<0> = [Number,314,23,29]; ]
+            const x as Number = 65;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 315; @position = 18; @symbol_constdef = [y,315,18,19]; @symbol_type<0> = [Number,315,23,29]; ]
+            const y as Number = 133;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 318; @symbol_moduledef = [system_icon_dark__search,318,15,39]; ]
+        module system_icon_dark__search {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 318; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 319; @position = 18; @symbol_constdef = [filename,319,18,26]; @symbol_type<0> = [String,319,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_dark__search.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 320; @position = 18; @symbol_constdef = [compress,320,18,26]; @symbol_type<0> = [String,320,30,36]; ]
+            const compress as String = "true";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 321; @position = 18; @symbol_constdef = [dithering,321,18,27]; @symbol_type<0> = [String,321,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 322; @position = 18; @symbol_constdef = [automaticPalette,322,18,34]; @symbol_type<0> = [String,322,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 325; @symbol_moduledef = [activity_color_light__text,325,15,41]; ]
+        module activity_color_light__text {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 325; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 327 18 ]
+                symbol [ Graphics %tmp.98 327 31 39 ];
+                %tmp.98 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.99 327 40 57 ];
+                %tmp.99 = getv %tmp.98 :COLOR_TRANSPARENT;
+                putv self :background %tmp.99;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 326; @position = 18; @symbol_constdef = [color,326,18,23]; @symbol_type<0> = [Number,326,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 327; @position = 18; @symbol_constdef = [background,327,18,28]; ]
+            const background;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 330; @symbol_moduledef = [confirmation_icon__hint_keep,330,15,43]; ]
+        module confirmation_icon__hint_keep {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 330; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 331; @position = 18; @symbol_constdef = [filename,331,18,26]; @symbol_type<0> = [String,331,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\confirmation_icon__hint_keep.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 332; @position = 18; @symbol_constdef = [dithering,332,18,27]; @symbol_type<0> = [String,332,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 335; @symbol_moduledef = [system_icon_dark__save,335,15,37]; ]
+        module system_icon_dark__save {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 335; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 336; @position = 18; @symbol_constdef = [filename,336,18,26]; @symbol_type<0> = [String,336,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_dark__save.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 337; @position = 18; @symbol_constdef = [compress,337,18,26]; @symbol_type<0> = [String,337,30,36]; ]
+            const compress as String = "true";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 338; @position = 18; @symbol_constdef = [dithering,338,18,27]; @symbol_type<0> = [String,338,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 339; @position = 18; @symbol_constdef = [automaticPalette,339,18,34]; @symbol_type<0> = [String,339,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 342; @symbol_moduledef = [system_icon_destructive__hint_button_left_middle,342,15,63]; ]
+        module system_icon_destructive__hint_button_left_middle {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 342; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 343; @position = 18; @symbol_constdef = [filename,343,18,26]; @symbol_type<0> = [String,343,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_destructive__hint_button_left_middle.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 344; @position = 18; @symbol_constdef = [dithering,344,18,27]; @symbol_type<0> = [String,344,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 347; @symbol_moduledef = [system_icon_light__search,347,15,40]; ]
+        module system_icon_light__search {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 347; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 348; @position = 18; @symbol_constdef = [filename,348,18,26]; @symbol_type<0> = [String,348,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_light__search.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 349; @position = 18; @symbol_constdef = [compress,349,18,26]; @symbol_type<0> = [String,349,30,36]; ]
+            const compress as String = "true";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 350; @position = 18; @symbol_constdef = [dithering,350,18,27]; @symbol_type<0> = [String,350,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 351; @position = 18; @symbol_constdef = [automaticPalette,351,18,34]; @symbol_type<0> = [String,351,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 354; @symbol_moduledef = [system_icon_dark__hint_button_left_bottom,354,15,56]; ]
+        module system_icon_dark__hint_button_left_bottom {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 354; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 355; @position = 18; @symbol_constdef = [filename,355,18,26]; @symbol_type<0> = [String,355,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_dark__hint_button_left_bottom.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 356; @position = 18; @symbol_constdef = [dithering,356,18,27]; @symbol_type<0> = [String,356,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 359; @symbol_moduledef = [system_icon_positive__hint_button_left_top,359,15,57]; ]
+        module system_icon_positive__hint_button_left_top {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 359; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 360; @position = 18; @symbol_constdef = [exclude,360,18,25]; @symbol_type<0> = [Boolean,360,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 363; @symbol_moduledef = [system_loc__hint_button_right_bottom,363,15,51]; ]
+        module system_loc__hint_button_right_bottom {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 363; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 364; @position = 18; @symbol_constdef = [x,364,18,19]; @symbol_type<0> = [Number,364,23,29]; ]
+            const x as Number = 318;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 365; @position = 18; @symbol_constdef = [y,365,18,19]; @symbol_type<0> = [Number,365,23,29]; ]
+            const y as Number = 241;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 368; @symbol_moduledef = [confirmation_icon_dark__hint_reject,368,15,50]; ]
+        module confirmation_icon_dark__hint_reject {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 368; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 369; @position = 18; @symbol_constdef = [filename,369,18,26]; @symbol_type<0> = [String,369,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\confirmation_icon__hint_reject.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 370; @position = 18; @symbol_constdef = [dithering,370,18,27]; @symbol_type<0> = [String,370,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 373; @symbol_moduledef = [confirmation_color_dark__body,373,15,44]; ]
+        module confirmation_color_dark__body {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 373; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 375 18 ]
+                symbol [ Graphics %tmp.100 375 31 39 ];
+                %tmp.100 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.101 375 40 57 ];
+                %tmp.101 = getv %tmp.100 :COLOR_TRANSPARENT;
+                putv self :background %tmp.101;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 374; @position = 18; @symbol_constdef = [color,374,18,23]; @symbol_type<0> = [Number,374,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 375; @position = 18; @symbol_constdef = [background,375,18,28]; ]
+            const background;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 378; @symbol_moduledef = [confirmation_icon_light__hint_confirm,378,15,52]; ]
+        module confirmation_icon_light__hint_confirm {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 378; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 379; @position = 18; @symbol_constdef = [filename,379,18,26]; @symbol_type<0> = [String,379,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\confirmation_icon__hint_completion.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 380; @position = 18; @symbol_constdef = [dithering,380,18,27]; @symbol_type<0> = [String,380,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 383; @symbol_moduledef = [prompt_color_dark__title,383,15,39]; ]
+        module prompt_color_dark__title {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 383; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 385 18 ]
+                symbol [ Graphics %tmp.102 385 31 39 ];
+                %tmp.102 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.103 385 40 57 ];
+                %tmp.103 = getv %tmp.102 :COLOR_TRANSPARENT;
+                putv self :background %tmp.103;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 384; @position = 18; @symbol_constdef = [color,384,18,23]; @symbol_type<0> = [Number,384,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 385; @position = 18; @symbol_constdef = [background,385,18,28]; ]
+            const background;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 388; @symbol_moduledef = [system_icon_destructive__cancel,388,15,46]; ]
+        module system_icon_destructive__cancel {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 388; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 389; @position = 18; @symbol_constdef = [filename,389,18,26]; @symbol_type<0> = [String,389,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_destructive__cancel.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 390; @position = 18; @symbol_constdef = [dithering,390,18,27]; @symbol_type<0> = [String,390,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 393; @symbol_moduledef = [system_icon_light__hint_button_right_bottom,393,15,58]; ]
+        module system_icon_light__hint_button_right_bottom {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 393; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 394; @position = 18; @symbol_constdef = [filename,394,18,26]; @symbol_type<0> = [String,394,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_light__hint_button_right_bottom.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 395; @position = 18; @symbol_constdef = [dithering,395,18,27]; @symbol_type<0> = [String,395,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 398; @symbol_moduledef = [prompt_loc__title,398,15,32]; ]
+        module prompt_loc__title {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 398; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 399; @position = 18; @symbol_constdef = [x,399,18,19]; @symbol_type<0> = [Number,399,23,29]; ]
+            const x as Number = 71;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 400; @position = 18; @symbol_constdef = [y,400,18,19]; @symbol_type<0> = [Number,400,23,29]; ]
+            const y as Number = 33;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 403; @symbol_moduledef = [confirmation_font_enhanced_readability__body,403,15,59]; ]
+        module confirmation_font_enhanced_readability__body {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 403; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 404; @position = 18; @symbol_constdef = [exclude,404,18,25]; @symbol_type<0> = [Boolean,404,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 407; @symbol_moduledef = [prompt_color_light__title,407,15,40]; ]
+        module prompt_color_light__title {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 407; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 409 18 ]
+                symbol [ Graphics %tmp.104 409 31 39 ];
+                %tmp.104 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.105 409 40 57 ];
+                %tmp.105 = getv %tmp.104 :COLOR_TRANSPARENT;
+                putv self :background %tmp.105;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 408; @position = 18; @symbol_constdef = [color,408,18,23]; @symbol_type<0> = [Number,408,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 409; @position = 18; @symbol_constdef = [background,409,18,28]; ]
+            const background;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 412; @symbol_moduledef = [system_icon_dark__hint_button_right_top,412,15,54]; ]
+        module system_icon_dark__hint_button_right_top {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 412; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 413; @position = 18; @symbol_constdef = [filename,413,18,26]; @symbol_type<0> = [String,413,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_dark__hint_button_right_top.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 414; @position = 18; @symbol_constdef = [dithering,414,18,27]; @symbol_type<0> = [String,414,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 417; @symbol_moduledef = [system_icon_dark__hint_button_left_middle,417,15,56]; ]
+        module system_icon_dark__hint_button_left_middle {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 417; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 418; @position = 18; @symbol_constdef = [filename,418,18,26]; @symbol_type<0> = [String,418,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_dark__hint_button_left_middle.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 419; @position = 18; @symbol_constdef = [dithering,419,18,27]; @symbol_type<0> = [String,419,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 422; @symbol_moduledef = [confirmation_icon_dark__hint_keep,422,15,48]; ]
+        module confirmation_icon_dark__hint_keep {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 422; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 423; @position = 18; @symbol_constdef = [filename,423,18,26]; @symbol_type<0> = [String,423,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\confirmation_icon__hint_keep.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 424; @position = 18; @symbol_constdef = [dithering,424,18,27]; @symbol_type<0> = [String,424,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 427; @symbol_moduledef = [system_icon_light__cancel,427,15,40]; ]
+        module system_icon_light__cancel {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 427; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 428; @position = 18; @symbol_constdef = [filename,428,18,26]; @symbol_type<0> = [String,428,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_light__cancel.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 429; @position = 18; @symbol_constdef = [compress,429,18,26]; @symbol_type<0> = [String,429,30,36]; ]
+            const compress as String = "true";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 430; @position = 18; @symbol_constdef = [dithering,430,18,27]; @symbol_type<0> = [String,430,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 431; @position = 18; @symbol_constdef = [automaticPalette,431,18,34]; @symbol_type<0> = [String,431,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 434; @symbol_moduledef = [confirmation_icon_light__hint_reject,434,15,51]; ]
+        module confirmation_icon_light__hint_reject {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 434; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 435; @position = 18; @symbol_constdef = [filename,435,18,26]; @symbol_type<0> = [String,435,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\confirmation_icon__hint_reject.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 436; @position = 18; @symbol_constdef = [dithering,436,18,27]; @symbol_type<0> = [String,436,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 439; @symbol_moduledef = [system_icon_light__about,439,15,39]; ]
+        module system_icon_light__about {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 439; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 440; @position = 18; @symbol_constdef = [filename,440,18,26]; @symbol_type<0> = [String,440,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_light__about.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 441; @position = 18; @symbol_constdef = [compress,441,18,26]; @symbol_type<0> = [String,441,30,36]; ]
+            const compress as String = "true";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 442; @position = 18; @symbol_constdef = [dithering,442,18,27]; @symbol_type<0> = [String,442,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 443; @position = 18; @symbol_constdef = [automaticPalette,443,18,34]; @symbol_type<0> = [String,443,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 446; @symbol_moduledef = [system_size__toast_icon,446,15,38]; ]
+        module system_size__toast_icon {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 446; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 447; @position = 18; @symbol_constdef = [scaleX,447,18,24]; @symbol_type<0> = [Number,447,28,34]; ]
+            const scaleX as Number = 49;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 448; @position = 18; @symbol_constdef = [scaleY,448,18,24]; @symbol_type<0> = [Number,448,28,34]; ]
+            const scaleY as Number = 49;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 449; @position = 18; @symbol_constdef = [scaleRelativeTo,449,18,33]; @symbol_type<0> = [String,449,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 452; @symbol_moduledef = [system_icon_dark__hint_button_right_middle,452,15,57]; ]
+        module system_icon_dark__hint_button_right_middle {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 452; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 453; @position = 18; @symbol_constdef = [exclude,453,18,25]; @symbol_type<0> = [Boolean,453,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 456; @symbol_moduledef = [confirmation_icon__hint_reject,456,15,45]; ]
+        module confirmation_icon__hint_reject {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 456; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 457; @position = 18; @symbol_constdef = [filename,457,18,26]; @symbol_type<0> = [String,457,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\confirmation_icon__hint_reject.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 458; @position = 18; @symbol_constdef = [dithering,458,18,27]; @symbol_type<0> = [String,458,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 461; @symbol_moduledef = [system_icon_light__hint_action_menu,461,15,50]; ]
+        module system_icon_light__hint_action_menu {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 461; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 462; @position = 18; @symbol_constdef = [filename,462,18,26]; @symbol_type<0> = [String,462,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_light__hint_button_right_top.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 463; @position = 18; @symbol_constdef = [dithering,463,18,27]; @symbol_type<0> = [String,463,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 466; @symbol_moduledef = [system_icon_light__hint_button_right_middle,466,15,58]; ]
+        module system_icon_light__hint_button_right_middle {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 466; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 467; @position = 18; @symbol_constdef = [exclude,467,18,25]; @symbol_type<0> = [Boolean,467,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 470; @symbol_moduledef = [system_icon_destructive__hint_button_right_middle,470,15,64]; ]
+        module system_icon_destructive__hint_button_right_middle {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 470; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 471; @position = 18; @symbol_constdef = [exclude,471,18,25]; @symbol_type<0> = [Boolean,471,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 474; @symbol_moduledef = [confirmation_loc__hint_reject,474,15,44]; ]
+        module confirmation_loc__hint_reject {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 474; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 475; @position = 18; @symbol_constdef = [x,475,18,19]; @symbol_type<0> = [Number,475,23,29]; ]
+            const x as Number = 13;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 476; @position = 18; @symbol_constdef = [y,476,18,19]; @symbol_type<0> = [Number,476,23,29]; ]
+            const y as Number = 246;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 479; @symbol_moduledef = [confirmation_icon_dark__hint_delete,479,15,50]; ]
+        module confirmation_icon_dark__hint_delete {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 479; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 480; @position = 18; @symbol_constdef = [filename,480,18,26]; @symbol_type<0> = [String,480,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\confirmation_icon__hint_delete.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 481; @position = 18; @symbol_constdef = [dithering,481,18,27]; @symbol_type<0> = [String,481,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 484; @symbol_moduledef = [activity_color_dark__background,484,15,46]; ]
+        module activity_color_dark__background {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 484; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 485; @position = 18; @symbol_constdef = [color,485,18,23]; @symbol_type<0> = [Number,485,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 486; @position = 18; @symbol_constdef = [background,486,18,28]; @symbol_type<0> = [Number,486,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 489; @symbol_moduledef = [system_icon_light__hint_button_left_bottom,489,15,57]; ]
+        module system_icon_light__hint_button_left_bottom {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 489; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 490; @position = 18; @symbol_constdef = [filename,490,18,26]; @symbol_type<0> = [String,490,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_light__hint_button_left_bottom.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 491; @position = 18; @symbol_constdef = [dithering,491,18,27]; @symbol_type<0> = [String,491,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 494; @symbol_moduledef = [system_icon_positive__hint_button_left_middle,494,15,60]; ]
+        module system_icon_positive__hint_button_left_middle {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 494; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 495; @position = 18; @symbol_constdef = [filename,495,18,26]; @symbol_type<0> = [String,495,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_positive__hint_button_left_middle.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 496; @position = 18; @symbol_constdef = [dithering,496,18,27]; @symbol_type<0> = [String,496,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 499; @symbol_moduledef = [system_size__menu_icon,499,15,37]; ]
+        module system_size__menu_icon {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 499; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 500; @position = 18; @symbol_constdef = [scaleX,500,18,24]; @symbol_type<0> = [Number,500,28,34]; ]
+            const scaleX as Number = 65;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 501; @position = 18; @symbol_constdef = [scaleY,501,18,24]; @symbol_type<0> = [Number,501,28,34]; ]
+            const scaleY as Number = 91;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 502; @position = 18; @symbol_constdef = [scaleRelativeTo,502,18,33]; @symbol_type<0> = [String,502,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 505; @symbol_moduledef = [system_icon_destructive__warning,505,15,47]; ]
+        module system_icon_destructive__warning {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 505; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 506; @position = 18; @symbol_constdef = [filename,506,18,26]; @symbol_type<0> = [String,506,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_destructive__warning.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 507; @position = 18; @symbol_constdef = [dithering,507,18,27]; @symbol_type<0> = [String,507,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 510; @symbol_moduledef = [system_loc__hint_button_right_middle,510,15,51]; ]
+        module system_loc__hint_button_right_middle {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 510; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 511; @position = 18; @symbol_constdef = [exclude,511,18,25]; @symbol_type<0> = [Boolean,511,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 514; @symbol_moduledef = [system_icon_dark__cancel,514,15,39]; ]
+        module system_icon_dark__cancel {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 514; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 515; @position = 18; @symbol_constdef = [filename,515,18,26]; @symbol_type<0> = [String,515,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_dark__cancel.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 516; @position = 18; @symbol_constdef = [compress,516,18,26]; @symbol_type<0> = [String,516,30,36]; ]
+            const compress as String = "true";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 517; @position = 18; @symbol_constdef = [dithering,517,18,27]; @symbol_type<0> = [String,517,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 518; @position = 18; @symbol_constdef = [automaticPalette,518,18,34]; @symbol_type<0> = [String,518,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 521; @symbol_moduledef = [prompt_size__body_with_title,521,15,43]; ]
+        module prompt_size__body_with_title {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 521; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 522; @position = 18; @symbol_constdef = [width,522,18,23]; @symbol_type<0> = [Number,522,27,33]; ]
+            const width as Number = 260;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 523; @position = 18; @symbol_constdef = [height,523,18,24]; @symbol_type<0> = [Number,523,28,34]; ]
+            const height as Number = 214;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 526; @symbol_moduledef = [system_loc__hint_button_right_top,526,15,48]; ]
+        module system_loc__hint_button_right_top {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 526; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 527; @position = 18; @symbol_constdef = [x,527,18,19]; @symbol_type<0> = [Number,527,23,29]; ]
+            const x as Number = 323;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 528; @position = 18; @symbol_constdef = [y,528,18,19]; @symbol_type<0> = [Number,528,23,29]; ]
+            const y as Number = 73;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 531; @symbol_moduledef = [system_color_light__text,531,15,39]; ]
+        module system_color_light__text {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 531; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 533 18 ]
+                symbol [ Graphics %tmp.106 533 31 39 ];
+                %tmp.106 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.107 533 40 57 ];
+                %tmp.107 = getv %tmp.106 :COLOR_TRANSPARENT;
+                putv self :background %tmp.107;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 532; @position = 18; @symbol_constdef = [color,532,18,23]; @symbol_type<0> = [Number,532,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 533; @position = 18; @symbol_constdef = [background,533,18,28]; ]
+            const background;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 536; @symbol_moduledef = [system_icon_light__check,536,15,39]; ]
+        module system_icon_light__check {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 536; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 537; @position = 18; @symbol_constdef = [filename,537,18,26]; @symbol_type<0> = [String,537,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_light__check.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 538; @position = 18; @symbol_constdef = [compress,538,18,26]; @symbol_type<0> = [String,538,30,36]; ]
+            const compress as String = "true";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 539; @position = 18; @symbol_constdef = [dithering,539,18,27]; @symbol_type<0> = [String,539,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 540; @position = 18; @symbol_constdef = [automaticPalette,540,18,34]; @symbol_type<0> = [String,540,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 543; @symbol_moduledef = [confirmation_input__reject,543,15,41]; ]
+        module confirmation_input__reject {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 543; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 544 18 ]
+                symbol [ WatchUi %tmp.108 544 27 34 ];
+                %tmp.108 = getm $.Toybox.WatchUi;
+                symbol [ KEY_DOWN %tmp.109 544 35 43 ];
+                %tmp.109 = getv %tmp.108 :KEY_DOWN;
+                putv self :button %tmp.109;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 544; @position = 18; @symbol_constdef = [button,544,18,24]; ]
+            const button;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 547; @symbol_moduledef = [system_icon_light__revert,547,15,40]; ]
+        module system_icon_light__revert {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 547; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 548; @position = 18; @symbol_constdef = [filename,548,18,26]; @symbol_type<0> = [String,548,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_light__revert.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 549; @position = 18; @symbol_constdef = [compress,549,18,26]; @symbol_type<0> = [String,549,30,36]; ]
+            const compress as String = "true";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 550; @position = 18; @symbol_constdef = [dithering,550,18,27]; @symbol_type<0> = [String,550,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 551; @position = 18; @symbol_constdef = [automaticPalette,551,18,34]; @symbol_type<0> = [String,551,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 554; @symbol_moduledef = [system_size__subwindow,554,15,37]; ]
+        module system_size__subwindow {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 554; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 555; @position = 18; @symbol_constdef = [exclude,555,18,25]; @symbol_type<0> = [Boolean,555,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 558; @symbol_moduledef = [system_icon_positive__hint_button_left_bottom,558,15,60]; ]
+        module system_icon_positive__hint_button_left_bottom {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 558; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 559; @position = 18; @symbol_constdef = [filename,559,18,26]; @symbol_type<0> = [String,559,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_positive__hint_button_left_bottom.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 560; @position = 18; @symbol_constdef = [dithering,560,18,27]; @symbol_type<0> = [String,560,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 563; @symbol_moduledef = [system_icon_dark__check,563,15,38]; ]
+        module system_icon_dark__check {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 563; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 564; @position = 18; @symbol_constdef = [filename,564,18,26]; @symbol_type<0> = [String,564,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_dark__check.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 565; @position = 18; @symbol_constdef = [compress,565,18,26]; @symbol_type<0> = [String,565,30,36]; ]
+            const compress as String = "true";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 566; @position = 18; @symbol_constdef = [dithering,566,18,27]; @symbol_type<0> = [String,566,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 567; @position = 18; @symbol_constdef = [automaticPalette,567,18,34]; @symbol_type<0> = [String,567,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 570; @symbol_moduledef = [confirmation_loc__hint_keep,570,15,42]; ]
+        module confirmation_loc__hint_keep {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 570; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 571; @position = 18; @symbol_constdef = [x,571,18,19]; @symbol_type<0> = [Number,571,23,29]; ]
+            const x as Number = 13;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 572; @position = 18; @symbol_constdef = [y,572,18,19]; @symbol_type<0> = [Number,572,23,29]; ]
+            const y as Number = 246;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 575; @symbol_moduledef = [confirmation_loc__hint_delete,575,15,44]; ]
+        module confirmation_loc__hint_delete {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 575; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 576; @position = 18; @symbol_constdef = [x,576,18,19]; @symbol_type<0> = [Number,576,23,29]; ]
+            const x as Number = 323;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 577; @position = 18; @symbol_constdef = [y,577,18,19]; @symbol_type<0> = [Number,577,23,29]; ]
+            const y as Number = 75;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 580; @symbol_moduledef = [system_icon_positive__hint_action_menu,580,15,53]; ]
+        module system_icon_positive__hint_action_menu {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 580; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 581; @position = 18; @symbol_constdef = [filename,581,18,26]; @symbol_type<0> = [String,581,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_positive__hint_button_right_top.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 582; @position = 18; @symbol_constdef = [dithering,582,18,27]; @symbol_type<0> = [String,582,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 585; @symbol_moduledef = [system_icon_positive__hint_button_right_middle,585,15,61]; ]
+        module system_icon_positive__hint_button_right_middle {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 585; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 586; @position = 18; @symbol_constdef = [exclude,586,18,25]; @symbol_type<0> = [Boolean,586,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 589; @symbol_moduledef = [system_icon_light__hint_button_left_middle,589,15,57]; ]
+        module system_icon_light__hint_button_left_middle {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 589; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 590; @position = 18; @symbol_constdef = [filename,590,18,26]; @symbol_type<0> = [String,590,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_light__hint_button_left_middle.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 591; @position = 18; @symbol_constdef = [dithering,591,18,27]; @symbol_type<0> = [String,591,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 594; @symbol_moduledef = [system_icon_dark__hint_button_right_bottom,594,15,57]; ]
+        module system_icon_dark__hint_button_right_bottom {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 594; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 595; @position = 18; @symbol_constdef = [filename,595,18,26]; @symbol_type<0> = [String,595,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_dark__hint_button_right_bottom.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 596; @position = 18; @symbol_constdef = [dithering,596,18,27]; @symbol_type<0> = [String,596,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 599; @symbol_moduledef = [system_icon_positive__hint_button_right_bottom,599,15,61]; ]
+        module system_icon_positive__hint_button_right_bottom {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 599; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 600; @position = 18; @symbol_constdef = [filename,600,18,26]; @symbol_type<0> = [String,600,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_positive__hint_button_right_bottom.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 601; @position = 18; @symbol_constdef = [dithering,601,18,27]; @symbol_type<0> = [String,601,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 604; @symbol_moduledef = [system_icon_dark__revert,604,15,39]; ]
+        module system_icon_dark__revert {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 604; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 605; @position = 18; @symbol_constdef = [filename,605,18,26]; @symbol_type<0> = [String,605,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_dark__revert.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 606; @position = 18; @symbol_constdef = [compress,606,18,26]; @symbol_type<0> = [String,606,30,36]; ]
+            const compress as String = "true";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 607; @position = 18; @symbol_constdef = [dithering,607,18,27]; @symbol_type<0> = [String,607,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 608; @position = 18; @symbol_constdef = [automaticPalette,608,18,34]; @symbol_type<0> = [String,608,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 611; @symbol_moduledef = [confirmation_icon_light__hint_delete,611,15,51]; ]
+        module confirmation_icon_light__hint_delete {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 611; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 612; @position = 18; @symbol_constdef = [filename,612,18,26]; @symbol_type<0> = [String,612,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\confirmation_icon__hint_delete.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 613; @position = 18; @symbol_constdef = [dithering,613,18,27]; @symbol_type<0> = [String,613,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 616; @symbol_moduledef = [system_icon_dark__question,616,15,41]; ]
+        module system_icon_dark__question {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 616; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 617; @position = 18; @symbol_constdef = [filename,617,18,26]; @symbol_type<0> = [String,617,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_dark__question.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 618; @position = 18; @symbol_constdef = [compress,618,18,26]; @symbol_type<0> = [String,618,30,36]; ]
+            const compress as String = "true";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 619; @position = 18; @symbol_constdef = [dithering,619,18,27]; @symbol_type<0> = [String,619,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 620; @position = 18; @symbol_constdef = [automaticPalette,620,18,34]; @symbol_type<0> = [String,620,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 623; @symbol_moduledef = [system_icon_light__discard,623,15,41]; ]
+        module system_icon_light__discard {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 623; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 624; @position = 18; @symbol_constdef = [filename,624,18,26]; @symbol_type<0> = [String,624,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_light__discard.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 625; @position = 18; @symbol_constdef = [compress,625,18,26]; @symbol_type<0> = [String,625,30,36]; ]
+            const compress as String = "true";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 626; @position = 18; @symbol_constdef = [dithering,626,18,27]; @symbol_type<0> = [String,626,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 627; @position = 18; @symbol_constdef = [automaticPalette,627,18,34]; @symbol_type<0> = [String,627,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 630; @symbol_moduledef = [device_info,630,15,26]; ]
+        module device_info {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 630; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 632 18 ]
+                symbol [ Toybox %tmp.111 632 32 38 ];
+                %tmp.111 = getv ? :Toybox;
+                symbol [ System %tmp.112 632 39 45 ];
+                %tmp.112 = getv %tmp.111 :System;
+                symbol [ SCREEN_SHAPE_ROUND %tmp.113 632 46 64 ];
+                %tmp.113 = getv %tmp.112 :SCREEN_SHAPE_ROUND;
+                putv self :screenShape %tmp.113;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 631; @position = 18; @symbol_constdef = [screenWidth,631,18,29]; @symbol_type<0> = [Number,631,33,39]; ]
+            const screenWidth as Number = 390;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 632; @position = 18; @symbol_constdef = [screenShape,632,18,29]; ]
+            const screenShape;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 633; @position = 18; @symbol_constdef = [hasNightMode,633,18,30]; @symbol_type<0> = [Boolean,633,34,41]; ]
+            const hasNightMode as Boolean = false;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 634; @position = 18; @symbol_constdef = [hasGpu,634,18,24]; @symbol_type<0> = [Boolean,634,28,35]; ]
+            const hasGpu as Boolean = false;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 635; @position = 18; @symbol_constdef = [screenHeight,635,18,30]; @symbol_type<0> = [Number,635,34,40]; ]
+            const screenHeight as Number = 390;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 636; @position = 18; @symbol_constdef = [hasTouchScreen,636,18,32]; @symbol_type<0> = [Boolean,636,36,43]; ]
+            const hasTouchScreen as Boolean = true;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 637; @position = 18; @symbol_constdef = [hasEnhancedReadabilityMode,637,18,44]; @symbol_type<0> = [Boolean,637,48,55]; ]
+            const hasEnhancedReadabilityMode as Boolean = false;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 640; @symbol_moduledef = [confirmation_icon_dark__hint_confirm,640,15,51]; ]
+        module confirmation_icon_dark__hint_confirm {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 640; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 641; @position = 18; @symbol_constdef = [filename,641,18,26]; @symbol_type<0> = [String,641,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\confirmation_icon__hint_completion.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 642; @position = 18; @symbol_constdef = [dithering,642,18,27]; @symbol_type<0> = [String,642,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 645; @symbol_moduledef = [prompt_font__body_no_title,645,15,41]; ]
+        module prompt_font__body_no_title {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 645; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 646 18 ]
+                symbol [ Graphics %tmp.114 646 34 42 ];
+                %tmp.114 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.115 646 43 62 ];
+                %tmp.115 = getv %tmp.114 :TEXT_JUSTIFY_CENTER;
+                symbol [ Graphics %tmp.116 646 63 71 ];
+                %tmp.116 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_VCENTER %tmp.117 646 72 92 ];
+                %tmp.117 = getv %tmp.116 :TEXT_JUSTIFY_VCENTER;
+                %tmp.118 = bitor %tmp.115 %tmp.117;
+                putv self :justification %tmp.118;
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 647 18 ]
+                symbol [ Graphics %tmp.119 647 25 33 ];
+                %tmp.119 = getm $.Toybox.Graphics;
+                symbol [ FONT_XTINY %tmp.120 647 34 44 ];
+                %tmp.120 = getv %tmp.119 :FONT_XTINY;
+                putv self :font %tmp.120;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 646; @position = 18; @symbol_constdef = [justification,646,18,31]; ]
+            const justification;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 647; @position = 18; @symbol_constdef = [font,647,18,22]; ]
+            const font;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 650; @symbol_moduledef = [prompt_size__title_icon,650,15,38]; ]
+        module prompt_size__title_icon {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 650; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 651; @position = 18; @symbol_constdef = [scaleX,651,18,24]; @symbol_type<0> = [Float,651,28,33]; ]
+            const scaleX as Float = 0.13;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 652; @position = 18; @symbol_constdef = [scaleRelativeTo,652,18,33]; @symbol_type<0> = [String,652,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 655; @symbol_moduledef = [system_icon_dark__warning,655,15,40]; ]
+        module system_icon_dark__warning {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 655; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 656; @position = 18; @symbol_constdef = [filename,656,18,26]; @symbol_type<0> = [String,656,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_dark__warning.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 657; @position = 18; @symbol_constdef = [compress,657,18,26]; @symbol_type<0> = [String,657,30,36]; ]
+            const compress as String = "true";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 658; @position = 18; @symbol_constdef = [dithering,658,18,27]; @symbol_type<0> = [String,658,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 659; @position = 18; @symbol_constdef = [automaticPalette,659,18,34]; @symbol_type<0> = [String,659,38,44]; ]
+            const automaticPalette as String = "true";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 662; @symbol_moduledef = [prompt_loc__title_icon,662,15,37]; ]
+        module prompt_loc__title_icon {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 662; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 663; @position = 18; @symbol_constdef = [x,663,18,19]; @symbol_type<0> = [Number,663,23,29]; ]
+            const x as Number = 195;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 664; @position = 18; @symbol_constdef = [y,664,18,19]; @symbol_type<0> = [Number,664,23,29]; ]
+            const y as Number = 32;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 665; @position = 18; @symbol_constdef = [horizontalJustification,665,18,41]; @symbol_type<0> = [String,665,45,51]; ]
+            const horizontalJustification as String = "center";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 666; @position = 18; @symbol_constdef = [verticalJustification,666,18,39]; @symbol_type<0> = [String,666,43,49]; ]
+            const verticalJustification as String = "center";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 669; @symbol_moduledef = [prompt_font_enhanced_readability__title,669,15,54]; ]
+        module prompt_font_enhanced_readability__title {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 669; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 670; @position = 18; @symbol_constdef = [exclude,670,18,25]; @symbol_type<0> = [Boolean,670,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 673; @symbol_moduledef = [prompt_color_dark__body,673,15,38]; ]
+        module prompt_color_dark__body {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 673; ]
+            <init> {
+[ "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen" 675 18 ]
+                symbol [ Graphics %tmp.121 675 31 39 ];
+                %tmp.121 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.122 675 40 57 ];
+                %tmp.122 = getv %tmp.121 :COLOR_TRANSPARENT;
+                putv self :background %tmp.122;
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 674; @position = 18; @symbol_constdef = [color,674,18,23]; @symbol_type<0> = [Number,674,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 675; @position = 18; @symbol_constdef = [background,675,18,28]; ]
+            const background;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 678; @symbol_moduledef = [confirmation_icon__hint_delete,678,15,45]; ]
+        module confirmation_icon__hint_delete {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 678; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 679; @position = 18; @symbol_constdef = [filename,679,18,26]; @symbol_type<0> = [String,679,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\confirmation_icon__hint_delete.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 680; @position = 18; @symbol_constdef = [dithering,680,18,27]; @symbol_type<0> = [String,680,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 683; @symbol_moduledef = [system_icon_light__hint_button_right_top,683,15,55]; ]
+        module system_icon_light__hint_button_right_top {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 683; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 684; @position = 18; @symbol_constdef = [filename,684,18,26]; @symbol_type<0> = [String,684,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_light__hint_button_right_top.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 685; @position = 18; @symbol_constdef = [dithering,685,18,27]; @symbol_type<0> = [String,685,31,37]; ]
+            const dithering as String = "none";
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 688; @symbol_moduledef = [confirmation_size__body,688,15,38]; ]
+        module confirmation_size__body {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 688; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 689; @position = 18; @symbol_constdef = [width,689,18,23]; @symbol_type<0> = [Number,689,27,33]; ]
+            const width as Number = 268;
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 690; @position = 18; @symbol_constdef = [height,690,18,24]; @symbol_type<0> = [Number,690,28,34]; ]
+            const height as Number = 212;
+        }
+        [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 693; @symbol_moduledef = [system_icon_positive__check,693,15,42]; ]
+        module system_icon_positive__check {
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 693; ]
+            <init> {
+            }
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 694; @position = 18; @symbol_constdef = [filename,694,18,26]; @symbol_type<0> = [String,694,30,36]; ]
+            const filename as String = "C:\\Users\\teapot\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\fr165\\system_icon_positive__check.svg";
+            [ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 695; @position = 18; @symbol_constdef = [dithering,695,18,27]; @symbol_type<0> = [String,695,31,37]; ]
+            const dithering as String = "none";
+        }
+    }
+}
+[ @file = "c:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\bin\gen\006-B4432-00\source\Rez.mcgen"; @line = 1; ]
+<init> {
+}

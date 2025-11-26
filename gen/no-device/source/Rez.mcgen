@@ -1,0 +1,66 @@
+import Toybox.Lang;
+using Toybox.WatchUi;
+using Toybox.WatchUi as Ui;
+using Toybox.Graphics;
+using Toybox.Graphics as Gfx;
+
+module Rez {
+    module Drawables {
+        (:initialized) var cadence_icon as ResourceId;
+        (:initialized) var heartrate_icon as ResourceId;
+        (:initialized) var LauncherIcon as ResourceId;
+    } // Drawables
+
+    module Layouts {
+        function MainLayout(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+            var rez_cmp_local_var_dc_getHeight = dc.getHeight();
+
+            var rez_cmp_local_var_dc_getWidth = dc.getWidth();
+
+            var rez_cmp_local_bitmap_cadence_icon = new WatchUi.Bitmap({:identifier=>"cadence_icon", :rezId=>$.Rez.Drawables.cadence_icon, :locX=>(rez_cmp_local_var_dc_getWidth * (25 / 100.0)), :locY=>(rez_cmp_local_var_dc_getHeight * (8 / 100.0))});
+            rez_cmp_local_bitmap_cadence_icon.setLocation((rez_cmp_local_var_dc_getWidth * (25 / 100.0)), (rez_cmp_local_var_dc_getHeight * (8 / 100.0)));
+
+            var rez_cmp_local_text_cadence_text = new WatchUi.Text({:identifier=>"cadence_text", :color=>Gfx.COLOR_GREEN, :locX=>(rez_cmp_local_var_dc_getWidth * (60 / 100.0)), :locY=>(rez_cmp_local_var_dc_getHeight * (10 / 100.0)), :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
+
+            var rez_cmp_local_text_cadence_zone = new WatchUi.Text({:identifier=>"cadence_zone", :color=>Gfx.COLOR_WHITE, :locX=>(rez_cmp_local_var_dc_getWidth * (60 / 100.0)), :locY=>(rez_cmp_local_var_dc_getHeight * (20 / 100.0)), :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_TINY});
+
+            var rez_cmp_local_bitmap_heartrate_icon = new WatchUi.Bitmap({:identifier=>"heartrate_icon", :rezId=>$.Rez.Drawables.heartrate_icon, :locX=>(rez_cmp_local_var_dc_getWidth * (25 / 100.0)), :locY=>(rez_cmp_local_var_dc_getHeight * (32 / 100.0))});
+            rez_cmp_local_bitmap_heartrate_icon.setLocation((rez_cmp_local_var_dc_getWidth * (25 / 100.0)), (rez_cmp_local_var_dc_getHeight * (32 / 100.0)));
+
+            var rez_cmp_local_text_heartrate_text = new WatchUi.Text({:identifier=>"heartrate_text", :color=>Gfx.COLOR_DK_RED, :locX=>(rez_cmp_local_var_dc_getWidth * (60 / 100.0)), :locY=>(rez_cmp_local_var_dc_getHeight * (35 / 100.0)), :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
+
+            var rez_cmp_local_text_distance_text = new WatchUi.Text({:identifier=>"distance_text", :color=>Gfx.COLOR_BLUE, :locX=>(rez_cmp_local_var_dc_getWidth * (60 / 100.0)), :locY=>(rez_cmp_local_var_dc_getHeight * (55 / 100.0)), :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
+
+            var rez_cmp_local_text_time_text = new WatchUi.Text({:identifier=>"time_text", :color=>Gfx.COLOR_WHITE, :locX=>(rez_cmp_local_var_dc_getWidth * (60 / 100.0)), :locY=>(rez_cmp_local_var_dc_getHeight * (75 / 100.0)), :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
+
+            return [rez_cmp_local_bitmap_cadence_icon, rez_cmp_local_text_cadence_text, rez_cmp_local_text_cadence_zone, rez_cmp_local_bitmap_heartrate_icon, rez_cmp_local_text_heartrate_text, rez_cmp_local_text_distance_text, rez_cmp_local_text_time_text] as Array<WatchUi.Drawable>;
+        }
+    } // Layouts
+
+    module Menus {
+        class MainMenu extends WatchUi.Menu {
+            function initialize() {
+                Menu.initialize();
+                addItem((WatchUi.loadResource($.Rez.Strings.menu_inc_min) as String), :item_inc_min);
+                addItem((WatchUi.loadResource($.Rez.Strings.menu_dec_min) as String), :item_dec_min);
+                addItem((WatchUi.loadResource($.Rez.Strings.menu_inc_max) as String), :item_inc_max);
+                addItem((WatchUi.loadResource($.Rez.Strings.menu_dec_max) as String), :item_dec_max);
+                addItem((WatchUi.loadResource($.Rez.Strings.menu_reset_zones) as String), :item_reset_zones);
+            }
+        }
+    } // Menus
+
+    module Strings {
+        (:initialized) var menu_reset_zones as ResourceId;
+        (:initialized) var menu_inc_max as ResourceId;
+        (:initialized) var menu_inc_min as ResourceId;
+        (:initialized) var zone_in as ResourceId;
+        (:initialized) var menu_label_1 as ResourceId;
+        (:initialized) var menu_label_2 as ResourceId;
+        (:initialized) var menu_dec_max as ResourceId;
+        (:initialized) var prompt as ResourceId;
+        (:initialized) var menu_dec_min as ResourceId;
+        (:initialized) var AppName as ResourceId;
+        (:initialized) var zone_out as ResourceId;
+    } // Strings
+} // Rez

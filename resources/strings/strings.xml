@@ -1,0 +1,15 @@
+<strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <string id="AppName">TestingCadence</string>
+
+    <string id="prompt">Click the menu button</string>
+
+    <string id="menu_label_1">Item 1</string>
+    <string id="menu_label_2">Item 2</string>
+    <string id="menu_inc_min">Increase Min </string>
+    <string id="menu_dec_min">Decrease Min </string>
+    <string id="menu_inc_max">Increase Max </string>
+    <string id="menu_dec_max">Decrease Max </string>
+    <string id="menu_reset_zones">ReseT Zones</string>
+    <string id="zone_in">In Zone</string>
+    <string id="zone_out">OutZone</string>
+</strings>

@@ -1,0 +1,345 @@
+[ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [System,2,14,20]; ]
+import Toybox.System;
+[ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [WatchUi,3,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc"; @line = 5; @symbol_classdef = [TestingCadenceMenuDelegate,5,6,32]; @symbol_extends<0> = [WatchUi,5,41,48]; @symbol_extends<1> = [MenuInputDelegate,5,49,66]; ]
+class TestingCadenceMenuDelegate extends WatchUi.MenuInputDelegate {
+    [ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc"; @line = 5; ]
+    <init> {
+    }
+    [ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc"; @line = 5; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc"; @line = 7; @symbol_functiondef = [initialize,7,13,23]; ]
+    function initialize() as Void {
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_7_26_9_4_start:
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 8 8 ]
+        symbol [ MenuInputDelegate %tmp.2 8 8 25 ];
+        %tmp.2 = getv ? :MenuInputDelegate;
+        symbol [ initialize %tmp.3 8 26 36 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_7_26_9_4_stop:
+    }
+    [ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc"; @line = 11; @symbol_functiondef = [onMenuItem,11,13,23]; @symbol_param<0> = [item,11,24,28]; @symbol_param<0>_type<0> = [Symbol,11,32,38]; ]
+    function onMenuItem(item as Symbol) as Void {
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_11_48_45_4_start:
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 12 8 ]
+        [ "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_11_48_45_4_start" "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_11_48_45_4_stop" ]
+        %app.1 = local;
+        symbol [ app %app.1 12 12 15 ];
+        %tmp.1 = self;
+        symbol [ getApp %tmp.2 12 18 24 ];
+        %tmp.2 = getv function %tmp.1 :getApp;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %app.1 %tmp.3;
+        symbol [ app %app.1 12 12 15 ];
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 13 8 ]
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_13_8_42_8_if_stmt:
+        %tmp.4 = lgetv %item;
+        symbol [ item %tmp.4 13 12 16 ];
+        %tmp.6 = const :item_inc_min;
+        symbol [ item_inc_min %tmp.6 13 21 33 const ];
+        %tmp.7 = eq %tmp.4 %tmp.6;
+        bf %tmp.7 @C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_13_8_42_8_if_false;
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_13_8_42_8_if_true:
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_13_35_20_8_start:
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 14 12 ]
+        [ "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_13_35_20_8_start" "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_13_35_20_8_stop" ]
+        %v.2 = local;
+        symbol [ v %v.2 14 16 17 ];
+        %tmp.8 = lgetv %app.1;
+        symbol [ app %tmp.8 14 20 23 ];
+        symbol [ getMinCadence %tmp.9 14 24 37 ];
+        %tmp.9 = getv function %tmp.8 :getMinCadence;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        %tmp.11 = 5;
+        %tmp.12 = add %tmp.10 %tmp.11;
+        lputv %v.2 %tmp.12;
+        symbol [ v %v.2 14 16 17 ];
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 15 12 ]
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_15_12_17_12_if_stmt:
+        %tmp.13 = lgetv %v.2;
+        symbol [ v %tmp.13 15 16 17 ];
+        %tmp.14 = lgetv %app.1;
+        symbol [ app %tmp.14 15 21 24 ];
+        symbol [ getMaxCadence %tmp.15 15 25 38 ];
+        %tmp.15 = getv function %tmp.14 :getMaxCadence;
+        %tmp.16 = invoke %tmp.14 %tmp.15();
+        %tmp.17 = gte %tmp.13 %tmp.16;
+        bf %tmp.17 @C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_15_12_17_12_if_end;
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_15_12_17_12_if_true:
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_15_42_17_12_start:
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 16 16 ]
+        %tmp.18 = lgetv %app.1;
+        symbol [ app %tmp.18 16 20 23 ];
+        symbol [ getMaxCadence %tmp.19 16 24 37 ];
+        %tmp.19 = getv function %tmp.18 :getMaxCadence;
+        %tmp.20 = invoke %tmp.18 %tmp.19();
+        %tmp.21 = 1;
+        %tmp.22 = sub %tmp.20 %tmp.21;
+        lputv %v.2 %tmp.22;
+        symbol [ v %v.2 16 16 17 ];
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_15_42_17_12_stop:
+        goto @C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_15_12_17_12_if_end;
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_15_12_17_12_if_end:
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 18 12 ]
+        %tmp.23 = lgetv %app.1;
+        symbol [ app %tmp.23 18 12 15 ];
+        symbol [ setMinCadence %tmp.24 18 16 29 ];
+        %tmp.24 = getv function %tmp.23 :setMinCadence;
+        %tmp.25 = lgetv %v.2;
+        symbol [ v %tmp.25 18 30 31 ];
+        invoke %tmp.23 %tmp.24(%tmp.25);
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 19 12 ]
+        symbol [ System %tmp.26 19 12 18 ];
+        %tmp.26 = getm $.Toybox.System;
+        symbol [ println %tmp.27 19 19 26 ];
+        %tmp.27 = getv function %tmp.26 :println;
+        %tmp.28 = "Min cadence set to ";
+        %tmp.29 = lgetv %v.2;
+        symbol [ v %tmp.29 19 51 52 ];
+        symbol [ toString %tmp.30 19 53 61 ];
+        %tmp.30 = getv function %tmp.29 :toString;
+        %tmp.31 = invoke %tmp.29 %tmp.30();
+        %tmp.32 = add %tmp.28 %tmp.31;
+        invoke %tmp.26 %tmp.27(%tmp.32);
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_13_35_20_8_stop:
+        goto @C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_13_8_42_8_if_end;
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_13_8_42_8_if_false:
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 20 15 ]
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_20_15_42_8_if_stmt:
+        %tmp.33 = lgetv %item;
+        symbol [ item %tmp.33 20 19 23 ];
+        %tmp.35 = const :item_dec_min;
+        symbol [ item_dec_min %tmp.35 20 28 40 const ];
+        %tmp.36 = eq %tmp.33 %tmp.35;
+        bf %tmp.36 @C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_20_15_42_8_if_false;
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_20_15_42_8_if_true:
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_20_42_27_8_start:
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 21 12 ]
+        [ "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_20_42_27_8_start" "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_20_42_27_8_stop" ]
+        %v.3 = local;
+        symbol [ v %v.3 21 16 17 ];
+        %tmp.37 = lgetv %app.1;
+        symbol [ app %tmp.37 21 20 23 ];
+        symbol [ getMinCadence %tmp.38 21 24 37 ];
+        %tmp.38 = getv function %tmp.37 :getMinCadence;
+        %tmp.39 = invoke %tmp.37 %tmp.38();
+        %tmp.40 = 5;
+        %tmp.41 = sub %tmp.39 %tmp.40;
+        lputv %v.3 %tmp.41;
+        symbol [ v %v.3 21 16 17 ];
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 22 12 ]
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_22_12_24_12_if_stmt:
+        %tmp.42 = lgetv %v.3;
+        symbol [ v %tmp.42 22 16 17 ];
+        %tmp.43 = 0;
+        %tmp.44 = lt %tmp.42 %tmp.43;
+        bf %tmp.44 @C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_22_12_24_12_if_end;
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_22_12_24_12_if_true:
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_22_23_24_12_start:
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 23 16 ]
+        %tmp.45 = 0;
+        lputv %v.3 %tmp.45;
+        symbol [ v %v.3 23 16 17 ];
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_22_23_24_12_stop:
+        goto @C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_22_12_24_12_if_end;
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_22_12_24_12_if_end:
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 25 12 ]
+        %tmp.46 = lgetv %app.1;
+        symbol [ app %tmp.46 25 12 15 ];
+        symbol [ setMinCadence %tmp.47 25 16 29 ];
+        %tmp.47 = getv function %tmp.46 :setMinCadence;
+        %tmp.48 = lgetv %v.3;
+        symbol [ v %tmp.48 25 30 31 ];
+        invoke %tmp.46 %tmp.47(%tmp.48);
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 26 12 ]
+        symbol [ System %tmp.49 26 12 18 ];
+        %tmp.49 = getm $.Toybox.System;
+        symbol [ println %tmp.50 26 19 26 ];
+        %tmp.50 = getv function %tmp.49 :println;
+        %tmp.51 = "Min cadence set to ";
+        %tmp.52 = lgetv %v.3;
+        symbol [ v %tmp.52 26 51 52 ];
+        symbol [ toString %tmp.53 26 53 61 ];
+        %tmp.53 = getv function %tmp.52 :toString;
+        %tmp.54 = invoke %tmp.52 %tmp.53();
+        %tmp.55 = add %tmp.51 %tmp.54;
+        invoke %tmp.49 %tmp.50(%tmp.55);
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_20_42_27_8_stop:
+        goto @C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_20_15_42_8_if_end;
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_20_15_42_8_if_false:
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 27 15 ]
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_27_15_42_8_if_stmt:
+        %tmp.56 = lgetv %item;
+        symbol [ item %tmp.56 27 19 23 ];
+        %tmp.58 = const :item_inc_max;
+        symbol [ item_inc_max %tmp.58 27 28 40 const ];
+        %tmp.59 = eq %tmp.56 %tmp.58;
+        bf %tmp.59 @C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_27_15_42_8_if_false;
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_27_15_42_8_if_true:
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_27_42_31_8_start:
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 28 12 ]
+        [ "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_27_42_31_8_start" "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_27_42_31_8_stop" ]
+        %v.4 = local;
+        symbol [ v %v.4 28 16 17 ];
+        %tmp.60 = lgetv %app.1;
+        symbol [ app %tmp.60 28 20 23 ];
+        symbol [ getMaxCadence %tmp.61 28 24 37 ];
+        %tmp.61 = getv function %tmp.60 :getMaxCadence;
+        %tmp.62 = invoke %tmp.60 %tmp.61();
+        %tmp.63 = 5;
+        %tmp.64 = add %tmp.62 %tmp.63;
+        lputv %v.4 %tmp.64;
+        symbol [ v %v.4 28 16 17 ];
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 29 12 ]
+        %tmp.65 = lgetv %app.1;
+        symbol [ app %tmp.65 29 12 15 ];
+        symbol [ setMaxCadence %tmp.66 29 16 29 ];
+        %tmp.66 = getv function %tmp.65 :setMaxCadence;
+        %tmp.67 = lgetv %v.4;
+        symbol [ v %tmp.67 29 30 31 ];
+        invoke %tmp.65 %tmp.66(%tmp.67);
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 30 12 ]
+        symbol [ System %tmp.68 30 12 18 ];
+        %tmp.68 = getm $.Toybox.System;
+        symbol [ println %tmp.69 30 19 26 ];
+        %tmp.69 = getv function %tmp.68 :println;
+        %tmp.70 = "Max cadence set to ";
+        %tmp.71 = lgetv %v.4;
+        symbol [ v %tmp.71 30 51 52 ];
+        symbol [ toString %tmp.72 30 53 61 ];
+        %tmp.72 = getv function %tmp.71 :toString;
+        %tmp.73 = invoke %tmp.71 %tmp.72();
+        %tmp.74 = add %tmp.70 %tmp.73;
+        invoke %tmp.68 %tmp.69(%tmp.74);
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_27_42_31_8_stop:
+        goto @C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_27_15_42_8_if_end;
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_27_15_42_8_if_false:
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 31 15 ]
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_31_15_42_8_if_stmt:
+        %tmp.75 = lgetv %item;
+        symbol [ item %tmp.75 31 19 23 ];
+        %tmp.77 = const :item_dec_max;
+        symbol [ item_dec_max %tmp.77 31 28 40 const ];
+        %tmp.78 = eq %tmp.75 %tmp.77;
+        bf %tmp.78 @C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_31_15_42_8_if_false;
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_31_15_42_8_if_true:
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_31_42_38_8_start:
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 32 12 ]
+        [ "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_31_42_38_8_start" "C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_31_42_38_8_stop" ]
+        %v.5 = local;
+        symbol [ v %v.5 32 16 17 ];
+        %tmp.79 = lgetv %app.1;
+        symbol [ app %tmp.79 32 20 23 ];
+        symbol [ getMaxCadence %tmp.80 32 24 37 ];
+        %tmp.80 = getv function %tmp.79 :getMaxCadence;
+        %tmp.81 = invoke %tmp.79 %tmp.80();
+        %tmp.82 = 5;
+        %tmp.83 = sub %tmp.81 %tmp.82;
+        lputv %v.5 %tmp.83;
+        symbol [ v %v.5 32 16 17 ];
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 33 12 ]
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_33_12_35_12_if_stmt:
+        %tmp.84 = lgetv %v.5;
+        symbol [ v %tmp.84 33 16 17 ];
+        %tmp.85 = lgetv %app.1;
+        symbol [ app %tmp.85 33 21 24 ];
+        symbol [ getMinCadence %tmp.86 33 25 38 ];
+        %tmp.86 = getv function %tmp.85 :getMinCadence;
+        %tmp.87 = invoke %tmp.85 %tmp.86();
+        %tmp.88 = lte %tmp.84 %tmp.87;
+        bf %tmp.88 @C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_33_12_35_12_if_end;
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_33_12_35_12_if_true:
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_33_42_35_12_start:
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 34 16 ]
+        %tmp.89 = lgetv %app.1;
+        symbol [ app %tmp.89 34 20 23 ];
+        symbol [ getMinCadence %tmp.90 34 24 37 ];
+        %tmp.90 = getv function %tmp.89 :getMinCadence;
+        %tmp.91 = invoke %tmp.89 %tmp.90();
+        %tmp.92 = 1;
+        %tmp.93 = add %tmp.91 %tmp.92;
+        lputv %v.5 %tmp.93;
+        symbol [ v %v.5 34 16 17 ];
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_33_42_35_12_stop:
+        goto @C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_33_12_35_12_if_end;
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_33_12_35_12_if_end:
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 36 12 ]
+        %tmp.94 = lgetv %app.1;
+        symbol [ app %tmp.94 36 12 15 ];
+        symbol [ setMaxCadence %tmp.95 36 16 29 ];
+        %tmp.95 = getv function %tmp.94 :setMaxCadence;
+        %tmp.96 = lgetv %v.5;
+        symbol [ v %tmp.96 36 30 31 ];
+        invoke %tmp.94 %tmp.95(%tmp.96);
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 37 12 ]
+        symbol [ System %tmp.97 37 12 18 ];
+        %tmp.97 = getm $.Toybox.System;
+        symbol [ println %tmp.98 37 19 26 ];
+        %tmp.98 = getv function %tmp.97 :println;
+        %tmp.99 = "Max cadence set to ";
+        %tmp.100 = lgetv %v.5;
+        symbol [ v %tmp.100 37 51 52 ];
+        symbol [ toString %tmp.101 37 53 61 ];
+        %tmp.101 = getv function %tmp.100 :toString;
+        %tmp.102 = invoke %tmp.100 %tmp.101();
+        %tmp.103 = add %tmp.99 %tmp.102;
+        invoke %tmp.97 %tmp.98(%tmp.103);
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_31_42_38_8_stop:
+        goto @C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_31_15_42_8_if_end;
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_31_15_42_8_if_false:
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 38 15 ]
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_38_15_42_8_if_stmt:
+        %tmp.104 = lgetv %item;
+        symbol [ item %tmp.104 38 19 23 ];
+        %tmp.106 = const :item_reset_zones;
+        symbol [ item_reset_zones %tmp.106 38 28 44 const ];
+        %tmp.107 = eq %tmp.104 %tmp.106;
+        bf %tmp.107 @C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_38_15_42_8_if_end;
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_38_15_42_8_if_true:
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_38_46_42_8_start:
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 39 12 ]
+        %tmp.108 = lgetv %app.1;
+        symbol [ app %tmp.108 39 12 15 ];
+        symbol [ setMinCadence %tmp.109 39 16 29 ];
+        %tmp.109 = getv function %tmp.108 :setMinCadence;
+        %tmp.110 = 100;
+        invoke %tmp.108 %tmp.109(%tmp.110);
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 40 12 ]
+        %tmp.111 = lgetv %app.1;
+        symbol [ app %tmp.111 40 12 15 ];
+        symbol [ setMaxCadence %tmp.112 40 16 29 ];
+        %tmp.112 = getv function %tmp.111 :setMaxCadence;
+        %tmp.113 = 150;
+        invoke %tmp.111 %tmp.112(%tmp.113);
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 41 12 ]
+        symbol [ System %tmp.114 41 12 18 ];
+        %tmp.114 = getm $.Toybox.System;
+        symbol [ println %tmp.115 41 19 26 ];
+        %tmp.115 = getv function %tmp.114 :println;
+        %tmp.116 = "Cadence zones reset to 100-150";
+        invoke %tmp.114 %tmp.115(%tmp.116);
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_38_46_42_8_stop:
+        goto @C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_38_15_42_8_if_end;
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_38_15_42_8_if_end:
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_31_15_42_8_if_end:
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_27_15_42_8_if_end:
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_20_15_42_8_if_end:
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_13_8_42_8_if_end:
+[ "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc" 44 8 ]
+        symbol [ WatchUi %tmp.117 44 8 15 ];
+        %tmp.117 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.118 44 16 29 ];
+        %tmp.118 = getv function %tmp.117 :requestUpdate;
+        invoke %tmp.117 %tmp.118();
+C__Users_teapot_Documents_Projects_GarminCadenceMonitor_TestingCadence_source_TestingCadenceMenuDelegate_mc_11_48_45_4_stop:
+    }
+}
+[ @file = "C:\Users\teapot\Documents\Projects\GarminCadenceMonitor\TestingCadence\source\TestingCadenceMenuDelegate.mc"; @line = 1; ]
+<init> {
+}
