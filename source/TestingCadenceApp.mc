@@ -8,9 +8,6 @@ class TestingCadenceApp extends Application.AppBase {
     const HEIGHT_BASELINE = 170;
     const STEP_RATE = 6;
 
-<<<<<<< Updated upstream
-=======
-
     private var _idealMinCadence = 90;
     private var _idealMaxCadence = 100;
     private var _zoneHistory as Array<Float?> = new [MAX_BARS]; // Store 60 data points (1 minutes at 1-second intervals)
@@ -33,7 +30,6 @@ class TestingCadenceApp extends Application.AppBase {
     private var _userSpeed = 0;
     private var _trainingLvl = Beginner;
 
->>>>>>> Stashed changes
     function initialize() {
         AppBase.initialize();
     }
@@ -46,23 +42,12 @@ class TestingCadenceApp extends Application.AppBase {
 
     // onStop() is called when your application is exiting
     function onStop(state as Dictionary?) as Void {
+        if (_historyTimer != null) {
+            _historyTimer.stop();
+        }
     }
-        private var _minCadence = 100;
-        private var _maxCadence = 150;
 
-        function getMinCadence() as Number {
-            return _minCadence;
-        }
 
-<<<<<<< Updated upstream
-        function getMaxCadence() as Number {
-            return _maxCadence;
-        }
-
-        function setMinCadence(val as Number) as Void {
-            _minCadence = val;
-        }
-=======
     // Zone history management
     function updateZoneHistory() as Void {
         var info = Activity.getActivityInfo();
@@ -77,34 +62,33 @@ class TestingCadenceApp extends Application.AppBase {
         }
 
     }
-    
+
     function getMinCadence() as Number {
         return _idealMinCadence;
     }
-
+    
     function getMaxCadence() as Number {
         return _idealMaxCadence;
     }
 
-    function setMinCadence(val as Number) as Void {
-        _idealMinCadence = val;
+    function setMinCadence(value as Number) as Void {
+        _idealMinCadence = value;
     }
 
-    function setMaxCadence(val as Number) as Void {
-        _idealMaxCadence = val;
+    function setMaxCadence(value as Number) as Void {
+        _idealMaxCadence = value;
     }
 
     function getZoneHistory() as Array<Float?> {
         return _zoneHistory;
     }
->>>>>>> Stashed changes
-
-        function setMaxCadence(val as Number) as Void {
-            _maxCadence = val;
-        }
 
     function getHistoryCount() as Number {
         return _historyCount;
+    }
+
+    function getHistoryIndex() as Number {
+        return _historyIndex;
     }
 
     // Return the initial view of your application here

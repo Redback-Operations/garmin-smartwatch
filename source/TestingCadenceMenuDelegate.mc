@@ -36,8 +36,8 @@ class TestingCadenceMenuDelegate extends WatchUi.MenuInputDelegate {
             app.setMaxCadence(v);
             System.println("Max cadence set to " + v.toString());
         } else if (item == :item_reset_zones) {
-            app.setMinCadence(100);
-            app.setMaxCadence(150);
+            app.setMinCadence(90);
+            app.setMaxCadence(100);
             System.println("Cadence zones reset to 100-150");
         }
         // Request view to update so zone display refreshes
