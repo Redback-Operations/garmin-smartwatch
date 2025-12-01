@@ -10,8 +10,6 @@ The watch will vibrate as well as give visual display of the runners progress.
 
 ![This is the App whilst running when the user is in the Target Zone.](resources/images/AppRunningInZone.png)
 
-![This is the second screen of the app the chart is blue when below minimum, green in zone and red when abov.](resources/images/AppSecondScreen.png)
-
 ![This is the Complex Screen UI during idle.](resources/images/ComplexScreenIdle.png)
 
 ![This is the Complex Screen UI withd ata simulation, showing the color coded current cadence and progress chart that also changes height](resources/images/ComplexScreenRunning.png)
