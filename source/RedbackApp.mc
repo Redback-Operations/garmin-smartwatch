@@ -2,7 +2,7 @@ import Toybox.Application;
 import Toybox.Lang;
 import Toybox.WatchUi;
 
-class TestingCadenceApp extends Application.AppBase {
+class RedbackApp extends Application.AppBase {
 
     function initialize() {
         AppBase.initialize();
@@ -36,11 +36,11 @@ class TestingCadenceApp extends Application.AppBase {
 
     // Return the initial view of your application here
     function getInitialView() as [Views] or [Views, InputDelegates] {
-        return [ new TestingCadenceView(), new TestingCadenceDelegate() ];
+        return [ new MainView(), new MainDelegate() ];
     }
 
 }
 
-function getApp() as TestingCadenceApp {
-    return Application.getApp() as TestingCadenceApp;
+function getApp() as RedbackApp {
+    return Application.getApp() as RedbackApp;
 }

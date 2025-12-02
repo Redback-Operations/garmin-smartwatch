@@ -5,7 +5,7 @@ import Toybox.Lang;
 import Toybox.Timer;
 import Toybox.System;
 
-class TestingCadenceView extends WatchUi.View {
+class MainView extends WatchUi.View {
 
     private var _cadenceDisplay;
     private var _refreshTimer;

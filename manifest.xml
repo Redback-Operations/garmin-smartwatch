@@ -6,6 +6,7 @@
         to update the application attributes.
     -->
     <iq:application id="e3346ac3-9f17-40cc-acc5-3d121be6c5e9" type="watch-app" name="@Strings.AppName" entry="TestingCadenceApp" launcherIcon="@Drawables.LauncherIcon" minApiLevel="5.2.0">
+
         <!--
             Use the following from the Visual Studio Code comand palette to edit
             the build targets:
