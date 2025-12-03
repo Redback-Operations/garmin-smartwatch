@@ -27,7 +27,7 @@ class MainView extends WatchUi.View {
         View.initialize();
         _refreshTimer = new Timer.Timer();
         //Updated the refersh timer to 3 seconds to help preserve battery life
-        _refreshTimer.start(method(:refreshScreen), 3000, true);
+        _refreshTimer.start(method(:refreshScreen), 1000, true);
     }
 
     // Load your resources here
