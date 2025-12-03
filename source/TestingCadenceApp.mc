@@ -16,8 +16,6 @@ class TestingCadenceApp extends Application.AppBase {
     private var _historyCount = 0;
     private var _historyTimer;
 
-    
-    //private var _valueCount = 0;
     //dummy value for cadence range
     enum {
         Beginner = 0.96,
