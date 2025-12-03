@@ -25,4 +25,8 @@ class MainDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
+    function onBack() as Boolean {
+        return true;
+    }
+
 }
