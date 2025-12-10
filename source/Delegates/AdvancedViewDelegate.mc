@@ -30,7 +30,7 @@ class AdvancedViewDelegate extends WatchUi.BehaviorDelegate {
         if (direction == WatchUi.SWIPE_DOWN) {
             System.println("Swiped Up");
             WatchUi.popView(WatchUi.SLIDE_UP);
-        } 
+        }
 
         return true;
     }
