@@ -10,6 +10,16 @@ class AdvancedViewDelegate extends WatchUi.BehaviorDelegate {
         BehaviorDelegate.initialize();
     }
 
+    function onMenu(){
+        //called by the timer after 1s hold
+        var menu = new WatchUi.Menu2({:resources => "menus/menu.xml"});
+
+        WatchUi.pushView(new Rez.Menus.MainMenu(), new SelectCadenceDelegate(menu), WatchUi.SLIDE_BLINK);
+
+        return true;
+
+    }
+
     function onKey(keyEvent as WatchUi.KeyEvent){
         var key = keyEvent.getKey();
 
@@ -30,9 +40,17 @@ class AdvancedViewDelegate extends WatchUi.BehaviorDelegate {
         if (direction == WatchUi.SWIPE_DOWN) {
             System.println("Swiped Up");
             WatchUi.popView(WatchUi.SLIDE_UP);
+            return true;
         }
 
-        return true;
+        if(direction == WatchUi.SWIPE_LEFT){
+            var currentView = new SettingsView();
+            System.println("Swiped Left");
+            WatchUi.pushView(currentView, new SettingsDelegate(currentView), WatchUi.SLIDE_LEFT);
+            return true;
+        }
+
+        return false;
     }
 
     function onBack(){
