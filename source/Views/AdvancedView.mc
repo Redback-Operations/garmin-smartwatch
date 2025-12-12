@@ -7,16 +7,12 @@ import Toybox.System;
 
 class AdvancedView extends WatchUi.View {
     const MAX_BARS = 60;
-    const BASELINE_AVG_CADENCE = 150;
     const MAX_CADENCE_DISPLAY = 200;
-    const HEIGHT_BASELINE = 170;
-    const STEP_RATE = 6;
 
     private var _simulationTimer;
 
     function initialize() {
         View.initialize();
-        
     }
 
     function onShow() as Void {
@@ -114,6 +110,8 @@ class AdvancedView extends WatchUi.View {
 
         drawChart(dc);
     }
+
+
 
     /**
     Functions to continous update the chart with live cadence data. 
