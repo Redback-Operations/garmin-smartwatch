@@ -25,8 +25,6 @@ class SimpleView extends WatchUi.View {
 
     function initialize() {
         View.initialize();
-        _refreshTimer = new Timer.Timer();
-        _refreshTimer.start(method(:refreshScreen), 1000, true);
     }
 
     // Load your resources here
@@ -43,6 +41,8 @@ class SimpleView extends WatchUi.View {
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() as Void {
+        _refreshTimer = new Timer.Timer();
+        _refreshTimer.start(method(:refreshScreen), 1000, true);
     }
 
     // Update the view
@@ -57,6 +57,10 @@ class SimpleView extends WatchUi.View {
     // state of this View here. This includes freeing resources from
     // memory.
     function onHide() as Void {
+        if (_refreshTimer != null) {
+            _refreshTimer.stop();
+            _refreshTimer = null;
+        }
     }
 
     function refreshScreen() as Void{

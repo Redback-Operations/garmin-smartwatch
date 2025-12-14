@@ -12,6 +12,7 @@ class SettingsDelegate extends WatchUi.InputDelegate {
         _view = view;
     }
 
+
     function onBack() as Boolean{
         WatchUi.popView(WatchUi.SLIDE_DOWN);
         return true;

@@ -4,17 +4,14 @@ import Toybox.WatchUi;
 
 class GarminApp extends Application.AppBase {
     const MAX_BARS = 60;
-    const BASELINE_AVG_CADENCE = 150;
-    const HEIGHT_BASELINE = 170;
-    const STEP_RATE = 6;
 
-    private var _idealMinCadence = 90;
+    private var _idealMinCadence = 80;
     private var _idealMaxCadence = 100;
-    private var _zoneHistory as Array<Float?> = new [MAX_BARS]; // Store 60 data points (1 minutes at 1-second intervals)
-    
-    private var _historyIndex = 0;
-    private var _historyCount = 0;
-    private var _historyTimer;
+    private var _cadenceIndex = 0;
+    private var _cadenceCount = 0;
+    private var _cadenceHistory as Array<Float?> = new [MAX_BARS]; // Store 60 data points (1 minutes at 1-second intervals)
+
+    var globalTimer;
 
     enum {
         Beginner = 0.96,
@@ -33,30 +30,32 @@ class GarminApp extends Application.AppBase {
 
     // onStart() is called on application start up
     function onStart(state as Dictionary?) as Void {
-        _historyTimer = new Timer.Timer();
-        _historyTimer.start(method(:updateZoneHistory), 1000, true);
+        globalTimer = new Timer.Timer();
+        globalTimer.start(method(:updateCadence),1000,true);
     }
 
     // onStop() is called when your application is exiting
     function onStop(state as Dictionary?) as Void {
-        if (_historyTimer != null) {
-            _historyTimer.stop();
+        if(globalTimer != null){
+            globalTimer.stop();
+            globalTimer = null;
         }
     }
 
 
-    // Zone history management
-    function updateZoneHistory() as Void {
+    function updateCadence() as Void {
         var info = Activity.getActivityInfo();
         
         //var zoneState = null;
         if (info != null && info.currentCadence != null) {
-            var newCadence = info.currentCadence.toFloat();
-            _zoneHistory[_historyIndex] = newCadence;
+            var newCadence = info.currentCadence;
+            _cadenceHistory[_cadenceIndex] = newCadence.toFloat();
             // Add to circular buffer
-            _historyIndex = (_historyIndex + 1) % MAX_BARS;
-            if (_historyCount < MAX_BARS) { _historyCount++; }
+            _cadenceIndex = (_cadenceIndex + 1) % MAX_BARS;
+            if (_cadenceCount < MAX_BARS) { _cadenceCount++; }
         }
+
+        //WatchUi.requestUpdate();
 
     }
 
@@ -65,7 +64,19 @@ class GarminApp extends Application.AppBase {
     }
     
     function getMaxCadence() as Number {
-        return _idealMaxCadence;
+        return _idealMaxCadence;    
+    }
+
+    function getCadenceHistory() as Array<Float?> {
+        return _cadenceHistory;
+    }
+
+    function getCadenceIndex() as Number {
+        return _cadenceIndex;
+    }
+
+    function getCadenceCount() as Number {
+        return _cadenceCount;
     }
 
     function setMinCadence(value as Number) as Void {
@@ -76,25 +87,13 @@ class GarminApp extends Application.AppBase {
         _idealMaxCadence = value;
     }
 
-    function getZoneHistory() as Array<Float?> {
-        return _zoneHistory;
-    }
-
-    function getHistoryCount() as Number {
-        return _historyCount;
-    }
-
-    function getHistoryIndex() as Number {
-        return _historyIndex;
-    }
-
     // Return the initial view of your application here
     function getInitialView() as [Views] or [Views, InputDelegates] {
         return [ new SimpleView(), new SimpleViewDelegate() ];
     }
 
+    
 }
-
 function getApp() as GarminApp {
     return Application.getApp() as GarminApp;
 }

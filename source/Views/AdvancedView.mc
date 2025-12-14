@@ -7,23 +7,28 @@ import Toybox.System;
 
 class AdvancedView extends WatchUi.View {
     const MAX_BARS = 60;
+    const BASELINE_AVG_CADENCE = 150;
     const MAX_CADENCE_DISPLAY = 200;
+    const HEIGHT_BASELINE = 170;
+    const STEP_RATE = 6;
 
-    //display variable
-    private var _refreshTimer;
-
+    private var _simulationTimer;
 
     function initialize() {
         View.initialize();
-    }
-
-    function onLayout(dc as Dc) as Void {
-        // No layout file needed - we'll draw directly
+        
     }
 
     function onShow() as Void {
-        _refreshTimer = new Timer.Timer();
-        _refreshTimer.start(method(:refreshScreen), 1000, true);
+        _simulationTimer = new Timer.Timer();
+        _simulationTimer.start(method(:refreshScreen), 1000, true);
+    }
+
+    function onHide() as Void {
+        if (_simulationTimer != null) {
+            _simulationTimer.stop();
+            _simulationTimer = null;
+        }
     }
 
     function onUpdate(dc as Dc) as Void {
@@ -32,16 +37,11 @@ class AdvancedView extends WatchUi.View {
         drawElements(dc);
     }
 
-    function onHide() as Void {
-        if (_refreshTimer != null) {
-            _refreshTimer.stop();
-            _refreshTimer = null;
-        }
-    }
-
     function refreshScreen() as Void {
         WatchUi.requestUpdate();
     }
+
+
 
     function drawElements(dc as Dc) as Void {
         var width = dc.getWidth();
@@ -111,15 +111,14 @@ class AdvancedView extends WatchUi.View {
             correctColor(info.currentCadence, idealMinCadence, idealMaxCadence, dc);
             dc.drawText(width / 2, cadenceY + 20, Graphics.FONT_XTINY, info.currentCadence.toString() + "  spm", Graphics.TEXT_JUSTIFY_CENTER);
         }
-        
-        // Draw the chart at the bottom
+
         drawChart(dc);
     }
 
     /**
-    Function to continous update the chart with live cadence data. 
+    Functions to continous update the chart with live cadence data. 
     The chart is split into bars each representing a candence reading,
-    Each bar data is retrieve from an ZoneHistory array which is updated every tick
+    Each bar data is retrieve from an cadencecadence array which is updated every tick
     Each update the watchUI redraws the chart with the latest data.
     }
     **/
@@ -147,25 +146,25 @@ class AdvancedView extends WatchUi.View {
         
         // Get data from app
         var app = getApp();
-        var zoneHistory = app.getZoneHistory();
-        var historyIndex = app.getHistoryIndex();
         var idealMinCadence = app.getMinCadence();
         var idealMaxCadence = app.getMaxCadence();
-        var historyCount = app.getHistoryCount();
+        var cadenceHistory = app.getCadenceHistory();
+        var cadenceIndex = app.getCadenceIndex();
+        var cadenceCount = app.getCadenceCount();
         //check array ?null
-        if(historyCount == 0) {return;}
+        if(cadenceCount == 0) {return;}
 
         // Calculate bar width
-        var numBars = historyCount;
+        var numBars = cadenceCount;
         if(numBars == 0) { return; }
         var barWidth = chartWidth / MAX_BARS;
 
-        var startIndex = (historyIndex - numBars + MAX_BARS) % MAX_BARS;
+        var startIndex = (cadenceIndex - numBars + MAX_BARS) % MAX_BARS;
         
         // Draw bars
         for (var i = 0; i < numBars; i++) {
             var index = (startIndex + i) % MAX_BARS; // Start from oldest data
-            var cadence = zoneHistory[index];
+            var cadence = cadenceHistory[index];
             if(cadence == null) {cadence = 0;}
                 
             //calculate bar height and position
