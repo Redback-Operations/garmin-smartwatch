@@ -36,7 +36,7 @@ class GarminApp extends Application.AppBase {
         _userHeight = 170;
         _userSpeed = 3.8;
         _experienceLvl = Beginner;
-        _userGender = Male;
+        _userGender = Female;
     }
 
     function initialize() {
@@ -91,10 +91,10 @@ class GarminApp extends Application.AppBase {
                 referenceCadence = (-1.268 * userLegLength) + (3.471 * _userSpeed) + 261.378;
                 break;
             case Female:
-                referenceCadence = -1.190 * userLegLength + 3.705 * _userSpeed + 249.688;
+                referenceCadence = (-1.190 * userLegLength) + (3.705 * _userSpeed) + 249.688;
                 break;
             default:
-                referenceCadence = -1.251 * userLegLength + 3.665 * _userSpeed + 254.858;
+                referenceCadence = (-1.251 * userLegLength) + (3.665 * _userSpeed) + 254.858;
                 break;
         }
 
