@@ -2,6 +2,7 @@ import Toybox.Application.Storage;
 import Toybox.Lang;
 import Toybox.System;
 import Toybox.Time;
+import Toybox.Activity;
 
 /**
  * Logger module for debugging, system events, and crash logging
@@ -214,24 +215,31 @@ module Logger {
     /**
      * Log activity data for debugging
      */
-    function logActivityInfo(tag as String, info as Activity.Info?) as Void {
+    function logActivityInfo(tag as String, info as Lang.Object) as Void {
         if (info == null) {
             log(WARNING, tag, "Activity info is null");
             return;
         }
         
+        var activityInfo = info;
         var msg = "Activity - ";
-        if (info.currentCadence != null) {
-            msg += "Cadence:" + info.currentCadence + " ";
-        }
-        if (info.currentHeartRate != null) {
-            msg += "HR:" + info.currentHeartRate + " ";
-        }
-        if (info.elapsedDistance != null) {
-            msg += "Dist:" + (info.elapsedDistance / 100000.0).format("%.2f") + "km ";
-        }
-        if (info.timerTime != null) {
-            msg += "Time:" + (info.timerTime / 1000) + "s";
+        
+        // Safely access properties
+        try {
+            if (activityInfo has :currentCadence && activityInfo.currentCadence != null) {
+                msg += "Cadence:" + activityInfo.currentCadence + " ";
+            }
+            if (activityInfo has :currentHeartRate && activityInfo.currentHeartRate != null) {
+                msg += "HR:" + activityInfo.currentHeartRate + " ";
+            }
+            if (activityInfo has :elapsedDistance && activityInfo.elapsedDistance != null) {
+                msg += "Dist:" + (activityInfo.elapsedDistance / 100000.0).format("%.2f") + "km ";
+            }
+            if (activityInfo has :timerTime && activityInfo.timerTime != null) {
+                msg += "Time:" + (activityInfo.timerTime / 1000) + "s";
+            }
+        } catch (e) {
+            msg += "Error reading activity info";
         }
         
         log(DEBUG, tag, msg);
