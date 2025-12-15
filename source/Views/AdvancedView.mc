@@ -115,7 +115,7 @@ class AdvancedView extends WatchUi.View {
         }
     }
 
-    function drawElapsedTime(dc as Dc, width as Number, height as Number, info as Lang.Object) as Void {
+    function drawElapsedTime(dc as Dc, width as Number, height as Number, info) as Void {
         try {
             if (info != null && info.timerTime != null) {
                 var seconds = info.timerTime / 1000;
@@ -131,7 +131,7 @@ class AdvancedView extends WatchUi.View {
         }
     }
 
-    function drawHeartRate(dc as Dc, width as Number, height as Number, info as Lang.Object) as Void {
+    function drawHeartRate(dc as Dc, width as Number, height as Number, info) as Void {
         try {
             var hrX = width / 4;
             var hrY = (height * 2) / 5;
@@ -150,7 +150,7 @@ class AdvancedView extends WatchUi.View {
         }
     }
 
-    function drawDistance(dc as Dc, width as Number, height as Number, info as Lang.Object) as Void {
+    function drawDistance(dc as Dc, width as Number, height as Number, info) as Void {
         try {
             var distX = (width * 3) / 4;
             var distY = (height * 2) / 5;
@@ -186,7 +186,7 @@ class AdvancedView extends WatchUi.View {
         }
     }
 
-    function drawCurrentCadence(dc as Dc, width as Number, height as Number, info as Lang.Object, app as GarminApp) as Void {
+    function drawCurrentCadence(dc as Dc, width as Number, height as Number, info, app as GarminApp) as Void {
         try {
             var cadenceY = height * 0.8;
             var idealMinCadence = app.getMinCadence();

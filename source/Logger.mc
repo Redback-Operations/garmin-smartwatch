@@ -215,32 +215,38 @@ module Logger {
     /**
      * Log activity data for debugging
      */
-    function logActivityInfo(tag as String, info as Lang.Object) as Void {
+    function logActivityInfo(tag as String, info) as Void {
         if (info == null) {
             log(WARNING, tag, "Activity info is null");
             return;
         }
         
-        var activityInfo = info;
         var msg = "Activity - ";
         
-        // Safely access properties
+        // Directly access properties - Monkey C will handle gracefully
         try {
-            if (activityInfo has :currentCadence && activityInfo.currentCadence != null) {
-                msg += "Cadence:" + activityInfo.currentCadence + " ";
+            if (info.currentCadence != null) {
+                msg += "Cadence:" + info.currentCadence + " ";
             }
-            if (activityInfo has :currentHeartRate && activityInfo.currentHeartRate != null) {
-                msg += "HR:" + activityInfo.currentHeartRate + " ";
+        } catch (e) {}
+        
+        try {
+            if (info.currentHeartRate != null) {
+                msg += "HR:" + info.currentHeartRate + " ";
             }
-            if (activityInfo has :elapsedDistance && activityInfo.elapsedDistance != null) {
-                msg += "Dist:" + (activityInfo.elapsedDistance / 100000.0).format("%.2f") + "km ";
+        } catch (e) {}
+        
+        try {
+            if (info.elapsedDistance != null) {
+                msg += "Dist:" + (info.elapsedDistance / 100000.0).format("%.2f") + "km ";
             }
-            if (activityInfo has :timerTime && activityInfo.timerTime != null) {
-                msg += "Time:" + (activityInfo.timerTime / 1000) + "s";
+        } catch (e) {}
+        
+        try {
+            if (info.timerTime != null) {
+                msg += "Time:" + (info.timerTime / 1000) + "s";
             }
-        } catch (e) {
-            msg += "Error reading activity info";
-        }
+        } catch (e) {}
         
         log(DEBUG, tag, msg);
     }
