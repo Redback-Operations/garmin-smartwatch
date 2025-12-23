@@ -17,7 +17,7 @@ class AdvancedView extends WatchUi.View {
 
     function onShow() as Void {
         _simulationTimer = new Timer.Timer();
-        _simulationTimer.start(method(:refreshScreen), 1000, true);
+        _simulationTimer.start(method(:refreshScreen), 3000, true);
     }
 
     function onHide() as Void {
@@ -50,15 +50,15 @@ class AdvancedView extends WatchUi.View {
             var seconds = info.timerTime / 1000;
             var hours = seconds / 3600;
             var minutes = (seconds % 3600) / 60;
-            var secs = seconds % 60;
-            var timeStr = hours.format("%01d") + ":" + minutes.format("%02d") + "." + secs.format("%02d");
+            //var secs = seconds % 60;
+            var timeStr = hours.format("%01d") + ":" + minutes.format("%02d"); //+ "." + secs.format("%02d");
             dc.setColor(0xFFF813, Graphics.COLOR_TRANSPARENT);
             dc.drawText(width / 2, 3, Graphics.FONT_LARGE, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
         }
         
         // Draw heart rate circle (left, dark red RGB: 211,19,2519
         var hrX = width / 4;
-        var hrY = (height * 2) / 5;
+        var hrY = (height * 2) / 7;
         var circleRadius = 42;
         
         dc.setColor(0x9D0000, Graphics.COLOR_TRANSPARENT);
@@ -87,7 +87,7 @@ class AdvancedView extends WatchUi.View {
         //draw ideal cadence range
         var idealMinCadence = app.getMinCadence();
         var idealMaxCadence = app.getMaxCadence();
-        var idealCadenceY = height * 0.45;
+        var idealCadenceY = height * 0.37;
         
 
         if(idealMinCadence != null && idealMaxCadence != null){
@@ -127,20 +127,41 @@ class AdvancedView extends WatchUi.View {
         //margins value
         var margin = width * 0.1;
         var marginLeftRightMultiplier = 1.2;
-        var marginTopMultiplier = 0.5;
+        //var marginTopMultiplier = 0.5;
         var marginBottomMultiplier = 2;
 
         //chart position
         var chartLeft = margin * marginLeftRightMultiplier;
         var chartRight = width - chartLeft;
-        var chartTop = height * 0.5 + margin * marginTopMultiplier;
+        var chartTop = height * 0.45;
         var chartBottom = height - margin*marginBottomMultiplier;
         var chartWidth = chartRight - chartLeft;
         var chartHeight = chartBottom - chartTop;
-        
+        var quarterChartHeight = chartHeight / 4;
+
+        //bar zone
+        var barZoneLeft = chartLeft + 0.5;
+        var barZoneRight = chartRight - 1.25;
+        var barZoneWidth = barZoneRight - barZoneLeft;
+
+        //additional line indicator
+        var nLine = 3;
+        var line1x1 = chartLeft - margin * 0.25;
+        var line1x2 = chartLeft;
+        var line2x1 = chartRight;
+        var line2x2 = chartRight + margin * 0.25;
+        var lineY = chartTop + quarterChartHeight;
+
+
         // Draw white border around chart (RGB: 255,255,255 = 0xFFFFFF)
-        dc.setColor(0xFFFFFF, Graphics.COLOR_TRANSPARENT);
+        dc.setColor(0x969696, Graphics.COLOR_TRANSPARENT);
         dc.drawRectangle(chartLeft, chartTop, chartWidth, chartHeight);
+        for(var i = 0; i < nLine; i++){
+            dc.drawLine(line1x1,lineY,line1x2,lineY);
+            dc.drawLine(line2x1,lineY,line2x2,lineY);
+            lineY += quarterChartHeight;
+        }
+        
         
         // Get data from app
         var app = getApp();
@@ -155,7 +176,7 @@ class AdvancedView extends WatchUi.View {
         // Calculate bar width
         var numBars = cadenceCount;
         if(numBars == 0) { return; }
-        var barWidth = chartWidth / MAX_BARS;
+        var barWidth = barZoneWidth / MAX_BARS;
 
         var startIndex = (cadenceIndex - numBars + MAX_BARS) % MAX_BARS;
         
@@ -167,13 +188,13 @@ class AdvancedView extends WatchUi.View {
                 
             //calculate bar height and position
             var barHeight = (cadence / MAX_CADENCE_DISPLAY) * chartHeight;
-            var x = chartLeft + i * barWidth;
+            var x = barZoneLeft + i * barWidth;
             var y = chartBottom - barHeight;
 
             //seperation between each bar
-            var barOffset = 1;
+            var barOffset = 0;
             correctColor(cadence, idealMinCadence, idealMaxCadence, dc);
-            dc.fillRectangle(x, y, barWidth-barOffset, barHeight);
+            dc.fillRectangle(x, y, barWidth+barOffset, barHeight);
         }
     }
 }

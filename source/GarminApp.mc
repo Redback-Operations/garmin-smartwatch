@@ -46,7 +46,7 @@ class GarminApp extends Application.AppBase {
     // onStart() is called on application start up
     function onStart(state as Dictionary?) as Void {
         globalTimer = new Timer.Timer();
-        globalTimer.start(method(:updateCadence),1000,true);
+        globalTimer.start(method(:updateCadence),3000,true);
         dummyValueTesting();
         /*
             remember to remove after testing
