@@ -4,6 +4,7 @@ import Toybox.WatchUi;
 import Toybox.Timer;
 import Toybox.Activity;
 import Toybox.System;
+import Toybox.ActivityRecording;
 
 class GarminApp extends Application.AppBase {
     const MAX_BARS = 60;
@@ -15,6 +16,8 @@ class GarminApp extends Application.AppBase {
     private var _cadenceHistory as Array<Float?> = new [MAX_BARS];
 
     var globalTimer;
+    var session as ActivityRecording.Session?;
+    var isRecording as Boolean = false;
 
     enum {
         Beginner = 0.96,
@@ -44,6 +47,11 @@ class GarminApp extends Application.AppBase {
     function onStop(state as Dictionary?) as Void {
         System.println("[INFO] App stopping");
         
+        // Stop recording if active
+        if (isRecording && session != null) {
+            stopRecording();
+        }
+        
         if(globalTimer != null){
             globalTimer.stop();
             globalTimer = null;
@@ -51,6 +59,60 @@ class GarminApp extends Application.AppBase {
         
         // Log memory on shutdown
         Logger.logMemoryStats("Shutdown");
+    }
+
+    function startRecording() as Void {
+        if (!isRecording) {
+            System.println("[INFO] Starting activity recording");
+            
+            // Create a new session
+            session = ActivityRecording.createSession({
+                :name => "Cadence Training",
+                :sport => ActivityRecording.SPORT_RUNNING,
+                :subSport => ActivityRecording.SUB_SPORT_GENERIC
+            });
+            
+            if (session != null) {
+                session.start();
+                isRecording = true;
+                System.println("[INFO] Recording started successfully");
+            } else {
+                System.println("[ERROR] Failed to create session");
+            }
+        }
+    }
+
+    function stopRecording() as Void {
+        if (isRecording && session != null) {
+            System.println("[INFO] Stopping activity recording");
+            session.stop();
+            isRecording = false;
+            System.println("[INFO] Recording stopped");
+        }
+    }
+
+    function saveRecording() as Void {
+        if (session != null) {
+            System.println("[INFO] Saving activity");
+            session.save();
+            session = null;
+            isRecording = false;
+            System.println("[INFO] Activity saved");
+        }
+    }
+
+    function discardRecording() as Void {
+        if (session != null) {
+            System.println("[INFO] Discarding activity");
+            session.discard();
+            session = null;
+            isRecording = false;
+            System.println("[INFO] Activity discarded");
+        }
+    }
+
+    function isActivityRecording() as Boolean {
+        return isRecording;
     }
 
     function updateCadence() as Void {

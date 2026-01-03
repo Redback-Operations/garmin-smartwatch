@@ -49,6 +49,10 @@ class SimpleView extends WatchUi.View {
     function onUpdate(dc as Dc) as Void {
         //update the display for current cadence
         displayCadence();
+        
+        // Draw recording indicator
+        drawRecordingIndicator(dc);
+        
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
     }
@@ -65,6 +69,28 @@ class SimpleView extends WatchUi.View {
 
     function refreshScreen() as Void{
         WatchUi.requestUpdate();
+    }
+
+    function drawRecordingIndicator(dc as Dc) as Void {
+        var app = getApp();
+        
+        if (app.isActivityRecording()) {
+            // Draw a red recording indicator in top-right corner
+            dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+            var width = dc.getWidth();
+            var radius = 8;
+            dc.fillCircle(width - 15, 15, radius);
+            
+            // Add "REC" text next to the indicator
+            dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(width - 35, 5, Graphics.FONT_TINY, "REC", Graphics.TEXT_JUSTIFY_RIGHT);
+        } else {
+            // Draw instruction text at bottom
+            dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+            var width = dc.getWidth();
+            var height = dc.getHeight();
+            dc.drawText(width / 2, height - 25, Graphics.FONT_TINY, "Press SELECT to start", Graphics.TEXT_JUSTIFY_CENTER);
+        }
     }
 
     function displayCadence() as Void{
