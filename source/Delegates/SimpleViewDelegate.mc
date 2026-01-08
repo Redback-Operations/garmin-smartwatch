@@ -19,6 +19,24 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
     }
 
+    function onSelect() as Boolean {
+        // Toggle recording on/off with SELECT button
+        var app = getApp();
+        
+        if (app.isActivityRecording()) {
+            // Show stop menu
+            var menu = new WatchUi.Menu2({:title => "Stop Recording?"});
+            menu.addItem(new WatchUi.MenuItem("Yes", null, :stop_yes, {}));
+            menu.addItem(new WatchUi.MenuItem("No", null, :stop_no, {}));
+            WatchUi.pushView(menu, new StopMenuDelegate(), WatchUi.SLIDE_IMMEDIATE);
+        } else {
+            // Start recording immediately
+            app.startRecording();
+            WatchUi.requestUpdate();
+        }
+        
+        return true;
+    }
 
     function onKey(keyEvent as WatchUi.KeyEvent){
         var key = keyEvent.getKey();
@@ -65,4 +83,65 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
+}
+
+// Delegate for handling stop menu selection
+class StopMenuDelegate extends WatchUi.Menu2InputDelegate {
+    
+    function initialize() {
+        Menu2InputDelegate.initialize();
+    }
+
+    function onSelect(item as MenuItem) as Void {
+        var id = item.getId();
+        
+        if (id == :stop_yes) {
+            // User selected YES to stop - show save menu
+            var menu = new WatchUi.Menu2({:title => "Save Activity?"});
+            menu.addItem(new WatchUi.MenuItem("Save", null, :save_yes, {}));
+            menu.addItem(new WatchUi.MenuItem("Discard", null, :save_no, {}));
+            WatchUi.pushView(menu, new SaveMenuDelegate(), WatchUi.SLIDE_IMMEDIATE);
+        } else if (id == :stop_no) {
+            // User selected NO - continue recording
+            WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+        }
+    }
+    
+    function onBack() as Void {
+        // BACK button cancels
+        WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+    }
+}
+
+// Delegate for handling save menu selection
+class SaveMenuDelegate extends WatchUi.Menu2InputDelegate {
+    
+    function initialize() {
+        Menu2InputDelegate.initialize();
+    }
+
+    function onSelect(item as MenuItem) as Void {
+        var id = item.getId();
+        var app = getApp();
+        
+        if (id == :save_yes) {
+            // Save the activity
+            app.stopRecording();
+            app.saveRecording();
+        } else if (id == :save_no) {
+            // Discard the activity
+            app.stopRecording();
+            app.discardRecording();
+        }
+        
+        // Pop both menus (save and stop)
+        WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+        WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+        WatchUi.requestUpdate();
+    }
+    
+    function onBack() as Void {
+        // BACK button goes back to stop menu
+        WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+    }
 }

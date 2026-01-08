@@ -24,6 +24,8 @@
         <iq:permissions>
             <iq:uses-permission id="Fit"/>
             <iq:uses-permission id="Notifications"/>
+            <iq:uses-permission id="PersistedLocations"/>
+            <iq:uses-permission id="Positioning"/>
             <iq:uses-permission id="Sensor"/>
             <iq:uses-permission id="SensorHistory"/>
             <iq:uses-permission id="SensorLogging"/>
