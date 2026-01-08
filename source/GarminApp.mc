@@ -8,6 +8,24 @@ import Toybox.ActivityRecording;
 
 class GarminApp extends Application.AppBase {
     const MAX_BARS = 60;
+    const BASELINE_AVG_CADENCE = 160;
+    const MAX_CADENCE = 190;
+
+    var globalTimer;
+    var session as ActivityRecording.Session?;
+    var isRecording as Boolean = false;
+
+    enum {
+        Beginner = 1.06,
+        Intermediate = 1.04,
+        Advanced = 1.02
+    }
+
+    enum {
+        Male,
+        Female,
+        Other
+    }
 
     private var _idealMinCadence = 80;
     private var _idealMaxCadence = 100;
@@ -15,19 +33,17 @@ class GarminApp extends Application.AppBase {
     private var _cadenceCount = 0;
     private var _cadenceHistory as Array<Float?> = new [MAX_BARS];
 
-    var globalTimer;
-    var session as ActivityRecording.Session?;
-    var isRecording as Boolean = false;
+    private var _userHeight = null;//>>cm
+    private var _userSpeed = null;//>>m/s
+    private var _experienceLvl = null;
+    private var _userGender = null;
 
-    enum {
-        Beginner = 0.96,
-        Intermediate = 1,
-        Advanced = 1.04
+    function dummyValueTesting() as Void {
+        _userHeight = 170;
+        _userSpeed = 3.8;
+        _experienceLvl = Beginner;
+        _userGender = Female;
     }
-
-    private var _userHeight = 160;
-    private var _userSpeed = 0;
-    private var _trainingLvl = Beginner;
 
     function initialize() {
         AppBase.initialize();
@@ -42,6 +58,11 @@ class GarminApp extends Application.AppBase {
         
         globalTimer = new Timer.Timer();
         globalTimer.start(method(:updateCadence), 1000, true);
+        dummyValueTesting();
+        /*
+            remember to remove after testing
+        */
+        idealCadenceCalculator();
     }
 
     function onStop(state as Dictionary?) as Void {
@@ -131,6 +152,38 @@ class GarminApp extends Application.AppBase {
         }
     }
 
+    function idealCadenceCalculator() as Void {
+        var referenceCadence = 0;
+        var finalCadence = 0;
+        var userLegLength = _userHeight * 0.53;
+        
+
+        //reference cadence
+        switch (_userGender) {
+            case Male:
+                referenceCadence = (-1.268 * userLegLength) + (3.471 * _userSpeed) + 261.378;
+                break;
+            case Female:
+                referenceCadence = (-1.190 * userLegLength) + (3.705 * _userSpeed) + 249.688;
+                break;
+            default:
+                referenceCadence = (-1.251 * userLegLength) + (3.665 * _userSpeed) + 254.858;
+                break;
+        }
+
+        //experience adjustment
+        referenceCadence = referenceCadence * _experienceLvl;
+
+        //apply threshold
+        referenceCadence = Math.round(referenceCadence);
+        finalCadence = max(BASELINE_AVG_CADENCE,min(referenceCadence,MAX_CADENCE)).toNumber();
+
+        //set new min max ideal cadence 
+        _idealMaxCadence = finalCadence + 5;
+        _idealMinCadence = finalCadence - 5;
+    }
+
+
     function getMinCadence() as Number {
         return _idealMinCadence;
     }
@@ -159,6 +212,48 @@ class GarminApp extends Application.AppBase {
         _idealMaxCadence = value;
     }
 
+    function getUserGender() as String {
+        return _userGender;
+    }
+
+    function setUserGender(value as String) as Void {
+        _userGender = value;
+    }
+
+    function getUserLegLength() as Float {
+        return _userHeight * 0.53;
+    }
+
+    function setUserHeight(value as Number) as Void {
+        _userHeight = value;
+    }
+
+    function getUserSpeed() as Float {
+        return _userSpeed;
+    }
+
+    function setUserSpeed(value as Float) as Void {
+        _userSpeed = value;
+    }
+
+    function getExperienceLvl() as Number {
+        return _experienceLvl;
+    }
+
+    //double check ltr
+    function setExperienceLvl(value as Number) as Void {
+        _experienceLvl = value;
+    }
+
+    function min(a,b){
+        return (a < b) ? a : b;
+    }
+
+    function max(a,b){
+        return (a > b) ? a : b;
+    }
+
+    // Return the initial view of your application here
     function getInitialView() as [Views] or [Views, InputDelegates] {
         return [ new SimpleView(), new SimpleViewDelegate() ];
     }
