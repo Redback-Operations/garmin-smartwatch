@@ -157,7 +157,6 @@ class GarminApp extends Application.AppBase {
         var finalCadence = 0;
         var userLegLength = _userHeight * 0.53;
         
-
         //reference cadence
         switch (_userGender) {
             case Male:
@@ -239,7 +238,6 @@ class GarminApp extends Application.AppBase {
         return _experienceLvl;
     }
 
-    //double check ltr
     function setExperienceLvl(value as Number) as Void {
         _experienceLvl = value;
     }
@@ -252,7 +250,6 @@ class GarminApp extends Application.AppBase {
         return (a > b) ? a : b;
     }
 
-    // Return the initial view of your application here
     function getInitialView() as [Views] or [Views, InputDelegates] {
         return [ new SimpleView(), new SimpleViewDelegate() ];
     }
