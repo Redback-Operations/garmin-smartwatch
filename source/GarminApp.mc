@@ -183,7 +183,6 @@ class GarminApp extends Application.AppBase {
         _idealMinCadence = finalCadence - 5;
     }
 
-
     function getMinCadence() as Number {
         return _idealMinCadence;
     }
