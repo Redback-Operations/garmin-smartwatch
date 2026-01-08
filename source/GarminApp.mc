@@ -3,7 +3,8 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 
 class GarminApp extends Application.AppBase {
-    const MAX_BARS = 60;
+    const MAX_BARS = 180;
+    const MAX_BARS_DISPLAY = 0;
     const BASELINE_AVG_CADENCE = 160;
     const MAX_CADENCE = 190;
 
@@ -25,7 +26,8 @@ class GarminApp extends Application.AppBase {
     private var _idealMaxCadence = 100;
     private var _cadenceIndex = 0;
     private var _cadenceCount = 0;
-    private var _cadenceHistory as Array<Float?> = new [MAX_BARS]; // Store 60 data points (1 minutes at 1-second intervals)
+    private var _cadenceHistory as Array<Float?> = []; // Store session's cadence 
+    private var _cadenceChartDisplay as Array<Float?> = new [MAX_BARS]; // Store data points for display
 
     private var _userHeight = null;//>>cm
     private var _userSpeed = null;//>>m/s
@@ -46,7 +48,7 @@ class GarminApp extends Application.AppBase {
     // onStart() is called on application start up
     function onStart(state as Dictionary?) as Void {
         globalTimer = new Timer.Timer();
-        globalTimer.start(method(:updateCadence),3000,true);
+        globalTimer.start(method(:updateCadence),1000,true);
         dummyValueTesting();
         /*
             remember to remove after testing

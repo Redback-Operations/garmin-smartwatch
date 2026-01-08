@@ -17,7 +17,7 @@ class AdvancedView extends WatchUi.View {
 
     function onShow() as Void {
         _simulationTimer = new Timer.Timer();
-        _simulationTimer.start(method(:refreshScreen), 3000, true);
+        _simulationTimer.start(method(:refreshScreen), 1000, true);
     }
 
     function onHide() as Void {
