@@ -182,6 +182,38 @@ class GarminApp extends Application.AppBase {
         _idealMinCadence = finalCadence - 5;
     }
 
+    function idealCadenceCalculator() as Void {
+        var referenceCadence = 0;
+        var finalCadence = 0;
+        var userLegLength = _userHeight * 0.53;
+        
+
+        //reference cadence
+        switch (_userGender) {
+            case Male:
+                referenceCadence = (-1.268 * userLegLength) + (3.471 * _userSpeed) + 261.378;
+                break;
+            case Female:
+                referenceCadence = (-1.190 * userLegLength) + (3.705 * _userSpeed) + 249.688;
+                break;
+            default:
+                referenceCadence = (-1.251 * userLegLength) + (3.665 * _userSpeed) + 254.858;
+                break;
+        }
+
+        //experience adjustment
+        referenceCadence = referenceCadence * _experienceLvl;
+
+        //apply threshold
+        referenceCadence = Math.round(referenceCadence);
+        finalCadence = max(BASELINE_AVG_CADENCE,min(referenceCadence,MAX_CADENCE)).toNumber();
+
+        //set new min max ideal cadence 
+        _idealMaxCadence = finalCadence + 5;
+        _idealMinCadence = finalCadence - 5;
+    }
+
+
     function getMinCadence() as Number {
         return _idealMinCadence;
     }
@@ -238,6 +270,7 @@ class GarminApp extends Application.AppBase {
         return _experienceLvl;
     }
 
+    //double check ltr
     function setExperienceLvl(value as Number) as Void {
         _experienceLvl = value;
     }
@@ -250,6 +283,8 @@ class GarminApp extends Application.AppBase {
         return (a > b) ? a : b;
     }
 
+
+    // Return the initial view of your application here
     function getInitialView() as [Views] or [Views, InputDelegates] {
         return [ new SimpleView(), new SimpleViewDelegate() ];
     }
