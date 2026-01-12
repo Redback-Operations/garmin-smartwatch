@@ -1,3 +1,4 @@
+//Unused. Previous placeholder
 import Toybox.Graphics;
 import Toybox.WatchUi;
 import Toybox.System;

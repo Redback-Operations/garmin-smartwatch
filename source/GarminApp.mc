@@ -7,6 +7,9 @@ class GarminApp extends Application.AppBase {
     const BASELINE_AVG_CADENCE = 150;
     const HEIGHT_BASELINE = 170;
     const STEP_RATE = 6;
+    //for persistent settings
+    const PROP_MIN_CADENCE = "minCadence";
+    const PROP_MAX_CADENCE = "maxCadence";
 
     private var _idealMinCadence = 90;
     private var _idealMaxCadence = 100;
@@ -33,6 +36,7 @@ class GarminApp extends Application.AppBase {
 
     // onStart() is called on application start up
     function onStart(state as Dictionary?) as Void {
+        loadSettings();
         _historyTimer = new Timer.Timer();
         _historyTimer.start(method(:updateZoneHistory), 1000, true);
     }
@@ -44,6 +48,23 @@ class GarminApp extends Application.AppBase {
         }
     }
 
+    //Persistent Settings
+    function loadSettings() as Void {
+        var min = Application.Storage.getValue(PROP_MIN_CADENCE);
+        var max = Application.Storage.getValue(PROP_MAX_CADENCE);
+
+        if (min != null) { _idealMinCadence = min as Number; }
+        if (max != null) { _idealMaxCadence = max as Number; }
+        if (_idealMinCadence >= _idealMaxCadence) {
+            _idealMinCadence = 90;
+            _idealMaxCadence = 100;
+        }
+    }
+
+    function saveSettings() as Void {
+        Application.Storage.setValue(PROP_MIN_CADENCE, _idealMinCadence);
+        Application.Storage.setValue(PROP_MAX_CADENCE, _idealMaxCadence);
+    }
 
     // Zone history management
     function updateZoneHistory() as Void {
@@ -60,6 +81,13 @@ class GarminApp extends Application.AppBase {
 
     }
 
+    //Reset Statistics 
+    function resetStatistics() as Void {
+        _zoneHistory = new [MAX_BARS];
+        _historyIndex = 0;
+        _historyCount = 0;
+    }
+
     function getMinCadence() as Number {
         return _idealMinCadence;
     }
@@ -70,10 +98,12 @@ class GarminApp extends Application.AppBase {
 
     function setMinCadence(value as Number) as Void {
         _idealMinCadence = value;
+        saveSettings();
     }
 
     function setMaxCadence(value as Number) as Void {
         _idealMaxCadence = value;
+        saveSettings();
     }
 
     function getZoneHistory() as Array<Float?> {
