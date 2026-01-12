@@ -11,6 +11,12 @@ class GarminApp extends Application.AppBase {
     var globalTimer;
 
     enum {
+        ThirtyminChart,
+        OneHourChart,
+        TwoHourChart
+    }
+
+    enum {
         Beginner = 1.06,
         Intermediate = 1.04,
         Advanced = 1.02
@@ -27,7 +33,7 @@ class GarminApp extends Application.AppBase {
     private var _cadenceIndex = 0;
     private var _cadenceCount = 0;
     private var _cadenceHistory as Array<Float?> = []; // Store session's cadence 
-    private var _cadenceChartDisplay as Array<Float?> = new [MAX_BARS]; // Store data points for display
+    //private var _cadenceChartDisplay as Array<Float?> = new [MAX_BARS]; // Store data points for display
 
     private var _userHeight = null;//>>cm
     private var _userSpeed = null;//>>m/s
@@ -76,8 +82,6 @@ class GarminApp extends Application.AppBase {
             _cadenceIndex = (_cadenceIndex + 1) % MAX_BARS;
             if (_cadenceCount < MAX_BARS) { _cadenceCount++; }
         }
-
-        //WatchUi.requestUpdate();
 
     }
 
