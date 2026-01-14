@@ -6,7 +6,7 @@ import Toybox.Timer;
 import Toybox.System;
 
 class AdvancedView extends WatchUi.View {
-    const MAX_BARS = 60;
+    const MAX_BARS = 147;
     const MAX_CADENCE_DISPLAY = 200;
 
     private var _simulationTimer;
@@ -126,29 +126,30 @@ class AdvancedView extends WatchUi.View {
         
         //margins value
         var margin = width * 0.1;
-        var marginLeftRightMultiplier = 1.2;
+        var marginLeftRightMultiplier = 1.38;
         //var marginTopMultiplier = 0.5;
-        var marginBottomMultiplier = 2;
+        var marginBottomMultiplier = 1.6;
 
         //chart position
         var chartLeft = margin * marginLeftRightMultiplier;
         var chartRight = width - chartLeft;
-        var chartTop = height * 0.45;
+        var chartTop = height * 0.5;
         var chartBottom = height - margin*marginBottomMultiplier;
         var chartWidth = chartRight - chartLeft;
         var chartHeight = chartBottom - chartTop;
         var quarterChartHeight = chartHeight / 4;
 
         //bar zone
-        var barZoneLeft = chartLeft + 0.5;
-        var barZoneRight = chartRight - 1.25;
+        var barZoneLeft = chartLeft + 1;
+        var barZoneRight = chartRight - 1;
         var barZoneWidth = barZoneRight - barZoneLeft;
+        var barZoneBottom = chartBottom - 1;
 
         //additional line indicator
         var nLine = 3;
         var line1x1 = chartLeft - margin * 0.25;
         var line1x2 = chartLeft;
-        var line2x1 = chartRight;
+        var line2x1 = chartRight - 1;
         var line2x2 = chartRight + margin * 0.25;
         var lineY = chartTop + quarterChartHeight;
 
@@ -176,7 +177,7 @@ class AdvancedView extends WatchUi.View {
         // Calculate bar width
         var numBars = cadenceCount;
         if(numBars == 0) { return; }
-        var barWidth = barZoneWidth / MAX_BARS;
+        var barWidth = (barZoneWidth / MAX_BARS).toNumber();
 
         var startIndex = (cadenceIndex - numBars + MAX_BARS) % MAX_BARS;
         
@@ -189,12 +190,10 @@ class AdvancedView extends WatchUi.View {
             //calculate bar height and position
             var barHeight = (cadence / MAX_CADENCE_DISPLAY) * chartHeight;
             var x = barZoneLeft + i * barWidth;
-            var y = chartBottom - barHeight;
+            var y = barZoneBottom - barHeight;
 
-            //seperation between each bar
-            var barOffset = 0;
             correctColor(cadence, idealMinCadence, idealMaxCadence, dc);
-            dc.fillRectangle(x, y, barWidth+barOffset, barHeight);
+            dc.fillRectangle(x, y, barWidth, barHeight);
         }
     }
 }

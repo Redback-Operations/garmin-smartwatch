@@ -3,8 +3,8 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 
 class GarminApp extends Application.AppBase {
-    const MAX_BARS = 180;
-    const MAX_BARS_DISPLAY = 0;
+    const MAX_BARS = 147;
+    //const MAX_BARS_DISPLAY = 0;
     const BASELINE_AVG_CADENCE = 160;
     const MAX_CADENCE = 190;
 
@@ -32,20 +32,15 @@ class GarminApp extends Application.AppBase {
     private var _idealMaxCadence = 100;
     private var _cadenceIndex = 0;
     private var _cadenceCount = 0;
-    private var _cadenceHistory as Array<Float?> = []; // Store session's cadence 
+    private var _cadenceHistory as Array<Float?> = new [MAX_BARS]; // Store session's cadence 
     //private var _cadenceChartDisplay as Array<Float?> = new [MAX_BARS]; // Store data points for display
 
-    private var _userHeight = null;//>>cm
-    private var _userSpeed = null;//>>m/s
-    private var _experienceLvl = null;
-    private var _userGender = null;
-
-    function dummyValueTesting() as Void {
-        _userHeight = 170;
-        _userSpeed = 3.8;
-        _experienceLvl = Beginner;
-        _userGender = Female;
-    }
+    //default value (can change in settings)
+    private var _userHeight = 170;//>>cm
+    private var _userSpeed = 3.8;//>>m/s
+    private var _experienceLvl = Beginner;
+    private var _userGender = Male;
+    private var _chartOption = ThirtyminChart;
 
     function initialize() {
         AppBase.initialize();
@@ -55,10 +50,6 @@ class GarminApp extends Application.AppBase {
     function onStart(state as Dictionary?) as Void {
         globalTimer = new Timer.Timer();
         globalTimer.start(method(:updateCadence),1000,true);
-        dummyValueTesting();
-        /*
-            remember to remove after testing
-        */
         idealCadenceCalculator();
     }
 
@@ -173,7 +164,6 @@ class GarminApp extends Application.AppBase {
         return _experienceLvl;
     }
 
-    //double check ltr
     function setExperienceLvl(value as Number) as Void {
         _experienceLvl = value;
     }
