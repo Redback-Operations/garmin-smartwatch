@@ -3,17 +3,18 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 
 class GarminApp extends Application.AppBase {
-    const MAX_BARS = 147;
+    const MAX_BARS = 280;
     //const MAX_BARS_DISPLAY = 0;
     const BASELINE_AVG_CADENCE = 160;
     const MAX_CADENCE = 190;
 
     var globalTimer;
 
-    enum {
-        ThirtyminChart,
-        OneHourChart,
-        TwoHourChart
+    enum { //each chart corresponds to a difference bar duration average
+        FifteenminChart = 3,
+        ThirtyminChart = 6, 
+        OneHourChart = 13,
+        TwoHourChart = 26
     }
 
     enum {
@@ -28,19 +29,23 @@ class GarminApp extends Application.AppBase {
         Other
     }
 
-    private var _idealMinCadence = 80;
-    private var _idealMaxCadence = 100;
-    private var _cadenceIndex = 0;
-    private var _cadenceCount = 0;
-    private var _cadenceHistory as Array<Float?> = new [MAX_BARS]; // Store session's cadence 
-    //private var _cadenceChartDisplay as Array<Float?> = new [MAX_BARS]; // Store data points for display
-
     //default value (can change in settings)
     private var _userHeight = 170;//>>cm
     private var _userSpeed = 3.8;//>>m/s
     private var _experienceLvl = Beginner;
     private var _userGender = Male;
-    private var _chartOption = ThirtyminChart;
+    private var _chartOption = TwoHourChart;
+
+    private var _idealMinCadence = 80;
+    private var _idealMaxCadence = 100;
+
+    private var _cadenceHistory as Array<Float?> = new [MAX_BARS]; // Store session's cadence
+    private var _cadenceIndex = 0;
+    private var _cadenceCount = 0;
+     
+    private var _cadenceBarAvg as Array<Float?> = new [_chartOption]; // Store data points for display
+    private var _cadenceAvgIndex = 0;
+    private var _cadenceAvgCount = 0;
 
     function initialize() {
         AppBase.initialize();
@@ -49,7 +54,7 @@ class GarminApp extends Application.AppBase {
     // onStart() is called on application start up
     function onStart(state as Dictionary?) as Void {
         globalTimer = new Timer.Timer();
-        globalTimer.start(method(:updateCadence),1000,true);
+        globalTimer.start(method(:updateCadenceBarAvg),1000,true);
         idealCadenceCalculator();
     }
 
@@ -62,18 +67,36 @@ class GarminApp extends Application.AppBase {
     }
 
 
-    function updateCadence() as Void {
+    function updateCadenceBarAvg() as Void {
         var info = Activity.getActivityInfo();
         
         //var zoneState = null;
         if (info != null && info.currentCadence != null) {
             var newCadence = info.currentCadence;
-            _cadenceHistory[_cadenceIndex] = newCadence.toFloat();
+            _cadenceBarAvg[_cadenceAvgIndex] = newCadence.toFloat();
             // Add to circular buffer
-            _cadenceIndex = (_cadenceIndex + 1) % MAX_BARS;
-            if (_cadenceCount < MAX_BARS) { _cadenceCount++; }
+            _cadenceAvgIndex = (_cadenceAvgIndex + 1) % _chartOption;
+            if (_cadenceAvgCount < _chartOption) { 
+                _cadenceAvgCount++; 
+            }
+            else //calculate avg
+            {
+                var barAvg = 0.0;
+                for(var i = 0; i < _chartOption; i++){
+                    barAvg += _cadenceBarAvg[i];
+                }
+                updateCadenceHistory(barAvg / _chartOption);
+                _cadenceAvgCount = 0;
+            }
         }
 
+    }
+
+    function updateCadenceHistory(newCadence as Float) as Void {
+        _cadenceHistory[_cadenceIndex] = newCadence;
+        // Add to circular buffer
+        _cadenceIndex = (_cadenceIndex + 1) % MAX_BARS;
+        if (_cadenceCount < MAX_BARS) { _cadenceCount++; }
     }
 
     function idealCadenceCalculator() as Void {

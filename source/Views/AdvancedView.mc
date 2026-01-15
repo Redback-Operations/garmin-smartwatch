@@ -6,7 +6,7 @@ import Toybox.Timer;
 import Toybox.System;
 
 class AdvancedView extends WatchUi.View {
-    const MAX_BARS = 147;
+    const MAX_BARS = 280;
     const MAX_CADENCE_DISPLAY = 200;
 
     private var _simulationTimer;
@@ -99,13 +99,9 @@ class AdvancedView extends WatchUi.View {
         var cadenceY = height * 0.8;
 
         if (info != null && info.currentCadence != null) {
-            // Draw "CADENCE" label (light gray RGB: 170,170,170 = 0xAAAAAA)
-            dc.setColor(0xAAAAAA, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(width / 2, cadenceY, Graphics.FONT_XTINY, "CADENCE", Graphics.TEXT_JUSTIFY_CENTER);
-            
             // Draw cadence value in green (RGB: 0,255,0 = 0x00FF00)
             correctColor(info.currentCadence, idealMinCadence, idealMaxCadence, dc);
-            dc.drawText(width / 2, cadenceY + 20, Graphics.FONT_XTINY, info.currentCadence.toString() + "  spm", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(width / 2, cadenceY + 20, Graphics.FONT_XTINY, info.currentCadence.toString() + " spm", Graphics.TEXT_JUSTIFY_CENTER);
         }
 
         drawChart(dc);
@@ -147,10 +143,11 @@ class AdvancedView extends WatchUi.View {
 
         //additional line indicator
         var nLine = 3;
-        var line1x1 = chartLeft - margin * 0.25;
+        var lineLength = 6;
+        var line1x1 = chartLeft - lineLength;
         var line1x2 = chartLeft;
         var line2x1 = chartRight - 1;
-        var line2x2 = chartRight + margin * 0.25;
+        var line2x2 = chartRight + lineLength;
         var lineY = chartTop + quarterChartHeight;
 
 
@@ -162,7 +159,6 @@ class AdvancedView extends WatchUi.View {
             dc.drawLine(line2x1,lineY,line2x2,lineY);
             lineY += quarterChartHeight;
         }
-        
         
         // Get data from app
         var app = getApp();
@@ -188,7 +184,7 @@ class AdvancedView extends WatchUi.View {
             if(cadence == null) {cadence = 0;}
                 
             //calculate bar height and position
-            var barHeight = (cadence / MAX_CADENCE_DISPLAY) * chartHeight;
+            var barHeight = ((cadence / MAX_CADENCE_DISPLAY) * chartHeight).toNumber();
             var x = barZoneLeft + i * barWidth;
             var y = barZoneBottom - barHeight;
 
@@ -196,19 +192,26 @@ class AdvancedView extends WatchUi.View {
             dc.fillRectangle(x, y, barWidth, barHeight);
         }
     }
+
+    function correctColor(cadence as Number, idealMinCadence as Number, idealMaxCadence as Number, dc as Dc) as Void{
+        var yellowThreshold = idealMaxCadence + 20;
+        
+        if(cadence <= idealMinCadence)
+        {
+            dc.setColor(0x38b6ff, Graphics.COLOR_TRANSPARENT);//blue
+        } 
+        else if (cadence >= idealMaxCadence && cadence < yellowThreshold)
+        {
+            dc.setColor(0xff751f, Graphics.COLOR_TRANSPARENT);//orange
+        }
+        else if (cadence >= yellowThreshold)
+        {
+        dc.setColor(0xFF0000, Graphics.COLOR_TRANSPARENT);//red
+        }
+        else
+        {
+            dc.setColor(0x00FF00, Graphics.COLOR_TRANSPARENT);//green
+        }
+    }
 }
 
-function correctColor(cadence as Number, idealMinCadence as Number, idealMaxCadence as Number, dc as Dc) as Void{
-    if(cadence <= idealMinCadence)
-    {
-        dc.setColor(0x0000FF, Graphics.COLOR_TRANSPARENT);//blue
-    } 
-    else if (cadence >= idealMaxCadence)
-    {
-       dc.setColor(0xFF0000, Graphics.COLOR_TRANSPARENT);//red
-    }
-    else
-    {
-        dc.setColor(0x00FF00, Graphics.COLOR_TRANSPARENT);//green
-    }
-}
