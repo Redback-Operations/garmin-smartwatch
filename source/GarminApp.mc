@@ -10,6 +10,11 @@ class GarminApp extends Application.AppBase {
 
     var globalTimer;
 
+    enum{
+        barChart,
+        lineChart
+    }
+
     enum { //each chart corresponds to a difference bar duration average
         FifteenminChart = 3,
         ThirtyminChart = 6, 
@@ -34,7 +39,7 @@ class GarminApp extends Application.AppBase {
     private var _userSpeed = 3.8;//>>m/s
     private var _experienceLvl = Beginner;
     private var _userGender = Male;
-    private var _chartOption = TwoHourChart;
+    private var _chartDuration = TwoHourChart;
 
     private var _idealMinCadence = 80;
     private var _idealMaxCadence = 100;
@@ -43,7 +48,7 @@ class GarminApp extends Application.AppBase {
     private var _cadenceIndex = 0;
     private var _cadenceCount = 0;
      
-    private var _cadenceBarAvg as Array<Float?> = new [_chartOption]; // Store data points for display
+    private var _cadenceBarAvg as Array<Float?> = new [_chartDuration]; // Store data points for display
     private var _cadenceAvgIndex = 0;
     private var _cadenceAvgCount = 0;
 
@@ -75,17 +80,17 @@ class GarminApp extends Application.AppBase {
             var newCadence = info.currentCadence;
             _cadenceBarAvg[_cadenceAvgIndex] = newCadence.toFloat();
             // Add to circular buffer
-            _cadenceAvgIndex = (_cadenceAvgIndex + 1) % _chartOption;
-            if (_cadenceAvgCount < _chartOption) { 
+            _cadenceAvgIndex = (_cadenceAvgIndex + 1) % _chartDuration;
+            if (_cadenceAvgCount < _chartDuration) { 
                 _cadenceAvgCount++; 
             }
             else //calculate avg
             {
                 var barAvg = 0.0;
-                for(var i = 0; i < _chartOption; i++){
+                for(var i = 0; i < _chartDuration; i++){
                     barAvg += _cadenceBarAvg[i];
                 }
-                updateCadenceHistory(barAvg / _chartOption);
+                updateCadenceHistory(barAvg / _chartDuration);
                 _cadenceAvgCount = 0;
             }
         }
