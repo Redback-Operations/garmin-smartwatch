@@ -110,7 +110,7 @@ class AdvancedView extends WatchUi.View {
 
         drawChart(dc);
 
-        var string  = displayChartDuration(dc, app.getChartDuration());
+        var string  = app.getChartDuration();
 
         dc.setColor(0x969696, Graphics.COLOR_TRANSPARENT);
         dc.drawText(width / 2, chartDurationY, Graphics.FONT_XTINY, "Last " + string, Graphics.TEXT_JUSTIFY_CENTER);
@@ -179,20 +179,18 @@ class AdvancedView extends WatchUi.View {
         var cadenceCount = app.getCadenceCount();
         //check array ?null
         if(cadenceCount == 0) {return;}
-
-        // Calculate bar width
+       
         var numBars = cadenceCount;
-        if(numBars == 0) { return; }
         var barWidth = (barZoneWidth / MAX_BARS).toNumber();
 
         var startIndex = (cadenceIndex - numBars + MAX_BARS) % MAX_BARS;
-        
+            
         // Draw bars
         for (var i = 0; i < numBars; i++) {
             var index = (startIndex + i) % MAX_BARS; // Start from oldest data
             var cadence = cadenceHistory[index];
             if(cadence == null) {cadence = 0;}
-                
+                    
             //calculate bar height and position
             var barHeight = ((cadence / MAX_CADENCE_DISPLAY) * chartHeight).toNumber();
             var x = barZoneLeft + i * barWidth;
@@ -201,6 +199,8 @@ class AdvancedView extends WatchUi.View {
             correctColor(cadence, idealMinCadence, idealMaxCadence, dc);
             dc.fillRectangle(x, y, barWidth, barHeight);
         }
+
+        
     }
 
     function correctColor(cadence as Number, idealMinCadence as Number, idealMaxCadence as Number, dc as Dc) as Void{
@@ -222,29 +222,5 @@ class AdvancedView extends WatchUi.View {
         {
             dc.setColor(0x00FF00, Graphics.COLOR_TRANSPARENT);//green
         }
-    }
-
-    function displayChartDuration(dc as Dc, chartDuration as Number) as String {
-        var string = null;
-        
-        switch (chartDuration) {
-            case 3:
-                string = "15 Minutes";
-                break;
-            
-            case 6:
-                string = "30 Minutes";
-                break;
-            
-            case 13:
-                string = "1 Hour";
-                break;
-            
-            case 26:
-                string = "2 Hours";
-                break;
-        }
-
-        return string;
     }
 }

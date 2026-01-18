@@ -10,17 +10,19 @@ class GarminApp extends Application.AppBase {
 
     var globalTimer;
 
-    enum{
-        barChart,
-        lineChart
-    }
-
-    enum { //each chart corresponds to a difference bar duration average
+    enum { //each chart corresponds to a difference bar duration average (in seconds)
         FifteenminChart = 3,
         ThirtyminChart = 6, 
         OneHourChart = 13,
         TwoHourChart = 26
     }
+
+    const CHART_ENUM_NAMES = {
+        FifteenminChart => "15 Minutes",
+        ThirtyminChart => "30 Minutes",
+        OneHourChart => "1 Hour",
+        TwoHourChart => "2 Hours"
+    };
 
     enum {
         Beginner = 1.06,
@@ -39,8 +41,7 @@ class GarminApp extends Application.AppBase {
     private var _userSpeed = 3.8;//>>m/s
     private var _experienceLvl = Beginner;
     private var _userGender = Male;
-    private var _chartType = barChart;
-    private var _chartDuration = TwoHourChart;
+    private var _chartDuration = ThirtyminChart;
 
     private var _idealMinCadence = 80;
     private var _idealMaxCadence = 100;
@@ -165,10 +166,10 @@ class GarminApp extends Application.AppBase {
         _idealMaxCadence = value;
     }
 
-    function getChartDuration() as Number{
-        return _chartDuration;
+    function getChartDuration() as String{
+        return CHART_ENUM_NAMES[_chartDuration];
     }
-
+    
     function getUserGender() as String {
         return _userGender;
     }
