@@ -1,0 +1,7 @@
+<drawables xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <bitmap id="LauncherIcon" filename="launcher_icon.svg" dithering="none" />
+    <bitmap id="ICON_DISTANCE" filename="/Users/jawaharsr/garmin-smartwatch/resources/drawables/running_icon.png" />
+    <bitmap id="ICON_CADENCE"  filename="/Users/jawaharsr/garmin-smartwatch/resources/drawables/cadence_step_icon.png" />
+    <bitmap id="ICON_STRIDE"   filename="/Users/jawaharsr/garmin-smartwatch/resources/drawables/stridelength_icon.png" />
+    <bitmap id="ICON_HR"       filename="/Users/jawaharsr/garmin-smartwatch/resources/drawables/heartrate_icon_red_40.png" />
+</drawables>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <bitmap id="LauncherIcon" filename="drawables/launcher_icon.svg" dithering="none" />
+
+    <!-- Your icons (PNG) inside: resources/drawables/ -->
+    <bitmap id="ICON_DISTANCE" filename="drawables/running_icon.png" />
+    <bitmap id="ICON_CADENCE"  filename="drawables/cadence_step_icon.png" />
+    <bitmap id="ICON_STRIDE"   filename="drawables/stridelength_icon.png" />
+    <bitmap id="ICON_HR"       filename="drawables/heartrate_icon_red_40.png" />
+
+
+</resources>
