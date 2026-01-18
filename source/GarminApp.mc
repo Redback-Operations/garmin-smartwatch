@@ -39,6 +39,7 @@ class GarminApp extends Application.AppBase {
     private var _userSpeed = 3.8;//>>m/s
     private var _experienceLvl = Beginner;
     private var _userGender = Male;
+    private var _chartType = barChart;
     private var _chartDuration = TwoHourChart;
 
     private var _idealMinCadence = 80;
@@ -162,6 +163,10 @@ class GarminApp extends Application.AppBase {
 
     function setMaxCadence(value as Number) as Void {
         _idealMaxCadence = value;
+    }
+
+    function getChartDuration() as Number{
+        return _chartDuration;
     }
 
     function getUserGender() as String {

@@ -85,8 +85,10 @@ class AdvancedView extends WatchUi.View {
         }
 
         //draw ideal cadence range
+        
         var idealMinCadence = app.getMinCadence();
         var idealMaxCadence = app.getMaxCadence();
+        /*
         var idealCadenceY = height * 0.37;
         
 
@@ -94,9 +96,11 @@ class AdvancedView extends WatchUi.View {
             var displayString = (idealMinCadence + " - " + idealMaxCadence).toString();
             dc.setColor(0xAAAAAA, Graphics.COLOR_TRANSPARENT);
             dc.drawText(width / 2,idealCadenceY , Graphics.FONT_XTINY, displayString, Graphics.TEXT_JUSTIFY_CENTER);
-        }
+        }*/
 
-        var cadenceY = height * 0.8;
+        var cadenceY = height * 0.37;
+        var chartDurationDisplay = null;
+        var chartDurationY = height * 0.85;
 
         if (info != null && info.currentCadence != null) {
             // Draw cadence value in green (RGB: 0,255,0 = 0x00FF00)
@@ -105,6 +109,12 @@ class AdvancedView extends WatchUi.View {
         }
 
         drawChart(dc);
+
+        var string  = displayChartDuration(dc, app.getChartDuration());
+
+        dc.setColor(0x969696, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(width / 2, chartDurationY, Graphics.FONT_XTINY, "Last " + string, Graphics.TEXT_JUSTIFY_CENTER);
+
     }
 
 
@@ -213,5 +223,28 @@ class AdvancedView extends WatchUi.View {
             dc.setColor(0x00FF00, Graphics.COLOR_TRANSPARENT);//green
         }
     }
-}
 
+    function displayChartDuration(dc as Dc, chartDuration as Number) as String {
+        var string = null;
+        
+        switch (chartDuration) {
+            case 3:
+                string = "15 Minutes";
+                break;
+            
+            case 6:
+                string = "30 Minutes";
+                break;
+            
+            case 13:
+                string = "1 Hour";
+                break;
+            
+            case 26:
+                string = "2 Hours";
+                break;
+        }
+
+        return string;
+    }
+}
