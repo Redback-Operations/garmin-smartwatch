@@ -8,11 +8,15 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onMenu() as Boolean {
-        var settingsView = new SettingsView();
-        
-        //Switches the screen to settings view by holding up button
-        WatchUi.pushView(settingsView, new SettingsDelegate(settingsView), WatchUi.SLIDE_UP);
+        var settingsMenu = new WatchUi.Menu2({ :title => "Settings" });
 
+        settingsMenu.addItem(new WatchUi.MenuItem("Profile", null, :set_profile, null));
+        settingsMenu.addItem(new WatchUi.MenuItem("Customization", null, :cust_options, null));
+        settingsMenu.addItem(new WatchUi.MenuItem("Feedback", null, :feedback_options, null));
+        settingsMenu.addItem(new WatchUi.MenuItem("Cadence Range", null, :cadence_range, null));
+
+        WatchUi.pushView(settingsMenu, new SettingsMenuDelegate(), WatchUi.SLIDE_UP);
+        
         return true;
     }
 

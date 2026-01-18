@@ -5,11 +5,11 @@ import Toybox.Application;
 
 class AdvancedViewDelegate extends WatchUi.InputDelegate { 
     
-    private var _view as AdvancedView; 
+    //private var _view as AdvancedView; 
 
     function initialize(view as AdvancedView) {
         InputDelegate.initialize();
-        _view = view;
+        //_view = view;
     }
 
     function onBack() as Boolean{

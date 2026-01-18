@@ -26,6 +26,7 @@ class GarminApp extends Application.AppBase {
     private var _userHeight = 160;
     private var _userSpeed = 0;
     private var _trainingLvl = Beginner;
+    private var _userGender = 1;
 
     function initialize() {
         AppBase.initialize();
