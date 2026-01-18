@@ -145,6 +145,14 @@ class GarminApp extends Application.AppBase {
     function getMaxCadence() as Number {
         return _idealMaxCadence;    
     }
+    
+    function setMinCadence(value as Number) as Void {
+        _idealMinCadence = value;
+    }
+
+    function setMaxCadence(value as Number) as Void {
+        _idealMaxCadence = value;
+    }
 
     function getCadenceHistory() as Array<Float?> {
         return _cadenceHistory;
@@ -156,14 +164,6 @@ class GarminApp extends Application.AppBase {
 
     function getCadenceCount() as Number {
         return _cadenceCount;
-    }
-
-    function setMinCadence(value as Number) as Void {
-        _idealMinCadence = value;
-    }
-
-    function setMaxCadence(value as Number) as Void {
-        _idealMaxCadence = value;
     }
 
     function getChartDuration() as String{
