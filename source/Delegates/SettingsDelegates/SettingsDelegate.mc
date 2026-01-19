@@ -64,7 +64,7 @@ class SettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
 
         menu.addItem(new WatchUi.MenuItem("Bar Chart", null, :cust_bar_chart, null));
 
-        WatchUi.pushView(menu, new SelectProfileDelegate(menu), WatchUi.SLIDE_LEFT);
+        WatchUi.pushView(menu, new SelectCutomizableDelegate(menu), WatchUi.SLIDE_LEFT);
 
     }
 
@@ -74,10 +74,10 @@ class SettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
             :title => "Feedback Options"
         });
 
-        menu.addItem(new WatchUi.MenuItem("Haptic Feedback", null, :profile_height, null));
-        menu.addItem(new WatchUi.MenuItem("Audiable Feedback", null, :profile_speed, null));
+        menu.addItem(new WatchUi.MenuItem("Haptic Feedback", null, :haptic_feedback, null));
+        menu.addItem(new WatchUi.MenuItem("Audible Feedback", null, :audible_feedback, null));
 
-        WatchUi.pushView(menu, new SelectProfileDelegate(menu), WatchUi.SLIDE_LEFT);
+        WatchUi.pushView(menu, new SelectFeedbackDelegate(menu), WatchUi.SLIDE_LEFT);
     }
 
     function pushCadenceMenu() as Void {
