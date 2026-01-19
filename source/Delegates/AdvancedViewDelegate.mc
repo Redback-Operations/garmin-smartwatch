@@ -46,9 +46,7 @@ class AdvancedViewDelegate extends WatchUi.BehaviorDelegate {
         }
 
         if(direction == WatchUi.SWIPE_LEFT){
-            var currentView = new SettingsView();
-            System.println("Swiped Left");
-            WatchUi.pushView(currentView, new SettingsDelegate(currentView), WatchUi.SLIDE_LEFT);
+            pushSettingsView();
             return true;
         }
 
@@ -58,6 +56,17 @@ class AdvancedViewDelegate extends WatchUi.BehaviorDelegate {
     function onBack(){
         WatchUi.popView(WatchUi.SLIDE_BLINK);
         return true;
+    }
+
+        function pushSettingsView() as Void{
+        var settingsMenu = new WatchUi.Menu2({ :title => "Settings" });
+
+        settingsMenu.addItem(new WatchUi.MenuItem("Profile", null, :set_profile, null));
+        settingsMenu.addItem(new WatchUi.MenuItem("Customization", null, :cust_options, null));
+        settingsMenu.addItem(new WatchUi.MenuItem("Feedback", null, :feedback_options, null));
+        settingsMenu.addItem(new WatchUi.MenuItem("Cadence Range", null, :cadence_range, null));
+
+        WatchUi.pushView(settingsMenu, new SettingsMenuDelegate(), WatchUi.SLIDE_UP);
     }
     
 }

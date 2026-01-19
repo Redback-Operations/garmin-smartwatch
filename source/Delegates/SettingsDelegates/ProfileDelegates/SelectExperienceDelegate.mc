@@ -7,17 +7,23 @@ class SelectExperienceDelegate extends WatchUi.Menu2InputDelegate {
 
     private var _menu as WatchUi.Menu2;
     var app = Application.getApp() as GarminApp;
-    //var experienceLvl = app.getExperienceLvl();
-    var experienceLvl = 1.06;// make sure to change to above!!
+    var experienceLvl = app.getExperienceLvl();
+    var experienceLvlString = "NULL";
 
     function initialize(menu as WatchUi.Menu2) {
         Menu2InputDelegate.initialize();
         _menu = menu;
 
-                // need if statements to display experiencelvl string instead of float values
-        var newTitle = Lang.format("Experience: $1$", [experienceLvl]);
+        if (experienceLvl == 1.06){
+            experienceLvlString = "Beginner";
+        } else if (experienceLvl == 1.04){
+            experienceLvlString = "Intermediate";
+        } else if (experienceLvl == 1.02){
+            experienceLvlString = "Advanced";
+        }
+        var newTitle = Lang.format("Experience: $1$", [experienceLvlString]);
         
-        // This updates the UI when the cadence is changed
+        // This updates the UI when the experience level is changed
         _menu.setTitle(newTitle);
     }
 
@@ -25,18 +31,18 @@ class SelectExperienceDelegate extends WatchUi.Menu2InputDelegate {
 
         var id = item.getId();
         
-        //Try to change cadence range based off menu selection
+        //Try to change user experience lvl based off menu selection
         if (id == :exp_beginner){
             System.println("User ExperienceLvl: Beginner");
-            //app.setExperienceLvl(1.06);
+            app.setExperienceLvl(1.06);
         } 
         else if (id == :exp_intermediate){
             System.println("User ExperienceLvl: Intermediate");
-            //app.setExperienceLvl(1.04);
+            app.setExperienceLvl(1.04);
         } 
         else if (id == :exp_advanced){
             System.println("User ExperienceLvl: Advanced");
-            //app.setExperienceLvl(1.02);
+            app.setExperienceLvl(1.02);
         } else {System.println("ERROR");}
 
         WatchUi.popView(WatchUi.SLIDE_RIGHT);

@@ -15,15 +15,15 @@ class ProfilePickerDelegate extends WatchUi.PickerDelegate {
     function onAccept(values as Array) as Boolean {
         var pickedValue = values[0]; // Gets the "selected" value
         
-        //var app = Application.getApp();
+        var app = Application.getApp() as GarminApp;
 
         if (_typeId == :prof_height) {
             System.println("Height Saved: " + pickedValue);
-            //app.setUserHeight(pickedValue);
+            app.setUserHeight(pickedValue);
         }
         else if (_typeId == :prof_speed) {
              System.println("Speed Saved: " + pickedValue);
-             //app.setUserSpeed(pickedValue);
+             app.setUserSpeed(pickedValue);
         }
 
         WatchUi.popView(WatchUi.SLIDE_RIGHT);

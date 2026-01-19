@@ -7,6 +7,7 @@ import Toybox.Graphics;
 class SelectProfileDelegate extends WatchUi.Menu2InputDelegate { 
 
     //private var _menu as WatchUi.Menu2;
+    var app = Application.getApp() as GarminApp;
 
     function initialize(menu as WatchUi.Menu2) {
         Menu2InputDelegate.initialize();
@@ -14,7 +15,7 @@ class SelectProfileDelegate extends WatchUi.Menu2InputDelegate {
     }
 
     function onSelect(item) as Void {
-
+        
         var id = item.getId();
 
         //displays the menu for the selected item
@@ -40,9 +41,8 @@ class SelectProfileDelegate extends WatchUi.Menu2InputDelegate {
     }
 
     function heightPicker() as Void {
-        //var app = Application.getApp();
-        //var currentHeight = app.getUserHeight();
-        var currentHeight = null;
+
+        var currentHeight = app.getUserHeight();
         if (currentHeight == null) { currentHeight = 175; } // Default 175 cm
 
         var factory = new ProfilePickerFactory(100, 250, 1, {:label=>" cm"});
@@ -58,9 +58,8 @@ class SelectProfileDelegate extends WatchUi.Menu2InputDelegate {
     }
 
     function speedPicker() as Void {
-        //var app = Application.getApp();
-        //var currentSpeed = app.getUserSpeed();
-        var currentSpeed = null;
+        //uses number not float
+        var currentSpeed = app.getUserSpeed().toNumber();
         if (currentSpeed == null) { currentSpeed = 10; } // Default 10 km/h
 
                 var factory = new ProfilePickerFactory(5, 30, 1, {:label=>" km/h"});

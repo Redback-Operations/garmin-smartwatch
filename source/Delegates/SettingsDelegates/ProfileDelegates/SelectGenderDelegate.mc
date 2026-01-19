@@ -7,8 +7,7 @@ class SelectGenderDelegate extends WatchUi.Menu2InputDelegate {
 
     private var _menu as WatchUi.Menu2;
     var app = Application.getApp() as GarminApp;
-    //var experienceLvl = app.getUserGender();
-    var gender = "Other";// make sure to change to above!!
+    var gender = app.getUserGender();
 
     function initialize(menu as WatchUi.Menu2) {
         Menu2InputDelegate.initialize();
@@ -25,18 +24,18 @@ class SelectGenderDelegate extends WatchUi.Menu2InputDelegate {
 
         var id = item.getId();
         
-        //Try to change cadence range based off menu selection
+        //Try to change user gender based off menu selection
         if (id == :user_male){
+            app.setUserGender("Male");
             System.println("User Gender: Male");
-            //app.setUserGender("Male");
         } 
         else if (id == :user_female){
+            app.setUserGender("Female");
             System.println("User Gender: Female");
-            //app.setUserGender("Female");
         } 
         else if (id == :user_other){
+            app.setUserGender("Other");
             System.println("User Gender: Other");
-            //app.setUserGender("Other");
         } else {System.println("ERROR");}
 
         WatchUi.popView(WatchUi.SLIDE_RIGHT);

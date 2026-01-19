@@ -11,15 +11,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
     // Long-press MENU (optional settings)
     function onMenu() as Boolean {
-        var settingsMenu = new WatchUi.Menu2({ :title => "Settings" });
-
-        settingsMenu.addItem(new WatchUi.MenuItem("Profile", null, :set_profile, null));
-        settingsMenu.addItem(new WatchUi.MenuItem("Customization", null, :cust_options, null));
-        settingsMenu.addItem(new WatchUi.MenuItem("Feedback", null, :feedback_options, null));
-        settingsMenu.addItem(new WatchUi.MenuItem("Cadence Range", null, :cadence_range, null));
-
-        WatchUi.pushView(settingsMenu, new SettingsMenuDelegate(), WatchUi.SLIDE_UP);
-        
+        pushSettingsView();
         return true;
     }
 
@@ -74,16 +66,22 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         }
 
         if (direction == WatchUi.SWIPE_LEFT) {
-            _currentView = new SettingsView();
-            WatchUi.pushView(
-                _currentView,
-                new SettingsDelegate(_currentView),
-                WatchUi.SLIDE_LEFT
-            );
+            pushSettingsView();
             return true;
         }
 
         return false;
+    }
+
+    function pushSettingsView() as Void{
+        var settingsMenu = new WatchUi.Menu2({ :title => "Settings" });
+
+        settingsMenu.addItem(new WatchUi.MenuItem("Profile", null, :set_profile, null));
+        settingsMenu.addItem(new WatchUi.MenuItem("Customization", null, :cust_options, null));
+        settingsMenu.addItem(new WatchUi.MenuItem("Feedback", null, :feedback_options, null));
+        settingsMenu.addItem(new WatchUi.MenuItem("Cadence Range", null, :cadence_range, null));
+
+        WatchUi.pushView(settingsMenu, new SettingsMenuDelegate(), WatchUi.SLIDE_UP);
     }
 
     function onBack() as Boolean {
