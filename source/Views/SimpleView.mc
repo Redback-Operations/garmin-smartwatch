@@ -15,6 +15,10 @@ class SimpleView extends WatchUi.View {
     private var _cadenceZoneDisplay;
     private var _lastZoneState = 0; // -1 = below, 0 = inside, 1 = above
     private var _vibeTimer = new Timer.Timer();
+    private var _cqDisplay;
+    private var _hardcoreDisplay;
+
+
 
     function _secondVibe() as Void {
         // Haptics not available on this target SDK/device in this workspace.
@@ -35,6 +39,10 @@ class SimpleView extends WatchUi.View {
         _heartrateDisplay = findDrawableById("heartrate_text");
         _distanceDisplay = findDrawableById("distance_text");
         _timeDisplay = findDrawableById("time_text");
+        _cqDisplay = findDrawableById("cq_text");
+        _hardcoreDisplay = findDrawableById("hardcore_text");
+
+
     }
 
     // Called when this View is brought to the foreground. Restore
@@ -172,6 +180,25 @@ class SimpleView extends WatchUi.View {
         }else{
             _timeDisplay.setText("--:--:--");
         }
+
+        /// --- Cadence Quality (Easter Egg) ---
+        if (_cqDisplay != null) {
+            var app = getApp();
+            var frozenCQ = app.getFinalCadenceQuality();
+
+            if (frozenCQ != null) {
+                _cqDisplay.setText("CQ: " + frozenCQ.format("%d") + "%");
+            } else {
+                var cq = app.computeCadenceQualityScore();
+
+                if (cq < 0) {
+                    _cqDisplay.setText("CQ: --");
+                } else {
+                    _cqDisplay.setText("CQ: " + cq.format("%d") + "%");
+                }
+            }
+        }
+
         
     }
 
