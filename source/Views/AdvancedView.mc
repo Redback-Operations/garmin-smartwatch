@@ -90,8 +90,7 @@ class AdvancedView extends WatchUi.View {
         var idealMaxCadence = app.getMaxCadence();
         /*
         var idealCadenceY = height * 0.37;
-        
-
+    
         if(idealMinCadence != null && idealMaxCadence != null){
             var displayString = (idealMinCadence + " - " + idealMaxCadence).toString();
             dc.setColor(0xAAAAAA, Graphics.COLOR_TRANSPARENT);
@@ -99,7 +98,7 @@ class AdvancedView extends WatchUi.View {
         }*/
 
         var cadenceY = height * 0.37;
-        var chartDurationDisplay = null;
+        //var chartDurationDisplay = null;
         var chartDurationY = height * 0.85;
 
         if (info != null && info.currentCadence != null) {
