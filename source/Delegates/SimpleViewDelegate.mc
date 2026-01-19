@@ -5,64 +5,86 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
     private var _currentView = null;
 
-     function initialize() {
+    function initialize() {
         BehaviorDelegate.initialize();
     }
 
-    function onMenu(){
-        //called by the timer after 1s hold
+    // Long-press MENU (optional settings)
+    function onMenu() as Boolean {
         var menu = new WatchUi.Menu2({:resources => "menus/menu.xml"});
-
-        WatchUi.pushView(new Rez.Menus.MainMenu(), new SelectCadenceDelegate(menu), WatchUi.SLIDE_BLINK);
-
+        WatchUi.pushView(
+            new Rez.Menus.MainMenu(),
+            new SelectCadenceDelegate(menu),
+            WatchUi.SLIDE_BLINK
+        );
         return true;
-
     }
 
+    // SELECT toggles cadence monitoring
+    function onSelect() as Boolean {
+        var app = getApp();
 
-    function onKey(keyEvent as WatchUi.KeyEvent){
+        if (app.isActivityRecording()) {
+            app.stopRecording();
+            System.println("[UI] Cadence monitoring stopped");
+        } else {
+            app.startRecording();
+            System.println("[UI] Cadence monitoring started");
+        }
+
+        WatchUi.requestUpdate();
+        return true;
+    }
+
+    function onKey(keyEvent as WatchUi.KeyEvent) as Boolean {
         var key = keyEvent.getKey();
 
-        if(key == WatchUi.KEY_UP)//block GarminControlMenu (the triangle screen)
-        {
+        // Block Garmin system menu
+        if (key == WatchUi.KEY_UP) {
             return true;
         }
 
-        if(key == WatchUi.KEY_DOWN){
+        if (key == WatchUi.KEY_DOWN) {
             _currentView = new AdvancedView();
-
-            // Switches the screen to advanced view by clocking down button
-            WatchUi.pushView(_currentView, new AdvancedViewDelegate(_currentView), WatchUi.SLIDE_DOWN);
+            WatchUi.pushView(
+                _currentView,
+                new AdvancedViewDelegate(_currentView),
+                WatchUi.SLIDE_DOWN
+            );
             return true;
         }
 
         return false;
     }
 
+    function onSwipe(event as WatchUi.SwipeEvent) as Boolean {
+        var direction = event.getDirection();
 
-    function onSwipe(SwipeEvent as WatchUi.SwipeEvent){
-        var direction = SwipeEvent.getDirection();
-            
         if (direction == WatchUi.SWIPE_UP) {
-            _currentView = new AdvancedView(); 
-            System.println("Swiped Down");
-            WatchUi.pushView(_currentView, new AdvancedViewDelegate(_currentView), WatchUi.SLIDE_DOWN);
+            _currentView = new AdvancedView();
+            WatchUi.pushView(
+                _currentView,
+                new AdvancedViewDelegate(_currentView),
+                WatchUi.SLIDE_DOWN
+            );
             return true;
         }
 
-        if(direction == WatchUi.SWIPE_LEFT){
+        if (direction == WatchUi.SWIPE_LEFT) {
             _currentView = new SettingsView();
-            System.println("Swiped Left");
-            WatchUi.pushView(_currentView, new SettingsDelegate(_currentView), WatchUi.SLIDE_LEFT);
+            WatchUi.pushView(
+                _currentView,
+                new SettingsDelegate(_currentView),
+                WatchUi.SLIDE_LEFT
+            );
             return true;
         }
 
         return false;
     }
 
-    function onBack(){
-        //dont pop view and exit app
+    function onBack() as Boolean {
+        // Prevent accidental app exit
         return true;
     }
-
 }
