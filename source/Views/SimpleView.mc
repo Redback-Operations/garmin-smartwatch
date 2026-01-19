@@ -15,6 +15,10 @@ class SimpleView extends WatchUi.View {
     private var _cadenceZoneDisplay;
     private var _lastZoneState = 0; // -1 = below, 0 = inside, 1 = above
     private var _vibeTimer = new Timer.Timer();
+    private var _cqDisplay;
+    private var _hardcoreDisplay;
+
+
 
     function _secondVibe() as Void {
         // Haptics not available on this target SDK/device in this workspace.
@@ -25,8 +29,6 @@ class SimpleView extends WatchUi.View {
 
     function initialize() {
         View.initialize();
-        _refreshTimer = new Timer.Timer();
-        _refreshTimer.start(method(:refreshScreen), 1000, true);
     }
 
     // Load your resources here
@@ -37,18 +39,28 @@ class SimpleView extends WatchUi.View {
         _heartrateDisplay = findDrawableById("heartrate_text");
         _distanceDisplay = findDrawableById("distance_text");
         _timeDisplay = findDrawableById("time_text");
+        _cqDisplay = findDrawableById("cq_text");
+        _hardcoreDisplay = findDrawableById("hardcore_text");
+
+
     }
 
     // Called when this View is brought to the foreground. Restore
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() as Void {
+        _refreshTimer = new Timer.Timer();
+        _refreshTimer.start(method(:refreshScreen), 1000, true);
     }
 
     // Update the view
     function onUpdate(dc as Dc) as Void {
         //update the display for current cadence
         displayCadence();
+        
+        // Draw recording indicator
+        drawRecordingIndicator(dc);
+        
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
     }
@@ -57,10 +69,36 @@ class SimpleView extends WatchUi.View {
     // state of this View here. This includes freeing resources from
     // memory.
     function onHide() as Void {
+        if (_refreshTimer != null) {
+            _refreshTimer.stop();
+            _refreshTimer = null;
+        }
     }
 
     function refreshScreen() as Void{
         WatchUi.requestUpdate();
+    }
+
+    function drawRecordingIndicator(dc as Dc) as Void {
+        var app = getApp();
+        
+        if (app.isActivityRecording()) {
+            // Draw a red recording indicator in top-right corner
+            dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+            var width = dc.getWidth();
+            var radius = 8;
+            dc.fillCircle(width - 15, 15, radius);
+            
+            // Add "REC" text next to the indicator
+            dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(width - 35, 5, Graphics.FONT_TINY, "REC", Graphics.TEXT_JUSTIFY_RIGHT);
+        } else {
+            // Draw instruction text at bottom
+            dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+            var width = dc.getWidth();
+            var height = dc.getHeight();
+            dc.drawText(width / 2, height - 25, Graphics.FONT_TINY, "Press SELECT to start", Graphics.TEXT_JUSTIFY_CENTER);
+        }
     }
 
     function displayCadence() as Void{
@@ -142,6 +180,25 @@ class SimpleView extends WatchUi.View {
         }else{
             _timeDisplay.setText("--:--:--");
         }
+
+        /// --- Cadence Quality (Easter Egg) ---
+        if (_cqDisplay != null) {
+            var app = getApp();
+            var frozenCQ = app.getFinalCadenceQuality();
+
+            if (frozenCQ != null) {
+                _cqDisplay.setText("CQ: " + frozenCQ.format("%d") + "%");
+            } else {
+                var cq = app.computeCadenceQualityScore();
+
+                if (cq < 0) {
+                    _cqDisplay.setText("CQ: --");
+                } else {
+                    _cqDisplay.setText("CQ: " + cq.format("%d") + "%");
+                }
+            }
+        }
+
         
     }
 
