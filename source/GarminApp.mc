@@ -454,7 +454,17 @@ class GarminApp extends Application.AppBase {
     }
 
     function setChartDuration(value as String) as Void {
-        _chartDuration = value;
+        if (value == "FifteenminChart"){
+            _chartDuration = FifteenminChart;
+        } else if (value == "ThirtyminChart"){
+            _chartDuration = ThirtyminChart;
+        } else if (value == "OneHourChart"){
+            _chartDuration = OneHourChart;
+        } else if (value == "TwoHourChart"){
+            _chartDuration = TwoHourChart;
+        } else {System.println("ERROR");}
+
+        System.println(_chartDuration);
     }
     
     function getUserGender() as String {
@@ -471,6 +481,10 @@ class GarminApp extends Application.AppBase {
 
     function setUserHeight(value as Number) as Void {
         _userHeight = value;
+    }
+
+    function getUserHeight() as Number {
+        return _userHeight;
     }
 
     function getUserSpeed() as Float {
