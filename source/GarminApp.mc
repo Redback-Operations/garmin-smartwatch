@@ -209,7 +209,7 @@ class GarminApp extends Application.AppBase {
             Logger.logMemoryStats("Runtime");
         }
       
-} 
+    } 
 
 
 
