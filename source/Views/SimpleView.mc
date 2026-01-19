@@ -18,8 +18,6 @@ class SimpleView extends WatchUi.View {
     private var _cqDisplay;
     private var _hardcoreDisplay;
 
-
-
     function _secondVibe() as Void {
         // Haptics not available on this target SDK/device in this workspace.
         // Replace the println below with the device vibration call when supported,

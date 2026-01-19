@@ -188,7 +188,7 @@ class GarminApp extends Application.AppBase {
       if (DEBUG_MODE) {
     System.println("[CADENCE] " + newCadence);
 }
-    } else {
+     else {
         // Track missing cadence samples (sensor dropouts)
         _missingCadenceCount++;
     }
@@ -427,9 +427,6 @@ function writeDiagnosticLog() as Void {
     System.println("===== END DIAGNOSTIC SUMMARY =====");
 }
 
-
-
-
     function getMinCadence() as Number {
         return _idealMinCadence;
     }
@@ -463,7 +460,17 @@ function writeDiagnosticLog() as Void {
     }
 
     function setChartDuration(value as String) as Void {
-        _chartDuration = value;
+        if (value == "FifteenminChart"){
+            _chartDuration = FifteenminChart;
+        } else if (value == "ThirtyminChart"){
+            _chartDuration = ThirtyminChart;
+        } else if (value == "OneHourChart"){
+            _chartDuration = OneHourChart;
+        } else if (value == "TwoHourChart"){
+            _chartDuration = TwoHourChart;
+        } else {System.println("ERROR");}
+
+        System.println(_chartDuration);
     }
     
     function getUserGender() as String {
@@ -480,6 +487,10 @@ function writeDiagnosticLog() as Void {
 
     function setUserHeight(value as Number) as Void {
         _userHeight = value;
+    }
+
+    function getUserHeight() as Number {
+        return _userHeight;
     }
 
     function getUserSpeed() as Float {

@@ -61,11 +61,13 @@ class SelectCadenceDelegate extends WatchUi.Menu2InputDelegate {
         
         var newTitle = Lang.format("Cadence: $1$ - $2$", [newMin, newMax]);
         
-        // This updates the UI immediately
+        //this updates the UI when the cadence is changed
         _menu.setTitle(newTitle);
     }
 
-    // Returns back one menu
+    //function onMenuItem(item as Symbol) as Void {}
+
+    //returns back one menu
     function onBack() as Void {
         WatchUi.popView(WatchUi.SLIDE_BLINK); 
     }
