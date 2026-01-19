@@ -7,7 +7,8 @@ import Toybox.System;
 
 
 class GarminApp extends Application.AppBase {
-    const MAX_BARS = 60;
+    const MAX_BARS = 280;
+    //const MAX_BARS_DISPLAY = 0;
     const BASELINE_AVG_CADENCE = 160;
     const MAX_CADENCE = 190;
     const MIN_CQ_SAMPLES = 30;
@@ -15,6 +16,20 @@ class GarminApp extends Application.AppBase {
 
     var globalTimer;
     var isRecording as Boolean = false;
+
+    enum { //each chart corresponds to a difference bar duration average (in seconds)
+        FifteenminChart = 3,
+        ThirtyminChart = 6, 
+        OneHourChart = 13,
+        TwoHourChart = 26
+    }
+
+    const CHART_ENUM_NAMES = {
+        FifteenminChart => "15 Minutes",
+        ThirtyminChart => "30 Minutes",
+        OneHourChart => "1 Hour",
+        TwoHourChart => "2 Hours"
+    };
 
     enum {
         Beginner = 1.06,
@@ -28,30 +43,30 @@ class GarminApp extends Application.AppBase {
         Other
     }
 
+    //default value (can change in settings)
+    private var _userHeight = 170;//>>cm
+    private var _userSpeed = 3.8;//>>m/s
+    private var _experienceLvl = Beginner;
+    private var _userGender = Male;
+    private var _chartDuration = ThirtyminChart;
+
     private var _idealMinCadence = 80;
     private var _idealMaxCadence = 100;
+
+    private var _cadenceHistory as Array<Float?> = new [MAX_BARS]; // Store session's cadence
     private var _cadenceIndex = 0;
     private var _cadenceCount = 0;
-    private var _cadenceHistory as Array<Float?> = new [MAX_BARS];
+     
+    private var _cadenceBarAvg as Array<Float?> = new [_chartDuration]; // Store data points for display
+    private var _cadenceAvgIndex = 0;
+    private var _cadenceAvgCount = 0;
+  
     private var _finalCQ = null;
     private var _missingCadenceCount = 0;
     private var _finalCQConfidence = null;
     private var _finalCQTrend = null;
-
-    private var _userHeight = null;//>>cm
-    private var _userSpeed = null;//>>m/s
-    private var _experienceLvl = null;
-    private var _userGender = null;
-
     private var _cqHistory as Array<Number> = [];
 
-
-    function dummyValueTesting() as Void {
-        _userHeight = 170;
-        _userSpeed = 3.8;
-        _experienceLvl = Beginner;
-        _userGender = Female;
-    }
 
     function initialize() {
         AppBase.initialize();
@@ -65,11 +80,7 @@ class GarminApp extends Application.AppBase {
         Logger.logMemoryStats("Startup");
         
         globalTimer = new Timer.Timer();
-        globalTimer.start(method(:updateCadence), 1000, true);
-        dummyValueTesting();
-        /*
-            remember to remove after testing
-        */
+        globalTimer.start(method(:updateCadenceBarAvg),1000,true);
         idealCadenceCalculator();
     }
 
@@ -139,26 +150,42 @@ class GarminApp extends Application.AppBase {
         return isRecording;
     }
 
-    function updateCadence() as Void {
-    if (!isRecording) {
+    function updateCadenceBarAvg() as Void {
+      if (!isRecording) {
         return; // ignore samples when not actively monitoring
-    }
-    
-    var info = Activity.getActivityInfo();
-
-    // ----- Cadence sample handling -----
-    if (info != null && info.currentCadence != null) {
-        var newCadence = info.currentCadence;
-
-        // Store cadence sample
-        _cadenceHistory[_cadenceIndex] = newCadence.toFloat();
-        _cadenceIndex = (_cadenceIndex + 1) % MAX_BARS;
-
-        if (_cadenceCount < MAX_BARS) {
-            _cadenceCount++;
+      }
+      
+      var info = Activity.getActivityInfo();
+        
+        //var zoneState = null;
+        if (info != null && info.currentCadence != null) {
+            var newCadence = info.currentCadence;
+            _cadenceBarAvg[_cadenceAvgIndex] = newCadence.toFloat();
+            // Add to circular buffer
+            _cadenceAvgIndex = (_cadenceAvgIndex + 1) % _chartDuration;
+            if (_cadenceAvgCount < _chartDuration) { 
+                _cadenceAvgCount++; 
+            }
+            else //calculate avg
+            {
+                var barAvg = 0.0;
+                for(var i = 0; i < _chartDuration; i++){
+                    barAvg += _cadenceBarAvg[i];
+                }
+                updateCadenceHistory(barAvg / _chartDuration);
+                _cadenceAvgCount = 0;
+            }
         }
 
-        if (DEBUG_MODE) {
+    }
+
+    function updateCadenceHistory(newCadence as Float) as Void {
+        _cadenceHistory[_cadenceIndex] = newCadence;
+        // Add to circular buffer
+        _cadenceIndex = (_cadenceIndex + 1) % MAX_BARS;
+        if (_cadenceCount < MAX_BARS) { _cadenceCount++; }
+      
+      if (DEBUG_MODE) {
     System.println("[CADENCE] " + newCadence);
 }
     } else {
@@ -193,9 +220,9 @@ class GarminApp extends Application.AppBase {
     if (_cadenceIndex % 60 == 0 && _cadenceIndex > 0) {
         Logger.logMemoryStats("Runtime");
     }
+      
+} 
 
-
-}
 
 
 // Cadence Quality
@@ -410,6 +437,14 @@ function writeDiagnosticLog() as Void {
     function getMaxCadence() as Number {
         return _idealMaxCadence;    
     }
+    
+    function setMinCadence(value as Number) as Void {
+        _idealMinCadence = value;
+    }
+
+    function setMaxCadence(value as Number) as Void {
+        _idealMaxCadence = value;
+    }
 
     function getCadenceHistory() as Array<Float?> {
         return _cadenceHistory;
@@ -423,14 +458,14 @@ function writeDiagnosticLog() as Void {
         return _cadenceCount;
     }
 
-    function setMinCadence(value as Number) as Void {
-        _idealMinCadence = value;
+    function getChartDuration() as String{
+        return CHART_ENUM_NAMES[_chartDuration];
     }
 
-    function setMaxCadence(value as Number) as Void {
-        _idealMaxCadence = value;
+    function setChartDuration(value as String) as Void {
+        _chartDuration = value;
     }
-
+    
     function getUserGender() as String {
         return _userGender;
     }
@@ -459,7 +494,6 @@ function writeDiagnosticLog() as Void {
         return _experienceLvl;
     }
 
-    //double check ltr
     function setExperienceLvl(value as Number) as Void {
         _experienceLvl = value;
     }
