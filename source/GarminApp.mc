@@ -16,7 +16,7 @@ class GarminApp extends Application.AppBase {
 
     var globalTimer;
     var isRecording as Boolean = false;
-
+    
     enum { //each chart corresponds to a difference bar duration average (in seconds)
         FifteenminChart = 3,
         ThirtyminChart = 6, 
@@ -45,10 +45,10 @@ class GarminApp extends Application.AppBase {
 
     //default value (can change in settings)
     private var _userHeight = 170;//>>cm
-    private var _userSpeed = 3.8;//>>m/s
+    private var _userSpeed = 10;//>>km/h
     private var _experienceLvl = Beginner;
     private var _userGender = Male;
-    private var _chartDuration = ThirtyminChart;
+    private var _chartDuration = ThirtyminChart as Number;
 
     private var _idealMinCadence = 80;
     private var _idealMaxCadence = 100;
@@ -253,17 +253,18 @@ class GarminApp extends Application.AppBase {
         var referenceCadence = 0;
         var finalCadence = 0;
         var userLegLength = _userHeight * 0.53;
+        var userSpeedms = _userSpeed / 3.6;//km/h --> m/s
         
         //reference cadence
         switch (_userGender) {
             case Male:
-                referenceCadence = (-1.268 * userLegLength) + (3.471 * _userSpeed) + 261.378;
+                referenceCadence = (-1.268 * userLegLength) + (3.471 * userSpeedms) + 261.378;
                 break;
             case Female:
-                referenceCadence = (-1.190 * userLegLength) + (3.705 * _userSpeed) + 249.688;
+                referenceCadence = (-1.190 * userLegLength) + (3.705 * userSpeedms) + 249.688;
                 break;
             default:
-                referenceCadence = (-1.251 * userLegLength) + (3.665 * _userSpeed) + 254.858;
+                referenceCadence = (-1.251 * userLegLength) + (3.665 * userSpeedms) + 254.858;
                 break;
         }
 
@@ -449,29 +450,21 @@ class GarminApp extends Application.AppBase {
         return _cadenceCount;
     }
 
+    function setChartDuration(value as Number) as Void {
+        _chartDuration = value;
+
+        System.println(CHART_ENUM_NAMES[_chartDuration] + " selected.");
+    }
+    
     function getChartDuration() as String{
         return CHART_ENUM_NAMES[_chartDuration];
-    }
-
-    function setChartDuration(value as String) as Void {
-        if (value == "FifteenminChart"){
-            _chartDuration = FifteenminChart;
-        } else if (value == "ThirtyminChart"){
-            _chartDuration = ThirtyminChart;
-        } else if (value == "OneHourChart"){
-            _chartDuration = OneHourChart;
-        } else if (value == "TwoHourChart"){
-            _chartDuration = TwoHourChart;
-        } else {System.println("ERROR");}
-
-        System.println(_chartDuration);
     }
     
     function getUserGender() as String {
         return _userGender;
     }
 
-    function setUserGender(value as String) as Void {
+    function setUserGender(value as Number) as Void {
         _userGender = value;
     }
 
@@ -499,7 +492,7 @@ class GarminApp extends Application.AppBase {
         return _experienceLvl;
     }
 
-    function setExperienceLvl(value as Number) as Void {
+    function setExperienceLvl(value as Float) as Void {
         _experienceLvl = value;
     }
 

@@ -60,16 +60,16 @@ class SelectProfileDelegate extends WatchUi.Menu2InputDelegate {
     function speedPicker() as Void {
         //uses number not float
         var currentSpeed = app.getUserSpeed().toNumber();
-        if (currentSpeed == null) { currentSpeed = 10; } // Default 10 km/h
+        if (currentSpeed == null) { currentSpeed = 3; } // Default 3 km/h
 
-                var factory = new ProfilePickerFactory(5, 30, 1, {:label=>" km/h"});
+                var factory = new ProfilePickerFactory(3, 30, 1, {:label=>" km/h"});
 
         var picker = new WatchUi.Picker({
             :title => new WatchUi.Text({:text=>"Set Speed", :locX=>WatchUi.LAYOUT_HALIGN_CENTER, :locY=>WatchUi.LAYOUT_VALIGN_BOTTOM, :color=>Graphics.COLOR_WHITE}),
             :pattern => [factory],
             :defaults => [factory.getIndex(currentSpeed)]
         });
-
+        
         WatchUi.pushView(picker, new ProfilePickerDelegate(:prof_speed), WatchUi.SLIDE_LEFT);
 
     }

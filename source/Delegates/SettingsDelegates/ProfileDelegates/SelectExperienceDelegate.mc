@@ -14,11 +14,11 @@ class SelectExperienceDelegate extends WatchUi.Menu2InputDelegate {
         Menu2InputDelegate.initialize();
         _menu = menu;
 
-        if (experienceLvl == 1.06){
+        if (experienceLvl == GarminApp.Beginner){
             experienceLvlString = "Beginner";
-        } else if (experienceLvl == 1.04){
+        } else if (experienceLvl == GarminApp.Intermediate){
             experienceLvlString = "Intermediate";
-        } else if (experienceLvl == 1.02){
+        } else if (experienceLvl == GarminApp.Advanced){
             experienceLvlString = "Advanced";
         }
         var newTitle = Lang.format("Experience: $1$", [experienceLvlString]);
@@ -34,16 +34,18 @@ class SelectExperienceDelegate extends WatchUi.Menu2InputDelegate {
         //Try to change user experience lvl based off menu selection
         if (id == :exp_beginner){
             System.println("User ExperienceLvl: Beginner");
-            app.setExperienceLvl(1.06);
+            app.setExperienceLvl(GarminApp.Beginner);
         } 
         else if (id == :exp_intermediate){
             System.println("User ExperienceLvl: Intermediate");
-            app.setExperienceLvl(1.04);
+            app.setExperienceLvl(GarminApp.Intermediate);
         } 
         else if (id == :exp_advanced){
             System.println("User ExperienceLvl: Advanced");
-            app.setExperienceLvl(1.02);
+            app.setExperienceLvl(GarminApp.Advanced);
         } else {System.println("ERROR");}
+
+        app.idealCadenceCalculator();
 
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         

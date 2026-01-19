@@ -26,17 +26,19 @@ class SelectGenderDelegate extends WatchUi.Menu2InputDelegate {
         
         //Try to change user gender based off menu selection
         if (id == :user_male){
-            app.setUserGender("Male");
+            app.setUserGender(GarminApp.Male);
             System.println("User Gender: Male");
         } 
         else if (id == :user_female){
-            app.setUserGender("Female");
+            app.setUserGender(GarminApp.Female);
             System.println("User Gender: Female");
         } 
         else if (id == :user_other){
-            app.setUserGender("Other");
+            app.setUserGender(GarminApp.Other);
             System.println("User Gender: Other");
         } else {System.println("ERROR");}
+
+        app.idealCadenceCalculator();
 
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
     }

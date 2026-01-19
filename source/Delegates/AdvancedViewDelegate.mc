@@ -8,7 +8,7 @@ class AdvancedViewDelegate extends WatchUi.BehaviorDelegate {
     //private var _view as AdvancedView; 
 
     function initialize(view as AdvancedView) {
-        InputDelegate.initialize();
+        BehaviorDelegate.initialize();
         //_view = view;
     }
 

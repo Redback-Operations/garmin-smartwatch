@@ -26,6 +26,8 @@ class ProfilePickerDelegate extends WatchUi.PickerDelegate {
              app.setUserSpeed(pickedValue);
         }
 
+        app.idealCadenceCalculator();
+
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         return true;
     }
