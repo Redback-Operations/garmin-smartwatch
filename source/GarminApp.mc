@@ -169,6 +169,10 @@ class GarminApp extends Application.AppBase {
     function getChartDuration() as String{
         return CHART_ENUM_NAMES[_chartDuration];
     }
+
+    function setChartDuration(value as String) as Void {
+        _chartDuration = value;
+    }
     
     function getUserGender() as String {
         return _userGender;
