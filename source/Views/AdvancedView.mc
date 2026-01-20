@@ -180,7 +180,7 @@ class AdvancedView extends WatchUi.View {
         if(cadenceCount == 0) {return;}
        
         var numBars = cadenceCount;
-        var barWidth = (barZoneWidth / MAX_BARS).toNumber();
+        var barWidth = app.max(1, (barZoneWidth / MAX_BARS).toNumber());
 
         var startIndex = (cadenceIndex - numBars + MAX_BARS) % MAX_BARS;
             
