@@ -6,7 +6,7 @@ import Toybox.Application;
 class SelectBarChartDelegate extends WatchUi.Menu2InputDelegate { 
 
     private var _menu as WatchUi.Menu2;
-    var app = Application.getApp() as GarminApp;
+    var app = getApp();
     var chartDuration = app.getChartDuration();
 
     function initialize(menu as WatchUi.Menu2) {
@@ -24,20 +24,16 @@ class SelectBarChartDelegate extends WatchUi.Menu2InputDelegate {
 
         //Try to change cadence range based off menu selection
         if (id == :chart_15m){
-            app.setChartDuration("FifteenminChart");
-            System.println("Chart Duration: Fifteenmin");
+            app.setChartDuration(GarminApp.FifteenminChart);
         }
         else if (id == :chart_30m){
-            app.setChartDuration("ThirtyminChart");
-            System.println("Chart Duration: Thirtymin");
+            app.setChartDuration(GarminApp.ThirtyminChart);
         }
         else if (id == :chart_1h){
-            app.setChartDuration("OneHourChart");
-            System.println("Chart Duration: OneHour");
+            app.setChartDuration(GarminApp.OneHourChart);
         }
         else if (id == :chart_2h){
-            app.setChartDuration("TwoHourChart");
-            System.println("Chart Duration: TwoHour");
+            app.setChartDuration(GarminApp.TwoHourChart);
         }
         else {System.println("ERROR");}
 

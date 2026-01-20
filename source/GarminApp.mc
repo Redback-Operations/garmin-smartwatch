@@ -16,7 +16,7 @@ class GarminApp extends Application.AppBase {
 
     var globalTimer;
     var isRecording as Boolean = false;
-
+    
     enum { //each chart corresponds to a difference bar duration average (in seconds)
         FifteenminChart = 3,
         ThirtyminChart = 6, 
@@ -45,10 +45,10 @@ class GarminApp extends Application.AppBase {
 
     //default value (can change in settings)
     private var _userHeight = 170;//>>cm
-    private var _userSpeed = 3.8;//>>m/s
+    private var _userSpeed = 10;//>>km/h
     private var _experienceLvl = Beginner;
     private var _userGender = Male;
-    private var _chartDuration = ThirtyminChart;
+    private var _chartDuration = ThirtyminChart as Number;
 
     private var _idealMinCadence = 80;
     private var _idealMaxCadence = 100;
@@ -100,64 +100,52 @@ class GarminApp extends Application.AppBase {
 
     function startRecording() as Void {
 
-    if (isRecording) {
-        return;
+        if (isRecording) {return;}
+
+        System.println("[INFO] Starting cadence monitoring");
+
+        _finalCQ = null;
+        _finalCQConfidence = null;
+        _finalCQTrend = null;
+        _cqHistory = [];
+        _cadenceCount = 0;
+        _missingCadenceCount = 0;
+
+        isRecording = true; 
     }
-
-    System.println("[INFO] Starting cadence monitoring");
-
-    _finalCQ = null;
-    _finalCQConfidence = null;
-    _finalCQTrend = null;
-    _cqHistory = [];
-    _cadenceCount = 0;
-    _missingCadenceCount = 0;
-
-    isRecording = true;
-    
-}
 
 
     function stopRecording() as Void {
 
-    if (!isRecording) {
-        return;
-    }
+        if (!isRecording) {return;}
 
-    System.println("[INFO] Stopping cadence monitoring");
+        System.println("[INFO] Stopping cadence monitoring");
 
-    var cq = computeCadenceQualityScore();
+        var cq = computeCadenceQualityScore();
 
-    if (cq >= 0) {
-        _finalCQ = cq;
-        _finalCQConfidence = computeCQConfidence();
-        _finalCQTrend = computeCQTrend();
+        if (cq >= 0) {
+            _finalCQ = cq;
+            _finalCQConfidence = computeCQConfidence();
+            _finalCQTrend = computeCQTrend();
 
-        System.println(
-            "[CADENCE QUALITY] Final CQ frozen at " +
-            cq.format("%d") + "% (" +
-            _finalCQTrend + ", " +
-            _finalCQConfidence + " confidence)"
-        );
+            System.println(
+                "[CADENCE QUALITY] Final CQ frozen at " +
+                cq.format("%d") + "% (" +
+                _finalCQTrend + ", " +
+                _finalCQConfidence + " confidence)"
+            );
 
-        writeDiagnosticLog();
-    }
+            writeDiagnosticLog();
+        }
 
-    isRecording = false;
-}
-
-    function isActivityRecording() as Boolean {
-        return isRecording;
+        isRecording = false;
     }
 
     function updateCadenceBarAvg() as Void {
-      if (!isRecording) {
-        return; // ignore samples when not actively monitoring
-      }
+      //if (!isRecording) { return;} // ignore samples when not actively monitoring
       
       var info = Activity.getActivityInfo();
-        
-        //var zoneState = null;
+    
         if (info != null && info.currentCadence != null) {
             var newCadence = info.currentCadence;
             _cadenceBarAvg[_cadenceAvgIndex] = newCadence.toFloat();
@@ -185,79 +173,79 @@ class GarminApp extends Application.AppBase {
         _cadenceIndex = (_cadenceIndex + 1) % MAX_BARS;
         if (_cadenceCount < MAX_BARS) { _cadenceCount++; }
       
-      if (DEBUG_MODE) {
-    System.println("[CADENCE] " + newCadence);
-}
-     else {
-        // Track missing cadence samples (sensor dropouts)
-        _missingCadenceCount++;
-    }
-
-    // ----- Cadence Quality computation -----
-    var cq = computeCadenceQualityScore();
-
-    if (cq < 0) {
-        System.println(
-            "[CADENCE QUALITY] Warming up (" +
-            _cadenceCount.toString() + "/" +
-            MIN_CQ_SAMPLES.toString() + " samples)"
-        );
-    } else {
         if (DEBUG_MODE) {
-    System.println("[CADENCE QUALITY] CQ = " + cq.format("%d") + "%");
-}
-
-        // Record CQ history for trend analysis 
-        _cqHistory.add(cq);
-
-        // Keep sliding window small and recent
-        if (_cqHistory.size() > 10) {
-            _cqHistory.remove(0);
+            System.println("[CADENCE] " + newCadence);
         }
-    }
+        else {
+            // Track missing cadence samples (sensor dropouts)
+            _missingCadenceCount++;
+        }
 
-    // ----- Memory logging (approx once per minute) -----
-    if (_cadenceIndex % 60 == 0 && _cadenceIndex > 0) {
-        Logger.logMemoryStats("Runtime");
-    }
-      
-} 
+        // ----- Cadence Quality computation -----
+        var cq = computeCadenceQualityScore();
 
+        if (cq < 0) {
+            System.println(
+                "[CADENCE QUALITY] Warming up (" +
+                _cadenceCount.toString() + "/" +
+                MIN_CQ_SAMPLES.toString() + " samples)"
+            );
+        } else {
+            if (DEBUG_MODE) {
+                System.println("[CADENCE QUALITY] CQ = " + cq.format("%d") + "%");
+            }
 
+            // Record CQ history for trend analysis 
+            _cqHistory.add(cq);
 
-// Cadence Quality
-function computeTimeInZoneScore() as Number {
-
-    // Not enough data yet
-    if (_cadenceCount < MIN_CQ_SAMPLES) {
-        return -1; // sentinel value meaning "not ready"
-    }
-
-    var minZone = _idealMinCadence;
-    var maxZone = _idealMaxCadence;
-
-    var inZoneCount = 0;
-    var validSamples = 0;
-
-    for (var i = 0; i < MAX_BARS; i++) {
-        var c = _cadenceHistory[i];
-
-        if (c != null) {
-            validSamples++;
-
-            if (c >= minZone && c <= maxZone) {
-                inZoneCount++;
+            // Keep sliding window small and recent
+            if (_cqHistory.size() > 10) {
+                _cqHistory.remove(0);
             }
         }
-    }
 
-    if (validSamples == 0) {
-        return -1;
-    }
+        // ----- Memory logging (approx once per minute) -----
+        if (_cadenceIndex % 60 == 0 && _cadenceIndex > 0) {
+            Logger.logMemoryStats("Runtime");
+        }
+      
+    } 
 
-    var ratio = inZoneCount.toFloat() / validSamples.toFloat();
-    return (ratio * 100).toNumber();
-}
+
+
+    // Cadence Quality
+    function computeTimeInZoneScore() as Number {
+
+        // Not enough data yet
+        if (_cadenceCount < MIN_CQ_SAMPLES) {
+            return -1; // sentinel value meaning "not ready"
+        }
+
+        var minZone = _idealMinCadence;
+        var maxZone = _idealMaxCadence;
+
+        var inZoneCount = 0;
+        var validSamples = 0;
+
+        for (var i = 0; i < MAX_BARS; i++) {
+            var c = _cadenceHistory[i];
+
+            if (c != null) {
+                validSamples++;
+
+                if (c >= minZone && c <= maxZone) {
+                    inZoneCount++;
+                }
+            }
+        }
+
+        if (validSamples == 0) {
+            return -1;
+        }
+
+        var ratio = inZoneCount.toFloat() / validSamples.toFloat();
+        return (ratio * 100).toNumber();
+    }
 
 
 
@@ -265,17 +253,18 @@ function computeTimeInZoneScore() as Number {
         var referenceCadence = 0;
         var finalCadence = 0;
         var userLegLength = _userHeight * 0.53;
+        var userSpeedms = _userSpeed / 3.6;//km/h --> m/s
         
         //reference cadence
         switch (_userGender) {
             case Male:
-                referenceCadence = (-1.268 * userLegLength) + (3.471 * _userSpeed) + 261.378;
+                referenceCadence = (-1.268 * userLegLength) + (3.471 * userSpeedms) + 261.378;
                 break;
             case Female:
-                referenceCadence = (-1.190 * userLegLength) + (3.705 * _userSpeed) + 249.688;
+                referenceCadence = (-1.190 * userLegLength) + (3.705 * userSpeedms) + 249.688;
                 break;
             default:
-                referenceCadence = (-1.251 * userLegLength) + (3.665 * _userSpeed) + 254.858;
+                referenceCadence = (-1.251 * userLegLength) + (3.665 * userSpeedms) + 254.858;
                 break;
         }
 
@@ -293,139 +282,145 @@ function computeTimeInZoneScore() as Number {
 
     function computeSmoothnessScore() as Number {
 
-    // Not enough data yet
-    if (_cadenceCount < MIN_CQ_SAMPLES) {
-        return -1; // not ready
+        // Not enough data yet
+        if (_cadenceCount < MIN_CQ_SAMPLES) {
+            return -1; // not ready
+        }
+
+        var totalDiff = 0.0;
+        var diffCount = 0;
+
+        for (var i = 1; i < MAX_BARS; i++) {
+            var prev = _cadenceHistory[i - 1];
+            var curr = _cadenceHistory[i];
+
+            if (prev != null && curr != null) {
+                totalDiff += abs(curr - prev);
+                diffCount++;
+            }
+        }
+
+        if (diffCount == 0) {
+            return -1;
+        }
+
+        var avgDiff = totalDiff / diffCount;
+
+        /*
+            Interpret avgDiff:
+            - ~0–1   → very smooth
+            - ~2–3   → normal
+            - >5     → erratic
+        */
+
+        var rawScore = 100 - (avgDiff * 10);
+
+        // Clamp to 0–100
+        if (rawScore < 0) { rawScore = 0; }
+        if (rawScore > 100) { rawScore = 100; }
+
+        return rawScore;
     }
 
-    var totalDiff = 0.0;
-    var diffCount = 0;
+    function computeCadenceQualityScore() as Number {
 
-    for (var i = 1; i < MAX_BARS; i++) {
-        var prev = _cadenceHistory[i - 1];
-        var curr = _cadenceHistory[i];
+        var timeInZone = computeTimeInZoneScore();
+        var smoothness = computeSmoothnessScore();
 
-        if (prev != null && curr != null) {
-            totalDiff += abs(curr - prev);
-            diffCount++;
+        // Not ready yet
+        if (timeInZone < 0 || smoothness < 0) {
+            return -1;
+        }
+
+        // Weighted combination
+        var cq =
+            (timeInZone * 0.7) +
+            (smoothness * 0.3);
+
+        return cq.toNumber();
+    }
+
+
+    function computeCQConfidence() as String {
+
+        // Not enough data → low confidence
+        if (_cadenceCount < MIN_CQ_SAMPLES) {
+            return "Low";
+        }
+
+        var missingRatio = _missingCadenceCount.toFloat() /
+                        (_cadenceCount + _missingCadenceCount).toFloat();
+
+        if (missingRatio > 0.2) {
+            return "Low";
+        } else if (missingRatio > 0.1) {
+            return "Medium";
+        } else {
+            return "High";
         }
     }
 
-    if (diffCount == 0) {
-        return -1;
+    function computeCQTrend() as String {
+
+        if (_cqHistory.size() < 5) {
+            return "Stable";
+        }
+
+        var first = _cqHistory[0];
+        var last  = _cqHistory[_cqHistory.size() - 1];
+
+        var delta = last - first;
+
+        if (delta < -5) {
+            return "Declining";
+        } else if (delta > 5) {
+            return "Improving";
+        } else {
+            return "Stable";
+        }
     }
 
-    var avgDiff = totalDiff / diffCount;
+    function writeDiagnosticLog() as Void {
 
-    /*
-        Interpret avgDiff:
-        - ~0–1   → very smooth
-        - ~2–3   → normal
-        - >5     → erratic
-    */
+        if (!DEBUG_MODE) {
+            return;
+        }
 
-    var rawScore = 100 - (avgDiff * 10);
+        System.println("===== DIAGNOSTIC RUN SUMMARY =====");
 
-    // Clamp to 0–100
-    if (rawScore < 0) { rawScore = 0; }
-    if (rawScore > 100) { rawScore = 100; }
+        System.println("Final CQ: " +
+            (_finalCQ != null ? _finalCQ.format("%d") + "%" : "N/A"));
 
-    return rawScore;
-}
+        System.println("CQ Confidence: " +
+            (_finalCQConfidence != null ? _finalCQConfidence : "N/A"));
 
-function computeCadenceQualityScore() as Number {
+        System.println("CQ Trend: " +
+            (_finalCQTrend != null ? _finalCQTrend : "N/A"));
 
-    var timeInZone = computeTimeInZoneScore();
-    var smoothness = computeSmoothnessScore();
+        System.println("Cadence samples collected: " + _cadenceCount.toString());
+        System.println("Missing cadence samples: " + _missingCadenceCount.toString());
 
-    // Not ready yet
-    if (timeInZone < 0 || smoothness < 0) {
-        return -1;
+        var totalSamples = _cadenceCount + _missingCadenceCount;
+        if (totalSamples > 0) {
+            var validRatio =
+                (_cadenceCount.toFloat() / totalSamples.toFloat()) * 100;
+
+            System.println("Valid data ratio: " +
+                validRatio.format("%d") + "%");
+        }
+
+        System.println("Ideal cadence range: " +
+            _idealMinCadence.toString() + "-" +
+            _idealMaxCadence.toString());
+
+        System.println("===== END DIAGNOSTIC SUMMARY =====");
     }
 
-    // Weighted combination
-    var cq =
-        (timeInZone * 0.7) +
-        (smoothness * 0.3);
 
-    return cq.toNumber();
-}
-
-
-function computeCQConfidence() as String {
-
-    // Not enough data → low confidence
-    if (_cadenceCount < MIN_CQ_SAMPLES) {
-        return "Low";
+    //set and get functions
+    function isActivityRecording() as Boolean {
+        return isRecording;
     }
-
-    var missingRatio = _missingCadenceCount.toFloat() /
-                       (_cadenceCount + _missingCadenceCount).toFloat();
-
-    if (missingRatio > 0.2) {
-        return "Low";
-    } else if (missingRatio > 0.1) {
-        return "Medium";
-    } else {
-        return "High";
-    }
-}
-
-function computeCQTrend() as String {
-
-    if (_cqHistory.size() < 5) {
-        return "Stable";
-    }
-
-    var first = _cqHistory[0];
-    var last  = _cqHistory[_cqHistory.size() - 1];
-
-    var delta = last - first;
-
-    if (delta < -5) {
-        return "Declining";
-    } else if (delta > 5) {
-        return "Improving";
-    } else {
-        return "Stable";
-    }
-}
-
-function writeDiagnosticLog() as Void {
-
-    if (!DEBUG_MODE) {
-        return;
-    }
-
-    System.println("===== DIAGNOSTIC RUN SUMMARY =====");
-
-    System.println("Final CQ: " +
-        (_finalCQ != null ? _finalCQ.format("%d") + "%" : "N/A"));
-
-    System.println("CQ Confidence: " +
-        (_finalCQConfidence != null ? _finalCQConfidence : "N/A"));
-
-    System.println("CQ Trend: " +
-        (_finalCQTrend != null ? _finalCQTrend : "N/A"));
-
-    System.println("Cadence samples collected: " + _cadenceCount.toString());
-    System.println("Missing cadence samples: " + _missingCadenceCount.toString());
-
-    var totalSamples = _cadenceCount + _missingCadenceCount;
-    if (totalSamples > 0) {
-        var validRatio =
-            (_cadenceCount.toFloat() / totalSamples.toFloat()) * 100;
-
-        System.println("Valid data ratio: " +
-            validRatio.format("%d") + "%");
-    }
-
-    System.println("Ideal cadence range: " +
-        _idealMinCadence.toString() + "-" +
-        _idealMaxCadence.toString());
-
-    System.println("===== END DIAGNOSTIC SUMMARY =====");
-}
 
     function getMinCadence() as Number {
         return _idealMinCadence;
@@ -455,29 +450,21 @@ function writeDiagnosticLog() as Void {
         return _cadenceCount;
     }
 
+    function setChartDuration(value as Number) as Void {
+        _chartDuration = value;
+
+        System.println(CHART_ENUM_NAMES[_chartDuration] + " selected.");
+    }
+    
     function getChartDuration() as String{
         return CHART_ENUM_NAMES[_chartDuration];
-    }
-
-    function setChartDuration(value as String) as Void {
-        if (value == "FifteenminChart"){
-            _chartDuration = FifteenminChart;
-        } else if (value == "ThirtyminChart"){
-            _chartDuration = ThirtyminChart;
-        } else if (value == "OneHourChart"){
-            _chartDuration = OneHourChart;
-        } else if (value == "TwoHourChart"){
-            _chartDuration = TwoHourChart;
-        } else {System.println("ERROR");}
-
-        System.println(_chartDuration);
     }
     
     function getUserGender() as String {
         return _userGender;
     }
 
-    function setUserGender(value as String) as Void {
+    function setUserGender(value as Number) as Void {
         _userGender = value;
     }
 
@@ -505,7 +492,7 @@ function writeDiagnosticLog() as Void {
         return _experienceLvl;
     }
 
-    function setExperienceLvl(value as Number) as Void {
+    function setExperienceLvl(value as Float) as Void {
         _experienceLvl = value;
     }
 
