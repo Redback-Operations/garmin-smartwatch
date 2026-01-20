@@ -50,8 +50,8 @@ class GarminApp extends Application.AppBase {
     private var _userGender = Male;
     private var _chartDuration = ThirtyminChart as Number;
 
-    private var _idealMinCadence = 80;
-    private var _idealMaxCadence = 100;
+    private var _idealMinCadence = 120;
+    private var _idealMaxCadence = 150;
 
     private var _cadenceHistory as Array<Float?> = new [MAX_BARS]; // Store session's cadence
     private var _cadenceIndex = 0;
@@ -81,7 +81,7 @@ class GarminApp extends Application.AppBase {
         
         globalTimer = new Timer.Timer();
         globalTimer.start(method(:updateCadenceBarAvg),1000,true);
-        idealCadenceCalculator();
+        //idealCadenceCalculator();
     }
 
     function onStop(state as Dictionary?) as Void {
@@ -210,8 +210,6 @@ class GarminApp extends Application.AppBase {
         }
       
     } 
-
-
 
     // Cadence Quality
     function computeTimeInZoneScore() as Number {
