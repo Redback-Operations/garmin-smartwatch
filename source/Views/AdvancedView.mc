@@ -88,17 +88,8 @@ class AdvancedView extends WatchUi.View {
         
         var idealMinCadence = app.getMinCadence();
         var idealMaxCadence = app.getMaxCadence();
-        /*
-        var idealCadenceY = height * 0.37;
-    
-        if(idealMinCadence != null && idealMaxCadence != null){
-            var displayString = (idealMinCadence + " - " + idealMaxCadence).toString();
-            dc.setColor(0xAAAAAA, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(width / 2,idealCadenceY , Graphics.FONT_XTINY, displayString, Graphics.TEXT_JUSTIFY_CENTER);
-        }*/
 
         var cadenceY = height * 0.37;
-        //var chartDurationDisplay = null;
         var chartDurationY = height * 0.85;
 
         if (info != null && info.currentCadence != null) {
@@ -174,13 +165,54 @@ class AdvancedView extends WatchUi.View {
         var idealMinCadence = app.getMinCadence();
         var idealMaxCadence = app.getMaxCadence();
         var cadenceHistory = app.getCadenceHistory();
+        
+        //hardcoded natural running cadence test array
+        /*
+        var cadenceHistory = [
+                // Long warm-up/easy pace phase (bars 0-220): staying relatively low around 62-100 with noise
+                62, 65, 63, 68, 66, 70, 67, 72, 69, 74,
+                71, 76, 73, 78, 75, 81, 77, 83, 79, 85,
+                82, 87, 84, 89, 86, 91, 88, 94, 90, 96,
+                93, 98, 95, 100, 97, 102, 99, 104, 101, 103,
+                100, 98, 95, 97, 94, 96, 92, 94, 90, 92,
+                88, 90, 86, 88, 84, 86, 82, 85, 80, 83,
+                81, 84, 82, 86, 83, 88, 85, 90, 87, 92,
+                89, 94, 91, 96, 93, 98, 95, 100, 97, 102,
+                99, 104, 101, 106, 103, 105, 102, 100, 98, 96,
+                94, 92, 90, 88, 86, 84, 82, 85, 83, 87,
+                85, 89, 87, 91, 89, 93, 91, 95, 93, 97,
+                95, 99, 97, 101, 99, 100, 98, 96, 94, 92,
+                90, 88, 86, 84, 82, 80, 78, 81, 79, 83,
+                81, 85, 83, 87, 85, 89, 87, 91, 89, 93,
+                91, 95, 93, 97, 95, 99, 97, 101, 99, 103,
+                101, 105, 103, 107, 105, 106, 104, 102, 100, 98,
+                96, 94, 92, 90, 88, 86, 84, 87, 85, 89,
+                87, 91, 89, 93, 91, 88, 86, 84, 82, 85,
+                83, 87, 85, 89, 87, 91, 89, 93, 91, 95,
+                93, 97, 95, 99, 97, 101, 99, 100, 98, 96,
+                94, 92, 90, 88, 91, 89, 93, 91, 95, 93,
+                97, 95, 99, 97, 101, 99, 103, 101, 105, 103,
+                107,
+                
+                // Sprint phase (bars 221-250): rapid increase to peak ~178 with noise
+                109, 113, 110, 118, 115, 123, 120, 128, 125, 133,
+                130, 138, 135, 143, 140, 148, 138, 135, 143, 140, 148, 163, 160, 168, 165, 173, 170, 178, 175, 176,
+                115, 108, 110, 103, 105, 98, 93, 91, 95, 93, 154, 151,
+                
+                // Cool-down phase (bars 251-280): decrease back to ~62 with noise
+                148, 143, 145, 138, 140, 133, 135, 128, 130, 123,
+                125, 118, 120, 113, 115, 108, 110, 103, 105, 98,
+                100, 118, 120, 113, 115, 108, 110, 78, 80, 73,
+                75, 68, 70, 65, 67, 62, 64, 60, 62, 63
+            ];*/
+
         var cadenceIndex = app.getCadenceIndex();
         var cadenceCount = app.getCadenceCount();
         //check array ?null
         if(cadenceCount == 0) {return;}
        
         var numBars = cadenceCount;
-        var barWidth = app.max(1, (barZoneWidth / MAX_BARS).toNumber());
+        var barWidth = (barZoneWidth / MAX_BARS).toNumber();
 
         var startIndex = (cadenceIndex - numBars + MAX_BARS) % MAX_BARS;
             
@@ -198,28 +230,34 @@ class AdvancedView extends WatchUi.View {
             correctColor(cadence, idealMinCadence, idealMaxCadence, dc);
             dc.fillRectangle(x, y, barWidth, barHeight);
         }
-
-        
     }
 
+
     function correctColor(cadence as Number, idealMinCadence as Number, idealMaxCadence as Number, dc as Dc) as Void{
-        var yellowThreshold = idealMaxCadence + 20;
+        var colorThreshold = 20;
         
-        if(cadence <= idealMinCadence)
+        if(cadence < idealMinCadence)
         {
-            dc.setColor(0x38b6ff, Graphics.COLOR_TRANSPARENT);//blue
-        } 
-        else if (cadence >= idealMaxCadence && cadence < yellowThreshold)
-        {
-            dc.setColor(0xff751f, Graphics.COLOR_TRANSPARENT);//orange
+            if(cadence  > idealMinCadence - colorThreshold){ 
+                dc.setColor(0x0cc0df, Graphics.COLOR_TRANSPARENT); //blue
+            }
+            else{
+                dc.setColor(0x969696, Graphics.COLOR_TRANSPARENT);//grey
+            }
+            
         }
-        else if (cadence >= yellowThreshold)
+        else if (cadence > idealMaxCadence)
         {
-        dc.setColor(0xFF0000, Graphics.COLOR_TRANSPARENT);//red
+            if(cadence < idealMaxCadence + colorThreshold){
+                dc.setColor(0xff751f, Graphics.COLOR_TRANSPARENT);//orange
+            }
+            else{
+                dc.setColor(0xFF0000, Graphics.COLOR_TRANSPARENT);//red
+            }
         }
         else
         {
-            dc.setColor(0x00FF00, Graphics.COLOR_TRANSPARENT);//green
+            dc.setColor(0x00bf63, Graphics.COLOR_TRANSPARENT);//green
         }
     }
 }
