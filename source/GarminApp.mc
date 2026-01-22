@@ -151,6 +151,7 @@ class GarminApp extends Application.AppBase {
         }
 
         _sessionState = RECORDING;
+        System.println("[INFO] Starting cadence monitoring");
     }
 
     function pauseRecording() as Void {
@@ -305,6 +306,7 @@ class GarminApp extends Application.AppBase {
     }
 
     function updateCadenceBarAvg() as Void {
+        // CRITICAL: Only collect data when RECORDING
         if (_sessionState != RECORDING) { 
             return;
         }
