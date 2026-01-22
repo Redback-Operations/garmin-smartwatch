@@ -100,10 +100,13 @@ class AdvancedView extends WatchUi.View {
 
         drawChart(dc);
 
-        var string  = app.getChartDuration();
+        // Display cadence zone range instead of time duration
+        var minZone = app.getMinCadence();
+        var maxZone = app.getMaxCadence();
+        var zoneText = "Zone: " + minZone.toString() + "-" + maxZone.toString() + " spm";
 
         dc.setColor(0x969696, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(width / 2, chartDurationY, Graphics.FONT_XTINY, "Last " + string, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(width / 2, chartDurationY, Graphics.FONT_XTINY, zoneText, Graphics.TEXT_JUSTIFY_CENTER);
 
     }
 
