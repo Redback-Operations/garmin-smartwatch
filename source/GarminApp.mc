@@ -4,7 +4,7 @@ import Toybox.WatchUi;
 import Toybox.Timer;
 import Toybox.Activity;
 import Toybox.System;
-
+import Toybox.Application.Storage;
 
 class GarminApp extends Application.AppBase {
     const MAX_BARS = 280;
@@ -551,46 +551,51 @@ class GarminApp extends Application.AppBase {
     function loadSettings() as Void {
         System.println("[SETTINGS] Loading saved preferences...");
         
-        var properties = getProperties();
-        
         // Load user height
-        if (properties.hasKey(PROP_USER_HEIGHT)) {
-            _userHeight = properties[PROP_USER_HEIGHT] as Number;
+        var height = Storage.getValue(PROP_USER_HEIGHT);
+        if (height != null) {
+            _userHeight = height as Number;
             System.println("[SETTINGS] Loaded height: " + _userHeight.toString() + " cm");
         }
         
         // Load user speed
-        if (properties.hasKey(PROP_USER_SPEED)) {
-            _userSpeed = properties[PROP_USER_SPEED] as Float;
+        var speed = Storage.getValue(PROP_USER_SPEED);
+        if (speed != null) {
+            _userSpeed = speed as Float;
             System.println("[SETTINGS] Loaded speed: " + _userSpeed.toString() + " km/h");
         }
         
         // Load user gender
-        if (properties.hasKey(PROP_USER_GENDER)) {
-            _userGender = properties[PROP_USER_GENDER] as Number;
+        var gender = Storage.getValue(PROP_USER_GENDER);
+        if (gender != null) {
+            _userGender = gender as Number;
             System.println("[SETTINGS] Loaded gender: " + _userGender.toString());
         }
         
         // Load experience level
-        if (properties.hasKey(PROP_EXPERIENCE_LVL)) {
-            _experienceLvl = properties[PROP_EXPERIENCE_LVL] as Float;
+        var experience = Storage.getValue(PROP_EXPERIENCE_LVL);
+        if (experience != null) {
+            _experienceLvl = experience as Float;
             System.println("[SETTINGS] Loaded experience level: " + _experienceLvl.toString());
         }
         
         // Load chart duration
-        if (properties.hasKey(PROP_CHART_DURATION)) {
-            _chartDuration = properties[PROP_CHART_DURATION] as Number;
+        var chartDur = Storage.getValue(PROP_CHART_DURATION);
+        if (chartDur != null) {
+            _chartDuration = chartDur as Number;
             System.println("[SETTINGS] Loaded chart duration: " + CHART_ENUM_NAMES[_chartDuration]);
         }
         
         // Load cadence zones (if manually set)
-        if (properties.hasKey(PROP_MIN_CADENCE)) {
-            _idealMinCadence = properties[PROP_MIN_CADENCE] as Number;
+        var minCad = Storage.getValue(PROP_MIN_CADENCE);
+        if (minCad != null) {
+            _idealMinCadence = minCad as Number;
             System.println("[SETTINGS] Loaded min cadence: " + _idealMinCadence.toString());
         }
         
-        if (properties.hasKey(PROP_MAX_CADENCE)) {
-            _idealMaxCadence = properties[PROP_MAX_CADENCE] as Number;
+        var maxCad = Storage.getValue(PROP_MAX_CADENCE);
+        if (maxCad != null) {
+            _idealMaxCadence = maxCad as Number;
             System.println("[SETTINGS] Loaded max cadence: " + _idealMaxCadence.toString());
         }
         
@@ -600,18 +605,15 @@ class GarminApp extends Application.AppBase {
     function saveSettings() as Void {
         System.println("[SETTINGS] Saving preferences...");
         
-        var properties = getProperties();
+        // Save all user settings using Storage API
+        Storage.setValue(PROP_USER_HEIGHT, _userHeight);
+        Storage.setValue(PROP_USER_SPEED, _userSpeed);
+        Storage.setValue(PROP_USER_GENDER, _userGender);
+        Storage.setValue(PROP_EXPERIENCE_LVL, _experienceLvl);
+        Storage.setValue(PROP_CHART_DURATION, _chartDuration);
+        Storage.setValue(PROP_MIN_CADENCE, _idealMinCadence);
+        Storage.setValue(PROP_MAX_CADENCE, _idealMaxCadence);
         
-        // Save all user settings
-        properties[PROP_USER_HEIGHT] = _userHeight;
-        properties[PROP_USER_SPEED] = _userSpeed;
-        properties[PROP_USER_GENDER] = _userGender;
-        properties[PROP_EXPERIENCE_LVL] = _experienceLvl;
-        properties[PROP_CHART_DURATION] = _chartDuration;
-        properties[PROP_MIN_CADENCE] = _idealMinCadence;
-        properties[PROP_MAX_CADENCE] = _idealMaxCadence;
-        
-        setProperties(properties);
         System.println("[SETTINGS] Settings saved successfully");
     }
 
