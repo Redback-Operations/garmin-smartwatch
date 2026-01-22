@@ -67,6 +67,11 @@ class GarminApp extends Application.AppBase {
     private var _finalCQTrend = null;
     private var _cqHistory as Array<Number> = [];
 
+    // Activity metrics captured when monitoring stops
+    private var _sessionDuration = null; // milliseconds
+    private var _sessionDistance = null; // centimeters
+    private var _avgHeartRate = null; // bpm
+    private var _peakHeartRate = null; // bpm
 
     function initialize() {
         AppBase.initialize();
@@ -110,6 +115,12 @@ class GarminApp extends Application.AppBase {
         _cqHistory = [];
         _cadenceCount = 0;
         _missingCadenceCount = 0;
+        
+        // Reset activity metrics
+        _sessionDuration = null;
+        _sessionDistance = null;
+        _avgHeartRate = null;
+        _peakHeartRate = null;
 
         isRecording = true; 
     }
@@ -120,6 +131,9 @@ class GarminApp extends Application.AppBase {
         if (!isRecording) {return;}
 
         System.println("[INFO] Stopping cadence monitoring");
+
+        // Capture activity metrics before stopping
+        captureActivityMetrics();
 
         var cq = computeCadenceQualityScore();
 
@@ -139,6 +153,29 @@ class GarminApp extends Application.AppBase {
         }
 
         isRecording = false;
+    }
+
+    function captureActivityMetrics() as Void {
+        var info = Activity.getActivityInfo();
+        
+        if (info != null) {
+            if (info.timerTime != null) {
+                _sessionDuration = info.timerTime;
+                System.println("[ACTIVITY] Duration: " + (_sessionDuration / 1000).toString() + " seconds");
+            }
+            
+            if (info.elapsedDistance != null) {
+                _sessionDistance = info.elapsedDistance;
+                System.println("[ACTIVITY] Distance: " + (_sessionDistance / 100000.0).format("%.2f") + " km");
+            }
+            
+            if (info.currentHeartRate != null) {
+                // For now, use current heart rate as average (could be enhanced with history tracking)
+                _avgHeartRate = info.currentHeartRate;
+                _peakHeartRate = info.currentHeartRate;
+                System.println("[ACTIVITY] Heart Rate: " + _avgHeartRate.toString() + " bpm");
+            }
+        }
     }
 
     function updateCadenceBarAvg() as Void {
@@ -523,6 +560,88 @@ class GarminApp extends Application.AppBase {
     // Return the initial view of your application here
     function getInitialView() as [Views] or [Views, InputDelegates] {
         return [ new SimpleView(), new SimpleViewDelegate() ];
+    }
+
+    // -----------------------
+    // Summary Statistics Methods
+    // -----------------------
+
+    function getAverageCadence() as Float {
+        if (_cadenceCount == 0) {
+            return 0.0;
+        }
+
+        var total = 0.0;
+        var validSamples = 0;
+
+        for (var i = 0; i < MAX_BARS; i++) {
+            var c = _cadenceHistory[i];
+            if (c != null) {
+                total += c;
+                validSamples++;
+            }
+        }
+
+        if (validSamples == 0) {
+            return 0.0;
+        }
+
+        return total / validSamples;
+    }
+
+    function getTimeInZonePercentage() as Number {
+        return computeTimeInZoneScore();
+    }
+
+    function getMinCadenceFromHistory() as Number {
+        var minCad = null;
+
+        for (var i = 0; i < MAX_BARS; i++) {
+            var c = _cadenceHistory[i];
+            if (c != null) {
+                if (minCad == null || c < minCad) {
+                    minCad = c;
+                }
+            }
+        }
+
+        return (minCad != null) ? minCad.toNumber() : 0;
+    }
+
+    function getMaxCadenceFromHistory() as Number {
+        var maxCad = null;
+
+        for (var i = 0; i < MAX_BARS; i++) {
+            var c = _cadenceHistory[i];
+            if (c != null) {
+                if (maxCad == null || c > maxCad) {
+                    maxCad = c;
+                }
+            }
+        }
+
+        return (maxCad != null) ? maxCad.toNumber() : 0;
+    }
+
+    function hasValidSummaryData() as Boolean {
+        return _cadenceCount >= MIN_CQ_SAMPLES && _finalCQ != null;
+    }
+
+    // Activity metrics getters
+    function getSessionDuration() {
+        return _sessionDuration;
+    }
+
+    function getSessionDistance() {
+        return _sessionDistance;
+    }
+
+    function getAvgHeartRate() {
+        return _avgHeartRate;
+    }
+
+    function getPeakHeartRate() {
+        return _peakHeartRate;
     }
 }
 

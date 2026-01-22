@@ -1,5 +1,6 @@
 import Toybox.Lang;
 import Toybox.WatchUi;
+import Toybox.System;
 
 class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
@@ -22,6 +23,17 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         if (app.isActivityRecording()) {
             app.stopRecording();
             System.println("[UI] Cadence monitoring stopped");
+            
+            // Auto-navigate to summary screen if we have valid data
+            if (app.hasValidSummaryData()) {
+                System.println("[UI] Showing activity summary");
+                var summaryView = new SummaryView();
+                WatchUi.pushView(
+                    summaryView,
+                    new SummaryViewDelegate(),
+                    WatchUi.SLIDE_UP
+                );
+            }
         } else {
             app.startRecording();
             System.println("[UI] Cadence monitoring started");
