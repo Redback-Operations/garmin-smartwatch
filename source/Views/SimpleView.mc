@@ -16,7 +16,6 @@ class SimpleView extends WatchUi.View {
     private var _lastZoneState = 0; // -1 = below, 0 = inside, 1 = above
     private var _vibeTimer = new Timer.Timer();
     private var _cqDisplay;
-    private var _hardcoreDisplay;
 
     function _secondVibe() as Void {
         // Haptics not available on this target SDK/device in this workspace.
@@ -38,7 +37,6 @@ class SimpleView extends WatchUi.View {
         _distanceDisplay = findDrawableById("distance_text");
         _timeDisplay = findDrawableById("time_text");
         _cqDisplay = findDrawableById("cq_text");
-        _hardcoreDisplay = findDrawableById("hardcore_text");
 
 
     }
