@@ -4,7 +4,7 @@ import Toybox.WatchUi;
 import Toybox.Timer;
 import Toybox.Activity;
 import Toybox.System;
-
+import Toybox.Application.Storage;
 
 class GarminApp extends Application.AppBase {
     const MAX_BARS = 280;
@@ -13,6 +13,15 @@ class GarminApp extends Application.AppBase {
     const MAX_CADENCE = 190;
     const MIN_CQ_SAMPLES = 30;
     const DEBUG_MODE = true;
+
+    // Property keys for persistent storage
+    const PROP_USER_HEIGHT = "userHeight";
+    const PROP_USER_SPEED = "userSpeed";
+    const PROP_USER_GENDER = "userGender";
+    const PROP_EXPERIENCE_LVL = "experienceLvl";
+    const PROP_CHART_DURATION = "chartDuration";
+    const PROP_MIN_CADENCE = "minCadence";
+    const PROP_MAX_CADENCE = "maxCadence";
 
     var globalTimer;
     var isRecording as Boolean = false;
@@ -79,9 +88,14 @@ class GarminApp extends Application.AppBase {
         // Log memory on startup
         Logger.logMemoryStats("Startup");
         
+        // Load saved settings from persistent storage
+        loadSettings();
+        
         globalTimer = new Timer.Timer();
         globalTimer.start(method(:updateCadenceBarAvg),1000,true);
-        //idealCadenceCalculator();
+        
+        // Auto-calculate ideal cadence if user has configured profile
+        idealCadenceCalculator();
     }
 
     function onStop(state as Dictionary?) as Void {
@@ -276,6 +290,11 @@ class GarminApp extends Application.AppBase {
         //set new min max ideal cadence 
         _idealMaxCadence = finalCadence + 5;
         _idealMinCadence = finalCadence - 5;
+        
+        // Save the calculated cadence zones
+        saveSettings();
+        
+        System.println("[CADENCE] Calculated ideal range: " + _idealMinCadence.toString() + "-" + _idealMaxCadence.toString() + " spm");
     }
 
     function computeSmoothnessScore() as Number {
@@ -430,10 +449,12 @@ class GarminApp extends Application.AppBase {
     
     function setMinCadence(value as Number) as Void {
         _idealMinCadence = value;
+        saveSettings();
     }
 
     function setMaxCadence(value as Number) as Void {
         _idealMaxCadence = value;
+        saveSettings();
     }
 
     function getCadenceHistory() as Array<Float?> {
@@ -450,7 +471,7 @@ class GarminApp extends Application.AppBase {
 
     function setChartDuration(value as Number) as Void {
         _chartDuration = value;
-
+        saveSettings();
         System.println(CHART_ENUM_NAMES[_chartDuration] + " selected.");
     }
     
@@ -464,6 +485,7 @@ class GarminApp extends Application.AppBase {
 
     function setUserGender(value as Number) as Void {
         _userGender = value;
+        saveSettings();
     }
 
     function getUserLegLength() as Float {
@@ -472,6 +494,7 @@ class GarminApp extends Application.AppBase {
 
     function setUserHeight(value as Number) as Void {
         _userHeight = value;
+        saveSettings();
     }
 
     function getUserHeight() as Number {
@@ -484,6 +507,7 @@ class GarminApp extends Application.AppBase {
 
     function setUserSpeed(value as Float) as Void {
         _userSpeed = value;
+        saveSettings();
     }
 
     function getExperienceLvl() as Number {
@@ -492,6 +516,7 @@ class GarminApp extends Application.AppBase {
 
     function setExperienceLvl(value as Float) as Void {
         _experienceLvl = value;
+        saveSettings();
     }
 
     function min(a,b){
@@ -517,6 +542,79 @@ class GarminApp extends Application.AppBase {
 
     function getFinalCQTrend() {
     return _finalCQTrend;
+    }
+
+    // -----------------------
+    // Persistent Storage Methods
+    // -----------------------
+
+    function loadSettings() as Void {
+        System.println("[SETTINGS] Loading saved preferences...");
+        
+        // Load user height
+        var height = Storage.getValue(PROP_USER_HEIGHT);
+        if (height != null) {
+            _userHeight = height as Number;
+            System.println("[SETTINGS] Loaded height: " + _userHeight.toString() + " cm");
+        }
+        
+        // Load user speed
+        var speed = Storage.getValue(PROP_USER_SPEED);
+        if (speed != null) {
+            _userSpeed = speed as Float;
+            System.println("[SETTINGS] Loaded speed: " + _userSpeed.toString() + " km/h");
+        }
+        
+        // Load user gender
+        var gender = Storage.getValue(PROP_USER_GENDER);
+        if (gender != null) {
+            _userGender = gender as Number;
+            System.println("[SETTINGS] Loaded gender: " + _userGender.toString());
+        }
+        
+        // Load experience level
+        var experience = Storage.getValue(PROP_EXPERIENCE_LVL);
+        if (experience != null) {
+            _experienceLvl = experience as Float;
+            System.println("[SETTINGS] Loaded experience level: " + _experienceLvl.toString());
+        }
+        
+        // Load chart duration
+        var chartDur = Storage.getValue(PROP_CHART_DURATION);
+        if (chartDur != null) {
+            _chartDuration = chartDur as Number;
+            System.println("[SETTINGS] Loaded chart duration: " + CHART_ENUM_NAMES[_chartDuration]);
+        }
+        
+        // Load cadence zones (if manually set)
+        var minCad = Storage.getValue(PROP_MIN_CADENCE);
+        if (minCad != null) {
+            _idealMinCadence = minCad as Number;
+            System.println("[SETTINGS] Loaded min cadence: " + _idealMinCadence.toString());
+        }
+        
+        var maxCad = Storage.getValue(PROP_MAX_CADENCE);
+        if (maxCad != null) {
+            _idealMaxCadence = maxCad as Number;
+            System.println("[SETTINGS] Loaded max cadence: " + _idealMaxCadence.toString());
+        }
+        
+        System.println("[SETTINGS] Settings loaded successfully");
+    }
+
+    function saveSettings() as Void {
+        System.println("[SETTINGS] Saving preferences...");
+        
+        // Save all user settings using Storage API
+        Storage.setValue(PROP_USER_HEIGHT, _userHeight);
+        Storage.setValue(PROP_USER_SPEED, _userSpeed);
+        Storage.setValue(PROP_USER_GENDER, _userGender);
+        Storage.setValue(PROP_EXPERIENCE_LVL, _experienceLvl);
+        Storage.setValue(PROP_CHART_DURATION, _chartDuration);
+        Storage.setValue(PROP_MIN_CADENCE, _idealMinCadence);
+        Storage.setValue(PROP_MAX_CADENCE, _idealMaxCadence);
+        
+        System.println("[SETTINGS] Settings saved successfully");
     }
 
 
