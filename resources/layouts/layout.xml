@@ -1,3 +1,4 @@
+<layouts>
 <layout id="MainLayout" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
    <!-- Cadence Icon -->
 <bitmap id="cadence_icon" 
@@ -55,3 +56,26 @@
 
 
 </layout>
+
+<!-- Watch face with date and time Layout -->
+<layout id="WatchFace">
+    <label id="Date"            
+    x="center" 
+    y="30%"    
+    font="Graphics.FONT_LARGE"           
+    justification="Graphics.TEXT_JUSTIFY_CENTER" />
+
+    <label id="HoursAndMinutes" 
+    x="40%" 
+    y="55%" 
+    font="Graphics.FONT_LARGE" 
+    justification="Graphics.TEXT_JUSTIFY_CENTER" />
+
+    <label id="AmPm" 
+    x="70%" 
+    y="55%" 
+    font="Graphics.FONT_LARGE" 
+    justification="Graphics.TEXT_JUSTIFY_CENTER" />
+
+</layout>
+</layouts>

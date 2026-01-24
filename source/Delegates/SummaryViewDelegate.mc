@@ -15,10 +15,8 @@ class SummaryViewDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
-    // BACK button to dismiss
+    // BACK button disabled - no input
     function onBack() as Boolean {
-        System.println("[SUMMARY] Back pressed, returning to main view");
-        WatchUi.popView(WatchUi.SLIDE_DOWN);
         return true;
     }
 

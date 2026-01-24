@@ -52,10 +52,10 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         }
 
         if (key == WatchUi.KEY_DOWN) {
-            _currentView = new AdvancedView();
-            WatchUi.pushView(
+            _currentView = new TimeView();
+            WatchUi.switchToView(
                 _currentView,
-                new AdvancedViewDelegate(_currentView),
+                new TimeViewDelegate(),
                 WatchUi.SLIDE_DOWN
             );
             return true;
@@ -97,7 +97,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onBack() as Boolean {
-        // Prevent accidental app exit
+        // Back button disabled - no input
         return true;
     }
 }
