@@ -4,12 +4,22 @@ import Toybox.Activity;
 import Toybox.Lang;
 import Toybox.Timer;
 import Toybox.System;
+import Toybox.Attention;
 
 class AdvancedView extends WatchUi.View {
     const MAX_BARS = 280;
     const MAX_CADENCE_DISPLAY = 200;
 
     private var _simulationTimer;
+    
+    // Vibration alert tracking (no extra timers needed!)
+    private var _lastZoneState = 0; // -1 = below, 0 = inside, 1 = above
+    private var _alertStartTime = null;
+    private var _alertDuration = 180000; // 3 minutes in milliseconds
+    private var _alertInterval = 30000; // 30 seconds in milliseconds
+    private var _lastAlertTime = 0;
+    private var _pendingSecondVibe = false;
+    private var _secondVibeTime = 0;
 
     function initialize() {
         View.initialize();
@@ -25,10 +35,19 @@ class AdvancedView extends WatchUi.View {
             _simulationTimer.stop();
             _simulationTimer = null;
         }
+        // Reset alert state
+        _alertStartTime = null;
+        _lastAlertTime = 0;
     }
 
     function onUpdate(dc as Dc) as Void {
-       View.onUpdate(dc);
+        // Check cadence zone for vibration alerts
+        checkCadenceZone();
+        
+        // Check for pending second vibration
+        checkPendingVibration();
+        
+        View.onUpdate(dc);
         // Draw all the elements
         drawElements(dc);
     }
@@ -36,8 +55,112 @@ class AdvancedView extends WatchUi.View {
     function refreshScreen() as Void {
         WatchUi.requestUpdate();
     }
+    
+    function checkPendingVibration() as Void {
+        if (_pendingSecondVibe) {
+            var currentTime = System.getTimer();
+            if (currentTime >= _secondVibeTime) {
+                // Trigger second vibration
+                if (Attention has :vibrate) {
+                    var vibeData = [new Attention.VibeProfile(50, 200)];
+                    Attention.vibrate(vibeData);
+                }
+                _pendingSecondVibe = false;
+            }
+        }
+    }
+    
+    function triggerSingleVibration() as Void {
+        if (Attention has :vibrate) {
+            var vibeData = [new Attention.VibeProfile(50, 200)];
+            Attention.vibrate(vibeData);
+        }
+    }
+    
+    function triggerDoubleVibration() as Void {
+        if (Attention has :vibrate) {
+            // First vibration
+            var vibeData = [new Attention.VibeProfile(50, 200)];
+            Attention.vibrate(vibeData);
+            
+            // Schedule second vibration after 240ms
+            _pendingSecondVibe = true;
+            _secondVibeTime = System.getTimer() + 240;
+        }
+    }
+    
+    function checkAndTriggerAlerts() as Void {
+        // Only check if we're in an alert period
+        if (_alertStartTime == null) {
+            return;
+        }
+        
+        var currentTime = System.getTimer();
+        var elapsed = currentTime - _alertStartTime;
+        
+        // Stop alerting after 3 minutes
+        if (elapsed >= _alertDuration) {
+            _alertStartTime = null;
+            _lastAlertTime = 0;
+            return;
+        }
+        
+        // Check if it's time for the next alert (every 30 seconds)
+        var timeSinceLastAlert = currentTime - _lastAlertTime;
+        if (timeSinceLastAlert >= _alertInterval) {
+            _lastAlertTime = currentTime;
+            
+            // Trigger the appropriate vibration
+            if (_lastZoneState == -1) {
+                triggerSingleVibration();
+            } else if (_lastZoneState == 1) {
+                triggerDoubleVibration();
+            }
+        }
+    }
+    
+    function checkCadenceZone() as Void {
+        var info = Activity.getActivityInfo();
+        var app = getApp();
+        var minZone = app.getMinCadence();
+        var maxZone = app.getMaxCadence();
+        
+        // Determine zone state
+        var newZoneState = 0;
+        if (info != null && info.currentCadence != null) {
+            var c = info.currentCadence;
+            if (c < minZone) {
+                newZoneState = -1;
+            } else if (c > maxZone) {
+                newZoneState = 1;
+            } else {
+                newZoneState = 0;
+            }
+        }
 
-
+        // Trigger alerts on zone crossing
+        if (newZoneState != _lastZoneState) {
+            if (newZoneState == -1) {
+                // Below minimum - start alert cycle
+                _alertStartTime = System.getTimer();
+                _lastAlertTime = System.getTimer();
+                triggerSingleVibration();
+            } else if (newZoneState == 1) {
+                // Above maximum - start alert cycle
+                _alertStartTime = System.getTimer();
+                _lastAlertTime = System.getTimer();
+                triggerDoubleVibration();
+            } else {
+                // Back in zone - stop alerts
+                _alertStartTime = null;
+                _lastAlertTime = 0;
+            }
+            _lastZoneState = newZoneState;
+        } else {
+            // Still out of zone - check if we need to alert again
+            checkAndTriggerAlerts();
+        }
+    }
 
     function drawElements(dc as Dc) as Void {
         var width = dc.getWidth();
