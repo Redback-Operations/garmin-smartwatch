@@ -32,9 +32,23 @@ class AdvancedViewDelegate extends WatchUi.BehaviorDelegate {
     function onKey(keyEvent as WatchUi.KeyEvent) as Boolean {
         var key = keyEvent.getKey();
 
+        // Scroll down to SimpleView (completing the loop)
+        if(key == WatchUi.KEY_DOWN) {
+            WatchUi.switchToView(
+                new SimpleView(),
+                new SimpleViewDelegate(),
+                WatchUi.SLIDE_DOWN
+            );
+            return true;
+        }
+        
         // UP button - Back to SimpleView
         if (key == WatchUi.KEY_UP) {
-            WatchUi.popView(WatchUi.SLIDE_UP);
+            WatchUi.switchToView(
+                new SimpleView(),
+                new SimpleViewDelegate(),
+                WatchUi.SLIDE_UP
+            );
             return true;
         }
 
@@ -61,7 +75,7 @@ class AdvancedViewDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onBack() as Boolean {
-        WatchUi.popView(WatchUi.SLIDE_BLINK);
+        // Back button disabled - no input
         return true;
     }
 

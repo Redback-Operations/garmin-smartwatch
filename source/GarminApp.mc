@@ -5,7 +5,7 @@ import Toybox.Timer;
 import Toybox.Activity;
 import Toybox.ActivityRecording;
 import Toybox.System;
-
+import Toybox.Application.Storage;
 
 class GarminApp extends Application.AppBase {
     const MAX_BARS = 280;
@@ -13,6 +13,15 @@ class GarminApp extends Application.AppBase {
     const MAX_CADENCE = 190;
     const MIN_CQ_SAMPLES = 30;
     const DEBUG_MODE = true;
+
+    // Property keys for persistent storage
+    const PROP_USER_HEIGHT = "userHeight";
+    const PROP_USER_SPEED = "userSpeed";
+    const PROP_USER_GENDER = "userGender";
+    const PROP_EXPERIENCE_LVL = "experienceLvl";
+    const PROP_CHART_DURATION = "chartDuration";
+    const PROP_MIN_CADENCE = "minCadence";
+    const PROP_MAX_CADENCE = "maxCadence";
 
     var globalTimer;
     var activitySession; // Garmin activity recording session
@@ -79,6 +88,11 @@ class GarminApp extends Application.AppBase {
     private var _sessionPausedTime = 0;
     private var _lastPauseTime = null;
 
+    // Activity metrics captured when monitoring stops
+    private var _sessionDuration = null; // milliseconds
+    private var _sessionDistance = null; // centimeters
+    private var _avgHeartRate = null; // bpm
+    private var _peakHeartRate = null; // bpm
 
     function initialize() {
         AppBase.initialize();
@@ -89,6 +103,9 @@ class GarminApp extends Application.AppBase {
     function onStart(state as Dictionary?) as Void {
         System.println("[INFO] App starting");
         Logger.logMemoryStats("Startup");
+        
+        // Load saved settings from persistent storage
+        loadSettings();
         
         globalTimer = new Timer.Timer();
         globalTimer.start(method(:updateCadenceBarAvg),1000,true);
@@ -213,6 +230,9 @@ class GarminApp extends Application.AppBase {
             _lastPauseTime = null;
         }
 
+        // Capture activity metrics before stopping
+        captureActivityMetrics();
+
         var cq = computeCadenceQualityScore();
 
         if (cq >= 0) {
@@ -302,6 +322,29 @@ class GarminApp extends Application.AppBase {
         }
         for (var i = 0; i < _chartDuration; i++) {
             _cadenceBarAvg[i] = null;
+        }
+    }
+
+    function captureActivityMetrics() as Void {
+        var info = Activity.getActivityInfo();
+        
+        if (info != null) {
+            if (info.timerTime != null) {
+                _sessionDuration = info.timerTime;
+                System.println("[ACTIVITY] Duration: " + (_sessionDuration / 1000).toString() + " seconds");
+            }
+            
+            if (info.elapsedDistance != null) {
+                _sessionDistance = info.elapsedDistance;
+                System.println("[ACTIVITY] Distance: " + (_sessionDistance / 100000.0).format("%.2f") + " km");
+            }
+            
+            if (info.currentHeartRate != null) {
+                // For now, use current heart rate as average (could be enhanced with history tracking)
+                _avgHeartRate = info.currentHeartRate;
+                _peakHeartRate = info.currentHeartRate;
+                System.println("[ACTIVITY] Heart Rate: " + _avgHeartRate.toString() + " bpm");
+            }
         }
     }
 
@@ -423,6 +466,11 @@ class GarminApp extends Application.AppBase {
 
         _idealMaxCadence = finalCadence + 5;
         _idealMinCadence = finalCadence - 5;
+        
+        // Save the calculated cadence zones
+        saveSettings();
+        
+        System.println("[CADENCE] Calculated ideal range: " + _idealMinCadence.toString() + "-" + _idealMaxCadence.toString() + " spm");
     }
 
     function computeSmoothnessScore() as Number {
@@ -565,10 +613,12 @@ class GarminApp extends Application.AppBase {
     
     function setMinCadence(value as Number) as Void {
         _idealMinCadence = value;
+        saveSettings();
     }
 
     function setMaxCadence(value as Number) as Void {
         _idealMaxCadence = value;
+        saveSettings();
     }
 
     function getCadenceHistory() as Array<Float?> {
@@ -598,6 +648,7 @@ class GarminApp extends Application.AppBase {
 
     function setUserGender(value as Number) as Void {
         _userGender = value;
+        saveSettings();
     }
 
     function getUserLegLength() as Float {
@@ -606,6 +657,7 @@ class GarminApp extends Application.AppBase {
 
     function setUserHeight(value as Number) as Void {
         _userHeight = value;
+        saveSettings();
     }
 
     function getUserHeight() as Number {
@@ -618,6 +670,7 @@ class GarminApp extends Application.AppBase {
 
     function setUserSpeed(value as Float) as Void {
         _userSpeed = value;
+        saveSettings();
     }
 
     function getExperienceLvl() as Number {
@@ -626,6 +679,7 @@ class GarminApp extends Application.AppBase {
 
     function setExperienceLvl(value as Float) as Void {
         _experienceLvl = value;
+        saveSettings();
     }
 
     function min(a,b){
@@ -669,6 +723,88 @@ class GarminApp extends Application.AppBase {
 
     function getInitialView() as [Views] or [Views, InputDelegates] {
         return [ new SimpleView(), new SimpleViewDelegate() ];
+    }
+
+    // -----------------------
+    // Summary Statistics Methods
+    // -----------------------
+
+    function getAverageCadence() as Float {
+        if (_cadenceCount == 0) {
+            return 0.0;
+        }
+
+        var total = 0.0;
+        var validSamples = 0;
+
+        for (var i = 0; i < MAX_BARS; i++) {
+            var c = _cadenceHistory[i];
+            if (c != null) {
+                total += c;
+                validSamples++;
+            }
+        }
+
+        if (validSamples == 0) {
+            return 0.0;
+        }
+
+        return total / validSamples;
+    }
+
+    function getTimeInZonePercentage() as Number {
+        return computeTimeInZoneScore();
+    }
+
+    function getMinCadenceFromHistory() as Number {
+        var minCad = null;
+
+        for (var i = 0; i < MAX_BARS; i++) {
+            var c = _cadenceHistory[i];
+            if (c != null) {
+                if (minCad == null || c < minCad) {
+                    minCad = c;
+                }
+            }
+        }
+
+        return (minCad != null) ? minCad.toNumber() : 0;
+    }
+
+    function getMaxCadenceFromHistory() as Number {
+        var maxCad = null;
+
+        for (var i = 0; i < MAX_BARS; i++) {
+            var c = _cadenceHistory[i];
+            if (c != null) {
+                if (maxCad == null || c > maxCad) {
+                    maxCad = c;
+                }
+            }
+        }
+
+        return (maxCad != null) ? maxCad.toNumber() : 0;
+    }
+
+    function hasValidSummaryData() as Boolean {
+        return _cadenceCount >= MIN_CQ_SAMPLES && _finalCQ != null;
+    }
+
+    // Activity metrics getters
+    function getSessionDuration() {
+        return _sessionDuration;
+    }
+
+    function getSessionDistance() {
+        return _sessionDistance;
+    }
+
+    function getAvgHeartRate() {
+        return _avgHeartRate;
+    }
+
+    function getPeakHeartRate() {
+        return _peakHeartRate;
     }
 }
 
