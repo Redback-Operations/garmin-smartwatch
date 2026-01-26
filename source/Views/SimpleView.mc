@@ -4,6 +4,7 @@ import Toybox.Activity;
 import Toybox.Lang;
 import Toybox.Timer;
 import Toybox.System;
+import Toybox.Attention;
 
 class SimpleView extends WatchUi.View {
 
@@ -14,31 +15,19 @@ class SimpleView extends WatchUi.View {
     private var _timeDisplay;
     private var _cadenceZoneDisplay;
     private var _lastZoneState = 0; // -1 = below, 0 = inside, 1 = above
-    private var _vibeTimer = new Timer.Timer();
     private var _cqDisplay;
-
-    function _secondVibe() as Void {
-        // Haptics not available on this target SDK/device in this workspace.
-        // Replace the println below with the device vibration call when supported,
-        // e.g. `Haptics.vibrate(120)` or `System.vibrate(120)` on SDKs that provide it.
-        System.println("[vibe] second pulse");
-    }
+    private var _hardcoreDisplay;
+    
+    // Vibration alert tracking (no extra timers needed!)
+    private var _alertStartTime = null;
+    private var _alertDuration = 180000; // 3 minutes in milliseconds
+    private var _alertInterval = 30000; // 30 seconds in milliseconds
+    private var _lastAlertTime = 0;
+    private var _pendingSecondVibe = false;
+    private var _secondVibeTime = 0;
 
     function initialize() {
         View.initialize();
-    }
-
-    // Load your resources here
-    function onLayout(dc as Dc) as Void {
-        setLayout(Rez.Layouts.MainLayout(dc));
-        _cadenceDisplay = findDrawableById("cadence_text");
-        _cadenceZoneDisplay = findDrawableById("cadence_zone");
-        _heartrateDisplay = findDrawableById("heartrate_text");
-        _distanceDisplay = findDrawableById("distance_text");
-        _timeDisplay = findDrawableById("time_text");
-        _cqDisplay = findDrawableById("cq_text");
-
-
     }
 
     // Called when this View is brought to the foreground. Restore
@@ -53,6 +42,9 @@ class SimpleView extends WatchUi.View {
     function onUpdate(dc as Dc) as Void {
         //update the display for current cadence
         displayCadence();
+        
+        // Check for pending second vibration
+        checkPendingVibration();
         
         // Draw recording indicator
         drawRecordingIndicator(dc);
@@ -69,10 +61,76 @@ class SimpleView extends WatchUi.View {
             _refreshTimer.stop();
             _refreshTimer = null;
         }
+        // Reset alert state
+        _alertStartTime = null;
+        _lastAlertTime = 0;
     }
 
     function refreshScreen() as Void{
         WatchUi.requestUpdate();
+    }
+    
+    function checkPendingVibration() as Void {
+        if (_pendingSecondVibe) {
+            var currentTime = System.getTimer();
+            if (currentTime >= _secondVibeTime) {
+                // Trigger second vibration
+                if (Attention has :vibrate) {
+                    var vibeData = [new Attention.VibeProfile(50, 200)];
+                    Attention.vibrate(vibeData);
+                }
+                _pendingSecondVibe = false;
+            }
+        }
+    }
+    
+    function triggerSingleVibration() as Void {
+        if (Attention has :vibrate) {
+            var vibeData = [new Attention.VibeProfile(50, 200)];
+            Attention.vibrate(vibeData);
+        }
+    }
+    
+    function triggerDoubleVibration() as Void {
+        if (Attention has :vibrate) {
+            // First vibration
+            var vibeData = [new Attention.VibeProfile(50, 200)];
+            Attention.vibrate(vibeData);
+            
+            // Schedule second vibration after 240ms
+            _pendingSecondVibe = true;
+            _secondVibeTime = System.getTimer() + 240;
+        }
+    }
+    
+    function checkAndTriggerAlerts() as Void {
+        // Only check if we're in an alert period
+        if (_alertStartTime == null) {
+            return;
+        }
+        
+        var currentTime = System.getTimer();
+        var elapsed = currentTime - _alertStartTime;
+        
+        // Stop alerting after 3 minutes
+        if (elapsed >= _alertDuration) {
+            _alertStartTime = null;
+            _lastAlertTime = 0;
+            return;
+        }
+        
+        // Check if it's time for the next alert (every 30 seconds)
+        var timeSinceLastAlert = currentTime - _lastAlertTime;
+        if (timeSinceLastAlert >= _alertInterval) {
+            _lastAlertTime = currentTime;
+            
+            // Trigger the appropriate vibration
+            if (_lastZoneState == -1) {
+                triggerSingleVibration();
+            } else if (_lastZoneState == 1) {
+                triggerDoubleVibration();
+            }
+        }
     }
 
     function drawRecordingIndicator(dc as Dc) as Void {
@@ -125,7 +183,7 @@ class SimpleView extends WatchUi.View {
             _cadenceZoneDisplay.setText(zoneText);
         }
 
-        // Trigger haptic on zone crossing: single when falling below min, double when going above max
+        // Trigger haptic on zone crossing with timed alerts
         var newZoneState = 0;
         if (info != null && info.currentCadence != null) {
             var c = info.currentCadence;
@@ -140,16 +198,24 @@ class SimpleView extends WatchUi.View {
 
         if (newZoneState != _lastZoneState) {
             if (newZoneState == -1) {
-                // single short vibration
-                // single pulse (placeholder)
-                System.println("[vibe] single pulse (below min)");
+                // Below minimum - start alert cycle
+                _alertStartTime = System.getTimer();
+                _lastAlertTime = System.getTimer();
+                triggerSingleVibration();
             } else if (newZoneState == 1) {
-                // double short vibration: second pulse scheduled
-                // first pulse (placeholder)
-                System.println("[vibe] first pulse (above max)");
-                _vibeTimer.start(method(:_secondVibe), 240, false);
+                // Above maximum - start alert cycle
+                _alertStartTime = System.getTimer();
+                _lastAlertTime = System.getTimer();
+                triggerDoubleVibration();
+            } else {
+                // Back in zone - stop alerts
+                _alertStartTime = null;
+                _lastAlertTime = 0;
             }
             _lastZoneState = newZoneState;
+        } else {
+            // Still out of zone - check if we need to alert again
+            checkAndTriggerAlerts();
         }
 
         if (info != null && info.currentHeartRate != null){
@@ -196,6 +262,18 @@ class SimpleView extends WatchUi.View {
         }
 
         
+    }
+
+    // Load your resources here
+    function onLayout(dc as Dc) as Void {
+        setLayout(Rez.Layouts.MainLayout(dc));
+        _cadenceDisplay = findDrawableById("cadence_text");
+        _cadenceZoneDisplay = findDrawableById("cadence_zone");
+        _heartrateDisplay = findDrawableById("heartrate_text");
+        _distanceDisplay = findDrawableById("distance_text");
+        _timeDisplay = findDrawableById("time_text");
+        _cqDisplay = findDrawableById("cq_text");
+        _hardcoreDisplay = findDrawableById("hardcore_text");
     }
 
 }

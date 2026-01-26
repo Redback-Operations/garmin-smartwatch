@@ -5,24 +5,31 @@ import Toybox.Application;
 
 class AdvancedViewDelegate extends WatchUi.BehaviorDelegate { 
     
-    //private var _view as AdvancedView; 
+    private var _currentView = null;
 
     function initialize(view as AdvancedView) {
         BehaviorDelegate.initialize();
-        //_view = view;
     }
 
-    function onMenu(){
-        //called by the timer after 1s hold
-        var menu = new WatchUi.Menu2({:resources => "menus/menu.xml"});
-
-        WatchUi.pushView(new Rez.Menus.MainMenu(), new SelectCadenceDelegate(menu), WatchUi.SLIDE_BLINK);
-
+    function onMenu() as Boolean {
+        // Create programmatic Menu2 instead of XML-based menu
+        var app = Application.getApp() as GarminApp;
+        var minCadence = app.getMinCadence();
+        var maxCadence = app.getMaxCadence();
+        
+        var menu = new WatchUi.Menu2({
+            :title => Lang.format("Cadence: $1$ - $2$", [minCadence, maxCadence])
+        });
+        
+        menu.addItem(new WatchUi.MenuItem("Set Min Cadence", null, :item_set_min, null));
+        menu.addItem(new WatchUi.MenuItem("Set Max Cadence", null, :item_set_max, null));
+        
+        WatchUi.pushView(menu, new SelectCadenceDelegate(menu), WatchUi.SLIDE_BLINK);
+        
         return true;
-
     }
 
-    function onKey(keyEvent as WatchUi.KeyEvent){
+    function onKey(keyEvent as WatchUi.KeyEvent) as Boolean {
         var key = keyEvent.getKey();
 
         // Scroll down to SimpleView (completing the loop)
@@ -34,26 +41,32 @@ class AdvancedViewDelegate extends WatchUi.BehaviorDelegate {
             );
             return true;
         }
-
-        // Up button still goes back
-        if(key == WatchUi.KEY_UP) {
-            WatchUi.popView(WatchUi.SLIDE_UP);
+        
+        // UP button - Back to SimpleView
+        if (key == WatchUi.KEY_UP) {
+            WatchUi.switchToView(
+                new SimpleView(),
+                new SimpleViewDelegate(),
+                WatchUi.SLIDE_UP
+            );
+            return true;
         }
-        return true;
+
+        return false;
     }
 
-    
-    function onSwipe(SwipeEvent as WatchUi.SwipeEvent){
-        var direction = SwipeEvent.getDirection();
+    function onSwipe(swipeEvent as WatchUi.SwipeEvent) as Boolean {
+        var direction = swipeEvent.getDirection();
         
-        //swipe back to simpleView
+        // Swipe DOWN - Back to SimpleView
         if (direction == WatchUi.SWIPE_DOWN) {
-            System.println("Swiped Up");
+            System.println("[UI] Swiped down to SimpleView");
             WatchUi.popView(WatchUi.SLIDE_UP);
             return true;
         }
 
-        if(direction == WatchUi.SWIPE_LEFT){
+        // Swipe LEFT - Settings
+        if (direction == WatchUi.SWIPE_LEFT) {
             pushSettingsView();
             return true;
         }
@@ -61,14 +74,13 @@ class AdvancedViewDelegate extends WatchUi.BehaviorDelegate {
         return false;
     }
 
-    function onBack(){
+    function onBack() as Boolean {
         // Back button disabled - no input
         return true;
     }
 
-        function pushSettingsView() as Void{
+    function pushSettingsView() as Void {
         var settingsMenu = new WatchUi.Menu2({ :title => "Settings" });
-
         settingsMenu.addItem(new WatchUi.MenuItem("Profile", null, :set_profile, null));
         settingsMenu.addItem(new WatchUi.MenuItem("Customization", null, :cust_options, null));
         settingsMenu.addItem(new WatchUi.MenuItem("Feedback", null, :feedback_options, null));
@@ -76,5 +88,4 @@ class AdvancedViewDelegate extends WatchUi.BehaviorDelegate {
 
         WatchUi.pushView(settingsMenu, new SettingsMenuDelegate(), WatchUi.SLIDE_UP);
     }
-    
 }

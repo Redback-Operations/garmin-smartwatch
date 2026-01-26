@@ -4,12 +4,22 @@ import Toybox.Activity;
 import Toybox.Lang;
 import Toybox.Timer;
 import Toybox.System;
+import Toybox.Attention;
 
 class AdvancedView extends WatchUi.View {
     const MAX_BARS = 280;
     const MAX_CADENCE_DISPLAY = 200;
 
     private var _simulationTimer;
+    
+    // Vibration alert tracking (no extra timers needed!)
+    private var _lastZoneState = 0; // -1 = below, 0 = inside, 1 = above
+    private var _alertStartTime = null;
+    private var _alertDuration = 180000; // 3 minutes in milliseconds
+    private var _alertInterval = 30000; // 30 seconds in milliseconds
+    private var _lastAlertTime = 0;
+    private var _pendingSecondVibe = false;
+    private var _secondVibeTime = 0;
 
     function initialize() {
         View.initialize();
@@ -25,10 +35,19 @@ class AdvancedView extends WatchUi.View {
             _simulationTimer.stop();
             _simulationTimer = null;
         }
+        // Reset alert state
+        _alertStartTime = null;
+        _lastAlertTime = 0;
     }
 
     function onUpdate(dc as Dc) as Void {
-       View.onUpdate(dc);
+        // Check cadence zone for vibration alerts
+        checkCadenceZone();
+        
+        // Check for pending second vibration
+        checkPendingVibration();
+        
+        View.onUpdate(dc);
         // Draw all the elements
         drawElements(dc);
     }
@@ -36,8 +55,112 @@ class AdvancedView extends WatchUi.View {
     function refreshScreen() as Void {
         WatchUi.requestUpdate();
     }
+    
+    function checkPendingVibration() as Void {
+        if (_pendingSecondVibe) {
+            var currentTime = System.getTimer();
+            if (currentTime >= _secondVibeTime) {
+                // Trigger second vibration
+                if (Attention has :vibrate) {
+                    var vibeData = [new Attention.VibeProfile(50, 200)];
+                    Attention.vibrate(vibeData);
+                }
+                _pendingSecondVibe = false;
+            }
+        }
+    }
+    
+    function triggerSingleVibration() as Void {
+        if (Attention has :vibrate) {
+            var vibeData = [new Attention.VibeProfile(50, 200)];
+            Attention.vibrate(vibeData);
+        }
+    }
+    
+    function triggerDoubleVibration() as Void {
+        if (Attention has :vibrate) {
+            // First vibration
+            var vibeData = [new Attention.VibeProfile(50, 200)];
+            Attention.vibrate(vibeData);
+            
+            // Schedule second vibration after 240ms
+            _pendingSecondVibe = true;
+            _secondVibeTime = System.getTimer() + 240;
+        }
+    }
+    
+    function checkAndTriggerAlerts() as Void {
+        // Only check if we're in an alert period
+        if (_alertStartTime == null) {
+            return;
+        }
+        
+        var currentTime = System.getTimer();
+        var elapsed = currentTime - _alertStartTime;
+        
+        // Stop alerting after 3 minutes
+        if (elapsed >= _alertDuration) {
+            _alertStartTime = null;
+            _lastAlertTime = 0;
+            return;
+        }
+        
+        // Check if it's time for the next alert (every 30 seconds)
+        var timeSinceLastAlert = currentTime - _lastAlertTime;
+        if (timeSinceLastAlert >= _alertInterval) {
+            _lastAlertTime = currentTime;
+            
+            // Trigger the appropriate vibration
+            if (_lastZoneState == -1) {
+                triggerSingleVibration();
+            } else if (_lastZoneState == 1) {
+                triggerDoubleVibration();
+            }
+        }
+    }
+    
+    function checkCadenceZone() as Void {
+        var info = Activity.getActivityInfo();
+        var app = getApp();
+        var minZone = app.getMinCadence();
+        var maxZone = app.getMaxCadence();
+        
+        // Determine zone state
+        var newZoneState = 0;
+        if (info != null && info.currentCadence != null) {
+            var c = info.currentCadence;
+            if (c < minZone) {
+                newZoneState = -1;
+            } else if (c > maxZone) {
+                newZoneState = 1;
+            } else {
+                newZoneState = 0;
+            }
+        }
 
-
+        // Trigger alerts on zone crossing
+        if (newZoneState != _lastZoneState) {
+            if (newZoneState == -1) {
+                // Below minimum - start alert cycle
+                _alertStartTime = System.getTimer();
+                _lastAlertTime = System.getTimer();
+                triggerSingleVibration();
+            } else if (newZoneState == 1) {
+                // Above maximum - start alert cycle
+                _alertStartTime = System.getTimer();
+                _lastAlertTime = System.getTimer();
+                triggerDoubleVibration();
+            } else {
+                // Back in zone - stop alerts
+                _alertStartTime = null;
+                _lastAlertTime = 0;
+            }
+            _lastZoneState = newZoneState;
+        } else {
+            // Still out of zone - check if we need to alert again
+            checkAndTriggerAlerts();
+        }
+    }
 
     function drawElements(dc as Dc) as Void {
         var width = dc.getWidth();
@@ -100,10 +223,13 @@ class AdvancedView extends WatchUi.View {
 
         drawChart(dc);
 
-        var string  = app.getChartDuration();
+        // Display cadence zone range instead of time duration
+        var minZone = app.getMinCadence();
+        var maxZone = app.getMaxCadence();
+        var zoneText = "Zone: " + minZone.toString() + "-" + maxZone.toString() + " spm";
 
         dc.setColor(0x969696, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(width / 2, chartDurationY, Graphics.FONT_XTINY, "Last " + string, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(width / 2, chartDurationY, Graphics.FONT_XTINY, zoneText, Graphics.TEXT_JUSTIFY_CENTER);
 
     }
 
@@ -116,6 +242,7 @@ class AdvancedView extends WatchUi.View {
     Each update the watchUI redraws the chart with the latest data.
     }
     **/
+    
     function drawChart(dc as Dc) as Void {
         var width = dc.getWidth();
         var height = dc.getHeight();
@@ -123,7 +250,6 @@ class AdvancedView extends WatchUi.View {
         //margins value
         var margin = width * 0.1;
         var marginLeftRightMultiplier = 1.38;
-        //var marginTopMultiplier = 0.5;
         var marginBottomMultiplier = 1.6;
 
         //chart position
@@ -150,8 +276,7 @@ class AdvancedView extends WatchUi.View {
         var line2x2 = chartRight + lineLength;
         var lineY = chartTop + quarterChartHeight;
 
-
-        // Draw white border around chart (RGB: 255,255,255 = 0xFFFFFF)
+        // Draw white border around chart
         dc.setColor(0x969696, Graphics.COLOR_TRANSPARENT);
         dc.drawRectangle(chartLeft, chartTop, chartWidth, chartHeight);
         for(var i = 0; i < nLine; i++){
@@ -165,69 +290,53 @@ class AdvancedView extends WatchUi.View {
         var idealMinCadence = app.getMinCadence();
         var idealMaxCadence = app.getMaxCadence();
         var cadenceHistory = app.getCadenceHistory();
-        
-        //hardcoded natural running cadence test array
-        /*
-        var cadenceHistory = [
-                // Long warm-up/easy pace phase (bars 0-220): staying relatively low around 62-100 with noise
-                62, 65, 63, 68, 66, 70, 67, 72, 69, 74,
-                71, 76, 73, 78, 75, 81, 77, 83, 79, 85,
-                82, 87, 84, 89, 86, 91, 88, 94, 90, 96,
-                93, 98, 95, 100, 97, 102, 99, 104, 101, 103,
-                100, 98, 95, 97, 94, 96, 92, 94, 90, 92,
-                88, 90, 86, 88, 84, 86, 82, 85, 80, 83,
-                81, 84, 82, 86, 83, 88, 85, 90, 87, 92,
-                89, 94, 91, 96, 93, 98, 95, 100, 97, 102,
-                99, 104, 101, 106, 103, 105, 102, 100, 98, 96,
-                94, 92, 90, 88, 86, 84, 82, 85, 83, 87,
-                85, 89, 87, 91, 89, 93, 91, 95, 93, 97,
-                95, 99, 97, 101, 99, 100, 98, 96, 94, 92,
-                90, 88, 86, 84, 82, 80, 78, 81, 79, 83,
-                81, 85, 83, 87, 85, 89, 87, 91, 89, 93,
-                91, 95, 93, 97, 95, 99, 97, 101, 99, 103,
-                101, 105, 103, 107, 105, 106, 104, 102, 100, 98,
-                96, 94, 92, 90, 88, 86, 84, 87, 85, 89,
-                87, 91, 89, 93, 91, 88, 86, 84, 82, 85,
-                83, 87, 85, 89, 87, 91, 89, 93, 91, 95,
-                93, 97, 95, 99, 97, 101, 99, 100, 98, 96,
-                94, 92, 90, 88, 91, 89, 93, 91, 95, 93,
-                97, 95, 99, 97, 101, 99, 103, 101, 105, 103,
-                107,
-                
-                // Sprint phase (bars 221-250): rapid increase to peak ~178 with noise
-                109, 113, 110, 118, 115, 123, 120, 128, 125, 133,
-                130, 138, 135, 143, 140, 148, 138, 135, 143, 140, 148, 163, 160, 168, 165, 173, 170, 178, 175, 176,
-                115, 108, 110, 103, 105, 98, 93, 91, 95, 93, 154, 151,
-                
-                // Cool-down phase (bars 251-280): decrease back to ~62 with noise
-                148, 143, 145, 138, 140, 133, 135, 128, 130, 123,
-                125, 118, 120, 113, 115, 108, 110, 103, 105, 98,
-                100, 118, 120, 113, 115, 108, 110, 78, 80, 73,
-                75, 68, 70, 65, 67, 62, 64, 60, 62, 63
-            ];*/
 
         var cadenceIndex = app.getCadenceIndex();
         var cadenceCount = app.getCadenceCount();
-        //check array ?null
+        
         if(cadenceCount == 0) {return;}
        
         var numBars = cadenceCount;
         var barWidth = (barZoneWidth / MAX_BARS).toNumber();
-
         var startIndex = (cadenceIndex - numBars + MAX_BARS) % MAX_BARS;
-            
-        // Draw bars
+        
+        var colorThreshold = 20;
+        
+        // FIXED SCALE - bars have fixed height based on absolute cadence
+        // Colors change dynamically based on your zone
         for (var i = 0; i < numBars; i++) {
-            var index = (startIndex + i) % MAX_BARS; // Start from oldest data
+            var index = (startIndex + i) % MAX_BARS;
             var cadence = cadenceHistory[index];
             if(cadence == null) {cadence = 0;}
-                    
-            //calculate bar height and position
+            
+            // Fixed bar height - same cadence always same height
             var barHeight = ((cadence / MAX_CADENCE_DISPLAY) * chartHeight).toNumber();
             var x = barZoneLeft + i * barWidth;
             var y = barZoneBottom - barHeight;
-
-            correctColor(cadence, idealMinCadence, idealMaxCadence, dc);
+            
+            // Dynamic color based on YOUR current zone
+            //FML
+            if (cadence < idealMinCadence - colorThreshold) {
+                // Way below zone - Grey
+                dc.setColor(0x969696, Graphics.COLOR_TRANSPARENT);
+            }
+            else if (cadence >= idealMinCadence - colorThreshold && cadence < idealMinCadence) {
+                // Below zone - Blue
+                dc.setColor(0x0cc0df, Graphics.COLOR_TRANSPARENT);
+            }
+            else if (cadence >= idealMinCadence && cadence <= idealMaxCadence) {
+                // In zone - Green (YOUR ZONE!)
+                dc.setColor(0x00bf63, Graphics.COLOR_TRANSPARENT);
+            }
+            else if (cadence > idealMaxCadence && cadence <= idealMaxCadence + colorThreshold) {
+                // Above zone - Orange
+                dc.setColor(0xff751f, Graphics.COLOR_TRANSPARENT);
+            }
+            else if (cadence > idealMaxCadence + colorThreshold) {
+                // Way above zone - Red
+                dc.setColor(0xFF0000, Graphics.COLOR_TRANSPARENT);
+            }
+            
             dc.fillRectangle(x, y, barWidth, barHeight);
         }
     }

@@ -5,11 +5,18 @@
 
     <string id="menu_label_1">Item 1</string>
     <string id="menu_label_2">Item 2</string>
+    
+    <!-- Updated cadence menu items for picker -->
+    <string id="menu_set_min">Set Min Cadence</string>
+    <string id="menu_set_max">Set Max Cadence</string>
+    
+    <!-- Keep old ones for backwards compatibility (can remove later) -->
     <string id="menu_inc_min">Increase Min </string>
     <string id="menu_dec_min">Decrease Min </string>
     <string id="menu_inc_max">Increase Max </string>
     <string id="menu_dec_max">Decrease Max </string>
-    <string id="menu_reset_zones">ReseT Zones</string>
+    
+    <string id="menu_reset_zones">Reset Zones</string>
     <string id="zone_in">In Zone</string>
     <string id="zone_out">OutZone</string>
 </strings>
