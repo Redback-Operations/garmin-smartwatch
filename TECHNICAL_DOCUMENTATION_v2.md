@@ -1,13 +1,14 @@
 # Redback Operation Garmin App - Technical Documentation
 
 ## Concept & Vision
+
 A Garmin watch-app that turns the built-in cadence sensor into a **real-time running-efficiency coach that can be used for rehabilitation or hard core trainers alike**.  
 While you run it shows:
 
-* Live cadence vs. your **personal ideal zone** (calculated from height, speed, gender, experience)  
-* A **28-minute rolling histogram** that colour-codes every stride  
-* A **0-100 % "Cadence Quality" (CQ)** score that is frozen when you stop and is written into the FIT file so it follows the activity into Garmin Connect
-* **Smart haptic alerts** that vibrate when you drift out of your optimal cadence zone
+- Live cadence vs. your **personal ideal zone** (calculated from height, speed, gender, experience)
+- A **28-minute rolling histogram** that colour-codes every stride
+- A **0-100 % "Cadence Quality" (CQ)** score that is frozen when you stop and is written into the FIT file so it follows the activity into Garmin Connect
+- **Smart haptic alerts** that vibrate when you drift out of your optimal cadence zone
 
 ## Table of Contents
 
@@ -29,11 +30,13 @@ While you run it shows:
 ---
 
 ## Prerequisites
+
 - Garmin Connect IQ SDK 8.3.0+
 - Visual Studio Code with Connect IQ extension
 - Forerunner 165/165 Music device or simulator
 
 ## Build Process
+
 1. Clone repository
 2. Configure project settings in `monkey.jungle`
 3. Build for target device:
@@ -54,17 +57,18 @@ This project follows a **rebase-focused, fast-merge workflow** designed to keep 
 
 ### Core Principles
 
-| Principle | Meaning | Why It Matters |
-|-----------|---------|----------------|
-| Main is always green | If it's on `main`, it works and deploys | Broken code never reaches production |
-| Rebase, don't merge | Linear history = readable git log | Easy to track down bugs, understand changes |
-| Small, fast PRs | Less than 400 lines, less than 3 days open | Easier reviews, less conflict potential |
-| Automated enforcement | Machines check; humans review logic | Catches issues before review |
-| Sync early, sync often | Rebase on `main` daily | Prevents large, scary conflicts |
+| Principle              | Meaning                                    | Why It Matters                              |
+| ---------------------- | ------------------------------------------ | ------------------------------------------- |
+| Main is always green   | If it's on `main`, it works and deploys    | Broken code never reaches production        |
+| Rebase, don't merge    | Linear history = readable git log          | Easy to track down bugs, understand changes |
+| Small, fast PRs        | Less than 400 lines, less than 3 days open | Easier reviews, less conflict potential     |
+| Automated enforcement  | Machines check; humans review logic        | Catches issues before review                |
+| Sync early, sync often | Rebase on `main` daily                     | Prevents large, scary conflicts             |
 
 ### Why Rebase? The Visual Comparison
 
 **MERGE (creates complex history):**
+
 ```
 A---B---C-------F---G  main
      \         /
@@ -73,12 +77,14 @@ A---B---C-------F---G  main
 ```
 
 **REBASE (clean linear history):**
+
 ```
 A---B---C---F---G---D'---E'  main
                 (feature commits replayed on top)
 ```
 
 **Benefits of Rebasing:**
+
 - History reads like a book: chronological, no tangles
 - `git bisect` works reliably to find bugs
 - Each commit can be individually tested
@@ -96,20 +102,20 @@ sequenceDiagram
     participant YourBranch as feature/vibration
     participant Main
     participant Teammate
-    
+
     Note over You,Main: Monday 9am
     You->>YourBranch: Create branch from main@100
-    
+
     Note over You,Main: Tuesday 3pm
     Teammate->>Main: Merge feature/graph-fix (main@105)
-    
+
     Note over You,Main: Wednesday 10am
     You->>YourBranch: Open Pull Request
     YourBranch-->>Main: "Warning: Branch is out-of-date"
-    
+
     Note over You,Main: Thursday 2pm
     Teammate->>Main: Merge feature/settings (main@110)
-    
+
     Note over You,Main: Friday 11am
     You->>Main: Attempt merge
     Note over Main: Conflicts! Tests fail! Team sad!
@@ -155,13 +161,13 @@ git push --force-with-lease
 
 ### When to Sync Your Branch
 
-| Timing | Action | Command |
-|--------|--------|---------|
-| **Start work** | Branch from latest main | `git fetch && git checkout -b feature/name origin/main` |
-| **Daily** (minimum) | Rebase on main | `git fetch && git rebase origin/main && git push --force-with-lease` |
-| **Before opening PR** | Final rebase + cleanup | `git rebase -i origin/main` (squash "WIP" commits if needed) |
-| **After PR approved** | Last sync before merge | `git fetch && git rebase origin/main` |
-| **After PR merged** | Delete branch | `git push origin --delete feature/name && git branch -D feature/name` |
+| Timing                | Action                  | Command                                                               |
+| --------------------- | ----------------------- | --------------------------------------------------------------------- |
+| **Start work**        | Branch from latest main | `git fetch && git checkout -b feature/name origin/main`               |
+| **Daily** (minimum)   | Rebase on main          | `git fetch && git rebase origin/main && git push --force-with-lease`  |
+| **Before opening PR** | Final rebase + cleanup  | `git rebase -i origin/main` (squash "WIP" commits if needed)          |
+| **After PR approved** | Last sync before merge  | `git fetch && git rebase origin/main`                                 |
+| **After PR merged**   | Delete branch           | `git push origin --delete feature/name && git branch -D feature/name` |
 
 ---
 
@@ -172,11 +178,13 @@ git push --force-with-lease
 **Don't click "Update branch" button** - it creates a merge commit!
 
 **Instead, use terminal:**
+
 ```bash
 git fetch origin
 git rebase origin/main
 git push --force-with-lease
 ```
+
 Then refresh the PR page - warning disappears.
 
 ### Situation 2: Someone Else Pushed to Your Branch
@@ -197,7 +205,8 @@ git rebase origin/main
 git push --force-with-lease
 ```
 
-### Situation 3: Rebase Goes Wrong 
+### Situation 3: Rebase Goes Wrong
+
 **I have done this more times than i care to remember**
 
 If you make a mistake during rebase:
@@ -216,19 +225,20 @@ git reset --hard HEAD@{5}  # Numbers from reflog
 ---
 
 ## Branch Protection Rules
+
 **some of these are active on the bramch**
 
 Our repository enforces these rules on the `main` branch (Settings → Branches):
 
-| Setting | Value | Why |
-|---------|-------|-----|
-| **Require pull request** | Enabled | Prevents accidental `git push origin main` |
-| **Required approvals** | 1 reviewer | Ensures code review before merge |
-| **Dismiss stale approvals** | Enabled | New commits after approval require re-review |
-| **Require status checks** | CI must pass | Code must build and pass tests |
+| Setting                         | Value        | Why                                                |
+| ------------------------------- | ------------ | -------------------------------------------------- |
+| **Require pull request**        | Enabled      | Prevents accidental `git push origin main`         |
+| **Required approvals**          | 1 reviewer   | Ensures code review before merge                   |
+| **Dismiss stale approvals**     | Enabled      | New commits after approval require re-review       |
+| **Require status checks**       | CI must pass | Code must build and pass tests                     |
 | **Require branches up to date** | **Critical** | PR must include latest `main` commits before merge |
-| **Allow force pushes** | Disabled | Protects main's history |
-| **Allow deletions** | Disabled | Prevents accidental branch deletion |
+| **Allow force pushes**          | Disabled     | Protects main's history                            |
+| **Allow deletions**             | Disabled     | Prevents accidental branch deletion                |
 
 **Why "Require branches up to date" is critical:**  
 This forces you to rebase before merging, ensuring the final merge result was actually tested in CI. Without this, two "green" PRs can be merged sequentially and break `main`.
@@ -236,21 +246,23 @@ This forces you to rebase before merging, ensuring the final merge result was ac
 ---
 
 ## Branch Naming Conventions
-**this is my preffered naming convention - i try an incorparte naming conventions into everything, even university submissions, so instead of SIT782_5_4HDV3r5edit8 i have a meaning name.
+
+\*\*this is my preffered naming convention - i try an incorparte naming conventions into everything, even university submissions, so instead of SIT782_5_4HDV3r5edit8 i have a meaning name.
 
 Use these prefixes to keep branches organized:
 
-| Prefix | Purpose | Example |
-|--------|---------|---------|
-| `feature/` | New functionality | `feature/vibration-alerts` |
-| `fix/` | Bug fixes | `fix/timer-crash` |
+| Prefix      | Purpose                               | Example                           |
+| ----------- | ------------------------------------- | --------------------------------- |
+| `feature/`  | New functionality                     | `feature/vibration-alerts`        |
+| `fix/`      | Bug fixes                             | `fix/timer-crash`                 |
 | `refactor/` | Code improvement (no behavior change) | `refactor/extract-chart-renderer` |
-| `docs/` | Documentation only | `docs/api-examples` |
-| `hotfix/` | Urgent production fix | `hotfix/memory-leak` |
+| `docs/`     | Documentation only                    | `docs/api-examples`               |
+| `hotfix/`   | Urgent production fix                 | `hotfix/memory-leak`              |
 
 **Format:** `prefix/descriptive-name-in-kebab-case`
 
 **Examples:**
+
 - Good: `feature/haptic-feedback`
 - Good: `fix/null-pointer-crash`
 - Bad: `my-branch` (no prefix)
@@ -262,37 +274,44 @@ Use these prefixes to keep branches organized:
 
 ### PR Size Guidelines
 
-| Lines Changed | Status | Recommendation |
-|---------------|--------|----------------|
-| Less than 200 lines | Excellent | Ideal for fast review |
-| 200-400 lines | Large | Consider splitting |
-| 400+ lines | Too large | Must split into multiple PRs |
+| Lines Changed       | Status    | Recommendation               |
+| ------------------- | --------- | ---------------------------- |
+| Less than 200 lines | Excellent | Ideal for fast review        |
+| 200-400 lines       | Large     | Consider splitting           |
+| 400+ lines          | Too large | Must split into multiple PRs |
 
 **Why small PRs are better-ish:**
-- Faster reviews 
+
+- Faster reviews
 - Lower chance of conflicts
 - Easier to understand changes
 - Less likely to introduce bugs
 
 ### PR Template
-**Does my head in when there is no comments or something generic like 'added stuff", admittedly its easier but its a crappy mindset because the person reviewing has  no idea.
+
+\*\*Does my head in when there is no comments or something generic like 'added stuff", admittedly its easier but its a crappy mindset because the person reviewing has no idea.
 
 When opening a PR, include:
 
 ```markdown
 ## What
+
 Brief description of changes (1-2 sentences)
 
 ## Why
+
 Problem being solved or feature being added
 
 ## How
+
 Technical approach taken
 
 ## Testing
+
 How to verify these changes work
 
 ## Screenshots/Videos
+
 If UI changes, show before/after -- not always relevant
 ```
 
@@ -325,6 +344,7 @@ graph LR
 **CI must pass before merge button activates.**
 
 If CI fails:
+
 1. Check the logs in the "Checks" tab
 2. Fix the issue locally
 3. Commit and push
@@ -338,12 +358,14 @@ We use **Squash and Merge** for all PRs:
 **this is what i like, there is more than one way to skin this cat, find what works for your project.**
 
 **Benefits:**
+
 - Each PR becomes a single commit on `main`
 - Clean, readable history
 - Easy to revert entire features
 - Encourages frequent commits during development
 
 **Process:**
+
 1. PR gets approved and CI passes
 2. Click "Squash and merge"
 3. Edit commit message (auto-generated from PR)
@@ -356,16 +378,19 @@ We use **Squash and Merge** for all PRs:
 While we use rebase-focused workflow, other valid approaches exist:
 
 ### Git Flow
+
 - Uses `develop` branch as integration branch
 - `main` only for releases
 - More complex, better for teams with scheduled releases
 
 ### Trunk-Based Development
+
 - Everyone commits to `main` frequently
 - Heavy use of feature flags
 - Requires strong CI/CD and testing discipline
 
 ### GitHub Flow
+
 - Similar to our approach
 - Allows merge commits instead of rebase
 - Simpler but creates non-linear history
@@ -378,12 +403,14 @@ Balances simplicity (better than Git Flow) with code quality (cleaner than merge
 ## Quick Reference Guide
 
 **Starting a new feature:**
+
 ```bash
 git fetch origin
 git checkout -b feature/my-feature origin/main
 ```
 
 **Daily sync:**
+
 ```bash
 git fetch origin
 git stash
@@ -393,12 +420,14 @@ git push --force-with-lease
 ```
 
 **Opening a PR:**
+
 1. Push branch: `git push -u origin feature/my-feature`
 2. Open PR on GitHub
 3. Request review
 4. Respond to feedback
 
 **After PR merged:**
+
 ```bash
 git checkout main
 git pull
@@ -410,14 +439,16 @@ git branch -D feature/my-feature
 ## Getting Help
 
 **Stuck during rebase?**
+
 1. Don't panic -- i cant stress this enough.. see below.
 2. Run `git status` to see what's happening
 3. Ask in team chat with:
    - Output of `git status`
    - What you were trying to do
    - Current branch name
-4. DONT Panic. Everyone screws up and makes mistakes. If you fuck up, fix it, have an RCA and move on. I have bunged code and production systems over the years. FUck up, fix it, move on. 
-**Common commands for troubleshooting:**
+4. DONT Panic. Everyone screws up and makes mistakes. If you f*ck up, fix it, have an RCA and move on. I have bunged code and production systems over the years. F*ck up, fix it, move on.
+   **Common commands for troubleshooting:**
+
 ```bash
 git status              # See current state
 git log --oneline -10   # Recent commits
@@ -432,48 +463,52 @@ git diff                # Uncommitted changes
 ## Workflow Checklist
 
 Before starting work:
+
 - [ ] `git fetch origin`
 - [ ] `git checkout -b feature/name origin/main`
 
 During development:
+
 - [ ] Commit frequently with clear messages
 - [ ] Rebase on `main` daily
 - [ ] Keep PR less than 400 lines if possible
 
 Before opening PR:
+
 - [ ] Final rebase: `git rebase -i origin/main`
 - [ ] Squash WIP commits if needed
 - [ ] Run tests locally
 - [ ] Push: `git push -u origin feature/name`
 
 During review:
+
 - [ ] Respond to feedback within 24h
 - [ ] Keep branch updated with `main`
 - [ ] Address all review comments
 
 After merge:
+
 - [ ] Delete branch locally: `git branch -D feature/name`
 - [ ] Pull latest main: `git checkout main && git pull`
 - [ ] Celebrate!
 
 ---
 
-*This workflow is designed to minimize conflicts and maximize collaboration. When in doubt, communicate early with the team and sync your branch often!*
+_This workflow is designed to minimize conflicts and maximize collaboration. When in doubt, communicate early with the team and sync your branch often!_
 
 ---
-
-
-
 
 ## Architecture Overview
 
 ### Application Type
+
 - **Type**: Garmin Watch App (not data field or widget)
 - **Target Devices**: Forerunner 165, Forerunner 165 Music
 - **SDK Version**: Minimum API Level 5.2.0
 - **Architecture**: MVC (Model-View-Controller/Delegate pattern)
 
 ### High-Level Structure
+
 ```
 GarminApp (Application Core)
     ├── Views
@@ -500,16 +535,16 @@ graph TB
     B -->|Commands| C[GarminApp]
     C -->|State Changes| D[View]
     D -->|Display| A
-    
+
     E[Cadence Sensor] -->|Data| C
     C -->|Process| F[CQ Algorithm]
     C -->|Monitor| G[Haptic Manager]
     G -->|Vibrations| H[Watch Hardware]
-    
+
     C -->|Records| I[ActivitySession]
     I -->|Saves| J[FIT File]
     J -->|Syncs| K[Garmin Connect]
-    
+
     style G fill:#ff9999
     style H fill:#ff9999
 ```
@@ -519,9 +554,11 @@ graph TB
 ## Core Components
 
 ### 1. GarminApp.mc
+
 **Purpose**: Central application controller and data manager
 
 **Key Responsibilities**:
+
 - Activity session lifecycle management (start/pause/resume/stop/save/discard)
 - Cadence data collection and storage
 - Cadence quality score computation
@@ -530,15 +567,17 @@ graph TB
 - Integration with Garmin Activity Recording API
 
 #### 1a. Memory Footprint (Cold Numbers)
-* Static allocation: ≈ 2.8 kB  
-  * 280 cadence samples × 4 B  = 1.1 kB  
-  * 280 EMA smoothed values    = 1.1 kB  
-  * 10 CQ history              = 40 B  
-  * Misc buffers / state       ≈ 600 B  
-* Peak stack during draw: ≈ 400 B  
-* Total at run-time: < 3.5 kB → fits easily into the 32 kB heap of the FR165
+
+- Static allocation: ≈ 2.8 kB
+  - 280 cadence samples × 4 B = 1.1 kB
+  - 280 EMA smoothed values = 1.1 kB
+  - 10 CQ history = 40 B
+  - Misc buffers / state ≈ 600 B
+- Peak stack during draw: ≈ 400 B
+- Total at run-time: < 3.5 kB → fits easily into the 32 kB heap of the FR165
 
 **Important Constants**:
+
 ```monkey-c
 MAX_BARS = 280              // Maximum cadence samples to store
 BASELINE_AVG_CADENCE = 160  // Minimum acceptable cadence
@@ -548,6 +587,7 @@ DEBUG_MODE = true           // Enable debug logging
 ```
 
 **State Variables**:
+
 - `_sessionState`: Current session state (IDLE/RECORDING/PAUSED/STOPPED)
 - `activitySession`: Garmin ActivityRecording session object
 - `_cadenceHistory`: Circular buffer storing 280 cadence samples
@@ -555,15 +595,18 @@ DEBUG_MODE = true           // Enable debug logging
 - `_cqHistory`: Last 10 CQ scores for trend analysis
 
 ### 2. SimpleView.mc & AdvancedView.mc
+
 **Purpose**: Display interfaces with integrated haptic feedback
 
 **SimpleView Responsibilities**:
+
 - Display current cadence, heart rate, distance, time
 - Show cadence zone status (In Zone/Out Zone)
 - Trigger haptic alerts when out of zone
 - Update UI every second
 
 **AdvancedView Responsibilities**:
+
 - Render 28-minute cadence histogram
 - Display heart rate and distance circles
 - Show zone boundaries on chart
@@ -571,6 +614,7 @@ DEBUG_MODE = true           // Enable debug logging
 - Color-code bars based on cadence zones
 
 **Haptic Alert Variables** (both views):
+
 ```monkey-c
 private var _lastZoneState = 0;          // -1=below, 0=in zone, 1=above
 private var _alertStartTime = null;      // When alerts began
@@ -597,11 +641,11 @@ graph TD
     F --> G[_cadenceHistory 280 samples]
     G --> H[computeCadenceQualityScore]
     H --> I[_cqHistory Last 10 scores]
-    
+
     G -->|Monitor| J[Zone Detection]
     J -->|Out of Zone| K[Trigger Haptic Alert]
     K --> L[User Feedback]
-    
+
     style K fill:#ff9999
     style L fill:#ff9999
 ```
@@ -615,10 +659,10 @@ sequenceDiagram
     participant ZoneChecker
     participant HapticManager
     participant Hardware
-    
+
     User->>View: Running (cadence changes)
     View->>ZoneChecker: Check current cadence
-    
+
     alt Cadence drops below minimum
         ZoneChecker->>HapticManager: Trigger single buzz pattern
         HapticManager->>Hardware: Vibrate 200ms
@@ -640,17 +684,20 @@ sequenceDiagram
 ### 3. Timer System
 
 **Global Timer** (`globalTimer`):
+
 - Frequency: Every 1 second
 - Callback: `updateCadenceBarAvg()`
 - Runs: Always (from app start to stop)
 - Purpose: Collect cadence data when recording
 
 **View Refresh Timers**:
+
 - SimpleView: Refresh every 1 second (reused for haptic checks)
 - AdvancedView: Refresh every 1 second (reused for haptic checks)
 - Purpose: Update UI elements and monitor zone status
 
 **Haptic Alert System** (NO dedicated timers):
+
 - Uses existing view refresh cycle
 - Checks zone status on each UI update
 - Triggers vibrations when appropriate
@@ -661,6 +708,7 @@ sequenceDiagram
 The app uses a two-tier averaging system:
 
 **Tier 1: Bar Averaging**
+
 ```
 Chart Duration = 6 seconds (ThirtyminChart default)
 ↓
@@ -672,6 +720,7 @@ Store as single bar value
 ```
 
 **Tier 2: Historical Storage**
+
 ```
 280 bar values stored
 ↓
@@ -681,16 +730,18 @@ Total history = 280 × 6 = 1680 seconds = 28 minutes
 ```
 
 **Chart Duration Options**:
+
 - FifteenminChart = 3 seconds per bar
 - ThirtyminChart = 6 seconds per bar (default)
 - OneHourChart = 13 seconds per bar
 - TwoHourChart = 26 seconds per bar
 
 ### 4a. Sensor Manager Abstraction
+
 `SensorManager.mc` decouples real vs. simulated cadence:
 
 ```monkey-c
-useSimulator = true  → returns hard-coded value (for desk testing)  
+useSimulator = true  → returns hard-coded value (for desk testing)
 useSimulator = false → reads Activity.getActivityInfo().currentCadence
 ```
 
@@ -709,21 +760,21 @@ stateDiagram-v2
     RECORDING --> STOPPED: stopRecording()
     PAUSED --> STOPPED: stopRecording()
     STOPPED --> IDLE: saveSession() / discardSession()
-    
+
     note right of RECORDING
         - Timer active
         - Data collecting
         - Haptic alerts enabled
         - UI updating
     end note
-    
+
     note right of PAUSED
         - Timer stopped
         - Data frozen
         - Haptic alerts disabled
         - UI static
     end note
-    
+
     note right of STOPPED
         - Final CQ calculated
         - Haptic alerts disabled
@@ -734,6 +785,7 @@ stateDiagram-v2
 ### State Transition Rules
 
 **IDLE → RECORDING**:
+
 - User presses START/STOP button
 - Creates new ActivityRecording session
 - Starts Garmin timer
@@ -742,6 +794,7 @@ stateDiagram-v2
 - **Enables haptic zone monitoring**
 
 **RECORDING → PAUSED**:
+
 - User selects "Pause" from menu
 - Stops Garmin timer (timer pauses)
 - Records pause timestamp
@@ -749,6 +802,7 @@ stateDiagram-v2
 - **Disables haptic alerts**
 
 **PAUSED → RECORDING**:
+
 - User selects "Resume" from menu
 - Restarts Garmin timer
 - Accumulates paused time
@@ -756,6 +810,7 @@ stateDiagram-v2
 - **Re-enables haptic zone monitoring**
 
 **RECORDING/PAUSED → STOPPED**:
+
 - User selects "Stop" from menu
 - Stops Garmin timer
 - Computes final CQ score
@@ -764,6 +819,7 @@ stateDiagram-v2
 - Awaits save/discard decision
 
 **STOPPED → IDLE**:
+
 - User selects "Save": Saves to FIT file
 - User selects "Discard": Deletes session
 - Resets all data structures
@@ -776,6 +832,7 @@ stateDiagram-v2
 ### Garmin ActivityRecording Integration
 
 **Session Creation** (`startRecording()`):
+
 ```monkey-c
 activitySession = ActivityRecording.createSession({
     :name => "Running",
@@ -786,6 +843,7 @@ activitySession.start();
 ```
 
 **What This Does**:
+
 - Creates official Garmin activity
 - Starts timer (visible in UI)
 - Records GPS, heart rate, cadence automatically
@@ -793,6 +851,7 @@ activitySession.start();
 - Handles sensor data collection
 
 **Pause/Resume** (`pauseRecording()` / `resumeRecording()`):
+
 ```monkey-c
 // Pause
 activitySession.stop();  // Pauses timer
@@ -802,18 +861,22 @@ activitySession.start(); // Resumes timer
 ```
 
 **Save** (`saveSession()`):
+
 ```monkey-c
 activitySession.save();
 ```
+
 - Writes FIT file to device
 - Syncs to Garmin Connect
 - Appears in activity history
 - Includes all sensor data
 
 **Discard** (`discardSession()`):
+
 ```monkey-c
 activitySession.discard();
 ```
+
 - Deletes session completely
 - No FIT file created
 - No sync to Garmin Connect
@@ -823,10 +886,13 @@ activitySession.discard();
 ## Haptic Feedback System
 
 ### Overview
+
 The haptic feedback system provides real-time tactile alerts when the runner's cadence drifts outside their optimal zone. This helps maintain proper running form without constantly looking at the watch.
 
 ### Design Philosophy
+
 **Timer-Free Architecture**: Instead of creating additional timers (which are limited on Garmin devices), the system piggybacks on the existing 1-second view refresh cycle. This approach:
+
 - Eliminates "Too Many Timers" errors
 - Reduces memory overhead
 - Maintains precise timing through timestamp tracking
@@ -840,39 +906,43 @@ graph LR
     B -->|Below Min| C[Single Buzz]
     B -->|Above Max| D[Double Buzz]
     B -->|In Zone| E[No Alert]
-    
+
     C --> F[200ms vibration]
     D --> G[200ms vibration]
     G --> H[240ms pause]
     H --> I[200ms vibration]
-    
+
     F --> J[Repeat every 30s for 3 min]
     I --> J
-    
+
     style C fill:#9999ff
     style D fill:#ff9999
     style E fill:#99ff99
 ```
 
 **Single Buzz** (Below Minimum Cadence):
+
 - Pattern: One 200ms vibration
 - Meaning: Speed up your steps
 - Repeat: Every 30 seconds
 - Duration: 3 minutes max
 
 **Double Buzz** (Above Maximum Cadence):
+
 - Pattern: Two 200ms vibrations with 240ms gap
 - Meaning: Slow down your steps
 - Repeat: Every 30 seconds
 - Duration: 3 minutes max
 
 **No Alert** (In Target Zone):
+
 - Pattern: Silence
 - Meaning: Perfect cadence, keep going!
 
 ### Implementation Details
 
 #### Zone State Tracking
+
 ```monkey-c
 private var _lastZoneState = 0;  // -1 = below, 0 = in zone, 1 = above
 
@@ -887,6 +957,7 @@ if (cadence < minZone) {
 ```
 
 #### Alert Triggering Logic
+
 ```monkey-c
 if (newZoneState != _lastZoneState) {
     if (newZoneState == -1) {
@@ -906,6 +977,7 @@ if (newZoneState != _lastZoneState) {
 ```
 
 #### Alert Cycle Management
+
 ```monkey-c
 function startAlertCycle() as Void {
     _alertStartTime = System.getTimer();
@@ -915,21 +987,21 @@ function startAlertCycle() as Void {
 
 function checkAndTriggerAlerts() as Void {
     if (_alertStartTime == null) { return; }
-    
+
     var currentTime = System.getTimer();
     var elapsed = currentTime - _alertStartTime;
-    
+
     // Stop after 3 minutes
     if (elapsed >= 180000) {
         _alertStartTime = null;
         return;
     }
-    
+
     // Check if 30 seconds passed since last alert
     var timeSinceLastAlert = currentTime - _lastAlertTime;
     if (timeSinceLastAlert >= 30000) {
         _lastAlertTime = currentTime;
-        
+
         if (_lastZoneState == -1) {
             triggerSingleVibration();
         } else if (_lastZoneState == 1) {
@@ -940,13 +1012,14 @@ function checkAndTriggerAlerts() as Void {
 ```
 
 #### Double Buzz Implementation
+
 ```monkey-c
 function triggerDoubleVibration() as Void {
     if (Attention has :vibrate) {
         // First vibration
         var vibeData = [new Attention.VibeProfile(50, 200)];
         Attention.vibrate(vibeData);
-        
+
         // Schedule second vibration
         _pendingSecondVibe = true;
         _secondVibeTime = System.getTimer() + 240;
@@ -984,10 +1057,11 @@ graph TD
 ```
 
 **SimpleView Integration**:
+
 ```monkey-c
 function displayCadence() as Void {
     // ... update UI elements ...
-    
+
     // Determine zone state
     var newZoneState = 0;
     if (currentCadence < minZone) {
@@ -995,7 +1069,7 @@ function displayCadence() as Void {
     } else if (currentCadence > maxZone) {
         newZoneState = 1;
     }
-    
+
     // Handle zone transitions
     if (newZoneState != _lastZoneState) {
         // Trigger appropriate alert and start cycle
@@ -1007,6 +1081,7 @@ function displayCadence() as Void {
 ```
 
 **AdvancedView Integration**:
+
 ```monkey-c
 function checkCadenceZone() as Void {
     // Get activity info and determine zone
@@ -1033,12 +1108,14 @@ Actual timing variance: ±1 second (due to 1Hz refresh rate)
 ### Memory Overhead
 
 **Additional Memory per View**:
+
 - State tracking: 3 integers (12 bytes)
 - Timestamps: 3 longs (24 bytes)
 - Boolean flags: 1 boolean (1 byte)
 - **Total: ~40 bytes per view**
 
 **No Additional Timers Required**:
+
 - Reuses existing `_refreshTimer` (SimpleView)
 - Reuses existing `_simulationTimer` (AdvancedView)
 - Zero timer creation overhead
@@ -1050,28 +1127,28 @@ sequenceDiagram
     participant Runner
     participant Watch
     participant App
-    
+
     Runner->>Watch: Start activity
     Watch->>App: BEGIN RECORDING
-    
+
     Note over App: Monitoring cadence...
-    
+
     Runner->>Watch: Cadence drops to 115 SPM
     App->>Watch: [SINGLE BUZZ]
     Note over Watch: Below minimum alert
-    
+
     Note over App: Wait 30 seconds...
-    
+
     App->>Watch: [SINGLE BUZZ]
     Note over Watch: Still below minimum
-    
+
     Runner->>Watch: Increases cadence to 145 SPM
     Note over App: Back in zone - stop alerts
-    
+
     Runner->>Watch: Cadence spikes to 165 SPM
     App->>Watch: [DOUBLE BUZZ]
     Note over Watch: Above maximum alert
-    
+
     Runner->>Watch: Reduces cadence to 150 SPM
     Note over App: Back in zone - stop alerts
 ```
@@ -1079,6 +1156,7 @@ sequenceDiagram
 ### Haptic Feedback Best Practices
 
 **For Developers**:
+
 1. Always check `Attention has :vibrate` before calling vibration
 2. Reuse existing timers rather than creating new ones
 3. Use timestamp-based tracking for precise intervals
@@ -1114,6 +1192,7 @@ Potential improvements to the haptic system:
 ## Cadence Quality Algorithm
 
 ### Overview
+
 The Cadence Quality (CQ) score is a composite metric that measures running efficiency based on two factors:
 
 1. **Time in Zone** (70% weight): Percentage of time spent within ideal cadence range
@@ -1138,44 +1217,47 @@ graph TD
 **Purpose**: Measures what percentage of your running time is spent at the optimal cadence
 
 **Formula**:
+
 ```
 Time in Zone % = (samples in zone / total samples) × 100
 ```
 
 **Implementation**:
+
 ```monkey-c
 function computeTimeInZoneScore() as Number {
     if (_cadenceCount < MIN_CQ_SAMPLES) {
         return -1;  // Not enough data yet
     }
-    
+
     var minZone = _idealMinCadence;
     var maxZone = _idealMaxCadence;
     var inZoneCount = 0;
     var validSamples = 0;
-    
+
     for (var i = 0; i < MAX_BARS; i++) {
         var c = _cadenceHistory[i];
-        
+
         if (c != null) {
             validSamples++;
-            
+
             if (c >= minZone && c <= maxZone) {
                 inZoneCount++;
             }
         }
     }
-    
+
     if (validSamples == 0) {
         return -1;
     }
-    
+
     var ratio = inZoneCount.toFloat() / validSamples.toFloat();
     return (ratio * 100).toNumber();
 }
 ```
 
 **Example**:
+
 - 280 total samples collected
 - 210 samples within zone [145-155 SPM]
 - Time in Zone = (210/280) × 100 = 75%
@@ -1185,47 +1267,50 @@ function computeTimeInZoneScore() as Number {
 **Purpose**: Measures cadence consistency (low variance = better form)
 
 **Formula**:
+
 ```
 Average Difference = Σ |current - previous| / number of transitions
 Smoothness % = 100 - (average difference × 10)
 ```
 
 **Implementation**:
+
 ```monkey-c
 function computeSmoothnessScore() as Number {
     if (_cadenceCount < MIN_CQ_SAMPLES) {
         return -1;
     }
-    
+
     var totalDiff = 0.0;
     var diffCount = 0;
-    
+
     for (var i = 1; i < MAX_BARS; i++) {
         var prev = _cadenceHistory[i - 1];
         var curr = _cadenceHistory[i];
-        
+
         if (prev != null && curr != null) {
             totalDiff += abs(curr - prev);
             diffCount++;
         }
     }
-    
+
     if (diffCount == 0) {
         return -1;
     }
-    
+
     var avgDiff = totalDiff / diffCount;
     var rawScore = 100 - (avgDiff * 10);
-    
+
     // Clamp to 0-100 range
     if (rawScore < 0) { rawScore = 0; }
     if (rawScore > 100) { rawScore = 100; }
-    
+
     return rawScore;
 }
 ```
 
 **Example**:
+
 - Sample transitions: 145→148 (3), 148→147 (1), 147→150 (3)
 - Average difference = (3+1+3)/3 = 2.33
 - Smoothness = 100 - (2.33 × 10) = 76.7%
@@ -1233,40 +1318,43 @@ function computeSmoothnessScore() as Number {
 ### Final CQ Score
 
 **Weighted Combination**:
+
 ```
 CQ = (Time in Zone × 0.7) + (Smoothness × 0.3)
 ```
 
 **Implementation**:
+
 ```monkey-c
 function computeCadenceQualityScore() as Number {
     var timeInZone = computeTimeInZoneScore();
     var smoothness = computeSmoothnessScore();
-    
+
     if (timeInZone < 0 || smoothness < 0) {
         return -1;  // Not enough data
     }
-    
+
     var cq = (timeInZone * 0.7) + (smoothness * 0.3);
     return cq.toNumber();
 }
 ```
 
 **Example**:
+
 - Time in Zone = 75%
 - Smoothness = 76.7%
 - CQ = (75 × 0.7) + (76.7 × 0.3) = 52.5 + 23.01 = **75.5%**
 
 ### CQ Score Interpretation
 
-| Score Range | Rating | Interpretation |
-|-------------|--------|----------------|
-| 90-100% | Excellent | Elite running form |
-| 80-89% | Very Good | Consistent optimal cadence |
-| 70-79% | Good | Generally on target |
-| 60-69% | Fair | Room for improvement |
-| 50-59% | Poor | Frequent zone violations |
-| 0-49% | Very Poor | Needs significant work |
+| Score Range | Rating    | Interpretation             |
+| ----------- | --------- | -------------------------- |
+| 90-100%     | Excellent | Elite running form         |
+| 80-89%      | Very Good | Consistent optimal cadence |
+| 70-79%      | Good      | Generally on target        |
+| 60-69%      | Fair      | Room for improvement       |
+| 50-59%      | Poor      | Frequent zone violations   |
+| 0-49%       | Very Poor | Needs significant work     |
 
 ### Confidence Calculation
 
@@ -1277,10 +1365,10 @@ function computeCQConfidence() as String {
     if (_cadenceCount < MIN_CQ_SAMPLES) {
         return "Low";
     }
-    
+
     var missingRatio = _missingCadenceCount.toFloat() /
                     (_cadenceCount + _missingCadenceCount).toFloat();
-    
+
     if (missingRatio > 0.2) {
         return "Low";       // >20% missing data
     } else if (missingRatio > 0.1) {
@@ -1300,24 +1388,24 @@ function computeCQTrend() as String {
     if (_cqHistory.size() < 5) {
         return "Insufficient data";
     }
-    
+
     // Compare recent half vs. older half
     var midpoint = _cqHistory.size() / 2;
     var olderAvg = 0.0;
     var recentAvg = 0.0;
-    
+
     for (var i = 0; i < midpoint; i++) {
         olderAvg += _cqHistory[i];
     }
     olderAvg /= midpoint;
-    
+
     for (var i = midpoint; i < _cqHistory.size(); i++) {
         recentAvg += _cqHistory[i];
     }
     recentAvg /= (_cqHistory.size() - midpoint);
-    
+
     var diff = recentAvg - olderAvg;
-    
+
     if (diff > 5) {
         return "Improving";
     } else if (diff < -5) {
@@ -1335,29 +1423,30 @@ When the activity is stopped, the final CQ score is frozen and written to the FI
 ```monkey-c
 function stopRecording() as Void {
     // ... stop activity session ...
-    
+
     var cq = computeCadenceQualityScore();
-    
+
     if (cq >= 0) {
         _finalCQ = cq;
         _finalCQConfidence = computeCQConfidence();
         _finalCQTrend = computeCQTrend();
-        
+
         System.println(
             "[CADENCE QUALITY] Final CQ frozen at " +
             cq.format("%d") + "% (" +
             _finalCQTrend + ", " +
             _finalCQConfidence + " confidence)"
         );
-        
+
         writeDiagnosticLog();
     }
-    
+
     _sessionState = STOPPED;
 }
 ```
 
 This frozen CQ score:
+
 - Appears in the activity summary
 - Syncs to Garmin Connect
 - Provides historical tracking
@@ -1370,6 +1459,7 @@ This frozen CQ score:
 ### SimpleView (Main Display)
 
 **Layout**:
+
 ```
         ┌─────────────────────┐
         │   [REC] 00:12:34    │  ← Time + Recording Indicator
@@ -1386,6 +1476,7 @@ This frozen CQ score:
 ```
 
 **Color Coding**:
+
 - **Green**: Cadence in optimal zone
 - **Blue**: Slightly below zone (within threshold)
 - **Grey**: Well below zone
@@ -1393,6 +1484,7 @@ This frozen CQ score:
 - **Red**: Well above zone
 
 **Haptic Feedback Integration**:
+
 - Single buzz when cadence drops below minimum
 - Double buzz when cadence exceeds maximum
 - Repeats every 30 seconds if still out of zone
@@ -1401,6 +1493,7 @@ This frozen CQ score:
 ### AdvancedView (Chart Display)
 
 **Layout**:
+
 ```
         ┌─────────────────────┐
         │     1:23:45         │  ← Session Time
@@ -1418,6 +1511,7 @@ This frozen CQ score:
 ```
 
 **Chart Features**:
+
 - 280 bars representing 28 minutes of data
 - Fixed vertical scale (0-200 SPM)
 - Color-coded bars matching zone status
@@ -1425,6 +1519,7 @@ This frozen CQ score:
 - Smooth scrolling as new data arrives
 
 **Haptic Feedback Integration**:
+
 - Same alert patterns as SimpleView
 - Integrated with chart updates
 - Visual + tactile feedback for optimal learning
@@ -1446,6 +1541,7 @@ graph TD
 ```
 
 **Button Mapping**:
+
 - **SELECT**: Start/Stop activity or open control menu
 - **UP**: Navigate to settings or previous view
 - **DOWN**: Navigate to next view
@@ -1455,6 +1551,7 @@ graph TD
 ### Activity Control Menus
 
 **During Recording**:
+
 ```
 ┌──────────────────────┐
 │     Activity         │
@@ -1466,6 +1563,7 @@ graph TD
 ```
 
 **When Paused**:
+
 ```
 ┌──────────────────────┐
 │  Activity Paused     │
@@ -1476,6 +1574,7 @@ graph TD
 ```
 
 **After Stopping**:
+
 ```
 ┌──────────────────────┐
 │  Save Activity?      │
@@ -1499,20 +1598,24 @@ graph TD
 ```
 
 **Profile Settings**:
+
 - Height (cm)
 - Speed (km/h)
 - Gender (Male/Female/Other)
 - Experience Level (Beginner/Intermediate/Advanced)
 
 **Customization**:
+
 - Chart Duration (15min/30min/1hr/2hr)
 
 **Feedback** (Future):
+
 - Haptic intensity
 - Alert interval
 - Alert duration
 
 **Cadence Range**:
+
 - Set Min Cadence (manual adjustment)
 - Set Max Cadence (manual adjustment)
 
@@ -1525,45 +1628,48 @@ graph TD
 **Purpose**: Calculate personalized ideal cadence based on biomechanics
 
 **Formula** (from research):
+
 ```
 Reference Cadence = (-1.251 × leg_length) + (3.665 × speed_m/s) + 254.858
 Final Cadence = Reference × Experience_Factor
 ```
 
 **Gender-Specific Adjustments**:
+
 ```monkey-c
 function idealCadenceCalculator() as Void {
     var referenceCadence = 0;
     var userLegLength = _userHeight * 0.53;  // 53% of height
     var userSpeedms = _userSpeed / 3.6;       // Convert km/h to m/s
-    
+
     switch (_userGender) {
         case Male:
-            referenceCadence = (-1.268 × userLegLength) + 
+            referenceCadence = (-1.268 × userLegLength) +
                              (3.471 × userSpeedms) + 261.378;
             break;
         case Female:
-            referenceCadence = (-1.190 × userLegLength) + 
+            referenceCadence = (-1.190 × userLegLength) +
                              (3.705 × userSpeedms) + 249.688;
             break;
         default:
-            referenceCadence = (-1.251 × userLegLength) + 
+            referenceCadence = (-1.251 × userLegLength) +
                              (3.665 × userSpeedms) + 254.858;
             break;
     }
-    
+
     referenceCadence *= _experienceLvl;
     referenceCadence = Math.round(referenceCadence);
-    
-    var finalCadence = max(BASELINE_AVG_CADENCE, 
+
+    var finalCadence = max(BASELINE_AVG_CADENCE,
                           min(referenceCadence, MAX_CADENCE));
-    
+
     _idealMaxCadence = finalCadence + 5;
     _idealMinCadence = finalCadence - 5;
 }
 ```
 
 **Experience Level Multipliers**:
+
 - Beginner: 1.06 (higher cadence for learning)
 - Intermediate: 1.04 (moderate adjustment)
 - Advanced: 1.02 (minimal adjustment)
@@ -1571,6 +1677,7 @@ function idealCadenceCalculator() as Void {
 ### Persistent Storage
 
 **Storage Keys**:
+
 ```monkey-c
 const PROP_USER_HEIGHT = "user_height";
 const PROP_USER_SPEED = "user_speed";
@@ -1582,6 +1689,7 @@ const PROP_MAX_CADENCE = "max_cadence";
 ```
 
 **Save Settings**:
+
 ```monkey-c
 function saveSettings() as Void {
     Storage.setValue(PROP_USER_HEIGHT, _userHeight);
@@ -1595,6 +1703,7 @@ function saveSettings() as Void {
 ```
 
 **Load Settings**:
+
 ```monkey-c
 function loadSettings() as Void {
     var height = Storage.getValue(PROP_USER_HEIGHT);
@@ -1606,6 +1715,7 @@ function loadSettings() as Void {
 ```
 
 Settings are automatically:
+
 - Loaded on app start
 - Saved when modified
 - Persisted between sessions
@@ -1617,9 +1727,8 @@ Settings are automatically:
 
 ---
 
-
-This reference covers the formatting used throughout this documentation. Use it when contributing updates or creating new documentation. markdown can be 
-intimidating at first, but onve you master it, you will use it for everything. 
+This reference covers the formatting used throughout this documentation. Use it when contributing updates or creating new documentation. markdown can be
+intimidating at first, but onve you master it, you will use it for everything.
 
 ---
 
@@ -1629,12 +1738,16 @@ intimidating at first, but onve you master it, you will use it for everything.
 
 ```markdown
 # H1 - Main Title
+
 ## H2 - Major Section
+
 ### H3 - Subsection
+
 #### H4 - Minor Heading
 ```
 
 **Usage in this doc:**
+
 - H1: Document title only
 - H2: Major sections (Architecture, Core Components, etc.)
 - H3: Subsections within major sections
@@ -1646,14 +1759,15 @@ intimidating at first, but onve you master it, you will use it for everything.
 
 ```markdown
 **Bold text** for emphasis
-*Italic text* for subtle emphasis
+_Italic text_ for subtle emphasis
 `Inline code` for commands, variables, filenames
 ~~Strikethrough~~ for deprecated content
 ```
 
 **Examples:**
+
 - **Bold**: Important terms, warnings
-- *Italic*: Notes, asides
+- _Italic_: Notes, asides
 - `Code`: `git push`, `_cadenceHistory`, `SimpleView.mc`
 
 ---
@@ -1667,16 +1781,18 @@ intimidating at first, but onve you master it, you will use it for everything.
 ```
 
 **Internal link rules:**
+
 - Section names become anchors automatically
 - Convert to lowercase
 - Replace spaces with hyphens
 - Remove special characters or convert to hyphens
 
 **Examples:**
+
 ```markdown
-[Architecture Overview](#architecture-overview)          # Correct
-[GitHub Workflow & Collaboration](#github-workflow--collaboration)  # & becomes --
-[State Management](#state-management)                    # Simple case
+[Architecture Overview](#architecture-overview) # Correct
+[GitHub Workflow & Collaboration](#github-workflow--collaboration) # & becomes --
+[State Management](#state-management) # Simple case
 ```
 
 ---
@@ -1684,6 +1800,7 @@ intimidating at first, but onve you master it, you will use it for everything.
 ### Lists
 
 **Unordered lists:**
+
 ```markdown
 - Item 1
 - Item 2
@@ -1693,6 +1810,7 @@ intimidating at first, but onve you master it, you will use it for everything.
 ```
 
 **Ordered lists:**
+
 ```markdown
 1. First item
 2. Second item
@@ -1700,6 +1818,7 @@ intimidating at first, but onve you master it, you will use it for everything.
 ```
 
 **Checklists:**
+
 ```markdown
 - [ ] Incomplete task
 - [x] Completed task
@@ -1710,6 +1829,7 @@ intimidating at first, but onve you master it, you will use it for everything.
 ### Code Blocks
 
 **Inline code:**
+
 ```markdown
 Use `git status` to check your working directory.
 ```
@@ -1734,6 +1854,7 @@ const response = await fetch(url);
 ````
 
 **Supported languages in this doc:**
+
 - `bash` - Shell commands
 - `monkey-c` - Monkey C code
 - `javascript` - JS examples
@@ -1746,21 +1867,24 @@ const response = await fetch(url);
 ### Tables
 
 **Basic table:**
+
 ```markdown
 | Column 1 | Column 2 | Column 3 |
-|----------|----------|----------|
+| -------- | -------- | -------- |
 | Data 1   | Data 2   | Data 3   |
 | Data 4   | Data 5   | Data 6   |
 ```
 
 **Table with alignment:**
+
 ```markdown
 | Left-aligned | Center-aligned | Right-aligned |
-|:-------------|:--------------:|--------------:|
-| Left         | Center         | Right         |
+| :----------- | :------------: | ------------: |
+| Left         |     Center     |         Right |
 ```
 
 **Tips:**
+
 - Use `|:---` for left align (default)
 - Use `|:---:|` for center align
 - Use `|---:|` for right align
@@ -1798,6 +1922,7 @@ Mermaid creates diagrams from text. All diagrams must be in fenced code blocks w
 ### Flowcharts (Graph)
 
 **Basic syntax:**
+
 ````markdown
 ```mermaid
 graph TD
@@ -1811,37 +1936,41 @@ graph TD
 ````
 
 **Node shapes:**
+
 ```markdown
-A[Rectangle]           # Square corners
-B(Rounded)            # Rounded corners
-C([Stadium])          # Pill shape
-D[[Subroutine]]       # Double border
-E[(Database)]         # Cylinder
-F((Circle))           # Circle
-G>Flag]               # Flag shape
-H{Diamond}            # Diamond (decision)
-I{{Hexagon}}          # Hexagon
+A[Rectangle] # Square corners
+B(Rounded) # Rounded corners
+C([Stadium]) # Pill shape
+D[[Subroutine]] # Double border
+E[(Database)] # Cylinder
+F((Circle)) # Circle
+G>Flag] # Flag shape
+H{Diamond} # Diamond (decision)
+I{{Hexagon}} # Hexagon
 ```
 
 **Arrow types:**
+
 ```markdown
-A --> B               # Solid arrow
-A -.-> B              # Dotted arrow
-A ==> B               # Thick arrow
-A --- B               # Line (no arrow)
-A -- Text --> B       # Labeled arrow
-A -->|Text| B         # Labeled arrow (compact)
+A --> B # Solid arrow
+A -.-> B # Dotted arrow
+A ==> B # Thick arrow
+A --- B # Line (no arrow)
+A -- Text --> B # Labeled arrow
+A -->|Text| B # Labeled arrow (compact)
 ```
 
 **Direction:**
+
 ```markdown
-graph TD              # Top to Down
-graph LR              # Left to Right
-graph BT              # Bottom to Top
-graph RL              # Right to Left
+graph TD # Top to Down
+graph LR # Left to Right
+graph BT # Bottom to Top
+graph RL # Right to Left
 ```
 
 **Example from this doc (Data Flow):**
+
 ````markdown
 ```mermaid
 graph TD
@@ -1858,15 +1987,16 @@ graph TD
 ### Sequence Diagrams
 
 **Basic syntax:**
+
 ````markdown
 ```mermaid
 sequenceDiagram
     participant A as Alice
     participant B as Bob
-    
+
     A->>B: Hello Bob!
     B->>A: Hi Alice!
-    
+
     Note over A,B: This is a note
     Note right of A: Note on right
     Note left of B: Note on left
@@ -1874,6 +2004,7 @@ sequenceDiagram
 ````
 
 **Arrow types:**
+
 ```markdown
 A->>B: Solid arrow (message)
 A-->>B: Dotted arrow (return)
@@ -1881,19 +2012,21 @@ A-xB: Cross (lost message)
 ```
 
 **Special syntax:**
+
 ```markdown
 alt Alternative 1
-    A->>B: Do this
+A->>B: Do this
 else Alternative 2
-    A->>B: Do that
+A->>B: Do that
 end
 
 loop Every 30s
-    A->>B: Repeat this
+A->>B: Repeat this
 end
 ```
 
 **Example from this doc (Haptic Alerts):**
+
 ````markdown
 ```mermaid
 sequenceDiagram
@@ -1901,10 +2034,10 @@ sequenceDiagram
     participant View
     participant ZoneChecker
     participant HapticManager
-    
+
     User->>View: Running (cadence changes)
     View->>ZoneChecker: Check current cadence
-    
+
     alt Cadence drops below minimum
         ZoneChecker->>HapticManager: Trigger single buzz
     else Cadence exceeds maximum
@@ -1920,6 +2053,7 @@ sequenceDiagram
 ### State Diagrams
 
 **Basic syntax:**
+
 ````markdown
 ```mermaid
 stateDiagram-v2
@@ -1927,7 +2061,7 @@ stateDiagram-v2
     State1 --> State2: Transition
     State2 --> State3: Another transition
     State3 --> [*]
-    
+
     note right of State1
         This is a note
     end note
@@ -1935,6 +2069,7 @@ stateDiagram-v2
 ````
 
 **Example from this doc (Session States):**
+
 ````markdown
 ```mermaid
 stateDiagram-v2
@@ -1944,7 +2079,7 @@ stateDiagram-v2
     PAUSED --> RECORDING: resumeRecording()
     RECORDING --> STOPPED: stopRecording()
     STOPPED --> IDLE: saveSession() / discardSession()
-    
+
     note right of RECORDING
         Timer active
         Data collecting
@@ -1959,15 +2094,16 @@ stateDiagram-v2
 
 ### When to Use Which Diagram
 
-| Diagram Type | Use When | Example in This Doc |
-|--------------|----------|---------------------|
-| **Flowchart** | Showing process flow, data pipeline, decision trees | Data collection pipeline, CI workflow |
-| **Sequence Diagram** | Showing interactions over time between components | Haptic alert timing, merge conflict scenario |
-| **State Diagram** | Showing state transitions and lifecycle | Session state machine |
+| Diagram Type         | Use When                                            | Example in This Doc                          |
+| -------------------- | --------------------------------------------------- | -------------------------------------------- |
+| **Flowchart**        | Showing process flow, data pipeline, decision trees | Data collection pipeline, CI workflow        |
+| **Sequence Diagram** | Showing interactions over time between components   | Haptic alert timing, merge conflict scenario |
+| **State Diagram**    | Showing state transitions and lifecycle             | Session state machine                        |
 
 ### Formatting Guidelines
 
 **DO:**
+
 - Use consistent header levels (don't skip levels)
 - Include code language tags in fenced blocks
 - Use tables for structured data comparisons
@@ -1976,6 +2112,7 @@ stateDiagram-v2
 - Use relative links for internal references
 
 **DON'T:**
+
 - Use HTML unless absolutely necessary
 - Skip header levels (H2 → H4 without H3)
 - Use images for text content (accessibility)
@@ -1985,6 +2122,7 @@ stateDiagram-v2
 ### Code Block Guidelines
 
 **For commands:**
+
 ```bash
 # Good: Show full command with context
 git fetch origin
@@ -1996,6 +2134,7 @@ git push -f
 ```
 
 **For code:**
+
 ```monkey-c
 // Good: Include relevant context and comments
 function startRecording() as Void {
@@ -2013,19 +2152,22 @@ activitySession.start();
 ### Table Guidelines
 
 **Comparison tables:**
+
 - Left column: Item being compared
 - Other columns: Attributes or options
 - Use bold for headers
 
 **Decision tables:**
+
 - Left column: Condition/situation
 - Right columns: Action or outcome
 - Consider using "When/Action/Command" structure
 
 **Examples:**
+
 ```markdown
-| When | Action | Command |
-|------|--------|---------|
+| When       | Action                  | Command                        |
+| ---------- | ----------------------- | ------------------------------ |
 | Start work | Branch from latest main | `git checkout -b feature/name` |
 ```
 
@@ -2036,22 +2178,26 @@ activitySession.start();
 ### Common Issues
 
 **Diagram not rendering?**
+
 1. Check for typos in `mermaid` tag
 2. Ensure proper indentation
 3. Close all parentheses and brackets
 4. Check for special characters in node names
 
 **Arrows not connecting?**
+
 - Make sure node IDs match exactly (case-sensitive)
 - Check arrow syntax (`-->` not `->`)
 
 **Text not showing?**
+
 - Wrap text with spaces in quotes: `A["My Text"]`
 - Use `|Text|` for inline labels on arrows
 
 ### Testing Diagrams
 
 **Before committing:**
+
 1. View in GitHub's preview tab
 2. Or use online editor: https://mermaid.live
 3. Check that text is readable
@@ -2090,6 +2236,7 @@ activitySession.start();
 ## Quick Reference: Common Patterns
 
 ### Section Header Pattern
+
 ```markdown
 ---
 
@@ -2102,25 +2249,31 @@ Brief introduction paragraph explaining what this section covers.
 Content here...
 
 **Key Points:**
+
 - Point 1
 - Point 2
 - Point 3
 ```
 
 ### Code Example Pattern
-```markdown
+
+````markdown
 **Implementation:**
+
 ```monkey-c
 function example() as Void {
     // Explanation comment
     var result = doSomething();
 }
 ```
+````
 
 **What this does:**
+
 - Explains the code
 - Provides context
-```
+
+````
 
 ### Comparison Table Pattern
 ```markdown
@@ -2129,24 +2282,18 @@ function example() as Void {
 | Speed | Fast | Slow |
 | Memory | High | Low |
 | Complexity | Simple | Complex |
-```
+````
 
 ---
 
 ---
-
-
-
-
-
-
-
 
 ## Features Reference
 
 ### Current Features (v1.0)
 
 ✅ **Core Functionality**
+
 - Real-time cadence monitoring
 - 28-minute rolling histogram
 - Cadence Quality (CQ) scoring
@@ -2155,6 +2302,7 @@ function example() as Void {
 - Save/Discard workflow
 
 ✅ **User Interface**
+
 - SimpleView (main display)
 - AdvancedView (chart visualization)
 - Settings menus
@@ -2162,6 +2310,7 @@ function example() as Void {
 - Recording indicator
 
 ✅ **Smart Features**
+
 - Personalized cadence zones
 - Gender-specific calculations
 - Experience level adjustment
@@ -2170,6 +2319,7 @@ function example() as Void {
 - **Haptic zone alerts**
 
 ✅ **Data Management**
+
 - Circular buffer storage
 - Two-tier averaging system
 - Persistent settings
@@ -2179,6 +2329,7 @@ function example() as Void {
 ### Haptic Feedback Feature (v1.1)
 
 ✅ **Alert Patterns**
+
 - Single buzz for below-zone cadence
 - Double buzz for above-zone cadence
 - 30-second repeat interval
@@ -2186,6 +2337,7 @@ function example() as Void {
 - Automatic stop on zone re-entry
 
 ✅ **Technical Implementation**
+
 - Timer-free architecture
 - Timestamp-based tracking
 - Integrated with view refresh cycle
@@ -2193,6 +2345,7 @@ function example() as Void {
 - Works on both SimpleView and AdvancedView
 
 ✅ **User Benefits**
+
 - No need to constantly watch screen
 - Tactile feedback during runs
 - Non-intrusive alerts
@@ -2202,6 +2355,7 @@ function example() as Void {
 ### Future Enhancements
 
 #### 🔴 High Priority
+
 1. **Configurable Alert Settings**
    - Alert interval (15s/30s/45s/60s)
    - Alert duration (1min/3min/5min/continuous)
@@ -2218,6 +2372,7 @@ function example() as Void {
    - Optimize bar calculations
 
 #### 🟡 Medium Priority
+
 4. **Smooth Bars**
    - Gradient transitions between zones
    - Anti-aliased rendering
@@ -2239,6 +2394,7 @@ function example() as Void {
    - Smart zone boundaries
 
 #### 🟢 Low Priority
+
 8. **Fade Old Bars**
    - Opacity gradient for time perspective
    - Highlight recent data
@@ -2274,6 +2430,7 @@ function example() as Void {
 ## Implementation Priority Matrix
 
 ### Phase 1: Core Stability (Completed)
+
 - ✅ State machine
 - ✅ Activity recording
 - ✅ Pause/Resume
@@ -2281,17 +2438,20 @@ function example() as Void {
 - ✅ Basic haptic alerts
 
 ### Phase 2: User Customization (Current)
+
 - 🔄 Configurable alert settings
 - 🔄 Battery optimization
 - 🔄 Chart rendering optimization
 
 ### Phase 3: Advanced Features (Future)
+
 - 📋 Smooth bars
 - 📋 Zone boundary lines
 - 📋 Statistical overlays
 - 📋 Terrain-adaptive zones
 
 ### Phase 4: Polish & Enhancement (Future)
+
 - 📋 Fade old bars
 - 📋 Auto-adjust chart duration
 - 📋 CSV export
@@ -2304,6 +2464,7 @@ function example() as Void {
 ## Technical Debt & Code Quality
 
 ### Refactoring Needed
+
 - [ ] Extract chart rendering to `ChartRenderer.mc` class
 - [ ] Create `CircularBuffer.mc` reusable class
 - [ ] Consolidate color constants into `Colors.mc`
@@ -2312,6 +2473,7 @@ function example() as Void {
 - [ ] Document all public methods with JSDoc-style comments
 
 ### Testing & Quality
+
 - [ ] Add unit tests for CQ algorithm
 - [ ] Add integration tests for state machine
 - [ ] Add haptic feedback timing tests
@@ -2321,6 +2483,7 @@ function example() as Void {
 - [ ] Test haptic alerts across rapid zone transitions
 
 ### Performance Profiling Targets
+
 - [ ] Chart draw time: <50ms per frame
 - [ ] Memory usage: <5% of total device memory
 - [ ] Battery drain: <5% per hour (GPS active)
@@ -2334,14 +2497,16 @@ function example() as Void {
 
 **Issue**: Haptic alerts not firing
 **Cause**: Attention module not supported or state not RECORDING
-**Solution**: 
+**Solution**:
+
 - Check `Attention has :vibrate` capability
 - Verify `_sessionState == RECORDING`
 - Confirm cadence is actually out of zone
 
 **Issue**: Alerts continue after returning to zone
 **Cause**: Zone state not properly updated
-**Solution**: 
+**Solution**:
+
 - Check `_lastZoneState` variable
 - Verify zone detection logic
 - Ensure `stopAlertCycle()` is called
@@ -2349,6 +2514,7 @@ function example() as Void {
 **Issue**: Double buzz only fires once
 **Cause**: `_pendingSecondVibe` not being checked
 **Solution**:
+
 - Confirm `checkPendingVibration()` called in `onUpdate()`
 - Verify `_secondVibeTime` calculation
 - Check timer precision
@@ -2384,6 +2550,7 @@ function example() as Void {
 ### Haptic Debugging
 
 **Enable Haptic Debug Logging**:
+
 ```monkey-c
 // In triggerSingleVibration()
 System.println("[HAPTIC] Single buzz triggered at " + System.getTimer());
@@ -2396,6 +2563,7 @@ System.println("[HAPTIC] Time since last alert: " + timeSinceLastAlert);
 ```
 
 **Test Haptic Timing**:
+
 1. Start recording
 2. Manually set cadence out of zone
 3. Note timestamp of first alert
@@ -2410,6 +2578,7 @@ System.println("[HAPTIC] Time since last alert: " + timeSinceLastAlert);
 **Current Version**: 1.1 (January 2026)
 
 **v1.1 Changes**:
+
 - ✅ Added: Haptic feedback system
   - Single buzz for below-zone cadence
   - Double buzz for above-zone cadence
@@ -2422,6 +2591,7 @@ System.println("[HAPTIC] Time since last alert: " + timeSinceLastAlert);
 - ✅ Updated: Documentation with flow diagrams
 
 **v1.0 Changes** (from original):
+
 - ✅ Fixed: Uncommented critical recording check (line 270)
 - ✅ Added: Full state machine (IDLE/RECORDING/PAUSED/STOPPED)
 - ✅ Added: Pause/Resume functionality
@@ -2433,6 +2603,7 @@ System.println("[HAPTIC] Time since last alert: " + timeSinceLastAlert);
 - ✅ Added: Comprehensive documentation
 
 **Known Limitations**:
+
 - No persistent storage of CQ history
 - No lap/split functionality
 - No custom alert thresholds
@@ -2469,6 +2640,7 @@ System.println("[HAPTIC] Time since last alert: " + timeSinceLastAlert);
 **Last Updated**: January 2026
 
 ## Special Mentions for their amazing work this semester.
+
 **Dom**
 **Chum**
 **Jack**
@@ -2476,5 +2648,3 @@ System.println("[HAPTIC] Time since last alert: " + timeSinceLastAlert);
 **Jin**
 
 ---
-
-
