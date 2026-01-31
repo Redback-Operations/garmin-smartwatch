@@ -105,7 +105,7 @@ class GarminApp extends Application.AppBase {
         Logger.logMemoryStats("Startup");
         
         // Load saved settings from persistent storage
-        loadSettings();
+        //loadSettings();
         
         globalTimer = new Timer.Timer();
         globalTimer.start(method(:updateCadenceBarAvg),1000,true);
@@ -468,7 +468,7 @@ class GarminApp extends Application.AppBase {
         _idealMinCadence = finalCadence - 5;
         
         // Save the calculated cadence zones
-        saveSettings();
+        //saveSettings();
         
         System.println("[CADENCE] Calculated ideal range: " + _idealMinCadence.toString() + "-" + _idealMaxCadence.toString() + " spm");
     }
@@ -613,12 +613,12 @@ class GarminApp extends Application.AppBase {
     
     function setMinCadence(value as Number) as Void {
         _idealMinCadence = value;
-        saveSettings();
+        //saveSettings();
     }
 
     function setMaxCadence(value as Number) as Void {
         _idealMaxCadence = value;
-        saveSettings();
+        //saveSettings();
     }
 
     function getCadenceHistory() as Array<Float?> {
@@ -648,7 +648,7 @@ class GarminApp extends Application.AppBase {
 
     function setUserGender(value as Number) as Void {
         _userGender = value;
-        saveSettings();
+        //saveSettings();
     }
 
     function getUserLegLength() as Float {
@@ -657,7 +657,7 @@ class GarminApp extends Application.AppBase {
 
     function setUserHeight(value as Number) as Void {
         _userHeight = value;
-        saveSettings();
+        //saveSettings();
     }
 
     function getUserHeight() as Number {
@@ -670,7 +670,7 @@ class GarminApp extends Application.AppBase {
 
     function setUserSpeed(value as Float) as Void {
         _userSpeed = value;
-        saveSettings();
+        //saveSettings();
     }
 
     function getExperienceLvl() as Number {
@@ -679,7 +679,7 @@ class GarminApp extends Application.AppBase {
 
     function setExperienceLvl(value as Float) as Void {
         _experienceLvl = value;
-        saveSettings();
+        //saveSettings();
     }
 
     function min(a,b){
@@ -791,9 +791,10 @@ class GarminApp extends Application.AppBase {
     }
 
     // Activity metrics getters
+    /*
     function getSessionDuration() {
         return _sessionDuration;
-    }
+    }*/
 
     function getSessionDistance() {
         return _sessionDistance;
