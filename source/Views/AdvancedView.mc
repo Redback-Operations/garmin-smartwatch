@@ -213,24 +213,29 @@ class AdvancedView extends WatchUi.View {
         var idealMaxCadence = app.getMaxCadence();
 
         var cadenceY = height * 0.37;
+        var cadenceRangeY = height * 0.43;
         var chartDurationY = height * 0.85;
 
         if (info != null && info.currentCadence != null) {
             // Draw cadence value in green (RGB: 0,255,0 = 0x00FF00)
             correctColor(info.currentCadence, idealMinCadence, idealMaxCadence, dc);
-            dc.drawText(width / 2, cadenceY + 20, Graphics.FONT_XTINY, info.currentCadence.toString() + " spm", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(width / 2, cadenceY, Graphics.FONT_XTINY, info.currentCadence.toString() + " spm", Graphics.TEXT_JUSTIFY_CENTER);
         }
+
+        // Display cadence zone range
+        var minZone = app.getMinCadence();
+        var maxZone = app.getMaxCadence();
+        var zoneText = "Target: " + minZone.toString() + "-" + maxZone.toString() + " spm";
+
+        dc.setColor(0x969696, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(width / 2, cadenceRangeY, Graphics.FONT_XTINY, zoneText, Graphics.TEXT_JUSTIFY_CENTER);
 
         drawChart(dc);
 
-        // Display cadence zone range instead of time duration
-        var minZone = app.getMinCadence();
-        var maxZone = app.getMaxCadence();
-        var zoneText = "Zone: " + minZone.toString() + "-" + maxZone.toString() + " spm";
+        var string  = app.getChartDuration();
 
         dc.setColor(0x969696, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(width / 2, chartDurationY, Graphics.FONT_XTINY, zoneText, Graphics.TEXT_JUSTIFY_CENTER);
-
+        dc.drawText(width / 2, chartDurationY, Graphics.FONT_XTINY, "Last " + string, Graphics.TEXT_JUSTIFY_CENTER);
     }
 
 
@@ -300,8 +305,6 @@ class AdvancedView extends WatchUi.View {
         var barWidth = (barZoneWidth / MAX_BARS).toNumber();
         var startIndex = (cadenceIndex - numBars + MAX_BARS) % MAX_BARS;
         
-        var colorThreshold = 20;
-        
         // FIXED SCALE - bars have fixed height based on absolute cadence
         // Colors change dynamically based on your zone
         for (var i = 0; i < numBars; i++) {
@@ -313,29 +316,8 @@ class AdvancedView extends WatchUi.View {
             var barHeight = ((cadence / MAX_CADENCE_DISPLAY) * chartHeight).toNumber();
             var x = barZoneLeft + i * barWidth;
             var y = barZoneBottom - barHeight;
-            
-            // Dynamic color based on YOUR current zone
-            //FML
-            if (cadence < idealMinCadence - colorThreshold) {
-                // Way below zone - Grey
-                dc.setColor(0x969696, Graphics.COLOR_TRANSPARENT);
-            }
-            else if (cadence >= idealMinCadence - colorThreshold && cadence < idealMinCadence) {
-                // Below zone - Blue
-                dc.setColor(0x0cc0df, Graphics.COLOR_TRANSPARENT);
-            }
-            else if (cadence >= idealMinCadence && cadence <= idealMaxCadence) {
-                // In zone - Green (YOUR ZONE!)
-                dc.setColor(0x00bf63, Graphics.COLOR_TRANSPARENT);
-            }
-            else if (cadence > idealMaxCadence && cadence <= idealMaxCadence + colorThreshold) {
-                // Above zone - Orange
-                dc.setColor(0xff751f, Graphics.COLOR_TRANSPARENT);
-            }
-            else if (cadence > idealMaxCadence + colorThreshold) {
-                // Way above zone - Red
-                dc.setColor(0xFF0000, Graphics.COLOR_TRANSPARENT);
-            }
+
+            correctColor(cadence, idealMinCadence, idealMaxCadence, dc);
             
             dc.fillRectangle(x, y, barWidth, barHeight);
         }
