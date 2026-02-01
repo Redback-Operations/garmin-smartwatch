@@ -123,6 +123,50 @@ Significant development time was spent on debugging, validation, and traceabilit
     - No activity recording
     - No FIT file generation
 
+    ### Memory & Timing Validation
+
+Validating the **runtime stability, timer accuracy, and application lifecycle behaviour** of the cadence monitoring system. 
+---
+
+### Timer Accuracy (1-Second Tick Validation)
+
+Cadence sampling is driven by a repeating timer configured to execute at a strict **1-second interval**, ensuring predictable data collection and UI updates.
+
+//monkeyc
+globalTimer = new Timer.Timer();
+globalTimer.start(method(:updateCadenceBarAvg), 1000, true);
+
+Evidence:
+Simulator terminal logs showing repeated [TIMER] Tick messages at 1-second intervals.
+
+### Memory Stress Testing (200+ Timer Cycles)
+
+The application was stress tested across 200+ timer cycles while cadence monitoring remained active. Memory diagnostics were periodically logged during runtime to detect leaks or heap growth.
+
+Observed results:
+
+-Stable memory usage (~5–6% of available heap)
+-No monotonic increase in memory consumption
+-No crashes or garbage collection pressure
+
+This confirms that timer callbacks, cadence buffers, and Cadence Quality computations do not introduce memory leaks.
+
+Evidence:
+Simulator logs displaying consistent [MEMORY] Runtime values after extended execution.
+
+###Application Lifecycle Validation (Startup, Pause, Shutdown)
+
+Correct lifecycle handling was validated to ensure safe resource management and prevent unintended background execution.
+
+-Timer initialised during application startup
+-Activity safely paused via user interaction
+-Timer explicitly stopped and released during application shutdown
+
+Simulator logs confirmed clean startup, correct pause behaviour, and graceful shutdown with no residual timer activity.
+
+Evidence:
+Logs showing pause events followed by clean application termination.
+
 ## 🎯 Why Cadence Quality Matters
 
 Cadence Quality measures **how consistently and smoothly** a runner maintains cadence within an ideal range — not just how fast they step.
@@ -163,8 +207,8 @@ You must generate your own **Garmin developer key** before compiling.
 From the project root:
 
 ```
-monkeyc -o TestingCadence.prg -f monkey.jungle -y developer_key.der -w
-```
+
+```monkeyc -o TestingCadence.prg -f monkey.jungle -y developer_key.der -w
 
 Run in the simulator:
 
