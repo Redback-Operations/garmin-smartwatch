@@ -9,50 +9,47 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         BehaviorDelegate.initialize();
     }
 
-    function onBack() {
+    // Handles the BACK button
+    function onBack() as Boolean {
         System.println("Back pressed: Returning to main view");
 
-        WatchUi.pushView(
-            new SimpleView(),
-            new SimpleViewDelegate(),
-            WatchUi.SLIDE_DOWN
-        );
-
+        WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
         return true;
     }
 
-    function onSelect() {
-        System.println("Select/Tap pressed: toggle summary on/off");
+    // Handles the SELECT/START button (or screen tap)
+    function onSelect() as Boolean {
+        System.println("Select/Tap pressed: opening summary view preference");
 
-        // Future summary ON/OFF logic can go here.
-        return true;
-    }
-
-    // DOWN button: Summary Settings -> Reset Settings
-    function onNextPage() {
-        System.println("Down button pressed: Opening Reset Settings");
-
-        var resetView = new ResetSettingsView();
-
+        var promptView = new SummaryPromptView();
         WatchUi.pushView(
-            resetView,
-            new ResetSettingsDelegate(resetView),
+            promptView,
+            new SummaryPromptDelegate(promptView),
             WatchUi.SLIDE_UP
         );
 
         return true;
     }
 
-    // UP button: Summary Settings -> Bar Chart Settings
-    function onPreviousPage() {
-        System.println("Up button pressed: Back to Bar Chart Settings");
-
-        WatchUi.pushView(
-            new BarChartSettingsMenuView(),
-            new BarChartSettingsMenuDelegate(),
-            WatchUi.SLIDE_DOWN
-        );
-
-        return true;
+    // Handles the DOWN button (or swipe up)
+    function onNextPage() as Boolean {
+        System.println("Down button pressed");
+        var view = new ResetSettingsView();
+        var delegate = new ResetSettingsDelegate(view);
+        // Push the cadence settings view
+        WatchUi.switchToView(view, delegate, WatchUi.SLIDE_UP);
+        
+        return true; 
     }
+
+    // Handles the UP button (or swipe down)
+    function onPreviousPage() as Boolean {
+        System.println("Up button pressed");
+        
+        // Push the profile settings view
+        WatchUi.switchToView(new BarChartSettingsMenuView(), new BarChartSettingsMenuDelegate(), WatchUi.SLIDE_DOWN);
+        
+        return true; 
+    }
+
 }

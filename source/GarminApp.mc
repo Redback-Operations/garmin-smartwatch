@@ -96,12 +96,12 @@ class GarminApp extends Application.AppBase {
     private var _sessionDistance = null; // centimeters
     private var _avgHeartRate = null; // bpm
     private var _peakHeartRate = null; // bpm
-    private var _linkedTemperature = "--";
 
     function initialize() {
         AppBase.initialize();
         System.println("[INFO] App initialized");
         activitySession = null;
+
     }
 
     function onStart(state as Dictionary?) as Void {
@@ -258,62 +258,31 @@ class GarminApp extends Application.AppBase {
         _sessionState = STOPPED;
     }
 
-    // function saveSession() as Void {
-    //     if (_sessionState != STOPPED) {
-    //         System.println("[INFO] Cannot save - session not stopped");
-    //         return;
-    //     }
+    function resetAllSettings() as Void {
+        System.println("[RESET] Resetting all settings to default");
 
-    //     System.println("[INFO] Saving activity session");
-        
-    //     // Save Garmin activity session
-    //     if (activitySession != null) {
-    //         activitySession.save();
-    //         System.println("[INFO] Garmin activity session saved to FIT file");
-    //         activitySession = null;
-    //     }
-        
-    //     var totalTime = 0;
-    //     if (_sessionStartTime != null) {
-    //         totalTime = System.getTimer() - _sessionStartTime - _sessionPausedTime;
-    //     }
-        
-    //     System.println("===== SESSION SAVED =====");
-    //     System.println("Duration: " + (totalTime / 1000).format("%d") + " seconds");
-    //     System.println("Cadence samples: " + _cadenceCount.toString());
-    //     System.println("Final CQ: " + (_finalCQ != null ? _finalCQ.format("%d") + "%" : "N/A"));
-    //     System.println("========================");
-        
-    //     // resetSession();
-    // }
+        _targetCadence = 160;
+        _chartDuration = ThirtyminChart as Number;
 
-    // function saveSession() as Void {
+        _userHeight = 170;
+        _userSpeed = 10.0;
+        _experienceLvl = 1.00;
+        _userGender = 0;
 
-    // if (_sessionState != STOPPED) {
-    //     System.println("[INFO] Cannot save - session not stopped");
-    //     return;
-    // }
+        _vibrationEnabled = true;
 
-    // System.println("[INFO] Saving activity session");
-    
-    // if (activitySession != null) {
-    //     activitySession.save();
-    //     activitySession = null;
-    // }
+        _cadenceBarAvg = new [_chartDuration];
+        _cadenceAvgIndex = 0;
+        _cadenceAvgCount = 0;
 
-    // // 🔥 STORE DATA HERE
-    // if (_sessionStartTime != null) {
-    //     _sessionDuration = System.getTimer() - _sessionStartTime - _sessionPausedTime;
-    // }
+        _cadenceHistory = new [MAX_BARS];
+        _cadenceIndex = 0;
+        _cadenceCount = 0;
 
-    // // Distance & HR already captured in captureActivityMetrics()
+        saveSettings();
 
-    // System.println("[SAVE] Duration stored: " + _sessionDuration);
-    // System.println("[SAVE] Distance stored: " + _sessionDistance);
-
-    // // ❌ REMOVE RESET HERE
-    // // resetSession();
-    // }
+        System.println("[RESET] All settings reset complete");
+    }
 
         function saveSession() as Void {
 
@@ -889,35 +858,6 @@ if (val != null) {
     _targetCadence.toString()
 );
 
-//reset all settings
-function resetAllSettings() as Void {
-    System.println("[RESET] Resetting all settings to default");
-
-    _idealMinCadence = 120;
-    _idealMaxCadence = 150;
-
-    _chartDuration = ThirtyminChart as Number;
-
-    _userHeight = 170;
-    _userSpeed = 10.0;
-    _experienceLvl = 1.00;
-    _userGender = 0;
-
-    _vibrationEnabled = true;
-
-    _cadenceBarAvg = new [_chartDuration];
-    _cadenceAvgIndex = 0;
-    _cadenceAvgCount = 0;
-
-    _cadenceHistory = new [MAX_BARS];
-    _cadenceIndex = 0;
-    _cadenceCount = 0;
-
-    saveSettings();
-
-    System.println("[RESET] All settings reset complete");
-}
-
 
     // function getSessionDuration() as Number {
     //     if (_sessionStartTime == null) {
@@ -1012,34 +952,6 @@ function resetAllSettings() as Void {
     }
 }
 
-    function getAveragePace() as String {
-    if (_sessionDuration == null || _sessionDistance == null || _sessionDistance <= 0) {
-        return "--";
-    }
-
-    var totalSeconds = _sessionDuration / 1000.0;
-    var distanceKm = _sessionDistance / 100000.0;
-
-    if (distanceKm <= 0) {
-        return "--";
-    }
-
-    var paceSecondsPerKm = totalSeconds / distanceKm;
-    var minutesPart = (paceSecondsPerKm / 60).toNumber();
-    var secondsPart = (paceSecondsPerKm % 60).toNumber();
-
-    return minutesPart.format("%02d") + ":" + secondsPart.format("%02d") + "/km";
-    }
-
-    function setLinkedTemperature(value as String) as Void {
-    _linkedTemperature = value;
-    }
-    
-    function getLinkedTemperature() as String {
-    return _linkedTemperature;
-    }
-
-
     // Activity metrics getters
     /*
     function getSessionDuration() {
@@ -1066,4 +978,3 @@ function resetAllSettings() as Void {
 function getApp() as GarminApp {
     return Application.getApp() as GarminApp;
 }
-

@@ -94,9 +94,7 @@ class ResetSettingsView extends WatchUi.View {
         var app = Application.getApp() as GarminApp;
 
         // Existing app settings
-        app.setMinCadence(120);
-        app.setMaxCadence(150);
-        app.setUserHeight(0);
+        app.setTargetCadence(160);
         app.setUserSpeed(0.0);
         app.setUserGender(0);
         app.setExperienceLvl(0.0);
