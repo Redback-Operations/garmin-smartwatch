@@ -39,9 +39,10 @@ class SettingsMenuDelegate extends WatchUi.BehaviorDelegate {
     // Handles the UP button (or swipe down)
     function onPreviousPage() as Boolean {
         System.println("Up button pressed");
-        
+        var view = new ResetSettingsView();
+        var delegate = new ResetSettingsDelegate(view);
         // Push the profile settings view
-        WatchUi.switchToView(new SummarySettingsMenuView(), new SummarySettingsMenuDelegate(), WatchUi.SLIDE_DOWN);
+        WatchUi.switchToView(view, delegate, WatchUi.SLIDE_DOWN);
         
         return true; 
     }

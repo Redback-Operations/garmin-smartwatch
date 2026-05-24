@@ -1,0 +1,342 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (e.g. v1.0.3)'
+        required: true
+
+jobs:
+  # ── 1. SDK validation ────────────────────────────────────────────────────────
+  validate-sdk:
+    name: Validate SDK
+    runs-on: ubuntu-latest
+    outputs:
+      sdk-version: ${{ steps.version.outputs.value }}
+      release-tag: ${{ steps.tag.outputs.value }}
+
+    steps:
+      - name: Resolve release tag
+        id: tag
+        run: |
+          TAG="${{ inputs.tag || github.ref_name }}"
+          echo "value=${TAG}" >> $GITHUB_OUTPUT
+          echo "Release tag: ${TAG}"
+
+      - name: Restore SDK cache
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: ~/connectiq-sdk
+          key: connectiq-sdk-${{ vars.CIQ_SDK_VERSION }}
+
+      - name: Install SDK
+        if: steps.cache.outputs.cache-hit != 'true'
+        env:
+          SDK_URL: ${{ secrets.CIQ_SDK_URL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -z "$SDK_URL" ]; then
+            echo "::error::CIQ_SDK_URL is not configured."
+            exit 1
+          fi
+          wget -q \
+            --header="Authorization: token $GITHUB_TOKEN" \
+            --header="Accept: application/octet-stream" \
+            "$SDK_URL" -O /tmp/sdk.archive
+          mkdir -p "$HOME/connectiq-sdk"
+          if file /tmp/sdk.archive | grep -qE "gzip|tar"; then
+            tar -xzf /tmp/sdk.archive -C "$HOME/connectiq-sdk" --strip-components=1
+          else
+            unzip -q /tmp/sdk.archive -d "$HOME/connectiq-sdk"
+          fi
+
+      - name: Add SDK to PATH
+        run: |
+          MONKEYC=$(find "$HOME/connectiq-sdk" -name "monkeyc" -type f | head -1)
+          if [ -z "$MONKEYC" ]; then
+            echo "::error::monkeyc not found."
+            find "$HOME/connectiq-sdk" -maxdepth 4 | head -40
+            exit 1
+          fi
+          chmod +x "$MONKEYC"
+          echo "$(dirname "$MONKEYC")" >> $GITHUB_PATH
+
+      - name: Install device profiles
+        env:
+          DEVICES_URL: ${{ secrets.CIQ_DEVICES_URL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -z "$DEVICES_URL" ]; then
+            echo "::error::CIQ_DEVICES_URL is not configured."
+            exit 1
+          fi
+          mkdir -p "$HOME/.Garmin/ConnectIQ"
+          echo "Downloading device profiles…"
+          HTTP_CODE=$(wget \
+            --server-response \
+            --header="Authorization: token $GITHUB_TOKEN" \
+            --header="Accept: application/octet-stream" \
+            "$DEVICES_URL" -O /tmp/devices.tar.gz 2>&1 \
+            | awk '/^  HTTP/{print $2}' | tail -1)
+          echo "HTTP status: ${HTTP_CODE}"
+          if [ "${HTTP_CODE}" != "200" ]; then
+            echo "::error::Device profile download failed (HTTP ${HTTP_CODE}). Check CIQ_DEVICES_URL secret."
+            echo "First 200 bytes of response:"
+            head -c 200 /tmp/devices.tar.gz | cat -v
+            exit 1
+          fi
+          if ! file /tmp/devices.tar.gz | grep -qE "gzip|tar"; then
+            echo "::error::Downloaded file is not a valid tar.gz:"
+            file /tmp/devices.tar.gz
+            exit 1
+          fi
+          tar -xzf /tmp/devices.tar.gz -C "$HOME/.Garmin/ConnectIQ"
+          echo "Device profiles installed: $(ls "$HOME/.Garmin/ConnectIQ/Devices/" | wc -l) devices"
+
+      - name: Read SDK version
+        id: version
+        run: |
+          VER=$(monkeyc --version 2>&1 | grep -oP '\d+\.\d+\.\d+' | head -1)
+          echo "value=${VER}" >> $GITHUB_OUTPUT
+          echo "Connect IQ SDK: ${VER}"
+
+      - name: Verify device support
+        run: |
+          DEVICES_DIR=$(find "$HOME/connectiq-sdk" -name "devices" -type d | head -1)
+          DEVICE_REF=$(find "$HOME/connectiq-sdk" -type d -name "device-reference" | head -1)
+          DEVICES_XML=$(find "$HOME/connectiq-sdk" -name "devices.xml" -type f | head -1)
+          # SDK 9.x uses resources/device-reference/ instead of devices/
+          CHECK_DIR="${DEVICES_DIR:-$DEVICE_REF}"
+
+          if [ -n "$CHECK_DIR" ]; then
+            REQUIRED=(fenix7 fenix7pro fenix7s fenix7x fr165 fr165m fr245 fr245m fr255 fr255m fr255s fr255sm fr265 fr265s fr955 vivoactive5)
+            MISSING=()
+            for d in "${REQUIRED[@]}"; do
+              [[ ! -d "$CHECK_DIR/$d" ]] && MISSING+=("$d")
+            done
+            if [[ ${#MISSING[@]} -gt 0 ]]; then
+              echo "::error::SDK ${{ steps.version.outputs.value }} does not support: ${MISSING[*]}"
+              exit 1
+            fi
+            echo "All 16 devices confirmed ✓"
+          elif [ -n "$DEVICES_XML" ]; then
+            echo "::error::SDK ${{ steps.version.outputs.value }} is too old (devices.xml format). Update to 9.1.0."
+            exit 1
+          else
+            echo "::error::No device definitions found."
+            exit 1
+          fi
+
+      - name: Test device recognition
+        run: |
+          RESULT=$(monkeyc -d fenix7 -f /nonexistent.jungle 2>&1 || true)
+          if echo "$RESULT" | grep -qi "invalid device"; then
+            echo "::error::monkeyc cannot recognize device IDs — the SDK zip is missing device compiler definitions."
+            echo "::error::The 'devices/' directory with per-device spec files is absent from the extracted SDK."
+            echo "::error::Fix: download the full Connect IQ SDK 9.1.0 zip from developer.garmin.com,"
+            echo "::error::extract it, confirm it contains a 'devices/' folder with per-device subdirectories,"
+            echo "::error::then zip the entire extracted SDK and upload it as CIQ_SDK_URL."
+            exit 1
+          fi
+          echo "Device recognition test passed ✓"
+
+  # ── 2. Build all devices ─────────────────────────────────────────────────────
+  build:
+    name: Build / ${{ matrix.device }}
+    runs-on: ubuntu-latest
+    needs: validate-sdk
+    strategy:
+      fail-fast: true
+      matrix:
+        device:
+          - fenix7
+          - fenix7pro
+          - fenix7s
+          - fenix7x
+          - fr165
+          - fr165m
+          - fr245
+          - fr245m
+          - fr255
+          - fr255m
+          - fr255s
+          - fr255sm
+          - fr265
+          - fr265s
+          - fr955
+          - vivoactive5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Restore SDK cache
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: ~/connectiq-sdk
+          key: connectiq-sdk-${{ vars.CIQ_SDK_VERSION }}
+
+      - name: Install SDK (cache miss fallback)
+        if: steps.cache.outputs.cache-hit != 'true'
+        env:
+          SDK_URL: ${{ secrets.CIQ_SDK_URL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          wget -q \
+            --header="Authorization: token $GITHUB_TOKEN" \
+            --header="Accept: application/octet-stream" \
+            "$SDK_URL" -O /tmp/sdk.archive
+          mkdir -p "$HOME/connectiq-sdk"
+          if file /tmp/sdk.archive | grep -qE "gzip|tar"; then
+            tar -xzf /tmp/sdk.archive -C "$HOME/connectiq-sdk" --strip-components=1
+          else
+            unzip -q /tmp/sdk.archive -d "$HOME/connectiq-sdk"
+          fi
+
+      - name: Add SDK to PATH
+        run: |
+          MONKEYC=$(find "$HOME/connectiq-sdk" -name "monkeyc" -type f | head -1)
+          if [ -z "$MONKEYC" ]; then
+            echo "::error::monkeyc not found."
+            exit 1
+          fi
+          chmod +x "$MONKEYC"
+          echo "$(dirname "$MONKEYC")" >> $GITHUB_PATH
+
+      - name: Install device profiles
+        env:
+          DEVICES_URL: ${{ secrets.CIQ_DEVICES_URL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -z "$DEVICES_URL" ]; then
+            echo "::error::CIQ_DEVICES_URL is not configured."
+            exit 1
+          fi
+          mkdir -p "$HOME/.Garmin/ConnectIQ"
+          echo "Downloading device profiles…"
+          HTTP_CODE=$(wget \
+            --server-response \
+            --header="Authorization: token $GITHUB_TOKEN" \
+            --header="Accept: application/octet-stream" \
+            "$DEVICES_URL" -O /tmp/devices.tar.gz 2>&1 \
+            | awk '/^  HTTP/{print $2}' | tail -1)
+          echo "HTTP status: ${HTTP_CODE}"
+          if [ "${HTTP_CODE}" != "200" ]; then
+            echo "::error::Device profile download failed (HTTP ${HTTP_CODE}). Check CIQ_DEVICES_URL secret."
+            echo "First 200 bytes of response:"
+            head -c 200 /tmp/devices.tar.gz | cat -v
+            exit 1
+          fi
+          if ! file /tmp/devices.tar.gz | grep -qE "gzip|tar"; then
+            echo "::error::Downloaded file is not a valid tar.gz:"
+            file /tmp/devices.tar.gz
+            exit 1
+          fi
+          tar -xzf /tmp/devices.tar.gz -C "$HOME/.Garmin/ConnectIQ"
+          echo "Device profiles installed: $(ls "$HOME/.Garmin/ConnectIQ/Devices/" | wc -l) devices"
+
+      - name: Write developer key
+        env:
+          KEY_B64: ${{ secrets.DEVELOPER_KEY_B64 }}
+        run: |
+          if [ -z "$KEY_B64" ]; then
+            echo "::error::DEVELOPER_KEY_B64 is not configured."
+            exit 1
+          fi
+          echo "$KEY_B64" | base64 --decode > developer_key.der
+
+      - name: Compile
+        id: compile
+        run: |
+          mkdir -p bin
+          monkeyc \
+            -o "bin/garminsmartwatch_${{ matrix.device }}.prg" \
+            -f monkey.jungle \
+            -y developer_key.der \
+            -d "${{ matrix.device }}" \
+            --release
+          SIZE=$(stat -c%s "bin/garminsmartwatch_${{ matrix.device }}.prg")
+          echo "size=${SIZE}" >> $GITHUB_OUTPUT
+          echo "garminsmartwatch_${{ matrix.device }}.prg — ${SIZE} bytes ✓"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-${{ matrix.device }}
+          path: bin/garminsmartwatch_${{ matrix.device }}.prg
+          retention-days: 1
+
+  # ── 3. Publish release ───────────────────────────────────────────────────────
+  release:
+    name: Publish Release
+    runs-on: ubuntu-latest
+    needs: [validate-sdk, build]
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: release-*
+          path: release/
+          merge-multiple: true
+
+      - name: Verify all 16 .prg files present
+        run: |
+          COUNT=$(ls release/*.prg 2>/dev/null | wc -l)
+          ls -lh release/*.prg
+          if [[ "$COUNT" -ne 16 ]]; then
+            echo "::error::Expected 16 .prg files, found ${COUNT}."
+            exit 1
+          fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ needs.validate-sdk.outputs.release-tag }}
+          name: Release ${{ needs.validate-sdk.outputs.release-tag }}
+          files: release/*.prg
+          generate_release_notes: true
+          body: |
+            ## Garmin Smartwatch — ${{ needs.validate-sdk.outputs.release-tag }}
+
+            Built with Connect IQ SDK `${{ needs.validate-sdk.outputs.sdk-version }}`.
+
+            ### Supported Devices
+            | Device Family | Models |
+            |---|---|
+            | Fenix 7 | fenix7, fenix7pro, fenix7s, fenix7x |
+            | Forerunner 165 | fr165, fr165m |
+            | Forerunner 245 | fr245, fr245m |
+            | Forerunner 255 | fr255, fr255m, fr255s, fr255sm |
+            | Forerunner 265 | fr265, fr265s |
+            | Forerunner 955 | fr955 |
+            | Vivo Active 5 | vivoactive5 |
+
+            ### Install
+            Download the `.prg` for your device and sideload via Garmin Express or the Connect IQ app.
+
+      - name: Write release summary
+        run: |
+          cat >> $GITHUB_STEP_SUMMARY << SUMMARY
+          # ✅ Release Published — ${{ needs.validate-sdk.outputs.release-tag }}
+
+          | | |
+          |---|---|
+          | **Tag** | \`${{ needs.validate-sdk.outputs.release-tag }}\` |
+          | **SDK** | \`${{ needs.validate-sdk.outputs.sdk-version }}\` |
+          | **Devices** | 16 |
+          | **Actor** | @${{ github.actor }} |
+          SUMMARY
