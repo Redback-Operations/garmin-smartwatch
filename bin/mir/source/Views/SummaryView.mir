@@ -416,13 +416,8 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SummaryV
         %tmp.136 = add %tmp.134 %tmp.135;
         %tmp.137 = lgetv %timeStr.18;
         symbol [ timeStr %tmp.137 75 41 48 ];
-<<<<<<< Updated upstream
         %tmp.139 = const :time;
         symbol [ time %tmp.139 75 51 55 const ];
-=======
-        symbol [ _iconTime %tmp.139 75 50 59 ];
-        %tmp.139 = getv ? :_iconTime;
->>>>>>> Stashed changes
         %tmp.140 = "TIME";
         invoke %tmp.130 %tmp.131(%tmp.132, %tmp.133, %tmp.136, %tmp.137, %tmp.139, %tmp.140);
 [ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SummaryView.mc" 76 8 ]
@@ -446,13 +441,8 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SummaryV
         %tmp.151 = getv function %tmp.150 :format;
         %tmp.152 = "%.2f";
         %tmp.153 = invoke %tmp.150 %tmp.151(%tmp.152);
-<<<<<<< Updated upstream
         %tmp.155 = const :distance;
         symbol [ distance %tmp.155 76 65 73 const ];
-=======
-        symbol [ _iconDistance %tmp.155 76 64 77 ];
-        %tmp.155 = getv ? :_iconDistance;
->>>>>>> Stashed changes
         %tmp.156 = "DISTANCE";
         invoke %tmp.141 %tmp.142(%tmp.143, %tmp.144, %tmp.149, %tmp.153, %tmp.155, %tmp.156);
 [ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SummaryView.mc" 77 8 ]
@@ -471,13 +461,8 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SummaryV
         %tmp.164 = mul %tmp.162 %tmp.163;
         %tmp.165 = add %tmp.161 %tmp.164;
         %tmp.166 = "--";
-<<<<<<< Updated upstream
         %tmp.168 = const :cadence;
         symbol [ cadence %tmp.168 77 52 59 const ];
-=======
-        symbol [ _iconCadence %tmp.168 77 51 63 ];
-        %tmp.168 = getv ? :_iconCadence;
->>>>>>> Stashed changes
         %tmp.169 = "CADENCE";
         invoke %tmp.157 %tmp.158(%tmp.159, %tmp.160, %tmp.165, %tmp.166, %tmp.168, %tmp.169);
 [ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SummaryView.mc" 78 8 ]
@@ -499,13 +484,8 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SummaryV
         symbol [ hr %tmp.179 78 45 47 ];
         %tmp.180 = "";
         %tmp.181 = add %tmp.179 %tmp.180;
-<<<<<<< Updated upstream
         %tmp.183 = const :quality;
         symbol [ quality %tmp.183 78 55 62 const ];
-=======
-        symbol [ _iconHR %tmp.183 78 54 61 ];
-        %tmp.183 = getv ? :_iconHR;
->>>>>>> Stashed changes
         %tmp.184 = "BPM (AVG)";
         invoke %tmp.170 %tmp.171(%tmp.172, %tmp.173, %tmp.178, %tmp.181, %tmp.183, %tmp.184);
 [ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SummaryView.mc" 79 8 ]
@@ -524,13 +504,8 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SummaryV
         %tmp.192 = mul %tmp.190 %tmp.191;
         %tmp.193 = add %tmp.189 %tmp.192;
         %tmp.194 = "--";
-<<<<<<< Updated upstream
         %tmp.196 = const :distance;
         symbol [ distance %tmp.196 79 52 60 const ];
-=======
-        symbol [ _iconSteps %tmp.196 79 51 61 ];
-        %tmp.196 = getv ? :_iconSteps;
->>>>>>> Stashed changes
         %tmp.197 = "STEPS";
         invoke %tmp.185 %tmp.186(%tmp.187, %tmp.188, %tmp.193, %tmp.194, %tmp.196, %tmp.197);
 [ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SummaryView.mc" 81 8 ]
@@ -550,13 +525,8 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SummaryV
         %tmp.206 = add %tmp.202 %tmp.205;
         %tmp.207 = lgetv %pace.11;
         symbol [ pace %tmp.207 81 45 49 ];
-<<<<<<< Updated upstream
         %tmp.209 = const :pace;
         symbol [ pace %tmp.209 81 52 56 const ];
-=======
-        symbol [ _iconCadence %tmp.209 81 51 63 ];
-        %tmp.209 = getv ? :_iconCadence;
->>>>>>> Stashed changes
         %tmp.210 = "AVG PACE";
         invoke %tmp.198 %tmp.199(%tmp.200, %tmp.201, %tmp.206, %tmp.207, %tmp.209, %tmp.210);
 [ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SummaryView.mc" 82 8 ]
@@ -576,13 +546,8 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SummaryV
         %tmp.219 = add %tmp.215 %tmp.218;
         %tmp.220 = lgetv %qcScore.12;
         symbol [ qcScore %tmp.220 82 45 52 ];
-<<<<<<< Updated upstream
         %tmp.222 = const :quality;
         symbol [ quality %tmp.222 82 55 62 const ];
-=======
-        symbol [ _iconHR %tmp.222 82 54 61 ];
-        %tmp.222 = getv ? :_iconHR;
->>>>>>> Stashed changes
         %tmp.223 = "QC SCORE";
         invoke %tmp.211 %tmp.212(%tmp.213, %tmp.214, %tmp.219, %tmp.220, %tmp.222, %tmp.223);
 [ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SummaryView.mc" 83 8 ]
@@ -602,13 +567,8 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SummaryV
         %tmp.232 = add %tmp.228 %tmp.231;
         %tmp.233 = lgetv %temperature.13;
         symbol [ temperature %tmp.233 83 45 56 ];
-<<<<<<< Updated upstream
         %tmp.235 = const :distance;
         symbol [ distance %tmp.235 83 59 67 const ];
-=======
-        symbol [ _iconSteps %tmp.235 83 58 68 ];
-        %tmp.235 = getv ? :_iconSteps;
->>>>>>> Stashed changes
         %tmp.236 = "TEMP";
         invoke %tmp.224 %tmp.225(%tmp.226, %tmp.227, %tmp.232, %tmp.233, %tmp.235, %tmp.236);
 C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SummaryView_mc_13_36_84_0_stop:

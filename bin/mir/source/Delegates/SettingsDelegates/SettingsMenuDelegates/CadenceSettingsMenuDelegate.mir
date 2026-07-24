@@ -117,7 +117,6 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_Sett
         ret %tmp.16;
 C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_42_26_52_0_stop:
     }
-<<<<<<< Updated upstream
     [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc"; @line = 56; @symbol_functiondef = [onPreviousPage,56,13,27]; @symbol_return<0> = [Boolean,56,33,40]; ]
     function onPreviousPage() as Boolean {
 C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_56_41_68_4_start:
@@ -125,60 +124,9 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_Sett
         symbol [ System %tmp.1 57 8 14 ];
         %tmp.1 = getm $.Toybox.System;
         symbol [ println %tmp.2 57 15 22 ];
-=======
-    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc"; @line = 55; @symbol_functiondef = [onPreviousPage,55,12,26]; ]
-    function onPreviousPage() {
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_55_29_67_0_start:
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 56 4 ]
-        symbol [ System %tmp.1 56 4 10 ];
-        %tmp.1 = getm $.Toybox.System;
-        symbol [ println %tmp.2 56 11 18 ];
         %tmp.2 = getv function %tmp.1 :println;
         %tmp.3 = "Up button pressed: Opening Reset Settings";
         invoke %tmp.1 %tmp.2(%tmp.3);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 58 4 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_55_29_67_0_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_55_29_67_0_stop" ]
-        %resetView.1 = local;
-        symbol [ resetView %resetView.1 58 8 17 ];
-        symbol [ ResetSettingsView %tmp.7 58 24 41 ];
-        %tmp.7 = getv ? :ResetSettingsView;
-        %tmp.4 = newc %tmp.7 ();
-        lputv %resetView.1 %tmp.4;
-        symbol [ resetView %resetView.1 58 8 17 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 60 4 ]
-        symbol [ WatchUi %tmp.8 60 4 11 ];
-        %tmp.8 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.9 60 12 20 ];
-        %tmp.9 = getv function %tmp.8 :pushView;
-        %tmp.10 = lgetv %resetView.1;
-        symbol [ resetView %tmp.10 61 8 17 ];
-        symbol [ ResetSettingsDelegate %tmp.14 62 12 33 ];
-        %tmp.14 = getv ? :ResetSettingsDelegate;
-        %tmp.15 = lgetv %resetView.1;
-        symbol [ resetView %tmp.15 62 34 43 ];
-        %tmp.11 = newc %tmp.14 (%tmp.15);
-        symbol [ WatchUi %tmp.16 63 8 15 ];
-        %tmp.16 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_DOWN %tmp.17 63 16 26 ];
-        %tmp.17 = getv %tmp.16 :SLIDE_DOWN;
-        invoke %tmp.8 %tmp.9(%tmp.10, %tmp.11, %tmp.17);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 66 4 ]
-        %tmp.18 = true;
-        ret %tmp.18;
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_55_29_67_0_stop:
-    }
-    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc"; @line = 70; @symbol_functiondef = [onPreviousPage,70,13,27]; @symbol_return<0> = [Boolean,70,33,40]; ]
-    function onPreviousPage() as Boolean {
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_70_41_81_4_start:
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 72 8 ]
-        symbol [ System %tmp.1 72 8 14 ];
-        %tmp.1 = getm $.Toybox.System;
-        symbol [ println %tmp.2 72 15 22 ];
->>>>>>> Stashed changes
-        %tmp.2 = getv function %tmp.1 :println;
-        %tmp.3 = "Up button pressed: Opening Reset Settings";
-        invoke %tmp.1 %tmp.2(%tmp.3);
-<<<<<<< Updated upstream
 [ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 59 8 ]
         [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_56_41_68_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_56_41_68_4_stop" ]
         %resetView.1 = local;
@@ -209,28 +157,6 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_Sett
         %tmp.18 = true;
         ret %tmp.18;
 C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_56_41_68_4_stop:
-=======
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 74 8 ]
-        symbol [ WatchUi %tmp.4 74 8 15 ];
-        %tmp.4 = getm $.Toybox.WatchUi;
-        symbol [ switchToView %tmp.5 74 16 28 ];
-        %tmp.5 = getv function %tmp.4 :switchToView;
-        symbol [ SummarySettingsMenuView %tmp.9 75 16 39 ];
-        %tmp.9 = getv ? :SummarySettingsMenuView;
-        %tmp.6 = newc %tmp.9 ();
-        symbol [ SummarySettingsMenuDelegate %tmp.13 76 16 43 ];
-        %tmp.13 = getv ? :SummarySettingsMenuDelegate;
-        %tmp.10 = newc %tmp.13 ();
-        symbol [ WatchUi %tmp.14 77 12 19 ];
-        %tmp.14 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_DOWN %tmp.15 77 20 30 ];
-        %tmp.15 = getv %tmp.14 :SLIDE_DOWN;
-        invoke %tmp.4 %tmp.5(%tmp.6, %tmp.10, %tmp.15);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 80 8 ]
-        %tmp.16 = true;
-        ret %tmp.16;
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_70_41_81_4_stop:
->>>>>>> Stashed changes
     }
 }
 [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc"; @line = 2; ]

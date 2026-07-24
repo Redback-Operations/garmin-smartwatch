@@ -365,15 +365,9 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_Settings
     }
     [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc"; @line = 93; @symbol_functiondef = [resetAllSettings,93,13,29]; ]
     function resetAllSettings() {
-<<<<<<< Updated upstream
 C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_93_32_102_4_start:
 [ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 94 8 ]
         [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_93_32_102_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_93_32_102_4_stop" ]
-=======
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_93_32_117_4_start:
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 94 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_93_32_117_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_93_32_117_4_stop" ]
->>>>>>> Stashed changes
         %app.1 = local;
         symbol [ app %app.1 94 12 15 ];
         symbol [ Application %tmp.1 94 18 29 ];
@@ -385,7 +379,6 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_Settings
         symbol [ GarminApp %tmp.4 94 42 51 ];
         lputv %app.1 %tmp.4;
         symbol [ app %app.1 94 12 15 ];
-<<<<<<< Updated upstream
 [ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 96 8 ]
 C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_96_8_99_8_if_stmt:
         %tmp.5 = lgetv %app.1;
@@ -470,193 +463,11 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_Settings
         symbol [ iconY %iconY.5 116 12 17 ];
         %tmp.11 = lgetv %screenH.2;
         symbol [ screenH %tmp.11 116 21 28 ];
-=======
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 97 8 ]
-        %tmp.5 = lgetv %app.1;
-        symbol [ app %tmp.5 97 8 11 ];
-        symbol [ setMinCadence %tmp.6 97 12 25 ];
-        %tmp.6 = getv function %tmp.5 :setMinCadence;
-        %tmp.7 = 120;
-        invoke %tmp.5 %tmp.6(%tmp.7);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 98 8 ]
-        %tmp.8 = lgetv %app.1;
-        symbol [ app %tmp.8 98 8 11 ];
-        symbol [ setMaxCadence %tmp.9 98 12 25 ];
-        %tmp.9 = getv function %tmp.8 :setMaxCadence;
-        %tmp.10 = 150;
-        invoke %tmp.8 %tmp.9(%tmp.10);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 99 8 ]
-        %tmp.11 = lgetv %app.1;
-        symbol [ app %tmp.11 99 8 11 ];
-        symbol [ setUserHeight %tmp.12 99 12 25 ];
-        %tmp.12 = getv function %tmp.11 :setUserHeight;
-        %tmp.13 = 0;
-        invoke %tmp.11 %tmp.12(%tmp.13);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 100 8 ]
-        %tmp.14 = lgetv %app.1;
-        symbol [ app %tmp.14 100 8 11 ];
-        symbol [ setUserSpeed %tmp.15 100 12 24 ];
-        %tmp.15 = getv function %tmp.14 :setUserSpeed;
-        %tmp.16 = 0.0;
-        invoke %tmp.14 %tmp.15(%tmp.16);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 101 8 ]
-        %tmp.17 = lgetv %app.1;
-        symbol [ app %tmp.17 101 8 11 ];
-        symbol [ setUserGender %tmp.18 101 12 25 ];
-        %tmp.18 = getv function %tmp.17 :setUserGender;
-        %tmp.19 = 0;
-        invoke %tmp.17 %tmp.18(%tmp.19);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 102 8 ]
-        %tmp.20 = lgetv %app.1;
-        symbol [ app %tmp.20 102 8 11 ];
-        symbol [ setExperienceLvl %tmp.21 102 12 28 ];
-        %tmp.21 = getv function %tmp.20 :setExperienceLvl;
-        %tmp.22 = 0.0;
-        invoke %tmp.20 %tmp.21(%tmp.22);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 103 8 ]
-        %tmp.23 = lgetv %app.1;
-        symbol [ app %tmp.23 103 8 11 ];
-        symbol [ setChartDuration %tmp.24 103 12 28 ];
-        %tmp.24 = getv function %tmp.23 :setChartDuration;
-        %tmp.25 = 10;
-        invoke %tmp.23 %tmp.24(%tmp.25);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 104 8 ]
-        %tmp.26 = lgetv %app.1;
-        symbol [ app %tmp.26 104 8 11 ];
-        symbol [ setVibrationEnabled %tmp.27 104 12 31 ];
-        %tmp.27 = getv function %tmp.26 :setVibrationEnabled;
-        %tmp.28 = true;
-        invoke %tmp.26 %tmp.27(%tmp.28);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 107 8 ]
-        symbol [ Application %tmp.29 107 8 19 ];
-        %tmp.29 = getm $.Toybox.Application;
-        symbol [ Storage %tmp.30 107 20 27 ];
-        %tmp.30 = getv %tmp.29 :Storage;
-        symbol [ setValue %tmp.31 107 28 36 ];
-        %tmp.31 = getv function %tmp.30 :setValue;
-        %tmp.32 = "training_mode";
-        %tmp.33 = "Warm Up";
-        invoke %tmp.30 %tmp.31(%tmp.32, %tmp.33);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 108 8 ]
-        symbol [ Application %tmp.34 108 8 19 ];
-        %tmp.34 = getm $.Toybox.Application;
-        symbol [ Storage %tmp.35 108 20 27 ];
-        %tmp.35 = getv %tmp.34 :Storage;
-        symbol [ setValue %tmp.36 108 28 36 ];
-        %tmp.36 = getv function %tmp.35 :setValue;
-        %tmp.37 = "summary_preferences";
-        %tmp.38 = true;
-        invoke %tmp.35 %tmp.36(%tmp.37, %tmp.38);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 109 8 ]
-        symbol [ Application %tmp.39 109 8 19 ];
-        %tmp.39 = getm $.Toybox.Application;
-        symbol [ Storage %tmp.40 109 20 27 ];
-        %tmp.40 = getv %tmp.39 :Storage;
-        symbol [ setValue %tmp.41 109 28 36 ];
-        %tmp.41 = getv function %tmp.40 :setValue;
-        %tmp.42 = "profile_height";
-        %tmp.43 = 0;
-        invoke %tmp.40 %tmp.41(%tmp.42, %tmp.43);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 110 8 ]
-        symbol [ Application %tmp.44 110 8 19 ];
-        %tmp.44 = getm $.Toybox.Application;
-        symbol [ Storage %tmp.45 110 20 27 ];
-        %tmp.45 = getv %tmp.44 :Storage;
-        symbol [ setValue %tmp.46 110 28 36 ];
-        %tmp.46 = getv function %tmp.45 :setValue;
-        %tmp.47 = "profile_speed";
-        %tmp.48 = 0.0;
-        invoke %tmp.45 %tmp.46(%tmp.47, %tmp.48);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 111 8 ]
-        symbol [ Application %tmp.49 111 8 19 ];
-        %tmp.49 = getm $.Toybox.Application;
-        symbol [ Storage %tmp.50 111 20 27 ];
-        %tmp.50 = getv %tmp.49 :Storage;
-        symbol [ setValue %tmp.51 111 28 36 ];
-        %tmp.51 = getv function %tmp.50 :setValue;
-        %tmp.52 = "profile_gender";
-        %tmp.53 = 0;
-        invoke %tmp.50 %tmp.51(%tmp.52, %tmp.53);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 112 8 ]
-        symbol [ Application %tmp.54 112 8 19 ];
-        %tmp.54 = getm $.Toybox.Application;
-        symbol [ Storage %tmp.55 112 20 27 ];
-        %tmp.55 = getv %tmp.54 :Storage;
-        symbol [ setValue %tmp.56 112 28 36 ];
-        %tmp.56 = getv function %tmp.55 :setValue;
-        %tmp.57 = "profile_experience";
-        %tmp.58 = 0.0;
-        invoke %tmp.55 %tmp.56(%tmp.57, %tmp.58);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 114 8 ]
-        %tmp.59 = lgetv %app.1;
-        symbol [ app %tmp.59 114 8 11 ];
-        symbol [ saveSettings %tmp.60 114 12 24 ];
-        %tmp.60 = getv function %tmp.59 :saveSettings;
-        invoke %tmp.59 %tmp.60();
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 116 8 ]
-        symbol [ System %tmp.61 116 8 14 ];
-        %tmp.61 = getm $.Toybox.System;
-        symbol [ println %tmp.62 116 15 22 ];
-        %tmp.62 = getv function %tmp.61 :println;
-        %tmp.63 = "[RESET] All settings restored to default";
-        invoke %tmp.61 %tmp.62(%tmp.63);
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_93_32_117_4_stop:
-    }
-    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc"; @line = 123; @symbol_functiondef = [drawResetOpenScreen,123,13,32]; @symbol_param<0> = [dc,123,33,35]; @symbol_param<0>_type<0> = [Dc,123,39,41]; ]
-    function drawResetOpenScreen(dc as Dc) {
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_123_43_152_4_start:
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 124 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_123_43_152_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_123_43_152_4_stop" ]
-        %screenW.1 = local;
-        symbol [ screenW %screenW.1 124 12 19 ];
-        %tmp.1 = lgetv %dc;
-        symbol [ dc %tmp.1 124 22 24 ];
-        symbol [ getWidth %tmp.2 124 25 33 ];
-        %tmp.2 = getv function %tmp.1 :getWidth;
-        %tmp.3 = invoke %tmp.1 %tmp.2();
-        lputv %screenW.1 %tmp.3;
-        symbol [ screenW %screenW.1 124 12 19 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 125 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_123_43_152_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_123_43_152_4_stop" ]
-        %screenH.2 = local;
-        symbol [ screenH %screenH.2 125 12 19 ];
-        %tmp.4 = lgetv %dc;
-        symbol [ dc %tmp.4 125 22 24 ];
-        symbol [ getHeight %tmp.5 125 25 34 ];
-        %tmp.5 = getv function %tmp.4 :getHeight;
-        %tmp.6 = invoke %tmp.4 %tmp.5();
-        lputv %screenH.2 %tmp.6;
-        symbol [ screenH %screenH.2 125 12 19 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 127 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_123_43_152_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_123_43_152_4_stop" ]
-        %centerX.3 = local;
-        symbol [ centerX %centerX.3 127 12 19 ];
-        %tmp.7 = lgetv %screenW.1;
-        symbol [ screenW %tmp.7 127 22 29 ];
-        %tmp.8 = 2;
-        %tmp.9 = div %tmp.7 %tmp.8;
-        lputv %centerX.3 %tmp.9;
-        symbol [ centerX %centerX.3 127 12 19 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 130 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_123_43_152_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_123_43_152_4_stop" ]
-        %iconSize.4 = local;
-        symbol [ iconSize %iconSize.4 130 12 20 ];
-        %tmp.10 = 80;
-        lputv %iconSize.4 %tmp.10;
-        symbol [ iconSize %iconSize.4 130 12 20 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 131 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_123_43_152_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_123_43_152_4_stop" ]
-        %iconY.5 = local;
-        symbol [ iconY %iconY.5 131 12 17 ];
-        %tmp.11 = lgetv %screenH.2;
-        symbol [ screenH %tmp.11 131 21 28 ];
->>>>>>> Stashed changes
         %tmp.12 = 2;
         %tmp.13 = div %tmp.11 %tmp.12;
         %tmp.14 = 92;
         %tmp.15 = sub %tmp.13 %tmp.14;
         lputv %iconY.5 %tmp.15;
-<<<<<<< Updated upstream
         symbol [ iconY %iconY.5 116 12 17 ];
 [ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 118 8 ]
         %tmp.16 = lgetv %dc;
@@ -667,23 +478,10 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_Settings
         symbol [ centerX %tmp.18 118 22 29 ];
         %tmp.19 = lgetv %iconSize.4;
         symbol [ iconSize %tmp.19 118 33 41 ];
-=======
-        symbol [ iconY %iconY.5 131 12 17 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 133 8 ]
-        %tmp.16 = lgetv %dc;
-        symbol [ dc %tmp.16 133 8 10 ];
-        symbol [ drawBitmap %tmp.17 133 11 21 ];
-        %tmp.17 = getv function %tmp.16 :drawBitmap;
-        %tmp.18 = lgetv %centerX.3;
-        symbol [ centerX %tmp.18 133 22 29 ];
-        %tmp.19 = lgetv %iconSize.4;
-        symbol [ iconSize %tmp.19 133 33 41 ];
->>>>>>> Stashed changes
         %tmp.20 = 2;
         %tmp.21 = div %tmp.19 %tmp.20;
         %tmp.22 = sub %tmp.18 %tmp.21;
         %tmp.23 = lgetv %iconY.5;
-<<<<<<< Updated upstream
         symbol [ iconY %tmp.23 118 48 53 ];
         symbol [ _resetIcon %tmp.25 118 55 65 ];
         %tmp.25 = getv ? :_resetIcon;
@@ -801,131 +599,11 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_Settings
         symbol [ questionTop %questionTop.4 150 12 23 ];
         %tmp.10 = lgetv %screenH.2;
         symbol [ screenH %tmp.10 150 27 34 ];
-=======
-        symbol [ iconY %tmp.23 133 48 53 ];
-        symbol [ _resetIcon %tmp.25 133 55 65 ];
-        %tmp.25 = getv ? :_resetIcon;
-        invoke %tmp.16 %tmp.17(%tmp.22, %tmp.23, %tmp.25);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 135 8 ]
-        %tmp.26 = lgetv %dc;
-        symbol [ dc %tmp.26 135 8 10 ];
-        symbol [ setColor %tmp.27 135 11 19 ];
-        %tmp.27 = getv function %tmp.26 :setColor;
-        symbol [ Graphics %tmp.28 135 20 28 ];
-        %tmp.28 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.29 135 29 40 ];
-        %tmp.29 = getv %tmp.28 :COLOR_WHITE;
-        symbol [ Graphics %tmp.30 135 42 50 ];
-        %tmp.30 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.31 135 51 68 ];
-        %tmp.31 = getv %tmp.30 :COLOR_TRANSPARENT;
-        invoke %tmp.26 %tmp.27(%tmp.29, %tmp.31);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 136 8 ]
-        %tmp.32 = lgetv %dc;
-        symbol [ dc %tmp.32 136 8 10 ];
-        symbol [ drawText %tmp.33 136 11 19 ];
-        %tmp.33 = getv function %tmp.32 :drawText;
-        %tmp.34 = lgetv %centerX.3;
-        symbol [ centerX %tmp.34 137 12 19 ];
-        %tmp.35 = lgetv %iconY.5;
-        symbol [ iconY %tmp.35 138 12 17 ];
-        %tmp.36 = 94;
-        %tmp.37 = add %tmp.35 %tmp.36;
-        symbol [ Graphics %tmp.38 139 12 20 ];
-        %tmp.38 = getm $.Toybox.Graphics;
-        symbol [ FONT_MEDIUM %tmp.39 139 21 32 ];
-        %tmp.39 = getv %tmp.38 :FONT_MEDIUM;
-        %tmp.40 = "Reset Settings";
-        symbol [ Graphics %tmp.41 141 12 20 ];
-        %tmp.41 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.42 141 21 40 ];
-        %tmp.42 = getv %tmp.41 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.32 %tmp.33(%tmp.34, %tmp.37, %tmp.39, %tmp.40, %tmp.42);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 144 8 ]
-        %tmp.43 = lgetv %dc;
-        symbol [ dc %tmp.43 144 8 10 ];
-        symbol [ setColor %tmp.44 144 11 19 ];
-        %tmp.44 = getv function %tmp.43 :setColor;
-        symbol [ Graphics %tmp.45 144 20 28 ];
-        %tmp.45 = getm $.Toybox.Graphics;
-        symbol [ COLOR_LT_GRAY %tmp.46 144 29 42 ];
-        %tmp.46 = getv %tmp.45 :COLOR_LT_GRAY;
-        symbol [ Graphics %tmp.47 144 44 52 ];
-        %tmp.47 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.48 144 53 70 ];
-        %tmp.48 = getv %tmp.47 :COLOR_TRANSPARENT;
-        invoke %tmp.43 %tmp.44(%tmp.46, %tmp.48);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 145 8 ]
-        %tmp.49 = lgetv %dc;
-        symbol [ dc %tmp.49 145 8 10 ];
-        symbol [ drawText %tmp.50 145 11 19 ];
-        %tmp.50 = getv function %tmp.49 :drawText;
-        %tmp.51 = lgetv %centerX.3;
-        symbol [ centerX %tmp.51 146 12 19 ];
-        %tmp.52 = lgetv %iconY.5;
-        symbol [ iconY %tmp.52 147 12 17 ];
-        %tmp.53 = 132;
-        %tmp.54 = add %tmp.52 %tmp.53;
-        symbol [ Graphics %tmp.55 148 12 20 ];
-        %tmp.55 = getm $.Toybox.Graphics;
-        symbol [ FONT_XTINY %tmp.56 148 21 31 ];
-        %tmp.56 = getv %tmp.55 :FONT_XTINY;
-        %tmp.57 = "tap to open";
-        symbol [ Graphics %tmp.58 150 12 20 ];
-        %tmp.58 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.59 150 21 40 ];
-        %tmp.59 = getv %tmp.58 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.49 %tmp.50(%tmp.51, %tmp.54, %tmp.56, %tmp.57, %tmp.59);
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_123_43_152_4_stop:
-    }
-    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc"; @line = 158; @symbol_functiondef = [drawConfirmScreen,158,13,30]; @symbol_param<0> = [dc,158,31,33]; @symbol_param<0>_type<0> = [Dc,158,37,39]; ]
-    function drawConfirmScreen(dc as Dc) {
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_158_41_194_4_start:
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 159 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_158_41_194_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_158_41_194_4_stop" ]
-        %screenW.1 = local;
-        symbol [ screenW %screenW.1 159 12 19 ];
-        %tmp.1 = lgetv %dc;
-        symbol [ dc %tmp.1 159 22 24 ];
-        symbol [ getWidth %tmp.2 159 25 33 ];
-        %tmp.2 = getv function %tmp.1 :getWidth;
-        %tmp.3 = invoke %tmp.1 %tmp.2();
-        lputv %screenW.1 %tmp.3;
-        symbol [ screenW %screenW.1 159 12 19 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 160 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_158_41_194_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_158_41_194_4_stop" ]
-        %screenH.2 = local;
-        symbol [ screenH %screenH.2 160 12 19 ];
-        %tmp.4 = lgetv %dc;
-        symbol [ dc %tmp.4 160 22 24 ];
-        symbol [ getHeight %tmp.5 160 25 34 ];
-        %tmp.5 = getv function %tmp.4 :getHeight;
-        %tmp.6 = invoke %tmp.4 %tmp.5();
-        lputv %screenH.2 %tmp.6;
-        symbol [ screenH %screenH.2 160 12 19 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 162 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_158_41_194_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_158_41_194_4_stop" ]
-        %centerX.3 = local;
-        symbol [ centerX %centerX.3 162 12 19 ];
-        %tmp.7 = lgetv %screenW.1;
-        symbol [ screenW %tmp.7 162 22 29 ];
-        %tmp.8 = 2;
-        %tmp.9 = div %tmp.7 %tmp.8;
-        lputv %centerX.3 %tmp.9;
-        symbol [ centerX %centerX.3 162 12 19 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 165 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_158_41_194_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_158_41_194_4_stop" ]
-        %questionTop.4 = local;
-        symbol [ questionTop %questionTop.4 165 12 23 ];
-        %tmp.10 = lgetv %screenH.2;
-        symbol [ screenH %tmp.10 165 27 34 ];
->>>>>>> Stashed changes
         %tmp.11 = 2;
         %tmp.12 = div %tmp.10 %tmp.11;
         %tmp.13 = 125;
         %tmp.14 = sub %tmp.12 %tmp.13;
         lputv %questionTop.4 %tmp.14;
-<<<<<<< Updated upstream
         symbol [ questionTop %questionTop.4 150 12 23 ];
 [ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 152 8 ]
         %tmp.15 = lgetv %dc;
@@ -1025,113 +703,11 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_Settings
         %tmp.1 = lgetv %dc;
         symbol [ dc %tmp.1 182 22 24 ];
         symbol [ getWidth %tmp.2 182 25 33 ];
-=======
-        symbol [ questionTop %questionTop.4 165 12 23 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 167 8 ]
-        %tmp.15 = lgetv %dc;
-        symbol [ dc %tmp.15 167 8 10 ];
-        symbol [ setColor %tmp.16 167 11 19 ];
-        %tmp.16 = getv function %tmp.15 :setColor;
-        symbol [ Graphics %tmp.17 167 20 28 ];
-        %tmp.17 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.18 167 29 40 ];
-        %tmp.18 = getv %tmp.17 :COLOR_WHITE;
-        symbol [ Graphics %tmp.19 167 42 50 ];
-        %tmp.19 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.20 167 51 68 ];
-        %tmp.20 = getv %tmp.19 :COLOR_TRANSPARENT;
-        invoke %tmp.15 %tmp.16(%tmp.18, %tmp.20);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 169 8 ]
-        %tmp.21 = lgetv %dc;
-        symbol [ dc %tmp.21 169 8 10 ];
-        symbol [ drawText %tmp.22 169 11 19 ];
-        %tmp.22 = getv function %tmp.21 :drawText;
-        %tmp.23 = lgetv %centerX.3;
-        symbol [ centerX %tmp.23 170 12 19 ];
-        %tmp.24 = lgetv %questionTop.4;
-        symbol [ questionTop %tmp.24 171 12 23 ];
-        symbol [ Graphics %tmp.25 172 12 20 ];
-        %tmp.25 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.26 172 21 31 ];
-        %tmp.26 = getv %tmp.25 :FONT_SMALL;
-        %tmp.27 = "Are you sure";
-        symbol [ Graphics %tmp.28 174 12 20 ];
-        %tmp.28 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.29 174 21 40 ];
-        %tmp.29 = getv %tmp.28 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.21 %tmp.22(%tmp.23, %tmp.24, %tmp.26, %tmp.27, %tmp.29);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 177 8 ]
-        %tmp.30 = lgetv %dc;
-        symbol [ dc %tmp.30 177 8 10 ];
-        symbol [ drawText %tmp.31 177 11 19 ];
-        %tmp.31 = getv function %tmp.30 :drawText;
-        %tmp.32 = lgetv %centerX.3;
-        symbol [ centerX %tmp.32 178 12 19 ];
-        %tmp.33 = lgetv %questionTop.4;
-        symbol [ questionTop %tmp.33 179 12 23 ];
-        %tmp.34 = 34;
-        %tmp.35 = add %tmp.33 %tmp.34;
-        symbol [ Graphics %tmp.36 180 12 20 ];
-        %tmp.36 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.37 180 21 31 ];
-        %tmp.37 = getv %tmp.36 :FONT_SMALL;
-        %tmp.38 = "you want to reset";
-        symbol [ Graphics %tmp.39 182 12 20 ];
-        %tmp.39 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.40 182 21 40 ];
-        %tmp.40 = getv %tmp.39 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.30 %tmp.31(%tmp.32, %tmp.35, %tmp.37, %tmp.38, %tmp.40);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 185 8 ]
-        %tmp.41 = lgetv %dc;
-        symbol [ dc %tmp.41 185 8 10 ];
-        symbol [ drawText %tmp.42 185 11 19 ];
-        %tmp.42 = getv function %tmp.41 :drawText;
-        %tmp.43 = lgetv %centerX.3;
-        symbol [ centerX %tmp.43 186 12 19 ];
-        %tmp.44 = lgetv %questionTop.4;
-        symbol [ questionTop %tmp.44 187 12 23 ];
-        %tmp.45 = 68;
-        %tmp.46 = add %tmp.44 %tmp.45;
-        symbol [ Graphics %tmp.47 188 12 20 ];
-        %tmp.47 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.48 188 21 31 ];
-        %tmp.48 = getv %tmp.47 :FONT_SMALL;
-        %tmp.49 = "all settings?";
-        symbol [ Graphics %tmp.50 190 12 20 ];
-        %tmp.50 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.51 190 21 40 ];
-        %tmp.51 = getv %tmp.50 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.41 %tmp.42(%tmp.43, %tmp.46, %tmp.48, %tmp.49, %tmp.51);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 193 8 ]
-        %tmp.52 = self;
-        symbol [ drawButtons %tmp.53 193 8 19 ];
-        %tmp.53 = getv function %tmp.52 :drawButtons;
-        %tmp.54 = lgetv %dc;
-        symbol [ dc %tmp.54 193 20 22 ];
-        %tmp.55 = lgetv %questionTop.4;
-        symbol [ questionTop %tmp.55 193 24 35 ];
-        %tmp.56 = 125;
-        %tmp.57 = add %tmp.55 %tmp.56;
-        invoke %tmp.52 %tmp.53(%tmp.54, %tmp.57);
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_158_41_194_4_stop:
-    }
-    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc"; @line = 196; @symbol_functiondef = [drawButtons,196,13,24]; @symbol_param<0> = [dc,196,25,27]; @symbol_param<0>_type<0> = [Dc,196,31,33]; @symbol_param<1> = [startY,196,35,41]; ]
-    function drawButtons(dc as Dc, startY) {
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_196_43_257_4_start:
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 197 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_196_43_257_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_196_43_257_4_stop" ]
-        %centerX.1 = local;
-        symbol [ centerX %centerX.1 197 12 19 ];
-        %tmp.1 = lgetv %dc;
-        symbol [ dc %tmp.1 197 22 24 ];
-        symbol [ getWidth %tmp.2 197 25 33 ];
->>>>>>> Stashed changes
         %tmp.2 = getv function %tmp.1 :getWidth;
         %tmp.3 = invoke %tmp.1 %tmp.2();
         %tmp.4 = 2;
         %tmp.5 = div %tmp.3 %tmp.4;
         lputv %centerX.1 %tmp.5;
-<<<<<<< Updated upstream
         symbol [ centerX %centerX.1 182 12 19 ];
 [ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 184 8 ]
         [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_181_43_242_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_181_43_242_4_stop" ]
@@ -1162,43 +738,10 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_Settings
         symbol [ centerX %tmp.9 188 22 29 ];
         %tmp.10 = lgetv %buttonW.2;
         symbol [ buttonW %tmp.10 188 33 40 ];
-=======
-        symbol [ centerX %centerX.1 197 12 19 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 199 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_196_43_257_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_196_43_257_4_stop" ]
-        %buttonW.2 = local;
-        symbol [ buttonW %buttonW.2 199 12 19 ];
-        %tmp.6 = 145;
-        lputv %buttonW.2 %tmp.6;
-        symbol [ buttonW %buttonW.2 199 12 19 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 200 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_196_43_257_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_196_43_257_4_stop" ]
-        %buttonH.3 = local;
-        symbol [ buttonH %buttonH.3 200 12 19 ];
-        %tmp.7 = 34;
-        lputv %buttonH.3 %tmp.7;
-        symbol [ buttonH %buttonH.3 200 12 19 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 201 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_196_43_257_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_196_43_257_4_stop" ]
-        %radius.4 = local;
-        symbol [ radius %radius.4 201 12 18 ];
-        %tmp.8 = 8;
-        lputv %radius.4 %tmp.8;
-        symbol [ radius %radius.4 201 12 18 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 203 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_196_43_257_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_196_43_257_4_stop" ]
-        %buttonX.5 = local;
-        symbol [ buttonX %buttonX.5 203 12 19 ];
-        %tmp.9 = lgetv %centerX.1;
-        symbol [ centerX %tmp.9 203 22 29 ];
-        %tmp.10 = lgetv %buttonW.2;
-        symbol [ buttonW %tmp.10 203 33 40 ];
->>>>>>> Stashed changes
         %tmp.11 = 2;
         %tmp.12 = div %tmp.10 %tmp.11;
         %tmp.13 = sub %tmp.9 %tmp.12;
         lputv %buttonX.5 %tmp.13;
-<<<<<<< Updated upstream
         symbol [ buttonX %buttonX.5 188 12 19 ];
 [ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 190 8 ]
         [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_181_43_242_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_181_43_242_4_stop" ]
@@ -1385,199 +928,10 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_Settings
         symbol [ x %tmp.20 252 12 13 ];
         %tmp.21 = lgetv %w;
         symbol [ w %tmp.21 252 17 18 ];
-=======
-        symbol [ buttonX %buttonX.5 203 12 19 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 205 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_196_43_257_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_196_43_257_4_stop" ]
-        %yesY.6 = local;
-        symbol [ yesY %yesY.6 205 12 16 ];
-        %tmp.14 = lgetv %startY;
-        symbol [ startY %tmp.14 205 19 25 ];
-        lputv %yesY.6 %tmp.14;
-        symbol [ yesY %yesY.6 205 12 16 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 206 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_196_43_257_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_196_43_257_4_stop" ]
-        %noY.7 = local;
-        symbol [ noY %noY.7 206 12 15 ];
-        %tmp.15 = lgetv %startY;
-        symbol [ startY %tmp.15 206 18 24 ];
-        %tmp.16 = 48;
-        %tmp.17 = add %tmp.15 %tmp.16;
-        lputv %noY.7 %tmp.17;
-        symbol [ noY %noY.7 206 12 15 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 208 8 ]
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_208_8_256_8_if_stmt:
-        symbol [ _selectedButton %tmp.19 208 12 27 ];
-        %tmp.19 = getv ? :_selectedButton;
-        %tmp.20 = 0;
-        %tmp.21 = eq %tmp.19 %tmp.20;
-        bf %tmp.21 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_208_8_256_8_if_else_false;
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_208_8_256_8_if_true:
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_208_34_232_8_start:
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 209 12 ]
-        %tmp.22 = self;
-        symbol [ drawButton %tmp.23 209 12 22 ];
-        %tmp.23 = getv function %tmp.22 :drawButton;
-        %tmp.24 = lgetv %dc;
-        symbol [ dc %tmp.24 210 16 18 ];
-        %tmp.25 = lgetv %buttonX.5;
-        symbol [ buttonX %tmp.25 211 16 23 ];
-        %tmp.26 = lgetv %yesY.6;
-        symbol [ yesY %tmp.26 212 16 20 ];
-        %tmp.27 = lgetv %buttonW.2;
-        symbol [ buttonW %tmp.27 213 16 23 ];
-        %tmp.28 = lgetv %buttonH.3;
-        symbol [ buttonH %tmp.28 214 16 23 ];
-        %tmp.29 = lgetv %radius.4;
-        symbol [ radius %tmp.29 215 16 22 ];
-        symbol [ Graphics %tmp.30 216 16 24 ];
-        %tmp.30 = getm $.Toybox.Graphics;
-        symbol [ COLOR_RED %tmp.31 216 25 34 ];
-        %tmp.31 = getv %tmp.30 :COLOR_RED;
-        symbol [ Graphics %tmp.32 217 16 24 ];
-        %tmp.32 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.33 217 25 36 ];
-        %tmp.33 = getv %tmp.32 :COLOR_WHITE;
-        %tmp.34 = "YES";
-        invoke %tmp.22 %tmp.23(%tmp.24, %tmp.25, %tmp.26, %tmp.27, %tmp.28, %tmp.29, %tmp.31, %tmp.33, %tmp.34);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 221 12 ]
-        %tmp.35 = self;
-        symbol [ drawButton %tmp.36 221 12 22 ];
-        %tmp.36 = getv function %tmp.35 :drawButton;
-        %tmp.37 = lgetv %dc;
-        symbol [ dc %tmp.37 222 16 18 ];
-        %tmp.38 = lgetv %buttonX.5;
-        symbol [ buttonX %tmp.38 223 16 23 ];
-        %tmp.39 = lgetv %noY.7;
-        symbol [ noY %tmp.39 224 16 19 ];
-        %tmp.40 = lgetv %buttonW.2;
-        symbol [ buttonW %tmp.40 225 16 23 ];
-        %tmp.41 = lgetv %buttonH.3;
-        symbol [ buttonH %tmp.41 226 16 23 ];
-        %tmp.42 = lgetv %radius.4;
-        symbol [ radius %tmp.42 227 16 22 ];
-        %tmp.43 = 0x4A4A4A;
-        symbol [ Graphics %tmp.44 229 16 24 ];
-        %tmp.44 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.45 229 25 36 ];
-        %tmp.45 = getv %tmp.44 :COLOR_WHITE;
-        %tmp.46 = "NO";
-        invoke %tmp.35 %tmp.36(%tmp.37, %tmp.38, %tmp.39, %tmp.40, %tmp.41, %tmp.42, %tmp.43, %tmp.45, %tmp.46);
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_208_34_232_8_stop:
-        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_208_8_256_8_if_end;
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_208_8_256_8_if_else_false:
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_232_15_256_8_start:
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 233 12 ]
-        %tmp.47 = self;
-        symbol [ drawButton %tmp.48 233 12 22 ];
-        %tmp.48 = getv function %tmp.47 :drawButton;
-        %tmp.49 = lgetv %dc;
-        symbol [ dc %tmp.49 234 16 18 ];
-        %tmp.50 = lgetv %buttonX.5;
-        symbol [ buttonX %tmp.50 235 16 23 ];
-        %tmp.51 = lgetv %yesY.6;
-        symbol [ yesY %tmp.51 236 16 20 ];
-        %tmp.52 = lgetv %buttonW.2;
-        symbol [ buttonW %tmp.52 237 16 23 ];
-        %tmp.53 = lgetv %buttonH.3;
-        symbol [ buttonH %tmp.53 238 16 23 ];
-        %tmp.54 = lgetv %radius.4;
-        symbol [ radius %tmp.54 239 16 22 ];
-        %tmp.55 = 0x4A4A4A;
-        symbol [ Graphics %tmp.56 241 16 24 ];
-        %tmp.56 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.57 241 25 36 ];
-        %tmp.57 = getv %tmp.56 :COLOR_WHITE;
-        %tmp.58 = "YES";
-        invoke %tmp.47 %tmp.48(%tmp.49, %tmp.50, %tmp.51, %tmp.52, %tmp.53, %tmp.54, %tmp.55, %tmp.57, %tmp.58);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 245 12 ]
-        %tmp.59 = self;
-        symbol [ drawButton %tmp.60 245 12 22 ];
-        %tmp.60 = getv function %tmp.59 :drawButton;
-        %tmp.61 = lgetv %dc;
-        symbol [ dc %tmp.61 246 16 18 ];
-        %tmp.62 = lgetv %buttonX.5;
-        symbol [ buttonX %tmp.62 247 16 23 ];
-        %tmp.63 = lgetv %noY.7;
-        symbol [ noY %tmp.63 248 16 19 ];
-        %tmp.64 = lgetv %buttonW.2;
-        symbol [ buttonW %tmp.64 249 16 23 ];
-        %tmp.65 = lgetv %buttonH.3;
-        symbol [ buttonH %tmp.65 250 16 23 ];
-        %tmp.66 = lgetv %radius.4;
-        symbol [ radius %tmp.66 251 16 22 ];
-        symbol [ Graphics %tmp.67 252 16 24 ];
-        %tmp.67 = getm $.Toybox.Graphics;
-        symbol [ COLOR_GREEN %tmp.68 252 25 36 ];
-        %tmp.68 = getv %tmp.67 :COLOR_GREEN;
-        symbol [ Graphics %tmp.69 253 16 24 ];
-        %tmp.69 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.70 253 25 36 ];
-        %tmp.70 = getv %tmp.69 :COLOR_BLACK;
-        %tmp.71 = "NO";
-        invoke %tmp.59 %tmp.60(%tmp.61, %tmp.62, %tmp.63, %tmp.64, %tmp.65, %tmp.66, %tmp.68, %tmp.70, %tmp.71);
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_232_15_256_8_stop:
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_208_8_256_8_if_end:
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_196_43_257_4_stop:
-    }
-    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc"; @line = 259; @symbol_functiondef = [drawButton,259,13,23]; @symbol_param<0> = [dc,259,24,26]; @symbol_param<0>_type<0> = [Dc,259,30,32]; @symbol_param<1> = [x,259,34,35]; @symbol_param<2> = [y,259,37,38]; @symbol_param<3> = [w,259,40,41]; @symbol_param<4> = [h,259,43,44]; @symbol_param<5> = [r,259,46,47]; @symbol_param<6> = [fillColor,259,49,58]; @symbol_param<7> = [textColor,259,60,69]; @symbol_param<8> = [label,259,71,76]; ]
-    function drawButton(dc as Dc, x, y, w, h, r, fillColor, textColor, label) {
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_259_78_273_4_start:
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 260 8 ]
-        %tmp.1 = lgetv %dc;
-        symbol [ dc %tmp.1 260 8 10 ];
-        symbol [ setColor %tmp.2 260 11 19 ];
-        %tmp.2 = getv function %tmp.1 :setColor;
-        %tmp.3 = lgetv %fillColor;
-        symbol [ fillColor %tmp.3 260 20 29 ];
-        symbol [ Graphics %tmp.4 260 31 39 ];
-        %tmp.4 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.5 260 40 57 ];
-        %tmp.5 = getv %tmp.4 :COLOR_TRANSPARENT;
-        invoke %tmp.1 %tmp.2(%tmp.3, %tmp.5);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 261 8 ]
-        %tmp.6 = lgetv %dc;
-        symbol [ dc %tmp.6 261 8 10 ];
-        symbol [ fillRoundedRectangle %tmp.7 261 11 31 ];
-        %tmp.7 = getv function %tmp.6 :fillRoundedRectangle;
-        %tmp.8 = lgetv %x;
-        symbol [ x %tmp.8 261 32 33 ];
-        %tmp.9 = lgetv %y;
-        symbol [ y %tmp.9 261 35 36 ];
-        %tmp.10 = lgetv %w;
-        symbol [ w %tmp.10 261 38 39 ];
-        %tmp.11 = lgetv %h;
-        symbol [ h %tmp.11 261 41 42 ];
-        %tmp.12 = lgetv %r;
-        symbol [ r %tmp.12 261 44 45 ];
-        invoke %tmp.6 %tmp.7(%tmp.8, %tmp.9, %tmp.10, %tmp.11, %tmp.12);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 263 8 ]
-        %tmp.13 = lgetv %dc;
-        symbol [ dc %tmp.13 263 8 10 ];
-        symbol [ setColor %tmp.14 263 11 19 ];
-        %tmp.14 = getv function %tmp.13 :setColor;
-        %tmp.15 = lgetv %textColor;
-        symbol [ textColor %tmp.15 263 20 29 ];
-        symbol [ Graphics %tmp.16 263 31 39 ];
-        %tmp.16 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.17 263 40 57 ];
-        %tmp.17 = getv %tmp.16 :COLOR_TRANSPARENT;
-        invoke %tmp.13 %tmp.14(%tmp.15, %tmp.17);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 266 8 ]
-        %tmp.18 = lgetv %dc;
-        symbol [ dc %tmp.18 266 8 10 ];
-        symbol [ drawText %tmp.19 266 11 19 ];
-        %tmp.19 = getv function %tmp.18 :drawText;
-        %tmp.20 = lgetv %x;
-        symbol [ x %tmp.20 267 12 13 ];
-        %tmp.21 = lgetv %w;
-        symbol [ w %tmp.21 267 17 18 ];
->>>>>>> Stashed changes
         %tmp.22 = 2;
         %tmp.23 = div %tmp.21 %tmp.22;
         %tmp.24 = add %tmp.20 %tmp.23;
         %tmp.25 = lgetv %y;
-<<<<<<< Updated upstream
         symbol [ y %tmp.25 253 12 13 ];
         %tmp.26 = 7;
         %tmp.27 = add %tmp.25 %tmp.26;
@@ -1635,71 +989,11 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_Settings
         symbol [ tickTopY %tickTopY.4 270 12 20 ];
         %tmp.10 = lgetv %screenH.2;
         symbol [ screenH %tmp.10 270 24 31 ];
-=======
-        symbol [ y %tmp.25 268 12 13 ];
-        %tmp.26 = 7;
-        %tmp.27 = add %tmp.25 %tmp.26;
-        symbol [ Graphics %tmp.28 269 12 20 ];
-        %tmp.28 = getm $.Toybox.Graphics;
-        symbol [ FONT_XTINY %tmp.29 269 21 31 ];
-        %tmp.29 = getv %tmp.28 :FONT_XTINY;
-        %tmp.30 = lgetv %label;
-        symbol [ label %tmp.30 270 12 17 ];
-        symbol [ Graphics %tmp.31 271 12 20 ];
-        %tmp.31 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.32 271 21 40 ];
-        %tmp.32 = getv %tmp.31 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.18 %tmp.19(%tmp.24, %tmp.27, %tmp.29, %tmp.30, %tmp.32);
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_259_78_273_4_stop:
-    }
-    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc"; @line = 279; @symbol_functiondef = [drawSuccessScreen,279,13,30]; @symbol_param<0> = [dc,279,31,33]; @symbol_param<0>_type<0> = [Dc,279,37,39]; ]
-    function drawSuccessScreen(dc as Dc) {
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_279_41_323_4_start:
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 280 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_279_41_323_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_279_41_323_4_stop" ]
-        %screenW.1 = local;
-        symbol [ screenW %screenW.1 280 12 19 ];
-        %tmp.1 = lgetv %dc;
-        symbol [ dc %tmp.1 280 22 24 ];
-        symbol [ getWidth %tmp.2 280 25 33 ];
-        %tmp.2 = getv function %tmp.1 :getWidth;
-        %tmp.3 = invoke %tmp.1 %tmp.2();
-        lputv %screenW.1 %tmp.3;
-        symbol [ screenW %screenW.1 280 12 19 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 281 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_279_41_323_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_279_41_323_4_stop" ]
-        %screenH.2 = local;
-        symbol [ screenH %screenH.2 281 12 19 ];
-        %tmp.4 = lgetv %dc;
-        symbol [ dc %tmp.4 281 22 24 ];
-        symbol [ getHeight %tmp.5 281 25 34 ];
-        %tmp.5 = getv function %tmp.4 :getHeight;
-        %tmp.6 = invoke %tmp.4 %tmp.5();
-        lputv %screenH.2 %tmp.6;
-        symbol [ screenH %screenH.2 281 12 19 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 283 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_279_41_323_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_279_41_323_4_stop" ]
-        %centerX.3 = local;
-        symbol [ centerX %centerX.3 283 12 19 ];
-        %tmp.7 = lgetv %screenW.1;
-        symbol [ screenW %tmp.7 283 22 29 ];
-        %tmp.8 = 2;
-        %tmp.9 = div %tmp.7 %tmp.8;
-        lputv %centerX.3 %tmp.9;
-        symbol [ centerX %centerX.3 283 12 19 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 285 8 ]
-        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_279_41_323_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_279_41_323_4_stop" ]
-        %tickTopY.4 = local;
-        symbol [ tickTopY %tickTopY.4 285 12 20 ];
-        %tmp.10 = lgetv %screenH.2;
-        symbol [ screenH %tmp.10 285 24 31 ];
->>>>>>> Stashed changes
         %tmp.11 = 2;
         %tmp.12 = div %tmp.10 %tmp.11;
         %tmp.13 = 110;
         %tmp.14 = sub %tmp.12 %tmp.13;
         lputv %tickTopY.4 %tmp.14;
-<<<<<<< Updated upstream
         symbol [ tickTopY %tickTopY.4 270 12 20 ];
 [ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 272 8 ]
         %tmp.15 = self;
@@ -1916,229 +1210,10 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_Settings
 C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_324_28_326_4_start:
 [ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 325 8 ]
         symbol [ _screenState %tmp.2 325 15 27 ];
-=======
-        symbol [ tickTopY %tickTopY.4 285 12 20 ];
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 287 8 ]
-        %tmp.15 = self;
-        symbol [ drawLargeTick %tmp.16 287 8 21 ];
-        %tmp.16 = getv function %tmp.15 :drawLargeTick;
-        %tmp.17 = lgetv %dc;
-        symbol [ dc %tmp.17 287 22 24 ];
-        %tmp.18 = lgetv %centerX.3;
-        symbol [ centerX %tmp.18 287 26 33 ];
-        %tmp.19 = lgetv %tickTopY.4;
-        symbol [ tickTopY %tmp.19 287 35 43 ];
-        invoke %tmp.15 %tmp.16(%tmp.17, %tmp.18, %tmp.19);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 289 8 ]
-        %tmp.20 = lgetv %dc;
-        symbol [ dc %tmp.20 289 8 10 ];
-        symbol [ setColor %tmp.21 289 11 19 ];
-        %tmp.21 = getv function %tmp.20 :setColor;
-        %tmp.22 = 0x55D86A;
-        symbol [ Graphics %tmp.23 289 30 38 ];
-        %tmp.23 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.24 289 39 56 ];
-        %tmp.24 = getv %tmp.23 :COLOR_TRANSPARENT;
-        invoke %tmp.20 %tmp.21(%tmp.22, %tmp.24);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 290 8 ]
-        %tmp.25 = lgetv %dc;
-        symbol [ dc %tmp.25 290 8 10 ];
-        symbol [ drawText %tmp.26 290 11 19 ];
-        %tmp.26 = getv function %tmp.25 :drawText;
-        %tmp.27 = lgetv %centerX.3;
-        symbol [ centerX %tmp.27 291 12 19 ];
-        %tmp.28 = lgetv %tickTopY.4;
-        symbol [ tickTopY %tmp.28 292 12 20 ];
-        %tmp.29 = 78;
-        %tmp.30 = add %tmp.28 %tmp.29;
-        symbol [ Graphics %tmp.31 293 12 20 ];
-        %tmp.31 = getm $.Toybox.Graphics;
-        symbol [ FONT_SMALL %tmp.32 293 21 31 ];
-        %tmp.32 = getv %tmp.31 :FONT_SMALL;
-        %tmp.33 = "Settings Reset";
-        symbol [ Graphics %tmp.34 295 12 20 ];
-        %tmp.34 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.35 295 21 40 ];
-        %tmp.35 = getv %tmp.34 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.25 %tmp.26(%tmp.27, %tmp.30, %tmp.32, %tmp.33, %tmp.35);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 298 8 ]
-        %tmp.36 = lgetv %dc;
-        symbol [ dc %tmp.36 298 8 10 ];
-        symbol [ setColor %tmp.37 298 11 19 ];
-        %tmp.37 = getv function %tmp.36 :setColor;
-        symbol [ Graphics %tmp.38 298 20 28 ];
-        %tmp.38 = getm $.Toybox.Graphics;
-        symbol [ COLOR_LT_GRAY %tmp.39 298 29 42 ];
-        %tmp.39 = getv %tmp.38 :COLOR_LT_GRAY;
-        symbol [ Graphics %tmp.40 298 44 52 ];
-        %tmp.40 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.41 298 53 70 ];
-        %tmp.41 = getv %tmp.40 :COLOR_TRANSPARENT;
-        invoke %tmp.36 %tmp.37(%tmp.39, %tmp.41);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 299 8 ]
-        %tmp.42 = lgetv %dc;
-        symbol [ dc %tmp.42 299 8 10 ];
-        symbol [ drawText %tmp.43 299 11 19 ];
-        %tmp.43 = getv function %tmp.42 :drawText;
-        %tmp.44 = lgetv %centerX.3;
-        symbol [ centerX %tmp.44 300 12 19 ];
-        %tmp.45 = lgetv %tickTopY.4;
-        symbol [ tickTopY %tmp.45 301 12 20 ];
-        %tmp.46 = 122;
-        %tmp.47 = add %tmp.45 %tmp.46;
-        symbol [ Graphics %tmp.48 302 12 20 ];
-        %tmp.48 = getm $.Toybox.Graphics;
-        symbol [ FONT_XTINY %tmp.49 302 21 31 ];
-        %tmp.49 = getv %tmp.48 :FONT_XTINY;
-        %tmp.50 = "All values restored";
-        symbol [ Graphics %tmp.51 304 12 20 ];
-        %tmp.51 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.52 304 21 40 ];
-        %tmp.52 = getv %tmp.51 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.42 %tmp.43(%tmp.44, %tmp.47, %tmp.49, %tmp.50, %tmp.52);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 307 8 ]
-        %tmp.53 = lgetv %dc;
-        symbol [ dc %tmp.53 307 8 10 ];
-        symbol [ drawText %tmp.54 307 11 19 ];
-        %tmp.54 = getv function %tmp.53 :drawText;
-        %tmp.55 = lgetv %centerX.3;
-        symbol [ centerX %tmp.55 308 12 19 ];
-        %tmp.56 = lgetv %tickTopY.4;
-        symbol [ tickTopY %tmp.56 309 12 20 ];
-        %tmp.57 = 148;
-        %tmp.58 = add %tmp.56 %tmp.57;
-        symbol [ Graphics %tmp.59 310 12 20 ];
-        %tmp.59 = getm $.Toybox.Graphics;
-        symbol [ FONT_XTINY %tmp.60 310 21 31 ];
-        %tmp.60 = getv %tmp.59 :FONT_XTINY;
-        %tmp.61 = "to default";
-        symbol [ Graphics %tmp.62 312 12 20 ];
-        %tmp.62 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.63 312 21 40 ];
-        %tmp.63 = getv %tmp.62 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.53 %tmp.54(%tmp.55, %tmp.58, %tmp.60, %tmp.61, %tmp.63);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 315 8 ]
-        %tmp.64 = lgetv %dc;
-        symbol [ dc %tmp.64 315 8 10 ];
-        symbol [ setColor %tmp.65 315 11 19 ];
-        %tmp.65 = getv function %tmp.64 :setColor;
-        symbol [ Graphics %tmp.66 315 20 28 ];
-        %tmp.66 = getm $.Toybox.Graphics;
-        symbol [ COLOR_DK_GRAY %tmp.67 315 29 42 ];
-        %tmp.67 = getv %tmp.66 :COLOR_DK_GRAY;
-        symbol [ Graphics %tmp.68 315 44 52 ];
-        %tmp.68 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.69 315 53 70 ];
-        %tmp.69 = getv %tmp.68 :COLOR_TRANSPARENT;
-        invoke %tmp.64 %tmp.65(%tmp.67, %tmp.69);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 316 8 ]
-        %tmp.70 = lgetv %dc;
-        symbol [ dc %tmp.70 316 8 10 ];
-        symbol [ drawText %tmp.71 316 11 19 ];
-        %tmp.71 = getv function %tmp.70 :drawText;
-        %tmp.72 = lgetv %centerX.3;
-        symbol [ centerX %tmp.72 317 12 19 ];
-        %tmp.73 = lgetv %tickTopY.4;
-        symbol [ tickTopY %tmp.73 318 12 20 ];
-        %tmp.74 = 198;
-        %tmp.75 = add %tmp.73 %tmp.74;
-        symbol [ Graphics %tmp.76 319 12 20 ];
-        %tmp.76 = getm $.Toybox.Graphics;
-        symbol [ FONT_XTINY %tmp.77 319 21 31 ];
-        %tmp.77 = getv %tmp.76 :FONT_XTINY;
-        %tmp.78 = "press BACK to return";
-        symbol [ Graphics %tmp.79 321 12 20 ];
-        %tmp.79 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.80 321 21 40 ];
-        %tmp.80 = getv %tmp.79 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.70 %tmp.71(%tmp.72, %tmp.75, %tmp.77, %tmp.78, %tmp.80);
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_279_41_323_4_stop:
-    }
-    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc"; @line = 325; @symbol_functiondef = [drawLargeTick,325,13,26]; @symbol_param<0> = [dc,325,27,29]; @symbol_param<0>_type<0> = [Dc,325,33,35]; @symbol_param<1> = [centerX,325,37,44]; @symbol_param<2> = [topY,325,46,50]; ]
-    function drawLargeTick(dc as Dc, centerX, topY) {
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_325_52_333_4_start:
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 326 8 ]
-        %tmp.1 = lgetv %dc;
-        symbol [ dc %tmp.1 326 8 10 ];
-        symbol [ setColor %tmp.2 326 11 19 ];
-        %tmp.2 = getv function %tmp.1 :setColor;
-        %tmp.3 = 0x55D86A;
-        symbol [ Graphics %tmp.4 326 30 38 ];
-        %tmp.4 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.5 326 39 56 ];
-        %tmp.5 = getv %tmp.4 :COLOR_TRANSPARENT;
-        invoke %tmp.1 %tmp.2(%tmp.3, %tmp.5);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 327 8 ]
-        %tmp.6 = lgetv %dc;
-        symbol [ dc %tmp.6 327 8 10 ];
-        symbol [ setPenWidth %tmp.7 327 11 22 ];
-        %tmp.7 = getv function %tmp.6 :setPenWidth;
-        %tmp.8 = 10;
-        invoke %tmp.6 %tmp.7(%tmp.8);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 329 8 ]
-        %tmp.9 = lgetv %dc;
-        symbol [ dc %tmp.9 329 8 10 ];
-        symbol [ drawLine %tmp.10 329 11 19 ];
-        %tmp.10 = getv function %tmp.9 :drawLine;
-        %tmp.11 = lgetv %centerX;
-        symbol [ centerX %tmp.11 329 20 27 ];
-        %tmp.12 = 34;
-        %tmp.13 = sub %tmp.11 %tmp.12;
-        %tmp.14 = lgetv %topY;
-        symbol [ topY %tmp.14 329 34 38 ];
-        %tmp.15 = 32;
-        %tmp.16 = add %tmp.14 %tmp.15;
-        %tmp.17 = lgetv %centerX;
-        symbol [ centerX %tmp.17 329 45 52 ];
-        %tmp.18 = 12;
-        %tmp.19 = sub %tmp.17 %tmp.18;
-        %tmp.20 = lgetv %topY;
-        symbol [ topY %tmp.20 329 59 63 ];
-        %tmp.21 = 54;
-        %tmp.22 = add %tmp.20 %tmp.21;
-        invoke %tmp.9 %tmp.10(%tmp.13, %tmp.16, %tmp.19, %tmp.22);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 330 8 ]
-        %tmp.23 = lgetv %dc;
-        symbol [ dc %tmp.23 330 8 10 ];
-        symbol [ drawLine %tmp.24 330 11 19 ];
-        %tmp.24 = getv function %tmp.23 :drawLine;
-        %tmp.25 = lgetv %centerX;
-        symbol [ centerX %tmp.25 330 20 27 ];
-        %tmp.26 = 12;
-        %tmp.27 = sub %tmp.25 %tmp.26;
-        %tmp.28 = lgetv %topY;
-        symbol [ topY %tmp.28 330 34 38 ];
-        %tmp.29 = 54;
-        %tmp.30 = add %tmp.28 %tmp.29;
-        %tmp.31 = lgetv %centerX;
-        symbol [ centerX %tmp.31 330 45 52 ];
-        %tmp.32 = 40;
-        %tmp.33 = add %tmp.31 %tmp.32;
-        %tmp.34 = lgetv %topY;
-        symbol [ topY %tmp.34 330 59 63 ];
-        %tmp.35 = 4;
-        %tmp.36 = add %tmp.34 %tmp.35;
-        invoke %tmp.23 %tmp.24(%tmp.27, %tmp.30, %tmp.33, %tmp.36);
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 332 8 ]
-        %tmp.37 = lgetv %dc;
-        symbol [ dc %tmp.37 332 8 10 ];
-        symbol [ setPenWidth %tmp.38 332 11 22 ];
-        %tmp.38 = getv function %tmp.37 :setPenWidth;
-        %tmp.39 = 1;
-        invoke %tmp.37 %tmp.38(%tmp.39);
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_325_52_333_4_stop:
-    }
-    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc"; @line = 339; @symbol_functiondef = [isOpenScreen,339,13,25]; ]
-    function isOpenScreen() {
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_339_28_341_4_start:
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 340 8 ]
-        symbol [ _screenState %tmp.2 340 15 27 ];
->>>>>>> Stashed changes
         %tmp.2 = getv ? :_screenState;
         %tmp.3 = 0;
         %tmp.4 = eq %tmp.2 %tmp.3;
         ret %tmp.4;
-<<<<<<< Updated upstream
 C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_324_28_326_4_stop:
     }
     [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc"; @line = 328; @symbol_functiondef = [isConfirmScreen,328,13,28]; ]
@@ -2146,24 +1221,11 @@ C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_Settings
 C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_328_31_330_4_start:
 [ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 329 8 ]
         symbol [ _screenState %tmp.2 329 15 27 ];
-=======
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_339_28_341_4_stop:
-    }
-    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc"; @line = 343; @symbol_functiondef = [isConfirmScreen,343,13,28]; ]
-    function isConfirmScreen() {
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_343_31_345_4_start:
-[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc" 344 8 ]
-        symbol [ _screenState %tmp.2 344 15 27 ];
->>>>>>> Stashed changes
         %tmp.2 = getv ? :_screenState;
         %tmp.3 = 1;
         %tmp.4 = eq %tmp.2 %tmp.3;
         ret %tmp.4;
-<<<<<<< Updated upstream
 C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_328_31_330_4_stop:
-=======
-C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_ResetSettingsView_mc_343_31_345_4_stop:
->>>>>>> Stashed changes
     }
 }
 [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\ResetSettingsView.mc"; @line = 1; ]

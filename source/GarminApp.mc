@@ -892,8 +892,13 @@ if (val != null) {
 }
 
 // //reset all settings
-// function resetAllSettings() as Void {
-//     System.println("[RESET] Resetting all settings to default");
+function resetAllSettings() as Void {
+    Application.Properties.setValue("targetCadence", 100);
+    Application.Properties.setValue("vibrationEnabled", true);
+    Application.Properties.setValue("chartDuration", 5);
+
+    System.println("[SETTINGS] All settings reset to defaults");
+}
 
     var _idealMinCadence = 120;
     var _idealMaxCadence = 150;
