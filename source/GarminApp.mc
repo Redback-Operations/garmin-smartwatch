@@ -902,8 +902,7 @@ function resetAllSettings() as Void {
 
     var _idealMinCadence = 120;
     var _idealMaxCadence = 150;
-//     _idealMinCadence = 120;
-//     _idealMaxCadence = 150;
+
 
 //     _chartDuration = ThirtyminChart as Number;
 
