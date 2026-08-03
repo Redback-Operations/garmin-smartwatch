@@ -3,28 +3,18 @@ import Toybox.System;
 import Toybox.WatchUi;
 import Toybox.Application;
 
-class SelectHapticDelegate extends WatchUi.Menu2InputDelegate { 
+class SelectHapticDelegate extends WatchUi.BehaviorDelegate { 
 
-    private var _menu as WatchUi.Menu2;
     var app = Application.getApp() as GarminApp;
     //var haptic = app.getHaptic();
     var haptic = "low";// make sure to change to above!! - after feature has been added
 
-    function initialize(menu as WatchUi.Menu2) {
-        Menu2InputDelegate.initialize();
-        _menu = menu;
-
-        var newTitle = Lang.format("Haptic: $1$", [haptic]);
-        
-        // This updates the UI when the cadence is changed
-        _menu.setTitle(newTitle);
+    function initialize() {
+        BehaviorDelegate.initialize();
     }
 
-    function onSelect(item) as Void {
-
-        var id = item.getId();
-        
-        //Try to change cadence range based off menu selection
+    // Handle a haptic item id selected from the custom menu
+    function onMenuSelect(id as Symbol) as Void {
         if (id == :haptic_low){
             System.println("Haptic Feedback: LOW");
             //app.setHaptic("low");
@@ -41,10 +31,9 @@ class SelectHapticDelegate extends WatchUi.Menu2InputDelegate {
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
     }
 
-    function onMenuItem(item as Symbol) as Void {}
-
     // Returns back one menu
-    function onBack() as Void {
+    function onBack() as Boolean {
         WatchUi.popView(WatchUi.SLIDE_RIGHT); 
+        return true;
     }
 }

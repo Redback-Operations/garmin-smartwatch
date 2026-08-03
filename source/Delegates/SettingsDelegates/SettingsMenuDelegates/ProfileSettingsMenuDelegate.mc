@@ -48,21 +48,29 @@ class ProfileSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         return true; 
     }
 
-        function pushProfileMenu() as Void{
+function pushProfileMenu() as Void{
 
         //creates the secondary menu and sets title
-        var menu = new WatchUi.Menu2({
-            :title => "Profile Options"
-        });
+        var items = [
+            { :label => "Height",       :id => :profile_height },
+            { :label => "Speed",        :id => :profile_speed },
+            { :label => "Experience level", :id => :profile_experience },
+            { :label => "Gender",       :id => :profile_gender }
+        ];
 
-        //creates the new menu items
-        menu.addItem(new WatchUi.MenuItem("Height", null, :profile_height, null));
-        menu.addItem(new WatchUi.MenuItem("Speed", null, :profile_speed, null));
-        menu.addItem(new WatchUi.MenuItem("Experience level", null, :profile_experience, null));
-        menu.addItem(new WatchUi.MenuItem("Gender", null, :profile_gender, null));
+        //pushes the view to the screen with the relevant delegate
+        var menu = new CustomMenuView("Profile Options", items, method(:onProfileMenuItem), method(:onProfileMenuBack), "UP/DOWN select, START confirm");
+        WatchUi.pushView(menu, new CustomMenuDelegate(menu), WatchUi.SLIDE_LEFT);
+    }
 
-        //pushes the view to the screen with the relevent delegate
-        WatchUi.pushView(menu, new SelectProfileDelegate(menu), WatchUi.SLIDE_LEFT);
+    // Callback for profile menu item selection (replaces SelectProfileDelegate Menu2)
+    function onProfileMenuItem(id as Symbol) as Void {
+        var profile = new SelectProfileDelegate();
+        profile.onMenuSelect(id);
+    }
 
+    // Callback for profile menu BACK
+    function onProfileMenuBack() as Void {
+        WatchUi.popView(WatchUi.SLIDE_RIGHT);
     }
 }
