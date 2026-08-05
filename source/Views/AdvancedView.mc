@@ -49,11 +49,6 @@ class AdvancedView extends WatchUi.View {
         var info = Activity.getActivityInfo();
         var app = Application.getApp();
 
-        // 1. Update Chart Data
-        if (info != null && info.currentCadence != null) {
-            app.updateCadenceHistory(info.currentCadence.toFloat());
-        }
-
         // 2. RUN ALERT LOGIC HERE (So it works even when view is hidden)
         checkCadenceZone();
 

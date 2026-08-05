@@ -92,25 +92,7 @@ class ResetSettingsView extends WatchUi.View {
 
     function resetAllSettings() {
         var app = Application.getApp() as GarminApp;
-
-        // Existing app settings
-        app.setTargetCadence(160);
-        app.setUserSpeed(0.0);
-        app.setUserGender(0);
-        app.setExperienceLvl(0.0);
-        app.setChartDuration(10);
-        app.setVibrationEnabled(true);
-
-        // Required reset defaults
-        Application.Storage.setValue("training_mode", "Warm Up");
-        Application.Storage.setValue("summary_preferences", true);
-        Application.Storage.setValue("profile_height", 0);
-        Application.Storage.setValue("profile_speed", 0.0);
-        Application.Storage.setValue("profile_gender", 0);
-        Application.Storage.setValue("profile_experience", 0.0);
-
-        app.saveSettings();
-
+        app.resetAllSettings();
         System.println("[RESET] All settings restored to default");
     }
 

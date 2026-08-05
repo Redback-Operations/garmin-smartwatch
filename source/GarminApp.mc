@@ -270,6 +270,7 @@ class GarminApp extends Application.AppBase {
         _userGender = 0;
 
         _vibrationEnabled = true;
+        _summaryEnabled = true;
 
         _cadenceBarAvg = new [_chartDuration];
         _cadenceAvgIndex = 0;
@@ -278,6 +279,14 @@ class GarminApp extends Application.AppBase {
         _cadenceHistory = new [MAX_BARS];
         _cadenceIndex = 0;
         _cadenceCount = 0;
+
+        var s = Application.Storage;
+        s.setValue("training_mode", "Warm Up");
+        s.setValue("summary_preferences", true);
+        s.setValue("profile_height", 0);
+        s.setValue("profile_speed", 0.0);
+        s.setValue("profile_gender", 0);
+        s.setValue("profile_experience", 0.0);
 
         saveSettings();
 
@@ -857,6 +866,7 @@ if (val != null) {
     "[CADENCE] Target: " +
     _targetCadence.toString()
 );
+}
 
 
     // function getSessionDuration() as Number {
