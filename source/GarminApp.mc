@@ -99,24 +99,23 @@ class GarminApp extends Application.AppBase {
 
     function initialize() {
         AppBase.initialize();
-        System.println("[INFO] App initialized");
+        Logger.log("APP", "Application initialized");
         activitySession = null;
-
     }
 
     function onStart(state as Dictionary?) as Void {
-        System.println("[INFO] App starting");
-        //Logger.logMemoryStats("Startup");
+        Logger.log("APP", "Application started");
         
         // Load saved settings from persistent storage
         loadSettings();
         
         globalTimer = new Timer.Timer();
         globalTimer.start(method(:updateCadenceBarAvg),1000,true);
+        Logger.log("TIMER", "Refresh timer started");
     }
 
     function onStop(state as Dictionary?) as Void {
-        System.println("[INFO] App stopping");
+        Logger.log("APP", "Application stopping");
         
         // Stop any active session
         if (activitySession != null && activitySession.isRecording()) {
@@ -127,9 +126,9 @@ class GarminApp extends Application.AppBase {
         if(globalTimer != null){
             globalTimer.stop();
             globalTimer = null;
+            Logger.log("TIMER", "Refresh timer stopped");
         }
         
-        //Logger.logMemoryStats("Shutdown");
         saveSettings();
     }
 
@@ -245,11 +244,9 @@ class GarminApp extends Application.AppBase {
             _finalCQConfidence = computeCQConfidence();
             _finalCQTrend = computeCQTrend();
 
-            System.println(
-                "[CADENCE QUALITY] Final CQ frozen at " +
-                cq.format("%d") + "% (" +
-                _finalCQTrend + ", " +
-                _finalCQConfidence + " confidence)"
+            Logger.log("SUMMARY",
+                "Final CQ frozen at " + cq.format("%d") + "% (" +
+                _finalCQTrend + ", " + _finalCQConfidence + " confidence)"
             );
 
             writeDiagnosticLog();
@@ -306,13 +303,9 @@ class GarminApp extends Application.AppBase {
             System.println("[WARN] No duration captured");
             }
 
-            System.println("[SAVE] Duration stored: " + _sessionDuration);
-            System.println("[SAVE] Distance stored: " + _sessionDistance);
-
-           
-           // resetSession();
-
-            System.println("[INFO] Ready for summary view");
+            Logger.log("SUMMARY", "Duration stored: " + _sessionDuration);
+            Logger.log("SUMMARY", "Distance stored: " + _sessionDistance);
+            Logger.log("SUMMARY", "Summary data ready");
         }
 
 
@@ -368,24 +361,28 @@ class GarminApp extends Application.AppBase {
         if (info != null) {
             if (info.timerTime != null) {
                 _sessionDuration = info.timerTime;
-                System.println("[ACTIVITY] Duration: " + (_sessionDuration / 1000).toString() + " seconds");
+            } else {
+                Logger.log("ERROR", "Timer data unavailable for summary");
             }
             
             if (info.elapsedDistance != null) {
                 _sessionDistance = info.elapsedDistance;
-                System.println("[ACTIVITY] Distance: " + (_sessionDistance / 100000.0).format("%.2f") + " km");
+            } else {
+                Logger.log("ERROR", "Distance data unavailable for summary");
             }
             
             if (info.currentHeartRate != null) {
-                // For now, use current heart rate as average (could be enhanced with history tracking)
                 _avgHeartRate = info.currentHeartRate;
                 _peakHeartRate = info.currentHeartRate;
-                System.println("[ACTIVITY] Heart Rate: " + _avgHeartRate.toString() + " bpm");
+            } else {
+                Logger.log("ERROR", "Heart-rate data unavailable");
             }
+        } else {
+            Logger.log("ERROR", "Activity info unavailable for summary capture");
         }
     }
 
-   function updateCadenceBarAvg() as Void {
+    function updateCadenceBarAvg() as Void {
     if (_sessionState != RECORDING) { 
         return;
     }
@@ -393,17 +390,17 @@ class GarminApp extends Application.AppBase {
     var info = Activity.getActivityInfo();
 
     if (info == null) {
-        System.println("[DEBUG] Activity info is null");
+        Logger.log("ERROR", "Activity info unavailable");
         return;
     }
 
    if (info.currentCadence == null) {
-    System.println("[DEBUG] currentCadence is null - using test cadence 100");
+    Logger.log("ERROR", "Cadence sensor data unavailable - using fallback 100");
     updateCadenceHistory(100.0);
     return;
 }
 
-    System.println("[DEBUG] currentCadence = " + info.currentCadence.toString());
+    Logger.log("SENSOR", "Cadence: " + info.currentCadence.toString());
 
     updateCadenceHistory(info.currentCadence.toFloat());
 }
@@ -414,7 +411,7 @@ class GarminApp extends Application.AppBase {
         if (_cadenceCount < MAX_BARS) { _cadenceCount++; }
       
         if (DEBUG_MODE) {
-            System.println("[CADENCE] " + newCadence);
+            Logger.log("GRAPH", "Sample added: " + newCadence);
         }
         else {
             _missingCadenceCount++;
@@ -667,10 +664,11 @@ class GarminApp extends Application.AppBase {
 
         saveSettings();
 
-        System.println("[SETTINGS] Target cadence updated: " + value);
+        Logger.log("SETTINGS", "Target cadence updated: " + value);
     }
     function setVibrationEnabled(enabled as Boolean) as Void {
         _vibrationEnabled = enabled;
+        Logger.log("SETTINGS", "Vibration enabled: " + enabled.toString());
     }
 
     function getSummaryEnabled() as Boolean {
@@ -680,7 +678,7 @@ class GarminApp extends Application.AppBase {
     function setSummaryEnabled(enabled as Boolean) as Void {
         _summaryEnabled = enabled;
         saveSettings();
-        System.println("[SETTINGS] Summary view enabled: " + enabled.toString());
+        Logger.log("SETTINGS", "Summary view enabled: " + enabled.toString());
     }
     
     function getCadenceHistory() as Array<Float?> {
@@ -710,8 +708,9 @@ class GarminApp extends Application.AppBase {
 
     saveSettings();
 
-    System.println("Chart changed to: " + getChartDuration());
-    System.println("Bar count set to: " + _chartDuration.toString());
+    saveSettings();
+
+    Logger.log("SETTINGS", "Chart duration changed to: " + getChartDuration());
 }
     
    function getChartDuration() as String {
