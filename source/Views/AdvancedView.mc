@@ -2,7 +2,6 @@ import Toybox.Graphics;
 import Toybox.WatchUi;
 import Toybox.Activity;
 import Toybox.Lang;
-import Toybox.Timer;
 import Toybox.System;
 import Toybox.Attention;
 import Toybox.Application;
@@ -16,8 +15,6 @@ class AdvancedView extends WatchUi.View {
     const COLOR_TEXT_MUTED = 0x969696;
     const COLOR_CHART_BORDER = 0x969696;
 
-    private var _simulationTimer;
-    
     private var _lastZoneState = 0; 
     private var _alertStartTime = null;
     private var _alertDuration = 180000; // 3 minutes
@@ -29,35 +26,21 @@ class AdvancedView extends WatchUi.View {
     }
 
     function onShow() as Void {
-        if (_simulationTimer == null) {
-            _simulationTimer = new Timer.Timer();
-            _simulationTimer.start(method(:refreshScreen), 1000, true);
-        }
+        var app = Application.getApp() as GarminApp;
+        app.startRefreshTimer(self, "advanced_view", method(:refreshScreen));
         System.println("[AdvancedView] screen opened");
     }
 
     function onHide() as Void {
-// CRITICAL: Stop the timer when switching views
-        if (_simulationTimer != null) {
-            _simulationTimer.stop();
-            _simulationTimer = null;
-        }
+        var app = Application.getApp() as GarminApp;
+        app.stopRefreshTimer(self, "advanced_view");
     }
 
     // THIS IS THE MAIN LOGIC LOOP (Runs every 1 second)
     function refreshScreen() as Void {
-        var info = Activity.getActivityInfo();
-        var app = Application.getApp();
-
-        // 1. Update Chart Data
-        if (info != null && info.currentCadence != null) {
-            app.updateCadenceHistory(info.currentCadence.toFloat());
-        }
-
-        // 2. RUN ALERT LOGIC HERE (So it works even when view is hidden)
+        // Cadence sampling is performed once by GarminApp.handleRefreshTick().
         checkCadenceZone();
 
-        // 3. Request UI Redraw
         WatchUi.requestUpdate();
     }
 

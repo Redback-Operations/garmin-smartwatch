@@ -25,7 +25,14 @@ class GarminApp extends Application.AppBase {
     const PROP_VIBRATION_ENABLED = "vibrationEnabled";
     const PROP_SUMMARY_ENABLED = "summaryEnabled";
 
-    var globalTimer;
+    // A single periodic timer is shared by whichever refreshable view is visible.
+    // Keeping ownership here makes view transitions safe even if onShow/onHide
+    // callbacks are delivered in an unexpected order.
+    private var _refreshTimer = null;
+    private var _refreshOwner = null;
+    private var _refreshOwnerLabel = null;
+    private var _refreshCallback = null;
+    private var _refreshTickCount = 0;
     var activitySession; // Garmin activity recording session
     
     enum SessionState {
@@ -111,8 +118,7 @@ class GarminApp extends Application.AppBase {
         // Load saved settings from persistent storage
         loadSettings();
         
-        globalTimer = new Timer.Timer();
-        globalTimer.start(method(:updateCadenceBarAvg),1000,true);
+        // The visible refreshable view starts the shared timer in onShow().
     }
 
     function onStop(state as Dictionary?) as Void {
@@ -124,13 +130,111 @@ class GarminApp extends Application.AppBase {
             activitySession = null;
         }
         
-        if(globalTimer != null){
-            globalTimer.stop();
-            globalTimer = null;
-        }
+        stopAllRefreshTimers("app-stop");
         
         //Logger.logMemoryStats("Shutdown");
         saveSettings();
+    }
+
+    function startRefreshTimer(owner, ownerLabel, callback) as Void {
+        if (_refreshTimer != null && _refreshOwner == owner) {
+            System.println("[TIMER] START skipped owner=" + ownerLabel + " reason=already-active active=1");
+            return;
+        }
+
+        if (_refreshTimer != null) {
+            System.println("[TIMER] HANDOFF from=" + _refreshOwnerLabel + " to=" + ownerLabel);
+            _refreshTimer.stop();
+            _refreshTimer = null;
+        }
+
+        _refreshOwner = owner;
+        _refreshOwnerLabel = ownerLabel;
+        _refreshCallback = callback;
+        _refreshTickCount = 0;
+        _refreshTimer = new Timer.Timer();
+        _refreshTimer.start(method(:handleRefreshTick), 1000, true);
+        System.println("[TIMER] START owner=" + ownerLabel + " active=1");
+    }
+
+    function startOneShotTimer(owner, ownerLabel, callback, duration) as Void {
+        if (_refreshTimer != null && _refreshOwner == owner) {
+            System.println("[TIMER] START skipped owner=" + ownerLabel + " reason=already-active active=1");
+            return;
+        }
+
+        if (_refreshTimer != null) {
+            System.println("[TIMER] HANDOFF from=" + _refreshOwnerLabel + " to=" + ownerLabel);
+            _refreshTimer.stop();
+            _refreshTimer = null;
+        }
+
+        _refreshOwner = owner;
+        _refreshOwnerLabel = ownerLabel;
+        _refreshCallback = callback;
+        _refreshTickCount = 0;
+        _refreshTimer = new Timer.Timer();
+        _refreshTimer.start(method(:handleOneShotTimer), duration, false);
+        System.println("[TIMER] START owner=" + ownerLabel + " active=1");
+    }
+
+    function stopRefreshTimer(owner, ownerLabel) as Void {
+        // An old view can receive onHide after the new view receives onShow.
+        // Never let that stale callback stop the new owner's timer.
+        if (_refreshOwner != owner) {
+            System.println("[TIMER] STOP skipped owner=" + ownerLabel + " reason=not-owner");
+            return;
+        }
+
+        if (_refreshTimer != null) {
+            _refreshTimer.stop();
+            _refreshTimer = null;
+        }
+
+        _refreshOwner = null;
+        _refreshOwnerLabel = null;
+        _refreshCallback = null;
+        System.println("[TIMER] STOP owner=" + ownerLabel + " active=0");
+    }
+
+    function stopAllRefreshTimers(reason) as Void {
+        if (_refreshTimer != null) {
+            _refreshTimer.stop();
+            _refreshTimer = null;
+        }
+
+        _refreshOwner = null;
+        _refreshOwnerLabel = null;
+        _refreshCallback = null;
+        System.println("[TIMER] STOP ALL reason=" + reason + " active=0");
+    }
+
+    private function handleRefreshTick() as Void {
+        if (_refreshTimer == null || _refreshCallback == null || _refreshOwner == null) {
+            return;
+        }
+
+        _refreshTickCount++;
+        System.println("[TIMER] TICK owner=" + _refreshOwnerLabel + " count=" + _refreshTickCount.toString() + " active=1");
+        updateCadenceBarAvg();
+        _refreshCallback.invoke();
+    }
+
+    private function handleOneShotTimer() as Void {
+        var ownerLabel = _refreshOwnerLabel;
+        var callback = _refreshCallback;
+
+        // A one-shot Timer has completed. Release all references before invoking
+        // UI navigation so the next screen can safely claim the timer slot.
+        _refreshTimer = null;
+        _refreshOwner = null;
+        _refreshOwnerLabel = null;
+        _refreshCallback = null;
+        System.println("[TIMER] COMPLETE owner=" + ownerLabel + " active=0");
+
+        if (callback != null) {
+            callback.invoke();
+        }
     }
 
     function startRecording() as Void {

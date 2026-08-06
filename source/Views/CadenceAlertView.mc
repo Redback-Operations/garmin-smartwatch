@@ -2,35 +2,40 @@ import Toybox.Graphics;
 import Toybox.WatchUi;
 import Toybox.Activity;
 import Toybox.Lang;
-import Toybox.Timer;
 import Toybox.System;
+import Toybox.Application;
 
 class CadenceAlertView extends WatchUi.View {
 
     private var _message as String;
     private var _vibrationEnabled as Boolean;
-    private var _closeTimer as Timer.Timer?;
+    private var _closeTimerActive as Boolean;
 
     function initialize(message as String, vibrationEnabled as Boolean, view as String) {
         View.initialize();
         _message = message;
         _vibrationEnabled = vibrationEnabled;
-        _closeTimer = null;
+        _closeTimerActive = false;
     }
 
     function onShow() as Void {
-        _closeTimer = new Timer.Timer();
-        _closeTimer.start(method(:dismissPopup), 3000, false);
+        if (!_closeTimerActive) {
+            _closeTimerActive = true;
+            var app = Application.getApp() as GarminApp;
+            app.startOneShotTimer(self, "cadence_alert", method(:dismissPopup), 3000);
+        }
     }
 
     function onHide() as Void {
-        if (_closeTimer != null) {
-            _closeTimer.stop();
-            _closeTimer = null;
+        if (_closeTimerActive) {
+            _closeTimerActive = false;
+            var app = Application.getApp() as GarminApp;
+            app.stopRefreshTimer(self, "cadence_alert");
         }
     }
 
     function dismissPopup() as Void {
+        _closeTimerActive = false;
         System.println("[ALERT] Cadence popup dismissed");
         WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
     }

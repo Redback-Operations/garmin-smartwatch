@@ -1,7 +1,6 @@
 import Toybox.Lang;
 import Toybox.WatchUi;
 import Toybox.System;
-import Toybox.Timer;
 
 class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
@@ -11,12 +10,9 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
     // button timing variables
     private var _lastUpReleaseTime = 0;
+    private var _upPressStartTime = 0;
     private var _doubleClickThreshold = 600;
     private var _longPressThreshold = 800;
-    
-    // Timer variables
-    private var _longPressTimer = null;
-    private var _handledLongPress = false;
 
     function initialize() {
         BehaviorDelegate.initialize();
@@ -77,24 +73,11 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         var key = keyEvent.getKey();
 
         if (key == WatchUi.KEY_UP) {
-            // 1. Reset the flag
-            _handledLongPress = false;
-            
-            // 2. Start the stopwatch timer
-            _longPressTimer = new Timer.Timer();
-            _longPressTimer.start(method(:triggerLongPress), _longPressThreshold, false); 
+            _upPressStartTime = getTimeMs();
             return true;
         }
 
         return false;
-    }
-
-    // This function fires instantly while the button is still held down
-    function triggerLongPress() as Void {
-        System.println("[DEBUG] Long press UP detected (Live) -> Settings");
-        _handledLongPress = true; // Tell onKeyReleased to ignore the upcoming release
-        _lastUpReleaseTime = 0;   // Reset double click math
-        pushSettingsView();
     }
 
     function onKeyReleased(keyEvent as WatchUi.KeyEvent) as Boolean {
@@ -103,22 +86,20 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
         //  HANDLE UP BUTTON
         if (key == WatchUi.KEY_UP) {
-            
-            // 1. Cancel the timer! If they let go before the threshold, stop it from firing.
-            if (_longPressTimer != null) {
-                _longPressTimer.stop();
-                _longPressTimer = null;
-            }
+            var pressDuration = currentTime - _upPressStartTime;
 
-            // 2. If the long press already triggered, do NOTHING on release.
-            if (_handledLongPress) {
-                _handledLongPress = false; // Reset for next time
+            // Detect long presses from elapsed time so input handling never
+            // allocates a second Timer.Timer beside the screen refresh timer.
+            if (pressDuration >= _longPressThreshold) {
+                System.println("[DEBUG] Long press UP detected -> Settings");
+                _lastUpReleaseTime = 0;
+                pushSettingsView();
                 return true;
             }
 
             // is a short click after this
 
-            // 3. IS IT A DOUBLE CLICK?
+            // IS IT A DOUBLE CLICK?
             if (_lastUpReleaseTime != 0 && (currentTime - _lastUpReleaseTime) < _doubleClickThreshold) {
                 System.println("[DEBUG] Double click UP detected -> Vibration Toggle");
                 toggleVibration();
@@ -126,7 +107,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
                 return true;
             }
 
-            // 4. IT IS A SINGLE CLICK
+            // IT IS A SINGLE CLICK
             System.println("[DEBUG] Single click UP -> Waiting for double...");
             _lastUpReleaseTime = currentTime;
             return true;
