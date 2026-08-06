@@ -336,7 +336,7 @@ class SaveDiscardMenuDelegate extends WatchUi.Menu2InputDelegate {
 }
 
 class ConfirmationDelegate extends WatchUi.Menu2InputDelegate {
-    
+
     private var _parentDelegate;
 
     function initialize(parentDelegate) {
@@ -344,14 +344,36 @@ class ConfirmationDelegate extends WatchUi.Menu2InputDelegate {
         _parentDelegate = parentDelegate;
     }
 
-    function onSelect(item as WatchUi.MenuItem) as Void {
-        _parentDelegate.setMenuActive(false);
-        WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
-        WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+    // Prevent button navigation from wrapping beyond Done
+    function onWrap(key as WatchUi.Key) as Boolean {
+        System.println("[DEBUG] Navigation blocked at Done");
+        return false;
     }
-    
+
+    // Prevent swiping or pressing DOWN beyond Done
+    function onNextPage() as Boolean {
+        System.println("[DEBUG] Cannot scroll below Done");
+        return true;
+    }
+
+    // Prevent swiping or pressing UP above Done
+    function onPreviousPage() as Boolean {
+        System.println("[DEBUG] Cannot scroll above Done");
+        return true;
+    }
+
+    function onSelect(item as WatchUi.MenuItem) as Void {
+        if (item.getId() == :done) {
+            _parentDelegate.setMenuActive(false);
+
+            WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+            WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+        }
+    }
+
     function onBack() as Void {
         _parentDelegate.setMenuActive(false);
+
         WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
         WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
     }

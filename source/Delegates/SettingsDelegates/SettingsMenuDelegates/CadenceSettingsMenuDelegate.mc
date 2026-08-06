@@ -38,42 +38,31 @@ class CadenceSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
-    // Handles the DOWN button (or swipe up)
-    function onNextPage() {
-    System.println("Down button pressed: Opening Bar Chart Settings");
+    // Handles the DOWN button
+    function onNextPage() as Boolean {
 
-    WatchUi.pushView(
-        new BarChartSettingsMenuView(),
-        new BarChartSettingsMenuDelegate(),
-        WatchUi.SLIDE_UP
-    );
+        System.println("Down button pressed");
 
-    return true;
-}
+        WatchUi.switchToView(
+            new BarChartSettingsMenuView(),
+            new BarChartSettingsMenuDelegate(),
+            WatchUi.SLIDE_UP
+        );
 
-    // Handles the UP button (or swipe down)
-   function onPreviousPage() {
-    System.println("Up button pressed: Opening Reset Settings");
-
-    var resetView = new ResetSettingsView();
-
-    WatchUi.pushView(
-        resetView,
-        new ResetSettingsDelegate(resetView),
-        WatchUi.SLIDE_DOWN
-    );
-
-    return true;
-}
+        return true; 
+    }
 
     // Handles the UP button
     function onPreviousPage() as Boolean {
 
         System.println("Up button pressed");
 
+        var view = new ResetSettingsView();
+        var delegate = new ResetSettingsDelegate(view);
+        
         WatchUi.switchToView(
-            new SummarySettingsMenuView(),
-            new SummarySettingsMenuDelegate(),
+            view,
+            delegate,
             WatchUi.SLIDE_DOWN
         );
 

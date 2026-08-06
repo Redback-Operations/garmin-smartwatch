@@ -10,10 +10,10 @@
     <bitmap id="TickIcon" filename="Tick_Icon.png" />
     <bitmap id="CrossIcon" filename="Cross_Icon.png" />
     <bitmap id="RecIcon" filename="Rec_Icon.png" />
-    <bitmap id="ResetIcon" filename="reset_icon.png" />
-    <bitmap id="CheckMarkIcon" filename="check_mark.png" />
     <bitmap id="BarChartIcon" filename="bar_chart_icon.png"/>
     <bitmap id="SummaryIcon" filename="summary_icon.png"/>
     <bitmap id="SetCadenceIcon" filename="set_cadence_icon.png"/>
     <bitmap id="SettingsIcon" filename="settings_icon.png"/>
+    <bitmap id="ResetIcon" filename="reset_icon.png" />
+    <bitmap id="CheckMarkIcon" filename="check_mark.png" />
 </drawables>

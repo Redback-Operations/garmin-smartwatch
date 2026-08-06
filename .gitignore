@@ -209,10 +209,10 @@ __marimo__/
 # Garmin/Monkey C build artifacts
 external-mir/
 internal-mir/
-# bin/
+bin/
 gen/
-# *.prg
-# *.prg.debug.xml
+*.prg
+*.prg.debug.xml
 
 developer_key
 developer_key.der

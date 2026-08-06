@@ -97,7 +97,12 @@ class ResetSettingsDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onBack() {
-        _view.handleBack();
+        pushSettingsView();
+
         return true;
+    }
+
+    function pushSettingsView() as Void {
+        WatchUi.switchToView(new SettingsView(), new SettingsMenuDelegate(), WatchUi.SLIDE_UP);
     }
 }

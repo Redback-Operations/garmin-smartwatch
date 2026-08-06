@@ -80,10 +80,11 @@ class SimpleView extends WatchUi.View {
     function onUpdate(dc as Dc) as Void {
         updateDisplayStrings();
         checkPendingVibration();
-        drawRecordingIndicator(dc);
         
         View.onUpdate(dc); 
         drawDividers(dc);
+
+        drawRecordingIndicator(dc);
     }
 
     function updateCadenceLogic(info) as Void {
@@ -213,7 +214,34 @@ class SimpleView extends WatchUi.View {
             dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
             dc.fillCircle(dc.getWidth() - 15, 15, 8);
         }
+
+        drawVibrationModeIndicator(dc);
     }
+
+    function drawVibrationModeIndicator(dc as Dc) as Void {
+    var app = Application.getApp();
+    var vibrationOn = app.getVibrationEnabled();
+
+    dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+
+    if (vibrationOn) {
+        dc.drawText(
+            dc.getWidth() / 2,
+            dc.getHeight() - 30,
+            Graphics.FONT_XTINY,
+            "VIB ON",
+            Graphics.TEXT_JUSTIFY_CENTER
+        );
+    } else {
+        dc.drawText(
+            dc.getWidth() / 2,
+            dc.getHeight() - 30,
+            Graphics.FONT_XTINY,
+            "VIB OFF",
+            Graphics.TEXT_JUSTIFY_CENTER
+        );
+    }
+}
 
     function drawDividers(dc as Dc) as Void {
         var w = dc.getWidth();
