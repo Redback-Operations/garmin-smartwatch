@@ -47,18 +47,22 @@ class SimpleView extends WatchUi.View {
     }
 
     function onShow() as Void {
+        Logger.log("SCREEN", "SimpleView opened");
         // Start the logic loop and keep it alive across views
         if (_refreshTimer == null) {
             _refreshTimer = new Timer.Timer();
             _refreshTimer.start(method(:refreshScreen), 1000, true);
+            Logger.log("TIMER", "SimpleView refresh timer started");
         }
     }
 
     function onHide() as Void {
+        Logger.log("SCREEN", "SimpleView closed");
 // CRITICAL: Stop the timer to prevent "Timer Limit" crashes
         if (_refreshTimer != null) {
             _refreshTimer.stop();
             _refreshTimer = null;
+            Logger.log("TIMER", "SimpleView refresh timer stopped");
         }
     }
 
@@ -132,8 +136,13 @@ class SimpleView extends WatchUi.View {
             );
 
             if (isVibrationOn) {
-                if (_lastZoneState == -1) { triggerSingleVibration(); }
-                else { triggerDoubleVibration(); }
+                if (_lastZoneState == -1) {
+                    Logger.log("VIBRATION", "Low cadence alert");
+                    triggerSingleVibration();
+                } else {
+                    Logger.log("VIBRATION", "High cadence alert");
+                    triggerDoubleVibration();
+                }
             }
         }
     }

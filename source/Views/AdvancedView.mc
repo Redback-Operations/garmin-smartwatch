@@ -29,18 +29,21 @@ class AdvancedView extends WatchUi.View {
     }
 
     function onShow() as Void {
+        Logger.log("SCREEN", "AdvancedView opened");
         if (_simulationTimer == null) {
             _simulationTimer = new Timer.Timer();
             _simulationTimer.start(method(:refreshScreen), 1000, true);
+            Logger.log("TIMER", "AdvancedView refresh timer started");
         }
-        System.println("[AdvancedView] screen opened");
     }
 
     function onHide() as Void {
+        Logger.log("SCREEN", "AdvancedView closed");
 // CRITICAL: Stop the timer when switching views
         if (_simulationTimer != null) {
             _simulationTimer.stop();
             _simulationTimer = null;
+            Logger.log("TIMER", "AdvancedView refresh timer stopped");
         }
     }
 
@@ -131,6 +134,7 @@ class AdvancedView extends WatchUi.View {
             );
 
             if (isVibrationOn) {
+                Logger.log("VIBRATION", "Low cadence alert");
                 triggerSingleVibration();
             }
         }
