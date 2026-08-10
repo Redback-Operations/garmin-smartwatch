@@ -23,7 +23,8 @@ class SimpleView extends WatchUi.View {
     private var _alertDuration = 180000; // 3 minutes
     private var _alertInterval = 30000; // 30 seconds
     private var _lastAlertTime = 0;
-    
+    private var _cadenceDataStale = true;
+
     private var _pendingSecondVibe = false;
     private var _secondVibeTime = 0;
 
@@ -88,11 +89,14 @@ class SimpleView extends WatchUi.View {
     }
 
     function updateCadenceLogic(info) as Void {
-        if (info == null || info.currentCadence == null) {
+        if (!Application.getApp().hasCurrentCadence(info)) {
             // No reliable cadence reading this tick - leave the current
-            // zone/alert state alone instead of guessing "in zone".
+            // zone/alert state alone instead of guessing "in zone", and
+            // pause active alerts below until we know it's still valid.
+            _cadenceDataStale = true;
             return;
         }
+        _cadenceDataStale = false;
 
         var minZone = Application.getApp().getCalculatedMinCadence();
         var maxZone = Application.getApp().getCalculatedMaxCadence();
@@ -115,7 +119,10 @@ class SimpleView extends WatchUi.View {
 
     function checkAndTriggerAlerts() as Void {
         if (_alertStartTime == null) { return; }
-        
+        // Don't fire (or keep firing) an alert while we don't have a current
+        // reading to confirm the runner is still out of zone.
+        if (_cadenceDataStale) { return; }
+
         var currentTime = System.getTimer();
         if (currentTime - _alertStartTime >= _alertDuration) {
             _alertStartTime = null;

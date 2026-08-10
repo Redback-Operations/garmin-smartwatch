@@ -78,7 +78,11 @@ class GarminApp extends Application.AppBase {
     private var _cadenceCount = 0;
 
     private var _finalCQ = null;
+    // _missingCadenceCount / _totalCadenceTicks are NOT capped at MAX_BARS like
+    // _cadenceCount is (that cap only reflects ring-buffer fill level) - they track
+    // the whole session so the missing-sample ratio stays meaningful past ~4.7 minutes.
     private var _missingCadenceCount = 0;
+    private var _totalCadenceTicks = 0;
     private var _finalCQConfidence = null;
     private var _finalCQTrend = null;
     private var _cqHistory as Array<Number> = [];
@@ -108,7 +112,7 @@ class GarminApp extends Application.AppBase {
         loadSettings();
         
         globalTimer = new Timer.Timer();
-        globalTimer.start(method(:updateCadenceBarAvg),1000,true);
+        globalTimer.start(method(:pollCadence),1000,true);
     }
 
     function onStop(state as Dictionary?) as Void {
@@ -155,6 +159,7 @@ class GarminApp extends Application.AppBase {
         _cadenceCount = 0;
         _cadenceIndex = 0;
         _missingCadenceCount = 0;
+        _totalCadenceTicks = 0;
         //_sessionStartTime = System.getTimer();
         _sessionPausedTime = 0;
         _lastPauseTime = null;
@@ -265,6 +270,8 @@ class GarminApp extends Application.AppBase {
         _cadenceHistory = new [MAX_BARS];
         _cadenceIndex = 0;
         _cadenceCount = 0;
+        _missingCadenceCount = 0;
+        _totalCadenceTicks = 0;
 
         saveSettings();
 
@@ -333,6 +340,7 @@ class GarminApp extends Application.AppBase {
         _cadenceCount = 0;
         _cadenceIndex = 0;
         _missingCadenceCount = 0;
+        _totalCadenceTicks = 0;
         //_sessionStartTime = null;
         _sessionPausedTime = 0;
         _lastPauseTime = null;
@@ -367,7 +375,7 @@ class GarminApp extends Application.AppBase {
         }
     }
 
-   function updateCadenceBarAvg() as Void {
+   function pollCadence() as Void {
     if (_sessionState != RECORDING) {
         return;
     }
@@ -379,7 +387,7 @@ class GarminApp extends Application.AppBase {
         return;
     }
 
-   if (info.currentCadence == null) {
+   if (!hasCurrentCadence(info)) {
     if (DEBUG_MODE) {
         System.println("[DEBUG] currentCadence is null - recording missing sample");
     }
@@ -394,12 +402,18 @@ class GarminApp extends Application.AppBase {
     recordCadenceSample(info.currentCadence.toFloat());
 }
 
+    // Shared with SimpleView so both agree on what counts as a usable cadence reading.
+    function hasCurrentCadence(info) as Boolean {
+        return info != null && info.currentCadence != null;
+    }
+
     // sample is null when the sensor failed to report a cadence for this tick;
     // it's still recorded (as a gap) so ring-buffer timing stays aligned with elapsed time.
     function recordCadenceSample(sample as Float?) as Void {
         _cadenceHistory[_cadenceIndex] = sample;
         _cadenceIndex = (_cadenceIndex + 1) % MAX_BARS;
         if (_cadenceCount < MAX_BARS) { _cadenceCount++; }
+        _totalCadenceTicks++;
 
         if (sample == null) {
             _missingCadenceCount++;
@@ -548,9 +562,9 @@ class GarminApp extends Application.AppBase {
             return "Low";
         }
 
-        // _cadenceCount already includes missing samples (it counts every timer tick),
-        // so it's the total, not a separate valid-only count.
-        var missingRatio = _missingCadenceCount.toFloat() / _cadenceCount.toFloat();
+        // _totalCadenceTicks (unlike _cadenceCount) isn't capped at MAX_BARS, so the
+        // ratio stays correct on sessions longer than ~4.7 minutes.
+        var missingRatio = _missingCadenceCount.toFloat() / _totalCadenceTicks.toFloat();
 
         if (missingRatio > 0.2) {
             return "Low";
@@ -591,12 +605,12 @@ class GarminApp extends Application.AppBase {
             (_finalCQConfidence != null ? _finalCQConfidence : "N/A"));
         System.println("CQ Trend: " +
             (_finalCQTrend != null ? _finalCQTrend : "N/A"));
-        System.println("Total cadence ticks: " + _cadenceCount.toString());
+        System.println("Total cadence ticks: " + _totalCadenceTicks.toString());
         System.println("Missing cadence samples: " + _missingCadenceCount.toString());
 
-        if (_cadenceCount > 0) {
-            var validSamples = _cadenceCount - _missingCadenceCount;
-            var validRatio = (validSamples.toFloat() / _cadenceCount.toFloat()) * 100;
+        if (_totalCadenceTicks > 0) {
+            var validSamples = _totalCadenceTicks - _missingCadenceCount;
+            var validRatio = (validSamples.toFloat() / _totalCadenceTicks.toFloat()) * 100;
             System.println("Valid data ratio: " + validRatio.format("%d") + "%");
         }
 
@@ -687,6 +701,8 @@ class GarminApp extends Application.AppBase {
     _cadenceHistory = new [MAX_BARS];
     _cadenceIndex = 0;
     _cadenceCount = 0;
+    _missingCadenceCount = 0;
+    _totalCadenceTicks = 0;
 
     saveSettings();
 
