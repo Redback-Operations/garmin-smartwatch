@@ -88,15 +88,19 @@ class SimpleView extends WatchUi.View {
     }
 
     function updateCadenceLogic(info) as Void {
+        if (info == null || info.currentCadence == null) {
+            // No reliable cadence reading this tick - leave the current
+            // zone/alert state alone instead of guessing "in zone".
+            return;
+        }
+
         var minZone = Application.getApp().getCalculatedMinCadence();
         var maxZone = Application.getApp().getCalculatedMaxCadence();
-        
+
+        var c = info.currentCadence;
         var newZoneState = 0;
-        if (info != null && info.currentCadence != null) {
-            var c = info.currentCadence;
-            if (c < minZone) { newZoneState = -1; }
-            else if (c > maxZone) { newZoneState = 1; }
-        }
+        if (c < minZone) { newZoneState = -1; }
+        else if (c > maxZone) { newZoneState = 1; }
 
         if (newZoneState != _lastZoneState) {
             if (newZoneState != 0) {

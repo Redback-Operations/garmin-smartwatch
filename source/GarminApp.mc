@@ -76,11 +76,7 @@ class GarminApp extends Application.AppBase {
     private var _cadenceHistory as Array<Float?> = new [MAX_BARS];
     private var _cadenceIndex = 0;
     private var _cadenceCount = 0;
-     
-    private var _cadenceBarAvg as Array<Float?> = new [_chartDuration];
-    private var _cadenceAvgIndex = 0;
-    private var _cadenceAvgCount = 0;
-  
+
     private var _finalCQ = null;
     private var _missingCadenceCount = 0;
     private var _finalCQConfidence = null;
@@ -158,18 +154,13 @@ class GarminApp extends Application.AppBase {
         _cqHistory = [];
         _cadenceCount = 0;
         _cadenceIndex = 0;
-        _cadenceAvgCount = 0;
-        _cadenceAvgIndex = 0;
         _missingCadenceCount = 0;
         //_sessionStartTime = System.getTimer();
         _sessionPausedTime = 0;
         _lastPauseTime = null;
-        
+
         for (var i = 0; i < MAX_BARS; i++) {
             _cadenceHistory[i] = null;
-        }
-        for (var i = 0; i < _chartDuration; i++) {
-            _cadenceBarAvg[i] = null;
         }
 
         _sessionState = RECORDING;
@@ -271,10 +262,6 @@ class GarminApp extends Application.AppBase {
 
         _vibrationEnabled = true;
 
-        _cadenceBarAvg = new [_chartDuration];
-        _cadenceAvgIndex = 0;
-        _cadenceAvgCount = 0;
-
         _cadenceHistory = new [MAX_BARS];
         _cadenceIndex = 0;
         _cadenceCount = 0;
@@ -345,20 +332,15 @@ class GarminApp extends Application.AppBase {
         _cqHistory = [];
         _cadenceCount = 0;
         _cadenceIndex = 0;
-        _cadenceAvgCount = 0;
-        _cadenceAvgIndex = 0;
         _missingCadenceCount = 0;
         //_sessionStartTime = null;
         _sessionPausedTime = 0;
         _lastPauseTime = null;
         _sessionDuration = null;
         _sessionDistance = null;
-        
+
         for (var i = 0; i < MAX_BARS; i++) {
             _cadenceHistory[i] = null;
-        }
-        for (var i = 0; i < _chartDuration; i++) {
-            _cadenceBarAvg[i] = null;
         }
     }
 
@@ -386,7 +368,7 @@ class GarminApp extends Application.AppBase {
     }
 
    function updateCadenceBarAvg() as Void {
-    if (_sessionState != RECORDING) { 
+    if (_sessionState != RECORDING) {
         return;
     }
 
@@ -398,25 +380,28 @@ class GarminApp extends Application.AppBase {
     }
 
    if (info.currentCadence == null) {
-    System.println("[DEBUG] currentCadence is null - using test cadence 100");
-    updateCadenceHistory(100.0);
+    if (DEBUG_MODE) {
+        System.println("[DEBUG] currentCadence is null - recording missing sample");
+    }
+    recordCadenceSample(null);
     return;
 }
 
-    System.println("[DEBUG] currentCadence = " + info.currentCadence.toString());
+    if (DEBUG_MODE) {
+        System.println("[DEBUG] currentCadence = " + info.currentCadence.toString());
+    }
 
-    updateCadenceHistory(info.currentCadence.toFloat());
+    recordCadenceSample(info.currentCadence.toFloat());
 }
 
-    function updateCadenceHistory(newCadence as Float) as Void {
-        _cadenceHistory[_cadenceIndex] = newCadence;
+    // sample is null when the sensor failed to report a cadence for this tick;
+    // it's still recorded (as a gap) so ring-buffer timing stays aligned with elapsed time.
+    function recordCadenceSample(sample as Float?) as Void {
+        _cadenceHistory[_cadenceIndex] = sample;
         _cadenceIndex = (_cadenceIndex + 1) % MAX_BARS;
         if (_cadenceCount < MAX_BARS) { _cadenceCount++; }
-      
-        if (DEBUG_MODE) {
-            System.println("[CADENCE] " + newCadence);
-        }
-        else {
+
+        if (sample == null) {
             _missingCadenceCount++;
         }
 
@@ -563,8 +548,9 @@ class GarminApp extends Application.AppBase {
             return "Low";
         }
 
-        var missingRatio = _missingCadenceCount.toFloat() /
-                        (_cadenceCount + _missingCadenceCount).toFloat();
+        // _cadenceCount already includes missing samples (it counts every timer tick),
+        // so it's the total, not a separate valid-only count.
+        var missingRatio = _missingCadenceCount.toFloat() / _cadenceCount.toFloat();
 
         if (missingRatio > 0.2) {
             return "Low";
@@ -605,13 +591,12 @@ class GarminApp extends Application.AppBase {
             (_finalCQConfidence != null ? _finalCQConfidence : "N/A"));
         System.println("CQ Trend: " +
             (_finalCQTrend != null ? _finalCQTrend : "N/A"));
-        System.println("Cadence samples collected: " + _cadenceCount.toString());
+        System.println("Total cadence ticks: " + _cadenceCount.toString());
         System.println("Missing cadence samples: " + _missingCadenceCount.toString());
 
-        var totalSamples = _cadenceCount + _missingCadenceCount;
-        if (totalSamples > 0) {
-            var validRatio =
-                (_cadenceCount.toFloat() / totalSamples.toFloat()) * 100;
+        if (_cadenceCount > 0) {
+            var validSamples = _cadenceCount - _missingCadenceCount;
+            var validRatio = (validSamples.toFloat() / _cadenceCount.toFloat()) * 100;
             System.println("Valid data ratio: " + validRatio.format("%d") + "%");
         }
 
@@ -697,11 +682,6 @@ class GarminApp extends Application.AppBase {
 
  function setChartDuration(value as Number) as Void {
     _chartDuration = value;
-
-    // reset averaging buffer
-    _cadenceBarAvg = new [_chartDuration];
-    _cadenceAvgIndex = 0;
-    _cadenceAvgCount = 0;
 
     // reset visible chart history too
     _cadenceHistory = new [MAX_BARS];
@@ -848,10 +828,6 @@ if (val != null) {
         _chartDuration = val;
     }
 }
-
-    _cadenceBarAvg = new [_chartDuration];
-    _cadenceAvgIndex = 0;
-    _cadenceAvgCount = 0;
 
     System.println(
     "[CADENCE] Target: " +
