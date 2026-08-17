@@ -2,7 +2,6 @@ import Toybox.Graphics;
 import Toybox.WatchUi;
 import Toybox.Activity;
 import Toybox.Lang;
-import Toybox.Timer;
 import Toybox.System;
 import Toybox.Attention;
 
@@ -16,8 +15,7 @@ class SimpleView extends WatchUi.View {
     private var _timeDisplay;
     private var _paceDisplay;
     
-    // Logic & Timer Variables
-    private var _refreshTimer;
+    // Logic state updated by the app's single shared refresh timer.
     private var _lastZoneState = 0; 
     private var _alertStartTime = null;
     private var _alertDuration = 180000; // 3 minutes
@@ -47,19 +45,13 @@ class SimpleView extends WatchUi.View {
     }
 
     function onShow() as Void {
-        // Start the logic loop and keep it alive across views
-        if (_refreshTimer == null) {
-            _refreshTimer = new Timer.Timer();
-            _refreshTimer.start(method(:refreshScreen), 1000, true);
-        }
+        var app = Application.getApp() as GarminApp;
+        app.startRefreshTimer(self, "simple_view", method(:refreshScreen));
     }
 
     function onHide() as Void {
-// CRITICAL: Stop the timer to prevent "Timer Limit" crashes
-        if (_refreshTimer != null) {
-            _refreshTimer.stop();
-            _refreshTimer = null;
-        }
+        var app = Application.getApp() as GarminApp;
+        app.stopRefreshTimer(self, "simple_view");
     }
 
     // --- Logic Loop (The "Heartbeat") ---

@@ -175,11 +175,10 @@ Validating the **runtime stability, timer accuracy, and application lifecycle be
 
 ### Timer Accuracy (1-Second Tick Validation)
 
-Cadence sampling is driven by a repeating timer configured to execute at a strict **1-second interval**, ensuring predictable data collection and UI updates.
+Cadence sampling is driven by a single owner-aware repeating timer configured to execute at a strict **1-second interval**, ensuring predictable data collection and UI updates without duplicate timers during navigation.
 
 //monkeyc
-globalTimer = new Timer.Timer();
-globalTimer.start(method(:updateCadenceBarAvg), 1000, true);
+app.startRefreshTimer(self, "simple_view", method(:refreshScreen));
 
 Evidence:
 Simulator terminal logs showing repeated [TIMER] Tick messages at 1-second intervals.

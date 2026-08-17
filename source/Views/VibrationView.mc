@@ -1,31 +1,37 @@
 import Toybox.WatchUi;
 import Toybox.Graphics;
 import Toybox.System;
-import Toybox.Timer;
+import Toybox.Application;
 
 class VibrationView extends WatchUi.View {
 
     private var _enabled;
-    private var _closeTimer;
+    private var _closeTimerActive;
 
     function initialize(enabled) {
         View.initialize();
         _enabled = enabled;
+        _closeTimerActive = false;
     }
 
     function onShow() as Void {
-        _closeTimer = new Timer.Timer();
-        _closeTimer.start(method(:closeMessage), 1200, false); // 1.2 seconds
+        if (!_closeTimerActive) {
+            _closeTimerActive = true;
+            var app = Application.getApp() as GarminApp;
+            app.startOneShotTimer(self, "vibration_message", method(:closeMessage), 1200);
+        }
     }
 
     function onHide() as Void {
-        if (_closeTimer != null) {
-            _closeTimer.stop();
-            _closeTimer = null;
+        if (_closeTimerActive) {
+            _closeTimerActive = false;
+            var app = Application.getApp() as GarminApp;
+            app.stopRefreshTimer(self, "vibration_message");
         }
     }
 
     function closeMessage() as Void {
+        _closeTimerActive = false;
         WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
 
     }
