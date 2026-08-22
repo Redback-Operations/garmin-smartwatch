@@ -165,6 +165,11 @@ class GarminApp extends Application.AppBase {
         //_sessionStartTime = System.getTimer();
         _sessionPausedTime = 0;
         _lastPauseTime = null;
+        _sessionDuration = null;
+        _sessionDistance = null;
+        _avgHeartRate = null;
+        _peakHeartRate = null;
+        _linkedTemperature = "--";
         
         for (var i = 0; i < MAX_BARS; i++) {
             _cadenceHistory[i] = null;
@@ -316,19 +321,36 @@ class GarminApp extends Application.AppBase {
     // // resetSession();
     // }
 
-        function saveSession() as Void {
+        function saveSession() as Boolean {
 
             if (_sessionState != STOPPED) {
                 System.println("[INFO] Cannot save - session not stopped");
-                return;
+                return false;
             }
 
             System.println("[INFO] Saving activity session");
-            
-            if (activitySession != null) {
-                activitySession.save();
-                activitySession = null;
+
+            if (activitySession == null) {
+                System.println("[ERROR] Cannot save - activity session is missing");
+                return false;
             }
+
+            // A failed save does not close the Garmin recording session. Keep the
+            // reference and the Save/Discard screen so the user can retry or discard.
+            var saved = false;
+            try {
+                saved = activitySession.save();
+            } catch (ex) {
+                System.println("[ERROR] Activity save exception: " + ex.getErrorMessage());
+                return false;
+            }
+
+            if (!saved) {
+                System.println("[ERROR] Garmin rejected the activity save");
+                return false;
+            }
+
+            activitySession = null;
 
             // // STORE DATA
             // if (_sessionStartTime != null) {
@@ -345,6 +367,7 @@ class GarminApp extends Application.AppBase {
            // resetSession();
 
             System.println("[INFO] Ready for summary view");
+            return true;
         }
 
 
@@ -385,6 +408,9 @@ class GarminApp extends Application.AppBase {
         _lastPauseTime = null;
         _sessionDuration = null;
         _sessionDistance = null;
+        _avgHeartRate = null;
+        _peakHeartRate = null;
+        _linkedTemperature = "--";
         
         for (var i = 0; i < MAX_BARS; i++) {
             _cadenceHistory[i] = null;
@@ -1008,7 +1034,14 @@ if (val != null) {
     }
 
     function hasValidSummaryData() as Boolean {
-        return Activity.getActivityInfo() != null;
+        // Activity.getActivityInfo() describes the current activity. Garmin resets
+        // that state when the recording is saved, so validate the values captured
+        // in stopRecording() instead.
+        return _sessionDuration != null ||
+               _sessionDistance != null ||
+               _avgHeartRate != null ||
+               _cadenceCount > 0 ||
+               _finalCQ != null;
     }
 
    function getfinalQC() as String {
@@ -1025,7 +1058,7 @@ if (val != null) {
     }
 
     var totalSeconds = _sessionDuration / 1000.0;
-    var distanceKm = _sessionDistance / 100000.0;
+    var distanceKm = _sessionDistance / 1000.0;
 
     if (distanceKm <= 0) {
         return "--";

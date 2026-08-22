@@ -292,8 +292,13 @@ class SaveDiscardMenuDelegate extends WatchUi.Menu2InputDelegate {
         System.println("[DEBUG] Save/Discard selected: " + id);
 
         if (id == :save_session) {
-             app.saveSession();
-             System.println("[UI] Activity saved");
+            if (!app.saveSession()) {
+                System.println("[UI] Activity was not saved; staying on Save/Discard screen");
+                WatchUi.requestUpdate();
+                return;
+            }
+
+            System.println("[UI] Activity saved");
             _parentDelegate.setMenuActive(false);
 
             if (app.getSummaryEnabled()) {
