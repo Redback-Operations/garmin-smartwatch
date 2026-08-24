@@ -32,28 +32,6 @@ class ResetSettingsDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
-    // Physical key support for simulator/device
-    function onKey(keyEvent) {
-        var key = keyEvent.getKey();
-
-        if (key == WatchUi.KEY_UP) {
-            handleUp();
-            return true;
-        }
-
-        if (key == WatchUi.KEY_DOWN) {
-            handleDown();
-            return true;
-        }
-
-        if (key == WatchUi.KEY_ENTER || key == WatchUi.KEY_START || key == WatchUi.KEY_MENU) {
-            _view.selectCurrentOption();
-            return true;
-        }
-
-        return false;
-    }
-
     function handleUp() {
         // Confirmation screen: UP selects YES
         if (_view.isConfirmScreen()) {
@@ -63,14 +41,7 @@ class ResetSettingsDelegate extends WatchUi.BehaviorDelegate {
 
         // First Reset screen: UP goes back to Summary Settings
         if (_view.isOpenScreen()) {
-            System.println("UP pressed from Reset: Summary Settings");
-
-            WatchUi.pushView(
-                new SummarySettingsMenuView(),
-                new SummarySettingsMenuDelegate(),
-                WatchUi.SLIDE_DOWN
-            );
-
+            ScreenNavigation.showPreviousSettingsPage(ScreenNavigation.SETTINGS_RESET);
             return;
         }
     }
@@ -82,16 +53,9 @@ class ResetSettingsDelegate extends WatchUi.BehaviorDelegate {
             return;
         }
 
-        // First Reset screen: DOWN goes to Cadence Settings
+        // First Reset screen: DOWN wraps to the Settings page.
         if (_view.isOpenScreen()) {
-            System.println("DOWN pressed from Reset: Cadence Settings");
-
-            WatchUi.pushView(
-                new CadenceSettingsMenuView(),
-                new CadenceSettingsMenuDelegate(),
-                WatchUi.SLIDE_UP
-            );
-
+            ScreenNavigation.showNextSettingsPage(ScreenNavigation.SETTINGS_RESET);
             return;
         }
     }

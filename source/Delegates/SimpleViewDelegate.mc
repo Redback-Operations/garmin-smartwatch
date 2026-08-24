@@ -4,15 +4,8 @@ import Toybox.System;
 
 class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
-    private var _currentView = null;
     private var _initTime = null;
     private var _menuActive = false;
-
-    // button timing variables
-    private var _lastUpReleaseTime = 0;
-    private var _upPressStartTime = 0;
-    private var _doubleClickThreshold = 600;
-    private var _longPressThreshold = 800;
 
     function initialize() {
         BehaviorDelegate.initialize();
@@ -24,8 +17,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onMenu() as Boolean {
-        // Full Reset of button states to prevent bugs if they open the menu
-        _lastUpReleaseTime = 0;
+        pushSettingsView();
         return true;
     }
 
@@ -69,91 +61,21 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
-    function onKeyPressed(keyEvent as WatchUi.KeyEvent) as Boolean {
-        var key = keyEvent.getKey();
-
-        if (key == WatchUi.KEY_UP) {
-            _upPressStartTime = getTimeMs();
-            return true;
-        }
-
-        return false;
+    function onNextPage() as Boolean {
+        ScreenNavigation.showAdvanced(ScreenNavigation.HOME_SIMPLE, true);
+        return true;
     }
 
-    function onKeyReleased(keyEvent as WatchUi.KeyEvent) as Boolean {
-        var key = keyEvent.getKey();
-        var currentTime = getTimeMs();
-
-        //  HANDLE UP BUTTON
-        if (key == WatchUi.KEY_UP) {
-            var pressDuration = currentTime - _upPressStartTime;
-
-            // Detect long presses from elapsed time so input handling never
-            // allocates a second Timer.Timer beside the screen refresh timer.
-            if (pressDuration >= _longPressThreshold) {
-                System.println("[DEBUG] Long press UP detected -> Settings");
-                _lastUpReleaseTime = 0;
-                pushSettingsView();
-                return true;
-            }
-
-            // is a short click after this
-
-            // IS IT A DOUBLE CLICK?
-            if (_lastUpReleaseTime != 0 && (currentTime - _lastUpReleaseTime) < _doubleClickThreshold) {
-                System.println("[DEBUG] Double click UP detected -> Vibration Toggle");
-                toggleVibration();
-                _lastUpReleaseTime = 0; 
-                return true;
-            }
-
-            // IT IS A SINGLE CLICK
-            System.println("[DEBUG] Single click UP -> Waiting for double...");
-            _lastUpReleaseTime = currentTime;
-            return true;
-        }
-
-        //  HANDLE DOWN BUTTON
-        if (key == WatchUi.KEY_DOWN) {
-            _currentView = new AdvancedView();
-            WatchUi.pushView(
-                _currentView,
-                new AdvancedViewDelegate(_currentView),
-                WatchUi.SLIDE_DOWN
-            );
-            return true;
-        }
-
-        return false;
-    }
-
-    function toggleVibration() as Void {
-        var app = getApp();
-        
-        var enabled = app.getVibrationEnabled();
-        var newEnabled = !enabled;
-        app.setVibrationEnabled(newEnabled);
-
-        var statusText = newEnabled ? "Vibration ON" : "Vibration OFF";
-        System.println("[UI] " + statusText);
-
-        WatchUi.pushView(
-            new VibrationView(newEnabled), 
-            new WatchUi.BehaviorDelegate(), 
-            WatchUi.SLIDE_UP 
-        );
+    function onPreviousPage() as Boolean {
+        ScreenNavigation.showAdvanced(ScreenNavigation.HOME_SIMPLE, false);
+        return true;
     }
 
     function onSwipe(event as WatchUi.SwipeEvent) as Boolean {
         var direction = event.getDirection();
 
-        if (direction == WatchUi.SWIPE_UP) {
-            _currentView = new AdvancedView();
-            WatchUi.pushView(
-                _currentView,
-                new AdvancedViewDelegate(_currentView),
-                WatchUi.SLIDE_DOWN
-            );
+        if (direction == WatchUi.SWIPE_LEFT) {
+            pushSettingsView();
             return true;
         }
         return false;
