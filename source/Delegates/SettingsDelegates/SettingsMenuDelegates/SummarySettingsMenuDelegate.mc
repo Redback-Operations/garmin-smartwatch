@@ -33,22 +33,13 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
 
     // Handles the DOWN button (or swipe up)
     function onNextPage() as Boolean {
-        System.println("Down button pressed");
-        var view = new ResetSettingsView();
-        var delegate = new ResetSettingsDelegate(view);
-        // Push the cadence settings view
-        WatchUi.switchToView(view, delegate, WatchUi.SLIDE_UP);
-        
+        ScreenNavigation.showNextSettingsPage(ScreenNavigation.SETTINGS_SUMMARY);
         return true; 
     }
 
     // Handles the UP button (or swipe down)
     function onPreviousPage() as Boolean {
-        System.println("Up button pressed");
-        
-        // Push the profile settings view
-        WatchUi.switchToView(new BarChartSettingsMenuView(), new BarChartSettingsMenuDelegate(), WatchUi.SLIDE_DOWN);
-        
+        ScreenNavigation.showPreviousSettingsPage(ScreenNavigation.SETTINGS_SUMMARY);
         return true; 
     }
 

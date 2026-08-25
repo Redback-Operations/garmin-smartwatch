@@ -1760,9 +1760,11 @@ This frozen CQ score:
 
 ```mermaid
 graph TD
-    A[SimpleView] -->|Swipe Up / Press Down| B[AdvancedView]
-    B -->|Swipe Down / Press Up| A
-    A -->|Swipe Left / Press Up| C[Settings]
+    A[SimpleView or TimeView] -->|DOWN / Swipe Up| B[AdvancedView]
+    B -->|DOWN / Swipe Up wraps| A
+    A -->|UP / Swipe Down wraps| B
+    B -->|UP / Swipe Down| A
+    A -->|Swipe Left / Menu| C[Settings]
     B -->|Swipe Left| C
     C -->|Back| A
     A -->|Press Select| D{Activity State?}
@@ -1775,10 +1777,20 @@ graph TD
 **Button Mapping**:
 
 - **SELECT**: Start/Stop activity or open control menu
-- **UP**: Navigate to settings or previous view
-- **DOWN**: Navigate to next view
+- **UP / Swipe Down**: Navigate to the previous page and wrap at the start
+- **DOWN / Swipe Up**: Navigate to the next page and wrap at the end
 - **BACK**: Exit menus (disabled during active session)
 - **MENU**: Open cadence zone settings
+
+**Settings Page Loop**:
+
+```text
+Settings → Set Cadence → Bar Chart → Summary → Reset → Settings
+```
+
+DOWN and swipe UP move forward through this loop. UP and swipe DOWN move
+backward. Page changes replace the active view so continuous cycling does not
+grow the view stack.
 
 ### Activity Control Menus
 

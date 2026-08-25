@@ -13,24 +13,21 @@ class TimeViewDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
-    // Down button to scroll to AdvancedView
-    function onKey(keyEvent as WatchUi.KeyEvent) as Boolean {
-        var key = keyEvent.getKey();
+    function onNextPage() as Boolean {
+        ScreenNavigation.showAdvanced(ScreenNavigation.HOME_TIME, true);
+        return true;
+    }
 
-        if (key == WatchUi.KEY_DOWN) {
-            var advancedView = new AdvancedView();
-            WatchUi.switchToView(
-                advancedView,
-                new AdvancedViewDelegate(advancedView),
-                WatchUi.SLIDE_DOWN
-            );
+    function onPreviousPage() as Boolean {
+        ScreenNavigation.showAdvanced(ScreenNavigation.HOME_TIME, false);
+        return true;
+    }
+
+    function onSwipe(event as WatchUi.SwipeEvent) as Boolean {
+        if (event.getDirection() == WatchUi.SWIPE_LEFT) {
+            pushSettingsView();
             return true;
         }
-
-        if (key == WatchUi.KEY_UP) {
-            return true;
-        }
-
         return false;
     }
 
@@ -38,17 +35,11 @@ class TimeViewDelegate extends WatchUi.BehaviorDelegate {
     function onBack() as Boolean {
         return true;
     }
-}
-
-function pushSettingsView() as Void {
-    var settingsView = new SettingsView();
-    var settingsDelegate = new SettingsDelegate();
-    WatchUi.pushView(settingsView, settingsDelegate, WatchUi.SLIDE_LEFT);
-}
-
-
-class SettingsDelegate extends WatchUi.BehaviorDelegate {
-    function initialize() {
-        BehaviorDelegate.initialize();
+    function pushSettingsView() as Void {
+        WatchUi.switchToView(
+            new SettingsView(),
+            new SettingsMenuDelegate(),
+            WatchUi.SLIDE_LEFT
+        );
     }
 }
