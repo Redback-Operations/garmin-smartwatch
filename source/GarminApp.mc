@@ -25,7 +25,14 @@ class GarminApp extends Application.AppBase {
     const PROP_VIBRATION_ENABLED = "vibrationEnabled";
     const PROP_SUMMARY_ENABLED = "summaryEnabled";
 
-    var globalTimer;
+    // A single periodic timer is shared by whichever refreshable view is visible.
+    // Keeping ownership here makes view transitions safe even if onShow/onHide
+    // callbacks are delivered in an unexpected order.
+    private var _refreshTimer = null;
+    private var _refreshOwner = null;
+    private var _refreshOwnerLabel = null;
+    private var _refreshCallback = null;
+    private var _refreshTickCount = 0;
     var activitySession; // Garmin activity recording session
     
     enum SessionState {
@@ -96,12 +103,12 @@ class GarminApp extends Application.AppBase {
     private var _sessionDistance = null; // centimeters
     private var _avgHeartRate = null; // bpm
     private var _peakHeartRate = null; // bpm
-    private var _linkedTemperature = "--";
 
     function initialize() {
         AppBase.initialize();
         System.println("[INFO] App initialized");
         activitySession = null;
+
     }
 
     function onStart(state as Dictionary?) as Void {
@@ -111,8 +118,7 @@ class GarminApp extends Application.AppBase {
         // Load saved settings from persistent storage
         loadSettings();
         
-        globalTimer = new Timer.Timer();
-        globalTimer.start(method(:updateCadenceBarAvg),1000,true);
+        // The visible refreshable view starts the shared timer in onShow().
     }
 
     function onStop(state as Dictionary?) as Void {
@@ -124,13 +130,111 @@ class GarminApp extends Application.AppBase {
             activitySession = null;
         }
         
-        if(globalTimer != null){
-            globalTimer.stop();
-            globalTimer = null;
-        }
+        stopAllRefreshTimers("app-stop");
         
         //Logger.logMemoryStats("Shutdown");
         saveSettings();
+    }
+
+    function startRefreshTimer(owner, ownerLabel, callback) as Void {
+        if (_refreshTimer != null && _refreshOwner == owner) {
+            System.println("[TIMER] START skipped owner=" + ownerLabel + " reason=already-active active=1");
+            return;
+        }
+
+        if (_refreshTimer != null) {
+            System.println("[TIMER] HANDOFF from=" + _refreshOwnerLabel + " to=" + ownerLabel);
+            _refreshTimer.stop();
+            _refreshTimer = null;
+        }
+
+        _refreshOwner = owner;
+        _refreshOwnerLabel = ownerLabel;
+        _refreshCallback = callback;
+        _refreshTickCount = 0;
+        _refreshTimer = new Timer.Timer();
+        _refreshTimer.start(method(:handleRefreshTick), 1000, true);
+        System.println("[TIMER] START owner=" + ownerLabel + " active=1");
+    }
+
+    function startOneShotTimer(owner, ownerLabel, callback, duration) as Void {
+        if (_refreshTimer != null && _refreshOwner == owner) {
+            System.println("[TIMER] START skipped owner=" + ownerLabel + " reason=already-active active=1");
+            return;
+        }
+
+        if (_refreshTimer != null) {
+            System.println("[TIMER] HANDOFF from=" + _refreshOwnerLabel + " to=" + ownerLabel);
+            _refreshTimer.stop();
+            _refreshTimer = null;
+        }
+
+        _refreshOwner = owner;
+        _refreshOwnerLabel = ownerLabel;
+        _refreshCallback = callback;
+        _refreshTickCount = 0;
+        _refreshTimer = new Timer.Timer();
+        _refreshTimer.start(method(:handleOneShotTimer), duration, false);
+        System.println("[TIMER] START owner=" + ownerLabel + " active=1");
+    }
+
+    function stopRefreshTimer(owner, ownerLabel) as Void {
+        // An old view can receive onHide after the new view receives onShow.
+        // Never let that stale callback stop the new owner's timer.
+        if (_refreshOwner != owner) {
+            System.println("[TIMER] STOP skipped owner=" + ownerLabel + " reason=not-owner");
+            return;
+        }
+
+        if (_refreshTimer != null) {
+            _refreshTimer.stop();
+            _refreshTimer = null;
+        }
+
+        _refreshOwner = null;
+        _refreshOwnerLabel = null;
+        _refreshCallback = null;
+        System.println("[TIMER] STOP owner=" + ownerLabel + " active=0");
+    }
+
+    function stopAllRefreshTimers(reason) as Void {
+        if (_refreshTimer != null) {
+            _refreshTimer.stop();
+            _refreshTimer = null;
+        }
+
+        _refreshOwner = null;
+        _refreshOwnerLabel = null;
+        _refreshCallback = null;
+        System.println("[TIMER] STOP ALL reason=" + reason + " active=0");
+    }
+
+    private function handleRefreshTick() as Void {
+        if (_refreshTimer == null || _refreshCallback == null || _refreshOwner == null) {
+            return;
+        }
+
+        _refreshTickCount++;
+        System.println("[TIMER] TICK owner=" + _refreshOwnerLabel + " count=" + _refreshTickCount.toString() + " active=1");
+        updateCadenceBarAvg();
+        _refreshCallback.invoke();
+    }
+
+    private function handleOneShotTimer() as Void {
+        var ownerLabel = _refreshOwnerLabel;
+        var callback = _refreshCallback;
+
+        // A one-shot Timer has completed. Release all references before invoking
+        // UI navigation so the next screen can safely claim the timer slot.
+        _refreshTimer = null;
+        _refreshOwner = null;
+        _refreshOwnerLabel = null;
+        _refreshCallback = null;
+        System.println("[TIMER] COMPLETE owner=" + ownerLabel + " active=0");
+
+        if (callback != null) {
+            callback.invoke();
+        }
     }
 
     function startRecording() as Void {
@@ -258,62 +362,31 @@ class GarminApp extends Application.AppBase {
         _sessionState = STOPPED;
     }
 
-    // function saveSession() as Void {
-    //     if (_sessionState != STOPPED) {
-    //         System.println("[INFO] Cannot save - session not stopped");
-    //         return;
-    //     }
+    function resetAllSettings() as Void {
+        System.println("[RESET] Resetting all settings to default");
 
-    //     System.println("[INFO] Saving activity session");
-        
-    //     // Save Garmin activity session
-    //     if (activitySession != null) {
-    //         activitySession.save();
-    //         System.println("[INFO] Garmin activity session saved to FIT file");
-    //         activitySession = null;
-    //     }
-        
-    //     var totalTime = 0;
-    //     if (_sessionStartTime != null) {
-    //         totalTime = System.getTimer() - _sessionStartTime - _sessionPausedTime;
-    //     }
-        
-    //     System.println("===== SESSION SAVED =====");
-    //     System.println("Duration: " + (totalTime / 1000).format("%d") + " seconds");
-    //     System.println("Cadence samples: " + _cadenceCount.toString());
-    //     System.println("Final CQ: " + (_finalCQ != null ? _finalCQ.format("%d") + "%" : "N/A"));
-    //     System.println("========================");
-        
-    //     // resetSession();
-    // }
+        _targetCadence = 160;
+        _chartDuration = ThirtyminChart as Number;
 
-    // function saveSession() as Void {
+        _userHeight = 170;
+        _userSpeed = 10.0;
+        _experienceLvl = 1.00;
+        _userGender = 0;
 
-    // if (_sessionState != STOPPED) {
-    //     System.println("[INFO] Cannot save - session not stopped");
-    //     return;
-    // }
+        _vibrationEnabled = true;
 
-    // System.println("[INFO] Saving activity session");
-    
-    // if (activitySession != null) {
-    //     activitySession.save();
-    //     activitySession = null;
-    // }
+        _cadenceBarAvg = new [_chartDuration];
+        _cadenceAvgIndex = 0;
+        _cadenceAvgCount = 0;
 
-    // // 🔥 STORE DATA HERE
-    // if (_sessionStartTime != null) {
-    //     _sessionDuration = System.getTimer() - _sessionStartTime - _sessionPausedTime;
-    // }
+        _cadenceHistory = new [MAX_BARS];
+        _cadenceIndex = 0;
+        _cadenceCount = 0;
 
-    // // Distance & HR already captured in captureActivityMetrics()
+        saveSettings();
 
-    // System.println("[SAVE] Duration stored: " + _sessionDuration);
-    // System.println("[SAVE] Distance stored: " + _sessionDistance);
-
-    // // ❌ REMOVE RESET HERE
-    // // resetSession();
-    // }
+        System.println("[RESET] All settings reset complete");
+    }
 
         function saveSession() as Void {
 
@@ -889,35 +962,6 @@ if (val != null) {
     _targetCadence.toString()
 );
 
-//reset all settings
-function resetAllSettings() as Void {
-    System.println("[RESET] Resetting all settings to default");
-
-    _idealMinCadence = 120;
-    _idealMaxCadence = 150;
-
-    _chartDuration = ThirtyminChart as Number;
-
-    _userHeight = 170;
-    _userSpeed = 10.0;
-    _experienceLvl = 1.00;
-    _userGender = 0;
-
-    _vibrationEnabled = true;
-
-    _cadenceBarAvg = new [_chartDuration];
-    _cadenceAvgIndex = 0;
-    _cadenceAvgCount = 0;
-
-    _cadenceHistory = new [MAX_BARS];
-    _cadenceIndex = 0;
-    _cadenceCount = 0;
-
-    saveSettings();
-
-    System.println("[RESET] All settings reset complete");
-}
-
 
     // function getSessionDuration() as Number {
     //     if (_sessionStartTime == null) {
@@ -1012,34 +1056,6 @@ function resetAllSettings() as Void {
     }
 }
 
-    function getAveragePace() as String {
-    if (_sessionDuration == null || _sessionDistance == null || _sessionDistance <= 0) {
-        return "--";
-    }
-
-    var totalSeconds = _sessionDuration / 1000.0;
-    var distanceKm = _sessionDistance / 100000.0;
-
-    if (distanceKm <= 0) {
-        return "--";
-    }
-
-    var paceSecondsPerKm = totalSeconds / distanceKm;
-    var minutesPart = (paceSecondsPerKm / 60).toNumber();
-    var secondsPart = (paceSecondsPerKm % 60).toNumber();
-
-    return minutesPart.format("%02d") + ":" + secondsPart.format("%02d") + "/km";
-    }
-
-    function setLinkedTemperature(value as String) as Void {
-    _linkedTemperature = value;
-    }
-    
-    function getLinkedTemperature() as String {
-    return _linkedTemperature;
-    }
-
-
     // Activity metrics getters
     /*
     function getSessionDuration() {
@@ -1066,4 +1082,3 @@ function resetAllSettings() as Void {
 function getApp() as GarminApp {
     return Application.getApp() as GarminApp;
 }
-

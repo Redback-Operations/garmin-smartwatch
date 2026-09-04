@@ -916,18 +916,17 @@ sequenceDiagram
 
 ### 3. Timer System
 
-**Global Timer** (`globalTimer`):
+**Owned Refresh Timer** (`GarminApp._refreshTimer`):
 
-- Frequency: Every 1 second
-- Callback: `updateCadenceBarAvg()`
-- Runs: Always (from app start to stop)
-- Purpose: Collect cadence data when recording
+- Frequency: Every 1 second while a refreshable screen is visible
+- Ownership: Exactly one visible view instance (logged as `simple_view` or `advanced_view`)
+- Lifecycle: Claimed in `onShow()` and released in `onHide()`
+- Purpose: Collect cadence once, update the visible UI, and monitor zone status
+- Safety: Duplicate starts are ignored; stale hides cannot stop a newer owner
 
-**View Refresh Timers**:
-
-- SimpleView: Refresh every 1 second (reused for haptic checks)
-- AdvancedView: Refresh every 1 second (reused for haptic checks)
-- Purpose: Update UI elements and monitor zone status
+Auto-dismiss overlays use the same owned timer slot in one-shot mode. Long presses
+are measured with timestamps instead of allocating another timer, preventing timer
+overlap on devices with strict timer limits.
 
 **Haptic Alert System** (NO dedicated timers):
 
@@ -1349,9 +1348,9 @@ Actual timing variance: ±1 second (due to 1Hz refresh rate)
 
 **No Additional Timers Required**:
 
-- Reuses existing `_refreshTimer` (SimpleView)
-- Reuses existing `_simulationTimer` (AdvancedView)
-- Zero timer creation overhead
+- Reuses the single owned `_refreshTimer` in `GarminApp`
+- Simple and Advanced views never allocate their own refresh timers
+- Auto-dismiss overlays atomically take over the same timer slot
 
 ### User Experience Flow
 
@@ -1761,9 +1760,11 @@ This frozen CQ score:
 
 ```mermaid
 graph TD
-    A[SimpleView] -->|Swipe Up / Press Down| B[AdvancedView]
-    B -->|Swipe Down / Press Up| A
-    A -->|Swipe Left / Press Up| C[Settings]
+    A[SimpleView or TimeView] -->|DOWN / Swipe Up| B[AdvancedView]
+    B -->|DOWN / Swipe Up wraps| A
+    A -->|UP / Swipe Down wraps| B
+    B -->|UP / Swipe Down| A
+    A -->|Swipe Left / Menu| C[Settings]
     B -->|Swipe Left| C
     C -->|Back| A
     A -->|Press Select| D{Activity State?}
@@ -1776,10 +1777,20 @@ graph TD
 **Button Mapping**:
 
 - **SELECT**: Start/Stop activity or open control menu
-- **UP**: Navigate to settings or previous view
-- **DOWN**: Navigate to next view
+- **UP / Swipe Down**: Navigate to the previous page and wrap at the start
+- **DOWN / Swipe Up**: Navigate to the next page and wrap at the end
 - **BACK**: Exit menus (disabled during active session)
 - **MENU**: Open cadence zone settings
+
+**Settings Page Loop**:
+
+```text
+Settings → Set Cadence → Bar Chart → Summary → Reset → Settings
+```
+
+DOWN and swipe UP move forward through this loop. UP and swipe DOWN move
+backward. Page changes replace the active view so continuous cycling does not
+grow the view stack.
 
 ### Activity Control Menus
 
@@ -2766,7 +2777,7 @@ function example() as Void {
 
 **Issue**: Chart not updating
 **Cause**: View timer not running or data not flowing
-**Solution**: Check `_simulationTimer` started in `onShow()`
+**Solution**: Check for `[TIMER] START owner=advanced_view active=1` after `onShow()`
 
 ### Debug Checklist
 

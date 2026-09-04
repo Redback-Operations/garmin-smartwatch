@@ -2,7 +2,6 @@ import Toybox.Graphics;
 import Toybox.WatchUi;
 import Toybox.Activity;
 import Toybox.Lang;
-import Toybox.Timer;
 import Toybox.System;
 import Toybox.Attention;
 
@@ -16,8 +15,7 @@ class SimpleView extends WatchUi.View {
     private var _timeDisplay;
     private var _paceDisplay;
     
-    // Logic & Timer Variables
-    private var _refreshTimer;
+    // Logic state updated by the app's single shared refresh timer.
     private var _lastZoneState = 0; 
     private var _alertStartTime = null;
     private var _alertDuration = 180000; // 3 minutes
@@ -47,19 +45,13 @@ class SimpleView extends WatchUi.View {
     }
 
     function onShow() as Void {
-        // Start the logic loop and keep it alive across views
-        if (_refreshTimer == null) {
-            _refreshTimer = new Timer.Timer();
-            _refreshTimer.start(method(:refreshScreen), 1000, true);
-        }
+        var app = Application.getApp() as GarminApp;
+        app.startRefreshTimer(self, "simple_view", method(:refreshScreen));
     }
 
     function onHide() as Void {
-// CRITICAL: Stop the timer to prevent "Timer Limit" crashes
-        if (_refreshTimer != null) {
-            _refreshTimer.stop();
-            _refreshTimer = null;
-        }
+        var app = Application.getApp() as GarminApp;
+        app.stopRefreshTimer(self, "simple_view");
     }
 
     // --- Logic Loop (The "Heartbeat") ---
@@ -80,10 +72,11 @@ class SimpleView extends WatchUi.View {
     function onUpdate(dc as Dc) as Void {
         updateDisplayStrings();
         checkPendingVibration();
-        drawRecordingIndicator(dc);
         
         View.onUpdate(dc); 
         drawDividers(dc);
+
+        drawRecordingIndicator(dc);
     }
 
     function updateCadenceLogic(info) as Void {
@@ -213,7 +206,34 @@ class SimpleView extends WatchUi.View {
             dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
             dc.fillCircle(dc.getWidth() - 15, 15, 8);
         }
+
+        drawVibrationModeIndicator(dc);
     }
+
+    function drawVibrationModeIndicator(dc as Dc) as Void {
+    var app = Application.getApp();
+    var vibrationOn = app.getVibrationEnabled();
+
+    dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+
+    if (vibrationOn) {
+        dc.drawText(
+            dc.getWidth() / 2,
+            dc.getHeight() - 30,
+            Graphics.FONT_XTINY,
+            "VIB ON",
+            Graphics.TEXT_JUSTIFY_CENTER
+        );
+    } else {
+        dc.drawText(
+            dc.getWidth() / 2,
+            dc.getHeight() - 30,
+            Graphics.FONT_XTINY,
+            "VIB OFF",
+            Graphics.TEXT_JUSTIFY_CENTER
+        );
+    }
+}
 
     function drawDividers(dc as Dc) as Void {
         var w = dc.getWidth();

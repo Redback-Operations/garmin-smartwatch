@@ -1,22 +1,11 @@
 import Toybox.Lang;
 import Toybox.WatchUi;
 import Toybox.System;
-import Toybox.Timer;
 
 class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
-    private var _currentView = null;
     private var _initTime = null;
     private var _menuActive = false;
-
-    // button timing variables
-    private var _lastUpReleaseTime = 0;
-    private var _doubleClickThreshold = 600;
-    private var _longPressThreshold = 800;
-    
-    // Timer variables
-    private var _longPressTimer = null;
-    private var _handledLongPress = false;
 
     function initialize() {
         BehaviorDelegate.initialize();
@@ -28,8 +17,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onMenu() as Boolean {
-        // Full Reset of button states to prevent bugs if they open the menu
-        _lastUpReleaseTime = 0;
+        pushSettingsView();
         return true;
     }
 
@@ -73,106 +61,21 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
-    function onKeyPressed(keyEvent as WatchUi.KeyEvent) as Boolean {
-        var key = keyEvent.getKey();
-
-        if (key == WatchUi.KEY_UP) {
-            // 1. Reset the flag
-            _handledLongPress = false;
-            
-            // 2. Start the stopwatch timer
-            _longPressTimer = new Timer.Timer();
-            _longPressTimer.start(method(:triggerLongPress), _longPressThreshold, false); 
-            return true;
-        }
-
-        return false;
+    function onNextPage() as Boolean {
+        ScreenNavigation.showAdvanced(ScreenNavigation.HOME_SIMPLE, true);
+        return true;
     }
 
-    // This function fires instantly while the button is still held down
-    function triggerLongPress() as Void {
-        System.println("[DEBUG] Long press UP detected (Live) -> Settings");
-        _handledLongPress = true; // Tell onKeyReleased to ignore the upcoming release
-        _lastUpReleaseTime = 0;   // Reset double click math
-        pushSettingsView();
-    }
-
-    function onKeyReleased(keyEvent as WatchUi.KeyEvent) as Boolean {
-        var key = keyEvent.getKey();
-        var currentTime = getTimeMs();
-
-        //  HANDLE UP BUTTON
-        if (key == WatchUi.KEY_UP) {
-            
-            // 1. Cancel the timer! If they let go before the threshold, stop it from firing.
-            if (_longPressTimer != null) {
-                _longPressTimer.stop();
-                _longPressTimer = null;
-            }
-
-            // 2. If the long press already triggered, do NOTHING on release.
-            if (_handledLongPress) {
-                _handledLongPress = false; // Reset for next time
-                return true;
-            }
-
-            // is a short click after this
-
-            // 3. IS IT A DOUBLE CLICK?
-            if (_lastUpReleaseTime != 0 && (currentTime - _lastUpReleaseTime) < _doubleClickThreshold) {
-                System.println("[DEBUG] Double click UP detected -> Vibration Toggle");
-                toggleVibration();
-                _lastUpReleaseTime = 0; 
-                return true;
-            }
-
-            // 4. IT IS A SINGLE CLICK
-            System.println("[DEBUG] Single click UP -> Waiting for double...");
-            _lastUpReleaseTime = currentTime;
-            return true;
-        }
-
-        //  HANDLE DOWN BUTTON
-        if (key == WatchUi.KEY_DOWN) {
-            _currentView = new AdvancedView();
-            WatchUi.pushView(
-                _currentView,
-                new AdvancedViewDelegate(_currentView),
-                WatchUi.SLIDE_DOWN
-            );
-            return true;
-        }
-
-        return false;
-    }
-
-    function toggleVibration() as Void {
-        var app = getApp();
-        
-        var enabled = app.getVibrationEnabled();
-        var newEnabled = !enabled;
-        app.setVibrationEnabled(newEnabled);
-
-        var statusText = newEnabled ? "Vibration ON" : "Vibration OFF";
-        System.println("[UI] " + statusText);
-
-        WatchUi.pushView(
-            new VibrationView(newEnabled), 
-            new WatchUi.BehaviorDelegate(), 
-            WatchUi.SLIDE_UP 
-        );
+    function onPreviousPage() as Boolean {
+        ScreenNavigation.showAdvanced(ScreenNavigation.HOME_SIMPLE, false);
+        return true;
     }
 
     function onSwipe(event as WatchUi.SwipeEvent) as Boolean {
         var direction = event.getDirection();
 
-        if (direction == WatchUi.SWIPE_UP) {
-            _currentView = new AdvancedView();
-            WatchUi.pushView(
-                _currentView,
-                new AdvancedViewDelegate(_currentView),
-                WatchUi.SLIDE_DOWN
-            );
+        if (direction == WatchUi.SWIPE_LEFT) {
+            pushSettingsView();
             return true;
         }
         return false;

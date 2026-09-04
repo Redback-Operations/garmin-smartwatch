@@ -33,11 +33,9 @@ function onUpdate(dc as Dc) as Void {
     }
 
     var centerX = width / 2;
-
-    // ✅ PUSH EVERYTHING LOWER + MORE SPACE
-    var titleY = 40;
-    var startY = 60;
-    var gap = 28;  
+    var titleY = (height * 0.08).toNumber();
+    var gap = (height * 0.14).toNumber();
+    var startY = (height * 0.10).toNumber(); 
 
     dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
 
@@ -51,9 +49,6 @@ function onUpdate(dc as Dc) as Void {
     var duration = app.getSessionDuration();
     var distance = app.getSessionDistance();
     var hr = app.getAvgHeartRate();
-    var pace = app.getAveragePace();
-    var qcScore = app.getfinalQC();
-    var temperature = app.getLinkedTemperature();
 
     if (duration == null) { duration = 0; }
     if (distance == null) { distance = 0; }
@@ -72,15 +67,27 @@ function onUpdate(dc as Dc) as Void {
     // ===== METRICS =====
     var km = distance / 100000.0;
 
-        drawRow(dc, width, startY + gap, timeStr, _iconTime, "TIME");
-        drawRow(dc, width, startY + gap * 2, km.format("%.2f"), _iconDistance, "DISTANCE");
-        drawRow(dc, width, startY + gap * 3, "--", _iconCadence, "CADENCE");
-        drawRow(dc, width, startY + gap * 4, hr + "", _iconHR, "BPM (AVG)");
-        drawRow(dc, width, startY + gap * 5, "--", _iconSteps, "STEPS");
+    var paceStr = "--";
+    if (km > 0.0 && seconds > 0) {
+        var paceSeconds = (seconds / km).toNumber();
+        var paceMin = paceSeconds / 60;
+        var paceSec = paceSeconds % 60;
+        paceStr = paceMin.format("%d") + ":" + paceSec.format("%02d") + "/km";
+    }
 
-        drawRow(dc, width, startY + gap * 6, pace, _iconCadence, "AVG PACE");
-        drawRow(dc, width, startY + gap * 7, qcScore, _iconHR, "QC SCORE");
-        drawRow(dc, width, startY + gap * 8, temperature, _iconSteps, "TEMP");
+    // Get average cadence
+    var avgCadence = app.getAverageCadence();
+    var cadenceStr = avgCadence > 0 ? avgCadence.format("%.0f") + " SPM" : "--";
+
+    // Get CQ score
+    var cqStr = app.getfinalQC();
+
+    drawRow(dc, width, startY + gap,     timeStr,                   :time,     "TIME");
+    drawRow(dc, width, startY + gap * 2, paceStr,                   :pace,     "PACE");
+    drawRow(dc, width, startY + gap * 3, cadenceStr,                :cadence,  "CADENCE");
+    drawRow(dc, width, startY + gap * 4, cqStr,                     :quality,  "QUALITY");
+    drawRow(dc, width, startY + gap * 5, km.format("%.2f") + " km", :distance, "DISTANCE");
+
 }
 
 function drawRow(dc as Dc, width as Number, y as Number, value as String, iconType as Symbol, label as String) as Void {
