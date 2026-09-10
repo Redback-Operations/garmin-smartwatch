@@ -21,9 +21,9 @@ class CadenceTargetView extends WatchUi.View {
         //var targetCadence = 160;
 
         var centerX = width / 2;
-        var titleY = (height * 0.34).toNumber();
-        var valueY = (height * 0.56).toNumber();
-        var unitY = (height * 0.69).toNumber();
+        var titleY = (height * 0.29).toNumber();
+        var valueY = (height * 0.50).toNumber();
+        var unitY = (height * 0.63).toNumber();
 
         // Title
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
@@ -35,6 +35,9 @@ class CadenceTargetView extends WatchUi.View {
             "Target Cadence",
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );
+
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(centerX, (height * 0.79).toNumber(), Graphics.FONT_XTINY, "UP/DOWN | START to save", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         // Cadence Number
         dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_TRANSPARENT);

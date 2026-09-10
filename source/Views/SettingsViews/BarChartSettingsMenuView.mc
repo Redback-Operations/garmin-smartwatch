@@ -14,18 +14,18 @@ class BarChartSettingsMenuView extends WatchUi.View {
         dc.clear();
 
         var centerX = dc.getWidth() / 2;
-        var centerY = dc.getHeight() / 2;
+        var height = dc.getHeight();
 
         // Load and draw icon
         var icon = WatchUi.loadResource(Rez.Drawables.BarChartIcon);
-        dc.drawBitmap(centerX - icon.getWidth() / 2, centerY - icon.getHeight(), icon);
+        dc.drawBitmap(centerX - icon.getWidth() / 2, (height * 0.25).toNumber(), icon);
 
         // Draw "Bar Chart" title in white
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(centerX, centerY + 10, Graphics.FONT_MEDIUM, "Bar Chart", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(centerX, (height * 0.57).toNumber(), Graphics.FONT_MEDIUM, "Line Chart", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         // Draw "tap to open" subtitle in grey
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(centerX, centerY + 50, Graphics.FONT_XTINY, "tap to open", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(centerX, (height * 0.72).toNumber(), Graphics.FONT_XTINY, "START to open", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 }

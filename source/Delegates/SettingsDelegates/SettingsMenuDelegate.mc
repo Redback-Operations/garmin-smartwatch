@@ -22,16 +22,22 @@ class SettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         System.println("Select/Tap pressed: Opening cadence settings");
         
         // Push the cadence settings view
-        WatchUi.switchToView(new CadenceSettingsMenuView(), new CadenceSettingsMenuDelegate(), WatchUi.SLIDE_UP);
+        WatchUi.switchToView(
+            new CadenceSettingsMenuView(),
+            new CadenceSettingsMenuDelegate(),
+            WatchUi.SLIDE_UP);
         return true;
     }
 
     // Handles the DOWN button (or swipe up)
     function onNextPage() as Boolean {
-        System.println("Down button pressed");
+        System.println("Down button pressed: Opening Cadence Settings");
         
         // Push the cadence settings view
-        WatchUi.switchToView(new CadenceSettingsMenuView(), new CadenceSettingsMenuDelegate(), WatchUi.SLIDE_UP);
+        WatchUi.switchToView(
+            new CadenceSettingsMenuView(),
+            new CadenceSettingsMenuDelegate(),
+        WatchUi.SLIDE_UP);
         
         return true; 
     }
@@ -41,7 +47,11 @@ class SettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         System.println("Up button pressed");
         
         // Push the profile settings view
-        WatchUi.switchToView(new SummarySettingsMenuView(), new SummarySettingsMenuDelegate(), WatchUi.SLIDE_DOWN);
+            var summary = new SummarySettingsMenuView();
+        WatchUi.switchToView(
+            summary,
+            new SummarySettingsMenuDelegate(summary),
+            WatchUi.SLIDE_DOWN);
         
         return true; 
     }

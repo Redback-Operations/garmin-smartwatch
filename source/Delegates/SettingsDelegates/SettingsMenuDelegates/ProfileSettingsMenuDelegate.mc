@@ -28,27 +28,33 @@ class ProfileSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
 
     // Handles the DOWN button (or swipe up)
     function onNextPage() as Boolean {
-        System.println("Down button pressed");
+        System.println("Down button pressed: Opening Summary Settings");
         
         // Push the cadence settings view
+            var summary = new SummarySettingsMenuView();
         
-        WatchUi.switchToView(new CadenceSettingsMenuView(), new CadenceSettingsMenuDelegate(), WatchUi.SLIDE_UP);
+        WatchUi.switchToView(
+            summary,
+            new SummarySettingsMenuDelegate(summary),
+            WatchUi.SLIDE_UP);
         
         return true; 
     }
 
     // Handles the UP button (or swipe down)
     function onPreviousPage() as Boolean {
-        System.println("Up button pressed");
+        System.println("Up button pressed: Opening Cadence Settings");
         
-        // Push the profile settings view
-        WatchUi.switchToView(new SummarySettingsMenuView(), new SummarySettingsMenuDelegate(), WatchUi.SLIDE_DOWN);
-        
-        
+        // Push the Candice settings view
+        WatchUi.switchToView(
+            new CadenceSettingsMenuView(),
+            new CadenceSettingsMenuDelegate(),
+            WatchUi.SLIDE_DOWN);
+                
         return true; 
     }
 
-        function pushProfileMenu() as Void{
+    function pushProfileMenu() as Void{
 
         //creates the secondary menu and sets title
         var menu = new WatchUi.Menu2({

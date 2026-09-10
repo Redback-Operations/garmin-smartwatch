@@ -8,13 +8,19 @@ import Toybox.Attention;
 
 class SimpleView extends WatchUi.View {
 
+    const MAIN_VIBRATION_ICON_SIZE = 34;
+    const MAIN_VIBRATION_ICON_BOTTOM_MARGIN = 0.06;
+
     // UI Drawables
     private var _cadenceDisplay;
-    private var _cadenceZoneDisplay;
     private var _heartrateDisplay;
     private var _distanceDisplay;
     private var _timeDisplay;
     private var _paceDisplay;
+    private var _paceUnitDisplay;
+    private var _paceIcon;
+    private var _vibrationOnIcon;
+    private var _vibrationOffIcon;
     
     // Logic & Timer Variables
     private var _refreshTimer;
@@ -36,14 +42,18 @@ class SimpleView extends WatchUi.View {
         
         // Link UI variables to layout IDs
         _cadenceDisplay = findDrawableById("cadence_text");
-        _cadenceZoneDisplay = findDrawableById("cadence_zone");
         _heartrateDisplay = findDrawableById("heartrate_text");
         _distanceDisplay = findDrawableById("distance_text"); // Restored
         _timeDisplay = findDrawableById("time_text");
-        _paceDisplay = findDrawableById("pace_text"); 
+        _paceDisplay = findDrawableById("pace_text");
+        _paceUnitDisplay = findDrawableById("pace_unit");
+        _paceIcon = WatchUi.loadResource(Rez.Drawables.PaceIcon);
+        _vibrationOnIcon = WatchUi.loadResource(Rez.Drawables.MainVibrationOnIcon);
+        _vibrationOffIcon = WatchUi.loadResource(Rez.Drawables.MainVibrationOffIcon);
 
         var _spmLabel = findDrawableById("spm_label") as WatchUi.Text;
         if (_spmLabel != null) { _spmLabel.setText("SPM"); }
+        if (_paceUnitDisplay != null) { (_paceUnitDisplay as WatchUi.Text).setText("min/km"); }
     }
 
     function onShow() as Void {
@@ -62,9 +72,17 @@ class SimpleView extends WatchUi.View {
         }
     }
 
-    // --- Logic Loop (The "Heartbeat") ---
+// --- Logic Loop (The "Heartbeat") ---
     function refreshScreen() as Void {
         var info = Activity.getActivityInfo();
+        var app = Application.getApp();
+        
+        // Pause freeze: stop all runtime calculations while not recording.
+        // This freezes cadence processing and vibration alerts until Resume.
+        if (!app.isRecording()) {
+            WatchUi.requestUpdate();
+            return;
+        }
         
         // 1. Update internal state (Zone checking)
         updateCadenceLogic(info);
@@ -83,7 +101,9 @@ class SimpleView extends WatchUi.View {
         drawRecordingIndicator(dc);
         
         View.onUpdate(dc); 
+        drawPaceIcon(dc);
         drawDividers(dc);
+        drawVibrationStatusIcon(dc);
     }
 
     function updateCadenceLogic(info) as Void {
@@ -139,18 +159,10 @@ class SimpleView extends WatchUi.View {
 
     function updateDisplayStrings() as Void {
         var info = Activity.getActivityInfo();
-        var app = Application.getApp();
         
         // Cadence
         if (_cadenceDisplay != null) {
             _cadenceDisplay.setText(info != null && info.currentCadence != null ? info.currentCadence.toString() : "--");
-        }
-
-        // Zone Info
-        if (_cadenceZoneDisplay != null) {
-            var min = app.getCalculatedMinCadence();
-            var max = app.getCalculatedMaxCadence();
-            _cadenceZoneDisplay.setText("(" + min + "-" + max + ")");
         }
 
         // Heartrate
@@ -177,9 +189,9 @@ class SimpleView extends WatchUi.View {
         // Pace
         if (_paceDisplay != null && info != null && info.currentSpeed != null && info.currentSpeed > 0) {
             var pace = (1000.0 / info.currentSpeed).toNumber();
-            _paceDisplay.setText((pace/60).format("%d") + ":" + (pace%60).format("%02d") + " min/km");
+            _paceDisplay.setText((pace/60).format("%d") + ":" + (pace%60).format("%02d"));
         } else if (_paceDisplay != null) {
-            _paceDisplay.setText("--:-- min/km");
+            _paceDisplay.setText("--:--");
         }
     }
 
@@ -211,17 +223,42 @@ class SimpleView extends WatchUi.View {
         var app = Application.getApp();
         if (app.isActivityRecording()) {
             dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
-            dc.fillCircle(dc.getWidth() - 15, 15, 8);
+            dc.fillCircle((dc.getWidth() * 0.82).toNumber(), (dc.getHeight() * 0.12).toNumber(), 6);
         }
+    }
+
+    function drawPaceIcon(dc as Dc) as Void {
+        if (_paceIcon == null) { return; }
+
+        dc.drawBitmap(
+            (dc.getWidth() * 0.12).toNumber(),
+            (dc.getHeight() * 0.67).toNumber(),
+            _paceIcon
+        );
+    }
+
+    function drawVibrationStatusIcon(dc as Dc) as Void {
+        var app = Application.getApp();
+        var icon = app.getVibrationEnabled() ? _vibrationOnIcon : _vibrationOffIcon;
+        if (icon == null) { return; }
+
+        // The x position is derived from the screen width so the icon remains
+        // centred across every supported round watch size.
+        var x = ((dc.getWidth() - MAIN_VIBRATION_ICON_SIZE) / 2).toNumber();
+        var bottomMargin = (dc.getHeight() * MAIN_VIBRATION_ICON_BOTTOM_MARGIN).toNumber();
+        var y = dc.getHeight() - MAIN_VIBRATION_ICON_SIZE - bottomMargin;
+
+        dc.drawBitmap(x, y, icon);
     }
 
     function drawDividers(dc as Dc) as Void {
         var w = dc.getWidth();
         var h = dc.getHeight();
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawLine(20, h * 0.22, w - 20, h * 0.22);
-        dc.drawLine(20, h * 0.43, w - 20, h * 0.43);
-        dc.drawLine(20, h * 0.60, w - 20, h * 0.60);
-        dc.drawLine(20, h * 0.78, w - 20, h * 0.78);
+        var inset = (w * 0.13).toNumber();
+        dc.drawLine(inset, h * 0.24, w - inset, h * 0.24);
+        dc.drawLine(inset, h * 0.47, w - inset, h * 0.47);
+        dc.drawLine(inset, h * 0.66, w - inset, h * 0.66);
+        dc.drawLine(inset, h * 0.83, w - inset, h * 0.83);
     }
 }

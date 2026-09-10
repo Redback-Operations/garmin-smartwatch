@@ -4,6 +4,7 @@ import Toybox.WatchUi;
 import Toybox.Timer;
 import Toybox.Activity;
 import Toybox.ActivityRecording;
+import Toybox.Position;
 import Toybox.System;
 import Toybox.Application.Storage;
 
@@ -37,12 +38,12 @@ class GarminApp extends Application.AppBase {
     
     private var _sessionState as SessionState = IDLE;
     
-   enum {
-    FifteenminChart = 5,    // was 3
-    ThirtyminChart = 10,    // was 6 
-    OneHourChart = 20,      // was 13
-    TwoHourChart = 40       // was 26
-}
+    enum ChartDuration {
+        FifteenminChart = 5,    // was 3
+        ThirtyminChart = 10,    // was 6 
+        OneHourChart = 20,      // was 13
+        TwoHourChart = 40       // was 26
+    }
 
     const CHART_ENUM_NAMES = {
         FifteenminChart => "15 Minutes",
@@ -50,14 +51,15 @@ class GarminApp extends Application.AppBase {
         OneHourChart => "1 Hour",
         TwoHourChart => "2 Hours"
     };
+    //reset all settings
 
-    enum {
+    enum ExperienceLevel {
         Beginner = 1.06,
         Intermediate = 1.04,
         Advanced = 1.02
     }
 
-    enum {
+    enum GenderType {
         Male,
         Female,
         Other
@@ -74,8 +76,10 @@ class GarminApp extends Application.AppBase {
     var _targetCadence = 160;
 
     private var _cadenceHistory as Array<Float?> = new [MAX_BARS];
+    private var _secondsSinceLastAlert = 0;
     private var _cadenceIndex = 0;
     private var _cadenceCount = 0;
+    private var _validCadenceSampleCount = 0;
      
     private var _cadenceBarAvg as Array<Float?> = new [_chartDuration];
     private var _cadenceAvgIndex = 0;
@@ -93,10 +97,16 @@ class GarminApp extends Application.AppBase {
 
     // Activity metrics captured when monitoring stops
     private var _sessionDuration = null; // milliseconds
-    private var _sessionDistance = null; // centimeters
+    private var _sessionDistance = null; // meters
     private var _avgHeartRate = null; // bpm
     private var _peakHeartRate = null; // bpm
     private var _linkedTemperature = "--";
+
+    // GPS state for the current recording. Location events activate the device
+    // positioning system; ActivityRecording then includes the enabled data in FIT.
+    private var _gpsTrackingEnabled = false;
+    private var _gpsQuality = Position.QUALITY_NOT_AVAILABLE;
+    private var _lastPosition = null;
 
     function initialize() {
         AppBase.initialize();
@@ -117,10 +127,31 @@ class GarminApp extends Application.AppBase {
 
     function onStop(state as Dictionary?) as Void {
         System.println("[INFO] App stopping");
-        
-        // Stop any active session
-        if (activitySession != null && activitySession.isRecording()) {
-            activitySession.stop();
+
+        stopGpsTracking();
+
+        // Always complete the FIT session before the app exits. An unfinished
+        // session can leave the recording resource locked on a physical watch.
+        if (activitySession != null) {
+            try {
+                if (activitySession.isRecording() && !activitySession.stop()) {
+                    System.println("[ERROR] Garmin rejected the activity stop during shutdown");
+                }
+
+                if (activitySession.save()) {
+                    System.println("[INFO] Active activity saved during shutdown");
+                } else {
+                    System.println("[ERROR] Garmin rejected the shutdown save; discarding session");
+                    activitySession.discard();
+                }
+            } catch (ex) {
+                System.println("[ERROR] Activity shutdown cleanup failed: " + ex.getErrorMessage());
+                try {
+                    activitySession.discard();
+                } catch (discardEx) {
+                    System.println("[ERROR] Activity shutdown discard failed: " + discardEx.getErrorMessage());
+                }
+            }
             activitySession = null;
         }
         
@@ -133,23 +164,43 @@ class GarminApp extends Application.AppBase {
         saveSettings();
     }
 
-    function startRecording() as Void {
-        if (_sessionState == RECORDING) {
-            System.println("[INFO] Already recording");
-            return;
+    function startRecording() as Boolean {
+        if (_sessionState != IDLE || activitySession != null) {
+            System.println("[INFO] Cannot start - another session is active");
+            return false;
         }
 
         System.println("[INFO] Starting activity session");
 
+        // Enable positioning before starting the FIT session so location records
+        // are available from the beginning of the activity.
+        startGpsTracking();
+
         // Create and start Garmin activity session KEEP THIS DEPRECATED NAMING!! It makes it so when the app API level is reduced it will work.
-        activitySession = ActivityRecording.createSession({
-            :name => "Running",
-            :sport => ActivityRecording.SPORT_RUNNING,
-            :subSport => ActivityRecording.SUB_SPORT_GENERIC
-        });
-        
-        activitySession.start();
+        try {
+            activitySession = ActivityRecording.createSession({
+                :name => "Running",
+                :sport => ActivityRecording.SPORT_RUNNING,
+                :subSport => ActivityRecording.SUB_SPORT_GENERIC
+            });
+
+            if (activitySession == null || !activitySession.start()) {
+                System.println("[ERROR] Garmin rejected the activity start");
+                cleanupFailedSession();
+                stopGpsTracking();
+                return false;
+            }
+        } catch (ex) {
+            System.println("[ERROR] Activity start failed: " + ex.getErrorMessage());
+            cleanupFailedSession();
+            stopGpsTracking();
+            return false;
+        }
+
         System.println("[INFO] Garmin activity session started");
+
+        System.println("[INFO] Haptic Feedback: HIGH");
+        triggerHapticFeedback();
 
         // Reset cadence monitoring data
         _finalCQ = null;
@@ -161,9 +212,16 @@ class GarminApp extends Application.AppBase {
         _cadenceAvgCount = 0;
         _cadenceAvgIndex = 0;
         _missingCadenceCount = 0;
+        _validCadenceSampleCount = 0;
+        _secondsSinceLastAlert = 0;
         //_sessionStartTime = System.getTimer();
         _sessionPausedTime = 0;
         _lastPauseTime = null;
+        _sessionDuration = null;
+        _sessionDistance = null;
+        _avgHeartRate = null;
+        _peakHeartRate = null;
+        _linkedTemperature = "--";
         
         for (var i = 0; i < MAX_BARS; i++) {
             _cadenceHistory[i] = null;
@@ -174,39 +232,53 @@ class GarminApp extends Application.AppBase {
 
         _sessionState = RECORDING;
         System.println("[INFO] Starting cadence monitoring");
+        return true;
     }
 
-    function pauseRecording() as Void {
+    function pauseRecording() as Boolean {
         if (_sessionState != RECORDING) {
             System.println("[INFO] Cannot pause - not recording");
-            return;
+            return false;
         }
 
         System.println("[INFO] Pausing activity session");
         
         // Pause Garmin activity session
-        if (activitySession != null && activitySession.isRecording()) {
-            activitySession.stop();
-            System.println("[INFO] Garmin activity session paused");
+        try {
+            if (activitySession == null || !activitySession.isRecording() || !activitySession.stop()) {
+                System.println("[ERROR] Garmin rejected the activity pause");
+                return false;
+            }
+        } catch (ex) {
+            System.println("[ERROR] Activity pause failed: " + ex.getErrorMessage());
+            return false;
         }
+        System.println("[INFO] Garmin activity session paused");
         
         _lastPauseTime = System.getTimer();
         _sessionState = PAUSED;
+        return true;
     }
 
-    function resumeRecording() as Void {
+    function resumeRecording() as Boolean {
         if (_sessionState != PAUSED) {
             System.println("[INFO] Cannot resume - not paused");
-            return;
+            return false;
         }
 
         System.println("[INFO] Resuming activity session");
         
         // Resume Garmin activity session
-        if (activitySession != null && !activitySession.isRecording()) {
-            activitySession.start();
-            System.println("[INFO] Garmin activity session resumed");
+        try {
+            if (activitySession == null || activitySession.isRecording() || !activitySession.start()) {
+                System.println("[ERROR] Garmin rejected the activity resume");
+                return false;
+            }
+        } catch (ex) {
+            System.println("[ERROR] Activity resume failed: " + ex.getErrorMessage());
+            return false;
         }
+        System.println("[INFO] Garmin activity session resumed");
         
         if (_lastPauseTime != null) {
             _sessionPausedTime += System.getTimer() - _lastPauseTime;
@@ -214,21 +286,37 @@ class GarminApp extends Application.AppBase {
         }
         
         _sessionState = RECORDING;
+        return true;
     }
 
-    function stopRecording() as Void {
+    function stopRecording() as Boolean {
         if (_sessionState == IDLE || _sessionState == STOPPED) {
             System.println("[INFO] No active session to stop");
-            return;
+            return false;
         }
 
         System.println("[INFO] Stopping activity session");
 
         // Stop Garmin activity session (but don't save or discard yet)
-        if (activitySession != null && activitySession.isRecording()) {
-            activitySession.stop();
-            System.println("[INFO] Garmin activity session stopped");
+        try {
+            if (activitySession == null) {
+                System.println("[ERROR] Cannot stop - activity session is missing");
+                return false;
+            }
+
+            if (activitySession.isRecording() && !activitySession.stop()) {
+                System.println("[ERROR] Garmin rejected the activity stop");
+                return false;
+            }
+        } catch (ex) {
+            System.println("[ERROR] Activity stop failed: " + ex.getErrorMessage());
+            return false;
         }
+        System.println("[INFO] Garmin activity session stopped");
+
+        System.println("[INFO] Haptic Feedback: HIGH");
+        triggerHapticFeedback();
+
 
         if (_sessionState == PAUSED && _lastPauseTime != null) {
             _sessionPausedTime += System.getTimer() - _lastPauseTime;
@@ -237,6 +325,7 @@ class GarminApp extends Application.AppBase {
 
         // Capture activity metrics before stopping
         captureActivityMetrics();
+        stopGpsTracking();
 
         var cq = computeCadenceQualityScore();
 
@@ -256,6 +345,7 @@ class GarminApp extends Application.AppBase {
         }
 
         _sessionState = STOPPED;
+        return true;
     }
 
     // function saveSession() as Void {
@@ -315,19 +405,36 @@ class GarminApp extends Application.AppBase {
     // // resetSession();
     // }
 
-        function saveSession() as Void {
+        function saveSession() as Boolean {
 
             if (_sessionState != STOPPED) {
                 System.println("[INFO] Cannot save - session not stopped");
-                return;
+                return false;
             }
 
             System.println("[INFO] Saving activity session");
-            
-            if (activitySession != null) {
-                activitySession.save();
-                activitySession = null;
+
+            if (activitySession == null) {
+                System.println("[ERROR] Cannot save - activity session is missing");
+                return false;
             }
+
+            // A failed save does not close the Garmin recording session. Keep the
+            // reference and the Save/Discard screen so the user can retry or discard.
+            var saved = false;
+            try {
+                saved = activitySession.save();
+            } catch (ex) {
+                System.println("[ERROR] Activity save exception: " + ex.getErrorMessage());
+                return false;
+            }
+
+            if (!saved) {
+                System.println("[ERROR] Garmin rejected the activity save");
+                return false;
+            }
+
+            activitySession = null;
 
             // // STORE DATA
             // if (_sessionStartTime != null) {
@@ -344,30 +451,63 @@ class GarminApp extends Application.AppBase {
            // resetSession();
 
             System.println("[INFO] Ready for summary view");
+            return true;
         }
 
 
 
-    function discardSession() as Void {
+    function discardSession() as Boolean {
         if (_sessionState != STOPPED) {
             System.println("[INFO] Cannot discard - session not stopped");
-            return;
+            return false;
         }
 
         System.println("[INFO] Discarding activity session");
         
         // Discard Garmin activity session
-        if (activitySession != null) {
-            activitySession.discard();
-            System.println("[INFO] Garmin activity session discarded");
-            activitySession = null;
+        if (activitySession == null) {
+            System.println("[ERROR] Cannot discard - activity session is missing");
+            return false;
         }
-        
+
+        try {
+            if (!activitySession.discard()) {
+                System.println("[ERROR] Garmin rejected the activity discard");
+                return false;
+            }
+        } catch (ex) {
+            System.println("[ERROR] Activity discard failed: " + ex.getErrorMessage());
+            return false;
+        }
+
+        System.println("[INFO] Garmin activity session discarded");
+        activitySession = null;
         resetSession();
+        return true;
+    }
+
+    // Best-effort cleanup used only after a recording session fails to start.
+    // Never let cleanup replace the original failure with another exception.
+    function cleanupFailedSession() as Void {
+        if (activitySession == null) {
+            return;
+        }
+
+        try {
+            if (activitySession.isRecording()) {
+                activitySession.stop();
+            }
+            activitySession.discard();
+        } catch (ex) {
+            System.println("[ERROR] Failed-session cleanup error: " + ex.getErrorMessage());
+        }
+        activitySession = null;
     }
 
     function resetSession() as Void {
         System.println("[INFO] Resetting session");
+
+        stopGpsTracking();
         
         _sessionState = IDLE;
         _finalCQ = null;
@@ -379,11 +519,16 @@ class GarminApp extends Application.AppBase {
         _cadenceAvgCount = 0;
         _cadenceAvgIndex = 0;
         _missingCadenceCount = 0;
+        _validCadenceSampleCount = 0;
+        _secondsSinceLastAlert = 0;
         //_sessionStartTime = null;
         _sessionPausedTime = 0;
         _lastPauseTime = null;
         _sessionDuration = null;
         _sessionDistance = null;
+        _avgHeartRate = null;
+        _peakHeartRate = null;
+        _linkedTemperature = "--";
         
         for (var i = 0; i < MAX_BARS; i++) {
             _cadenceHistory[i] = null;
@@ -391,6 +536,74 @@ class GarminApp extends Application.AppBase {
         for (var i = 0; i < _chartDuration; i++) {
             _cadenceBarAvg[i] = null;
         }
+    }
+
+    function startGpsTracking() as Void {
+        if (_gpsTrackingEnabled) {
+            return;
+        }
+
+        _gpsQuality = Position.QUALITY_NOT_AVAILABLE;
+        _lastPosition = null;
+
+        try {
+            Position.enableLocationEvents(
+                Position.LOCATION_CONTINUOUS,
+                method(:onPosition)
+            );
+            _gpsTrackingEnabled = true;
+            System.println("[GPS] Location tracking enabled; waiting for fix");
+        } catch (ex) {
+            _gpsTrackingEnabled = false;
+            System.println("[GPS] Unable to enable location tracking: " + ex.getErrorMessage());
+        }
+    }
+
+    function stopGpsTracking() as Void {
+        if (!_gpsTrackingEnabled) {
+            return;
+        }
+
+        try {
+            Position.enableLocationEvents(Position.LOCATION_DISABLE, null);
+        } catch (ex) {
+            System.println("[GPS] Unable to disable location tracking: " + ex.getErrorMessage());
+        }
+
+        _gpsTrackingEnabled = false;
+        System.println("[GPS] Location tracking disabled");
+    }
+
+    function onPosition(info as Position.Info) as Void {
+        var previousQuality = _gpsQuality;
+        _gpsQuality = info.accuracy;
+
+        if (info.position != null) {
+            _lastPosition = info.position;
+        }
+
+        if (_gpsQuality != previousQuality) {
+            System.println("[GPS] Fix quality changed: " + getGpsStatus());
+        }
+    }
+
+    function hasGpsFix() as Boolean {
+        return _lastPosition != null &&
+               _gpsQuality >= Position.QUALITY_USABLE;
+    }
+
+    function getGpsStatus() as String {
+        if (_gpsQuality >= Position.QUALITY_GOOD) {
+            return "Good";
+        } else if (_gpsQuality >= Position.QUALITY_USABLE) {
+            return "Usable";
+        } else if (_gpsQuality >= Position.QUALITY_POOR) {
+            return "Poor";
+        } else if (_gpsQuality == Position.QUALITY_LAST_KNOWN) {
+            return "Last known";
+        }
+
+        return "Waiting";
     }
 
     function captureActivityMetrics() as Void {
@@ -404,7 +617,7 @@ class GarminApp extends Application.AppBase {
             
             if (info.elapsedDistance != null) {
                 _sessionDistance = info.elapsedDistance;
-                System.println("[ACTIVITY] Distance: " + (_sessionDistance / 100000.0).format("%.2f") + " km");
+                System.println("[ACTIVITY] Distance: " + (_sessionDistance / 1000.0).format("%.2f") + " km");
             }
             
             if (info.currentHeartRate != null) {
@@ -417,40 +630,56 @@ class GarminApp extends Application.AppBase {
     }
 
    function updateCadenceBarAvg() as Void {
-    if (_sessionState != RECORDING) { 
-        return;
-    }
+        if (_sessionState != RECORDING) { 
+            return;
+        }
 
-    var info = Activity.getActivityInfo();
+        var info = Activity.getActivityInfo();
 
-    if (info == null) {
-        System.println("[DEBUG] Activity info is null");
-        return;
-    }
-
-   if (info.currentCadence == null) {
-    System.println("[DEBUG] currentCadence is null - using test cadence 100");
-    updateCadenceHistory(100.0);
-    return;
-}
+        if (info == null || info.currentCadence == null) {
+            _missingCadenceCount++;
+            _secondsSinceLastAlert = 0;
+            System.println("[DEBUG] Cadence data is unavailable");
+            return;
+        }
 
     System.println("[DEBUG] currentCadence = " + info.currentCadence.toString());
 
+    var current = info.currentCadence.toNumber();
     updateCadenceHistory(info.currentCadence.toFloat());
+
+    if (getVibrationEnabled()) {
+        var minZone = getCalculatedMinCadence();
+        var maxZone = getCalculatedMaxCadence();
+
+        if (current < minZone || current > maxZone) {
+            _secondsSinceLastAlert++;
+        } else {
+            _secondsSinceLastAlert = 0;
+        }
+
+        if (_secondsSinceLastAlert >= 15) {
+                
+            System.println("[ALERT] Cadence out of zone! Current: " + current);
+            
+            triggerHapticFeedback();
+            
+            _secondsSinceLastAlert = 0;
+        }
+    } else {
+        _secondsSinceLastAlert = 0;
+    }
 }
 
     function updateCadenceHistory(newCadence as Float) as Void {
         _cadenceHistory[_cadenceIndex] = newCadence;
         _cadenceIndex = (_cadenceIndex + 1) % MAX_BARS;
         if (_cadenceCount < MAX_BARS) { _cadenceCount++; }
+        _validCadenceSampleCount++;
       
         if (DEBUG_MODE) {
             System.println("[CADENCE] " + newCadence);
         }
-        else {
-            _missingCadenceCount++;
-        }
-
         var cq = computeCadenceQualityScore();
 
         if (cq < 0) {
@@ -595,7 +824,7 @@ class GarminApp extends Application.AppBase {
         }
 
         var missingRatio = _missingCadenceCount.toFloat() /
-                        (_cadenceCount + _missingCadenceCount).toFloat();
+                        (_validCadenceSampleCount + _missingCadenceCount).toFloat();
 
         if (missingRatio > 0.2) {
             return "Low";
@@ -702,6 +931,7 @@ class GarminApp extends Application.AppBase {
     }
     function setVibrationEnabled(enabled as Boolean) as Void {
         _vibrationEnabled = enabled;
+        saveSettings();
     }
 
     function getSummaryEnabled() as Boolean {
@@ -773,7 +1003,8 @@ class GarminApp extends Application.AppBase {
 
     function setUserGender(value as Number) as Void {
         _userGender = value;
-        //saveSettings();
+        idealCadenceCalculator();
+        saveSettings();
     }
 
     function getUserLegLength() as Float {
@@ -782,7 +1013,8 @@ class GarminApp extends Application.AppBase {
 
     function setUserHeight(value as Number) as Void {
         _userHeight = value;
-        //saveSettings();
+        idealCadenceCalculator();
+        saveSettings();
     }
 
     function getUserHeight() as Number {
@@ -795,7 +1027,8 @@ class GarminApp extends Application.AppBase {
 
     function setUserSpeed(value as Float) as Void {
         _userSpeed = value;
-        //saveSettings();
+        idealCadenceCalculator();
+        saveSettings();
     }
 
     function getExperienceLvl() as Number {
@@ -804,7 +1037,8 @@ class GarminApp extends Application.AppBase {
 
     function setExperienceLvl(value as Float) as Void {
         _experienceLvl = value;
-        //saveSettings();
+        idealCadenceCalculator();
+        saveSettings();
     }
 
     function min(a,b){
@@ -845,6 +1079,7 @@ class GarminApp extends Application.AppBase {
     s.setValue("u_exp", _experienceLvl);
     s.setValue("u_gen", _userGender);
     s.setValue("u_dur", _chartDuration);
+    s.setValue(PROP_VIBRATION_ENABLED, _vibrationEnabled);
     s.setValue(PROP_SUMMARY_ENABLED, _summaryEnabled);
     
     System.println("--- DISK SYNC COMPLETE ---");
@@ -863,6 +1098,7 @@ function loadSettings() {
     val = s.getValue("u_speed"); if (val != null) { _userSpeed = val; }
     val = s.getValue("u_exp"); if (val != null) { _experienceLvl = val; }
     val = s.getValue("u_gen"); if (val != null) { _userGender = val; }
+    val = s.getValue(PROP_VIBRATION_ENABLED); if (val != null) { _vibrationEnabled = val; }
     val = s.getValue(PROP_SUMMARY_ENABLED); if (val != null) { _summaryEnabled = val; }
     val = s.getValue("u_dur");
 
@@ -888,35 +1124,59 @@ if (val != null) {
     "[CADENCE] Target: " +
     _targetCadence.toString()
 );
-
-//reset all settings
-function resetAllSettings() as Void {
-    System.println("[RESET] Resetting all settings to default");
-
-    _idealMinCadence = 120;
-    _idealMaxCadence = 150;
-
-    _chartDuration = ThirtyminChart as Number;
-
-    _userHeight = 170;
-    _userSpeed = 10.0;
-    _experienceLvl = 1.00;
-    _userGender = 0;
-
-    _vibrationEnabled = true;
-
-    _cadenceBarAvg = new [_chartDuration];
-    _cadenceAvgIndex = 0;
-    _cadenceAvgCount = 0;
-
-    _cadenceHistory = new [MAX_BARS];
-    _cadenceIndex = 0;
-    _cadenceCount = 0;
-
-    saveSettings();
-
-    System.println("[RESET] All settings reset complete");
 }
+
+ function resetAllSettings() as Void {
+        _targetCadence = 160;
+        _userHeight = 170;
+        _userSpeed = 10.0;
+        _experienceLvl = 1.00;
+        _userGender = Male;
+        _chartDuration = ThirtyminChart as Number;
+        _vibrationEnabled = true;
+        _summaryEnabled = true;
+
+        _cadenceBarAvg = new [_chartDuration];
+        _cadenceAvgIndex = 0;
+        _cadenceAvgCount = 0;
+        _cadenceHistory = new [MAX_BARS];
+        _cadenceIndex = 0;
+        _cadenceCount = 0;
+        _validCadenceSampleCount = 0;
+        _missingCadenceCount = 0;
+        _secondsSinceLastAlert = 0;
+
+        setHaptic("low");
+        saveSettings();
+        System.println("[SETTINGS] All settings reset to defaults");
+    }
+
+
+    var _idealMinCadence = 120;
+    var _idealMaxCadence = 150;
+//     _idealMinCadence = 120;
+//     _idealMaxCadence = 150;
+//     _chartDuration = ThirtyminChart as Number;
+
+//     _userHeight = 170;
+//     _userSpeed = 10.0;
+//     _experienceLvl = 1.00;
+//     _userGender = 0;
+
+//     _vibrationEnabled = true;
+
+//     _cadenceBarAvg = new [_chartDuration];
+//     _cadenceAvgIndex = 0;
+//     _cadenceAvgCount = 0;
+
+//     _cadenceHistory = new [MAX_BARS];
+//     _cadenceIndex = 0;
+//     _cadenceCount = 0;
+
+//     saveSettings();
+
+//     System.println("[RESET] All settings reset complete");
+// }
 
 
     // function getSessionDuration() as Number {
@@ -933,12 +1193,9 @@ function resetAllSettings() as Void {
         
     //     return totalTime / 1000;
     // }
-}
-
-    function getInitialView() as [Views] or [Views, InputDelegates] {
-        return [ new SimpleView(), new SimpleViewDelegate() ];
+    function getInitialView() {
+    return [ new SimpleView(), new SimpleViewDelegate() ];
     }
-
     // -----------------------
     // Summary Statistics Methods
     // -----------------------
@@ -1001,7 +1258,14 @@ function resetAllSettings() as Void {
     }
 
     function hasValidSummaryData() as Boolean {
-        return Activity.getActivityInfo() != null;
+        // Activity.getActivityInfo() describes the current activity. Garmin resets
+        // that state when the recording is saved, so validate the values captured
+        // in stopRecording() instead.
+        return _sessionDuration != null ||
+               _sessionDistance != null ||
+               _avgHeartRate != null ||
+               _cadenceCount > 0 ||
+               _finalCQ != null;
     }
 
    function getfinalQC() as String {
@@ -1018,15 +1282,19 @@ function resetAllSettings() as Void {
     }
 
     var totalSeconds = _sessionDuration / 1000.0;
-    var distanceKm = _sessionDistance / 100000.0;
+    var distanceKm = _sessionDistance / 1000.0;
 
     if (distanceKm <= 0) {
         return "--";
     }
 
     var paceSecondsPerKm = totalSeconds / distanceKm;
-    var minutesPart = (paceSecondsPerKm / 60).toNumber();
-    var secondsPart = (paceSecondsPerKm % 60).toNumber();
+
+    // Monkey C modulo only accepts integer numeric values. Convert the complete
+    // pace first so a real activity's Float pace cannot crash the summary view.
+    var wholePaceSeconds = paceSecondsPerKm.toNumber();
+    var minutesPart = wholePaceSeconds / 60;
+    var secondsPart = wholePaceSeconds % 60;
 
     return minutesPart.format("%02d") + ":" + secondsPart.format("%02d") + "/km";
     }
@@ -1061,9 +1329,45 @@ function resetAllSettings() as Void {
     function getChartBarCount() as Number {
         return _chartDuration;
     }
-}
 
+    function triggerHapticFeedback() as Void {
+        try {
+            var currentSetting = getHaptic();
+            var lowProfile = [new Attention.VibeProfile(25, 250)];
+            var medProfile = [new Attention.VibeProfile(50, 250)];
+            var highProfile = [new Attention.VibeProfile(100, 500)];
+
+            if (currentSetting.equals("low")) {
+                Attention.vibrate(lowProfile);
+            } else if (currentSetting.equals("med")) {
+                Attention.vibrate(medProfile);
+            } else if (currentSetting.equals("high")) {
+                Attention.vibrate(highProfile);
+            }
+        } catch (ex) {
+            System.println("[ERROR] Haptic feedback failed: " + ex.getErrorMessage());
+        }
+    }
+
+    function setHaptic(value as String) as Void {
+    Application.Storage.setValue("haptic_preference", value);
+    }
+
+    function getHaptic() as String {
+        var savedValue = Application.Storage.getValue("haptic_preference");
+        
+        if (savedValue == null) {
+            return "low";
+        }
+        
+        return savedValue as String;
+    }
+}
 function getApp() as GarminApp {
     return Application.getApp() as GarminApp;
 }
+
+
+
+
 
