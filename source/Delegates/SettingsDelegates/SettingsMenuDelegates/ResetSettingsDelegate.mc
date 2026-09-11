@@ -55,28 +55,25 @@ class ResetSettingsDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function handleUp() {
-        // Confirmation screen: UP selects YES
         if (_view.isConfirmScreen()) {
             _view.moveSelectionUp();
             return;
         }
 
-        // First Reset screen: UP goes back to Summary Settings
         if (_view.isOpenScreen()) {
-            System.println("UP pressed from Reset: Summary Settings");
+            System.println("Up button pressed: Opening Bar Chart Settings");
 
             WatchUi.pushView(
-                new SummarySettingsMenuView(),
-                new SummarySettingsMenuDelegate(),
+                new BarChartSettingsMenuView(),
+                new BarChartSettingsMenuDelegate(),
                 WatchUi.SLIDE_DOWN
             );
-
-            return;
         }
+
+        return;
     }
 
     function handleDown() {
-        // Confirmation screen: DOWN selects NO
         if (_view.isConfirmScreen()) {
             _view.moveSelectionDown();
             return;
@@ -84,14 +81,13 @@ class ResetSettingsDelegate extends WatchUi.BehaviorDelegate {
 
         // First Reset screen: DOWN goes to Cadence Settings
         if (_view.isOpenScreen()) {
-            System.println("DOWN pressed from Reset: Cadence Settings");
+            System.println("Down button pressed: Opening Vibration On Settings");
 
             WatchUi.pushView(
-                new CadenceSettingsMenuView(),
-                new CadenceSettingsMenuDelegate(),
+                new VibrationsOnSettingsView(),
+                new VibrationsOnSettingsMenuDelegate(),
                 WatchUi.SLIDE_UP
             );
-
             return;
         }
     }

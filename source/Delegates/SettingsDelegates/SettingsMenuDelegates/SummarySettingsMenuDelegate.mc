@@ -5,54 +5,93 @@ import Toybox.Application;
 
 class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate { 
 
-    function initialize() {
+    private var _view;
+
+    function initialize(view) {
         BehaviorDelegate.initialize();
-    }
-
-    function onBack() {
-        System.println("Back pressed: Returning to main view");
-
-        WatchUi.pushView(
-            new SimpleView(),
-            new SimpleViewDelegate(),
-            WatchUi.SLIDE_DOWN
-        );
-
-        return true;
+        _view = view;
     }
 
     function onSelect() {
-        System.println("Select/Tap pressed: toggle summary on/off");
-
-        // Future summary ON/OFF logic can go here.
+        _view.selectCurrentOption();
         return true;
     }
 
-    // DOWN button: Summary Settings -> Reset Settings
+    function onTap(evt) {
+        _view.selectCurrentOption();
+        return true;
+    }
+
+    // Handles the DOWN button (or swipe up)
     function onNextPage() {
-        System.println("Down button pressed: Opening Reset Settings");
-
-        var resetView = new ResetSettingsView();
-
-        WatchUi.pushView(
-            resetView,
-            new ResetSettingsDelegate(resetView),
-            WatchUi.SLIDE_UP
-        );
-
+        handleDown();
         return true;
     }
 
-    // UP button: Summary Settings -> Bar Chart Settings
+    // Handles the UP button (or swipe down)
     function onPreviousPage() {
-        System.println("Up button pressed: Back to Bar Chart Settings");
-
-        WatchUi.pushView(
-            new BarChartSettingsMenuView(),
-            new BarChartSettingsMenuDelegate(),
-            WatchUi.SLIDE_DOWN
-        );
-
+        handleUp();
         return true;
+    }
+
+    function onBack() {
+        _view.handleBack();
+        return true;
+    }
+
+    function handleUp() {
+        if (_view.isConfirmScreen()) {
+            _view.moveSelectionUp();
+            return;
+        }
+
+        if (_view.isOpenScreen()) {
+            System.println("Up button pressed: Opening Profile Settings");
+
+            WatchUi.pushView(
+                new ProfileSettingsMenuView(),
+                new ProfileSettingsMenuDelegate(),
+                WatchUi.SLIDE_DOWN
+            );
+        }
+        return;
+    }
+
+    function handleDown() {
+        if (_view.isConfirmScreen()) {
+            _view.moveSelectionDown();
+            return;
+        }
+
+        // First Reset screen: DOWN goes to Cadence Settings
+        if (_view.isOpenScreen()) {
+            System.println("Down button pressed: Opening Bar Chart Settings");
+
+            WatchUi.switchToView(
+                new BarChartSettingsMenuView(),
+                new BarChartSettingsMenuDelegate(),
+                WatchUi.SLIDE_UP);
+        }
+    }
+
+    function onKey(keyEvent) {
+        var key = keyEvent.getKey();
+
+        if (key == WatchUi.KEY_UP) {
+            handleUp();
+            return true;
+        }
+
+        if (key == WatchUi.KEY_DOWN) {
+            handleDown();
+            return true;
+        }
+
+        if (key == WatchUi.KEY_ENTER || key == WatchUi.KEY_START || key == WatchUi.KEY_MENU) {
+            _view.selectCurrentOption();
+            return true;
+        }
+
+        return false;
     }
 }

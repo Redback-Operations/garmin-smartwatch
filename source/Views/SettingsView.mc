@@ -16,28 +16,24 @@ class SettingsView extends WatchUi.View {
         var height = dc.getHeight();
 
         var centerX = width / 2;
-        var centerY = height / 2;
-
         var icon = WatchUi.loadResource(Rez.Drawables.SettingsIcon);
-
         var iconX = centerX - (icon.getWidth() / 2);
-        var iconY = centerY - 70;
+        var iconY = (height * 0.24).toNumber();
 
         dc.drawBitmap(iconX, iconY, icon);
 
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
-        dc.drawText(centerX - 1, centerY + 20, Graphics.FONT_LARGE, "Settings", Graphics.TEXT_JUSTIFY_CENTER);
-        dc.drawText(centerX + 1, centerY + 20, Graphics.FONT_LARGE, "Settings", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(centerX, (height * 0.57).toNumber(), Graphics.FONT_MEDIUM, "Settings", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
 
         dc.drawText(
             centerX,
-            centerY + 90,
+            (height * 0.72).toNumber(),
             Graphics.FONT_XTINY,
-            "Tap to Open",
-            Graphics.TEXT_JUSTIFY_CENTER
+            "START to open",
+            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );
     }
 }

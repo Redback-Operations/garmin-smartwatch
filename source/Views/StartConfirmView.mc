@@ -19,61 +19,43 @@ class StartConfirmView extends WatchUi.View {
     }
 
     function onUpdate(dc) {
-        // Clear to black
         dc.setColor(Graphics.COLOR_TRANSPARENT, Graphics.COLOR_BLACK);
         dc.clear();
 
         var width = dc.getWidth();
+        var height = dc.getHeight();
+        var centerX = width / 2;
         
         var tickIcon = WatchUi.loadResource(Rez.Drawables.TickIcon);
         var crossIcon = WatchUi.loadResource(Rez.Drawables.CrossIcon);
         var recIcon = WatchUi.loadResource(Rez.Drawables.RecIcon);
         
-        // title
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawBitmap(centerX - (recIcon.getWidth() / 2), (height * 0.09).toNumber(), recIcon);
+        dc.drawText(centerX, (height * 0.29).toNumber(), Graphics.FONT_SMALL, "Start recording?", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(centerX, (height * 0.40).toNumber(), Graphics.FONT_XTINY, "Choose an option", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // rec icon
-        dc.drawBitmap(width / 2 - 18, 20, recIcon);
+        var yesY = (height * 0.61).toNumber();
+        var noY = (height * 0.78).toNumber();
+        var pointerX = centerX - (width * 0.23).toNumber();
+        var iconX = centerX - (width * 0.11).toNumber();
+        var textX = centerX + (width * 0.05).toNumber();
+        var iconOffsetY = (tickIcon.getHeight() / 2).toNumber();
 
-        dc.drawText(width / 2, 80, Graphics.FONT_SYSTEM_SMALL, "Do you want to", Graphics.TEXT_JUSTIFY_CENTER);
-        dc.drawText(width / 2, 140, Graphics.FONT_SYSTEM_SMALL, "start recording?", Graphics.TEXT_JUSTIFY_CENTER);
-
-        var yesY = 220; 
-        var noY = 280;
-        
-        // Column 1: The Pointer Arrow (Far Left)
-        var pointerX = (width / 2) - 60;
-        // Column 2: The Icon (Middle Left)
-        var iconX = (width / 2) - 30;
-        // Column 3: The Text (Center-ish, pushing Right)
-        var textX = (width / 2) + 10;
-        
-        var iconOffsetY = 14; // Pulls the image up to align with text
-
-
-        // Yes option
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        
-        // draw tick icon
         dc.drawBitmap(iconX, yesY - iconOffsetY, tickIcon);
-        // Draw the text
         dc.drawText(textX, yesY, Graphics.FONT_SMALL, "Yes", Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // draw pointer if selected
         if (_selectedOption == 0) {
             dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_TRANSPARENT);
             dc.drawText(pointerX, yesY, Graphics.FONT_SMALL, ">", Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
         }
 
-        // No option
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        
-        // draw cross icon
         dc.drawBitmap(iconX, noY - iconOffsetY, crossIcon);
-        // Draw the text
         dc.drawText(textX, noY, Graphics.FONT_SMALL, "No", Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // Draw pointer if selected
         if (_selectedOption == 1) {
             dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
             dc.drawText(pointerX, noY, Graphics.FONT_SMALL, ">", Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);

@@ -2,13 +2,17 @@ import Toybox.Lang;
 import Toybox.System;
 import Toybox.WatchUi;
 import Toybox.Application;
+import Toybox.Attention;
 
 class SelectHapticDelegate extends WatchUi.Menu2InputDelegate { 
 
     private var _menu as WatchUi.Menu2;
+
+    var lowProfile = [new Attention.VibeProfile(25,250)];
+    var medProfile = [new Attention.VibeProfile(50,250)];
+    var highProfile = [new Attention.VibeProfile(50,500)];
     var app = Application.getApp() as GarminApp;
-    //var haptic = app.getHaptic();
-    var haptic = "low";// make sure to change to above!! - after feature has been added
+    var haptic = app.getHaptic();
 
     function initialize(menu as WatchUi.Menu2) {
         Menu2InputDelegate.initialize();
@@ -27,15 +31,18 @@ class SelectHapticDelegate extends WatchUi.Menu2InputDelegate {
         //Try to change cadence range based off menu selection
         if (id == :haptic_low){
             System.println("Haptic Feedback: LOW");
-            //app.setHaptic("low");
+            Attention.vibrate(lowProfile);
+            app.setHaptic("low");
         } 
         else if (id == :haptic_med){
             System.println("Haptic Feedback: MEDIUM");
-            //app.setUserHaptic("med");
+            Attention.vibrate(medProfile);
+            app.setHaptic("med");
         } 
         else if (id == :haptic_high){
             System.println("Haptic Feedback: HIGH");
-            //app.setUserHaptic("high");
+            Attention.vibrate(highProfile);
+            app.setHaptic("high");
         } else {System.println("ERROR");}
 
         WatchUi.popView(WatchUi.SLIDE_RIGHT);

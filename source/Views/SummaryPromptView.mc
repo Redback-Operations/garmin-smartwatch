@@ -28,15 +28,15 @@ class SummaryPromptView extends WatchUi.View {
         var width = dc.getWidth();
         var height = dc.getHeight();
         var centerX = width / 2;
-        var centerY = height / 2;
-
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(centerX, centerY - 82, Graphics.FONT_MEDIUM, "Do you", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.drawText(centerX, centerY - 44, Graphics.FONT_MEDIUM, "want to view", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.drawText(centerX, centerY - 6, Graphics.FONT_MEDIUM, "summary?", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(centerX, (height * 0.27).toNumber(), Graphics.FONT_MEDIUM, "Show workout", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(centerX, (height * 0.40).toNumber(), Graphics.FONT_MEDIUM, "summary?", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        drawButton(dc, centerX - 70, centerY + 58, 104, 40, "YES", _selectedOption == 0);
-        drawButton(dc, centerX + 70, centerY + 58, 104, 40, "NO", _selectedOption == 1);
+        var buttonWidth = (width * 0.32).toNumber();
+        var buttonHeight = (height * 0.14).toNumber();
+        var buttonY = (height * 0.68).toNumber();
+        drawButton(dc, centerX - (width * 0.20).toNumber(), buttonY, buttonWidth, buttonHeight, "YES", _selectedOption == 0);
+        drawButton(dc, centerX + (width * 0.20).toNumber(), buttonY, buttonWidth, buttonHeight, "NO", _selectedOption == 1);
     }
 
     function drawButton(dc, centerX, centerY, buttonWidth, buttonHeight, label, selected) {

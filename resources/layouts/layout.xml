@@ -1,73 +1,51 @@
 <layouts>
 <layout id="MainLayout" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
-   <!-- Pace Icon -->
-<bitmap id="pace_icon" 
-    x="12%"
-    y="62%"
-    filename="../drawables/shoe_icon.png" />
+    <label id="time_text"
+        x="center"
+        y="7%"
+        font="Gfx.FONT_MEDIUM"
+        justification="Gfx.TEXT_JUSTIFY_CENTER"
+        color="Gfx.COLOR_WHITE" />
 
-<!-- Cadence Text -->
-<label id="cadence_text" 
-    x="35%" 
-    y="23%" 
-    font="Gfx.FONT_NUMBER_MILD"
-    justification="Gfx.TEXT_JUSTIFY_CENTER"
-    color="Gfx.COLOR_WHITE" />
+    <label id="cadence_text"
+        x="39%"
+        y="27%"
+        font="Gfx.FONT_NUMBER_MILD"
+        justification="Gfx.TEXT_JUSTIFY_CENTER"
+        color="Gfx.COLOR_WHITE" />
 
-<!-- SPM Label -->
-<label id="spm_label"
-    x="65%"
-    y="30%"
-    font="Gfx.FONT_MEDIUM"
-    justification="Gfx.TEXT_JUSTIFY_CENTER"
-    color="Gfx.COLOR_BLUE" />
+    <label id="spm_label"
+        x="72%"
+        y="29%"
+        font="Gfx.FONT_MEDIUM"
+        justification="Gfx.TEXT_JUSTIFY_CENTER"
+        color="Gfx.COLOR_BLUE" />
 
+    <bitmap id="heartrate_icon"
+        x="13%"
+        y="48%"
+        filename="../drawables/heart-rate.png" />
 
-<!-- Heart Rate Icon -->
-<bitmap id="heartrate_icon" 
-    x="10%" 
-    y="46%"
-    filename="../drawables/heart-rate.png" />
+    <label id="heartrate_text"
+        x="41%"
+        y="52%"
+        font="Gfx.FONT_SMALL"
+        justification="Gfx.TEXT_JUSTIFY_CENTER"
+        color="Gfx.COLOR_RED" />
 
-<!-- Heart Rate Text -->
-<label id="heartrate_text"
-    x="33%"
-    y="46%"
-    font="Gfx.FONT_SMALL"
-    justification="Gfx.TEXT_JUSTIFY_CENTER"
-    color="Gfx.COLOR_RED" />
+    <label id="distance_text"
+        x="73%"
+        y="52%"
+        font="Gfx.FONT_SMALL"
+        justification="Gfx.TEXT_JUSTIFY_CENTER"
+        color="Gfx.COLOR_PURPLE" />
 
-<!-- Distance -->
-<label id="distance_text"
-    x="75%"
-    y="46%"
-    font="Gfx.FONT_SMALL"
-    justification="Gfx.TEXT_JUSTIFY_CENTER"
-    color="Gfx.COLOR_PURPLE" />
-
-<!-- Time -->
-<label id="time_text"
-    x="center"
-    y="7%"
-    font="Gfx.FONT_LARGE"
-    justification="Gfx.TEXT_JUSTIFY_CENTER"
-    color="Gfx.COLOR_WHITE" />
-
-<!-- Cadence Quality (Easter Egg) -->
-<label id="cq_text"
-    x="25%"
-    y="46%"
-    font="Gfx.FONT_SMALL"
-    justification="Gfx.TEXT_JUSTIFY_CENTER"
-    color="Gfx.COLOR_WHITE" />
-
-<!-- Pace Text-->
-<label id="pace_text"
-    x="58%"
-    y="63%"
-    font="Gfx.FONT_SMALL"
-    justification="Gfx.TEXT_JUSTIFY_CENTER"
-    color="Gfx.COLOR_GREEN" />
+    <label id="pace_text"
+        x="64%"
+        y="70%"
+        font="Gfx.FONT_SMALL"
+        justification="Gfx.TEXT_JUSTIFY_CENTER"
+        color="Gfx.COLOR_GREEN" />
 
 </layout>
 
@@ -75,20 +53,20 @@
 <layout id="WatchFace">
     <label id="Date"            
     x="center" 
-    y="30%"    
-    font="Graphics.FONT_LARGE"           
+    y="31%"
+    font="Graphics.FONT_MEDIUM"
     justification="Graphics.TEXT_JUSTIFY_CENTER" />
 
     <label id="HoursAndMinutes" 
-    x="40%" 
-    y="55%" 
+    x="43%"
+    y="52%"
     font="Graphics.FONT_LARGE" 
     justification="Graphics.TEXT_JUSTIFY_CENTER" />
 
     <label id="AmPm" 
-    x="70%" 
-    y="55%" 
-    font="Graphics.FONT_LARGE" 
+    x="72%"
+    y="54%"
+    font="Graphics.FONT_SMALL"
     justification="Graphics.TEXT_JUSTIFY_CENTER" />
 
 </layout>

@@ -18,11 +18,7 @@ class SummaryViewDelegate extends WatchUi.BehaviorDelegate {
 
     function onSelect() as Boolean {
     System.println("[SUMMARY] Returning to main view");
-
-    var app = getApp();
-    app.resetSession(); // RESET HERE
-
-    WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
+    dismissSummary();
     return true;
     }
 
@@ -33,10 +29,7 @@ class SummaryViewDelegate extends WatchUi.BehaviorDelegate {
     // }
 
     function onBack() as Boolean {  
-    var app = getApp();
-    app.resetSession(); // RESET HERE
-
-    WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
+    dismissSummary();
     return true;
     }
 
@@ -46,7 +39,7 @@ class SummaryViewDelegate extends WatchUi.BehaviorDelegate {
         
         if (direction == WatchUi.SWIPE_LEFT || direction == WatchUi.SWIPE_DOWN) {
             System.println("[SUMMARY] Swiped to dismiss");
-            WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
+            dismissSummary();
             return true;
         }
         
@@ -60,10 +53,16 @@ class SummaryViewDelegate extends WatchUi.BehaviorDelegate {
         // Allow any key to dismiss
         if (key == WatchUi.KEY_UP || key == WatchUi.KEY_DOWN || 
             key == WatchUi.KEY_ENTER || key == WatchUi.KEY_MENU) {
-            WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
+            dismissSummary();
             return true;
         }
         
         return false;
+    }
+
+    function dismissSummary() as Void {
+        var app = getApp();
+        app.resetSession();
+        WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
     }
 }

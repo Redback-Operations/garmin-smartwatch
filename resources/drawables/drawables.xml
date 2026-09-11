@@ -16,4 +16,12 @@
     <bitmap id="SummaryIcon" filename="summary_icon.png"/>
     <bitmap id="SetCadenceIcon" filename="set_cadence_icon.png"/>
     <bitmap id="SettingsIcon" filename="settings_icon.png"/>
+    <bitmap id="ProfileSettingsIcon" filename="profile_settings_icon.png"/>
+    <bitmap id="VibrationsOnIcon" filename="Vibration_On_Icon.png"/>
+    <bitmap id="VibrationsOffIcon" filename="Vibration_Off_Icon.png"/>
+    <!-- Compact SVG status icons for the main activity screen. -->
+    <bitmap id="MainVibrationOnIcon" filename="main_vibration_on.svg" scaleX="34" scaleY="34"/>
+    <bitmap id="MainVibrationOffIcon" filename="main_vibration_off.svg" scaleX="34" scaleY="34"/>
+    <!-- Scale at build time so every target receives a device-native bitmap. -->
+    <bitmap id="PaceIcon" filename="shoe_icon.png" scaleX="43" scaleY="33"/>
 </drawables>
