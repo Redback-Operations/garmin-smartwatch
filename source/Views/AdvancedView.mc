@@ -13,6 +13,7 @@ class AdvancedView extends WatchUi.View {
 
     const COLOR_BELOW = 0xFF0000; // red
     const COLOR_IN_ZONE = 0x00BF63; // green
+    const COLOR_ABOVE = 0xFF8C00; // orange
     const COLOR_TEXT_MUTED = 0x969696;
     const COLOR_CHART_BORDER = 0x969696;
 
@@ -44,20 +45,25 @@ class AdvancedView extends WatchUi.View {
         }
     }
 
-    // THIS IS THE MAIN LOGIC LOOP (Runs every 1 second)
+// THIS IS THE MAIN LOGIC LOOP (Runs every 1 second)
     function refreshScreen() as Void {
-        var info = Activity.getActivityInfo();
         var app = Application.getApp();
 
-        // 1. Update Chart Data
-        if (info != null && info.currentCadence != null) {
-            app.updateCadenceHistory(info.currentCadence.toFloat());
+        // Pause freeze: stop all runtime calculations while not recording.
+        // This freezes the cadence graph, cadence processing, and vibration
+        // alerts until Resume. Resume re-enables these automatically.
+        if (!app.isRecording()) {
+            WatchUi.requestUpdate();
+            return;
         }
 
-        // 2. RUN ALERT LOGIC HERE (So it works even when view is hidden)
+        // Cadence history is sampled by GarminApp's global timer. Sampling here
+        // as well would double-count every second spent on AdvancedView.
+
+        // RUN ALERT LOGIC HERE
         checkCadenceZone();
 
-        // 3. Request UI Redraw
+        // Request UI Redraw
         WatchUi.requestUpdate();
     }
 
@@ -153,13 +159,13 @@ class AdvancedView extends WatchUi.View {
             var seconds = info.timerTime / 1000;
             var timeStr = (seconds / 3600).format("%01d") + ":" + ((seconds % 3600) / 60).format("%02d") + ":" + (seconds % 60).format("%02d");
             dc.setColor(0xFFF813, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(width / 2, 3, Graphics.FONT_MEDIUM, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(width / 2, (height * 0.07).toNumber(), Graphics.FONT_SMALL, timeStr, Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         }
         
         // 2. Draw heart rate circle
-        var hrX = width / 4;
-        var hrY = (height * 2) / 7;
-        var circleRadius = 42;
+        var hrX = (width * 0.28).toNumber();
+        var hrY = (height * 0.27).toNumber();
+        var circleRadius = (width * 0.13).toNumber();
         dc.setColor(0x9D0000, Graphics.COLOR_TRANSPARENT);
         dc.fillCircle(hrX, hrY, circleRadius);
         
@@ -167,10 +173,14 @@ class AdvancedView extends WatchUi.View {
             dc.setColor(0xFFFFFF, Graphics.COLOR_TRANSPARENT);
             dc.drawText(hrX, hrY - 25, Graphics.FONT_TINY, info.currentHeartRate.toString(), Graphics.TEXT_JUSTIFY_CENTER);
             dc.drawText(hrX, hrY + 8, Graphics.FONT_XTINY, "bpm", Graphics.TEXT_JUSTIFY_CENTER);
+        } else {
+            dc.setColor(0xFFFFFF, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(hrX, hrY - 25, Graphics.FONT_TINY, "--", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(hrX, hrY + 8, Graphics.FONT_XTINY, "bpm", Graphics.TEXT_JUSTIFY_CENTER);
         }
         
         // 3. Draw Pace circle
-        var distX = (width * 3) / 4;
+        var distX = (width * 0.72).toNumber();
         var distY = hrY;
         dc.setColor(0x1D5E11, Graphics.COLOR_TRANSPARENT);
         dc.fillCircle(distX, distY, circleRadius);
@@ -190,8 +200,8 @@ class AdvancedView extends WatchUi.View {
         // 4. Draw Cadence Info
         var idealMinCadence = app.getCalculatedMinCadence();
         var idealMaxCadence = app.getCalculatedMaxCadence();
-        var cadenceY = height * 0.37;
-        var cadenceRangeY = height * 0.43;
+        var cadenceY = (height * 0.39).toNumber();
+        var cadenceRangeY = (height * 0.44).toNumber();
 
         if (info != null && info.currentCadence != null) {
             dc.setColor(getCadenceZoneColor(info.currentCadence, idealMinCadence, idealMaxCadence), Graphics.COLOR_TRANSPARENT);
@@ -205,16 +215,16 @@ class AdvancedView extends WatchUi.View {
         drawChart(dc);
         
         dc.setColor(0x969696, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(width / 2, height * 0.85, Graphics.FONT_XTINY, "Last " + app.getChartDuration(), Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(width / 2, (height * 0.87).toNumber(), Graphics.FONT_XTINY, "Last " + app.getChartDuration(), Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 
     function drawChart(dc as Dc) as Void {
         var width = dc.getWidth();
         var height = dc.getHeight();
-        var chartLeft = width * 0.138;
+        var chartLeft = (width * 0.14).toNumber();
         var chartRight = width - chartLeft;
-        var chartTop = height * 0.5;
-        var chartBottom = height - (dc.getHeight() * 0.1 * 1.6);
+        var chartTop = (height * 0.54).toNumber();
+        var chartBottom = (height * 0.82).toNumber();
         var chartWidth = chartRight - chartLeft;
         var chartHeight = chartBottom - chartTop;
 
@@ -249,6 +259,8 @@ class AdvancedView extends WatchUi.View {
     }
 
     function getCadenceZoneColor(cadence, min, max) {
-        return (cadence < min) ? COLOR_BELOW : COLOR_IN_ZONE;
+        if (cadence < min) { return COLOR_BELOW; }
+        if (cadence > max) { return COLOR_ABOVE; }
+        return COLOR_IN_ZONE;
     }
 }

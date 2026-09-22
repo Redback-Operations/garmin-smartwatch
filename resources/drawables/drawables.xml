@@ -4,6 +4,8 @@
     <bitmap id="IconDistance" filename="distance_icon_50.png" />
     <bitmap id="IconCadence" filename="cadence_icon_50.png" />
     <bitmap id="IconHeartRate" filename="heart-rate_50.png" />
+    <bitmap id="MainHeartRateIcon" filename="heart-rate-ui-v2.png" scaleX="48" scaleY="44" />
+    <bitmap id="FeedbackHeartRateIcon" filename="heart-rate-ui-v2.png" scaleX="34" scaleY="31" />
     <bitmap id="IconSteps" filename="cadence_icon_v2_50.png" />
     <bitmap id="IconTime" filename="clock_icon_50.png" />
 
@@ -14,6 +16,15 @@
     <bitmap id="CheckMarkIcon" filename="check_mark.png" />
     <bitmap id="BarChartIcon" filename="bar_chart_icon.png"/>
     <bitmap id="SummaryIcon" filename="summary_icon.png"/>
+    <bitmap id="PostFeedbackIcon" filename="post_feedback_icon.png" scaleX="92" scaleY="92"/>
     <bitmap id="SetCadenceIcon" filename="set_cadence_icon.png"/>
     <bitmap id="SettingsIcon" filename="settings_icon.png"/>
+    <bitmap id="ProfileSettingsIcon" filename="profile_settings_icon.png"/>
+    <bitmap id="VibrationsOnIcon" filename="Vibration_On_Icon.png"/>
+    <bitmap id="VibrationsOffIcon" filename="Vibration_Off_Icon.png"/>
+    <!-- Compact SVG status icons for the main activity screen. -->
+    <bitmap id="MainVibrationOnIcon" filename="main_vibration_on.svg" scaleX="34" scaleY="34"/>
+    <bitmap id="MainVibrationOffIcon" filename="main_vibration_off.svg" scaleX="34" scaleY="34"/>
+    <!-- Scale at build time so every target receives a device-native bitmap. -->
+    <bitmap id="PaceIcon" filename="shoe_icon.png" scaleX="50" scaleY="38"/>
 </drawables>

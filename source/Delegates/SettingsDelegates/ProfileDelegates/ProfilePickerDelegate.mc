@@ -14,10 +14,10 @@ class ProfilePickerDelegate extends WatchUi.PickerDelegate {
         var selectedValue = values[0];
 
         if (_type == :prof_height) {
-            app._userHeight = selectedValue;
+            app.setUserHeight(selectedValue.toNumber());
         } 
         else if (_type == :prof_speed || _type == :profile_speed) { 
-            app._userSpeed = selectedValue;
+            app.setUserSpeed(selectedValue.toFloat());
             System.println("Speed saved to App: " + selectedValue);
         }
 

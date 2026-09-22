@@ -49,7 +49,7 @@ class VibrationView extends WatchUi.View {
         var width = dc.getWidth();
         var height = dc.getHeight();
 
-        var text = _enabled ? "Vibration ON" : "Vibration OFF";
+        var stateText = _enabled ? "ON" : "OFF";
 
         //  Full black background
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
@@ -62,13 +62,13 @@ class VibrationView extends WatchUi.View {
             dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
         }
 
-        // Big centered text
+        dc.drawText(width / 2, (height * 0.43).toNumber(), Graphics.FONT_MEDIUM, "Vibration", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         dc.drawText(
             width / 2,
-            height / 2 - 10,
-            Graphics.FONT_LARGE,
-            text,
-            Graphics.TEXT_JUSTIFY_CENTER
+            (height * 0.58).toNumber(),
+            Graphics.FONT_MEDIUM,
+            stateText,
+            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );
     }
 }

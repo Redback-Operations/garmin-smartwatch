@@ -11,9 +11,9 @@ class ProfileSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
 
     // Handles the BACK button
     function onBack() as Boolean {
-        System.println("Back pressed: Returning to main view");
+        System.println("Back pressed: Returning to previous view");
 
-        WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
+        WatchUi.popView(WatchUi.SLIDE_DOWN);
         return true;
     }
 
@@ -28,27 +28,29 @@ class ProfileSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
 
     // Handles the DOWN button (or swipe up)
     function onNextPage() as Boolean {
-        System.println("Down button pressed");
-        
-        // Push the cadence settings view
-        
-        WatchUi.switchToView(new CadenceSettingsMenuView(), new CadenceSettingsMenuDelegate(), WatchUi.SLIDE_UP);
+        System.println("Down button pressed: Opening Post Feedback");
+        WatchUi.switchToView(
+            new PostFeedbackSettingsView(),
+            new PostFeedbackSettingsMenuDelegate(),
+            WatchUi.SLIDE_UP);
         
         return true; 
     }
 
     // Handles the UP button (or swipe down)
     function onPreviousPage() as Boolean {
-        System.println("Up button pressed");
+        System.println("Up button pressed: Opening Cadence Settings");
         
-        // Push the profile settings view
-        WatchUi.switchToView(new SummarySettingsMenuView(), new SummarySettingsMenuDelegate(), WatchUi.SLIDE_DOWN);
-        
-        
+        // Push the Candice settings view
+        WatchUi.switchToView(
+            new CadenceSettingsMenuView(),
+            new CadenceSettingsMenuDelegate(),
+            WatchUi.SLIDE_DOWN);
+                
         return true; 
     }
 
-        function pushProfileMenu() as Void{
+    function pushProfileMenu() as Void{
 
         //creates the secondary menu and sets title
         var menu = new WatchUi.Menu2({

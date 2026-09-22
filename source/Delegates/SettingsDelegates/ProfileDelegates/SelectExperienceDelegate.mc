@@ -40,9 +40,9 @@ class SelectExperienceDelegate extends WatchUi.Menu2InputDelegate {
         var id = item.getId();
         var app = Application.getApp() as GarminApp;
 
-        if (id == :exp_beginner) { app._experienceLvl = 1.06; }
-        else if (id == :exp_intermediate) { app._experienceLvl = 1.04; }
-        else if (id == :exp_advanced) { app._experienceLvl = 1.02; }
+        if (id == :exp_beginner) { app.setExperienceLvl(1.06); }
+        else if (id == :exp_intermediate) { app.setExperienceLvl(1.04); }
+        else if (id == :exp_advanced) { app.setExperienceLvl(1.02); }
 
         System.println("Experience updated to: " + app._experienceLvl);
         WatchUi.popView(WatchUi.SLIDE_RIGHT);

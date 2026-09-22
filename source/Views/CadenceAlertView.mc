@@ -63,13 +63,13 @@ class CadenceAlertView extends WatchUi.View {
         );
 
         // Warning triangle
-        drawWarningTriangle(dc, centerX, (height * 0.35).toNumber());
+        drawWarningTriangle(dc, centerX, (height * 0.34).toNumber(), (width * 0.085).toNumber());
 
         // Alert message
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
             centerX,
-            height * 0.62,
+            (height * 0.59).toNumber(),
             Graphics.FONT_SMALL,
             _message,
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
@@ -79,8 +79,7 @@ class CadenceAlertView extends WatchUi.View {
         drawVibrationIcon(dc, centerX, (height * 0.80).toNumber());
     }
 
-    function drawWarningTriangle(dc as Dc, centreX as Number, centreY as Number) as Void {
-        var size = 22;
+    function drawWarningTriangle(dc as Dc, centreX as Number, centreY as Number, size as Number) as Void {
         dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
         for (var i = 0; i <= size; i++) {
             dc.drawLine(
@@ -101,7 +100,7 @@ class CadenceAlertView extends WatchUi.View {
     }
 
     function drawVibrationIcon(dc as Dc, centreX as Number, centreY as Number) as Void {
-        var radius = 14;
+        var radius = (dc.getWidth() * 0.05).toNumber();
         if (_vibrationEnabled) {
             dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
             dc.drawCircle(centreX, centreY, radius);

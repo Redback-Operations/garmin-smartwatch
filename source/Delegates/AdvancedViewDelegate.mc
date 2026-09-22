@@ -95,10 +95,17 @@ class AdvancedViewDelegate extends WatchUi.BehaviorDelegate {
     function onSwipe(swipeEvent as WatchUi.SwipeEvent) as Boolean {
         var direction = swipeEvent.getDirection();
         
-        // Swipe DOWN - Back to SimpleView
+        // Swipe DOWN - Back to SimpleView, sliding down to match the gesture
         if (direction == WatchUi.SWIPE_DOWN) {
             System.println("[UI] Swiped down to SimpleView");
-            pushSimpleView();
+            WatchUi.popView(WatchUi.SLIDE_DOWN);
+            return true;
+        }
+
+        // Swipe UP - Back to SimpleView, sliding up to match the gesture
+        if (direction == WatchUi.SWIPE_UP) {
+            System.println("[UI] Swiped up to SimpleView");
+            WatchUi.popView(WatchUi.SLIDE_UP);
             return true;
         }
 
@@ -121,6 +128,6 @@ class AdvancedViewDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function pushSimpleView() as Void {
-        WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_UP);
+        WatchUi.popView(WatchUi.SLIDE_DOWN);
     }
 }
