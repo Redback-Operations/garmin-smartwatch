@@ -20,10 +20,15 @@ class CadenceTargetView extends WatchUi.View {
         var targetCadence = app.getTargetCadence();
         //var targetCadence = 160;
 
+        var minCadence = app.getCalculatedMinCadence();
+        var maxCadence = app.getCalculatedMaxCadence();
+
         var centerX = width / 2;
-        var titleY = (height * 0.34).toNumber();
-        var valueY = (height * 0.56).toNumber();
-        var unitY = (height * 0.69).toNumber();
+        var titleFont = width < 300 ? Graphics.FONT_SMALL : Graphics.FONT_MEDIUM;
+        var titleY = (height * 0.22).toNumber();
+        var valueY = (height * 0.42).toNumber();
+        var unitY = (height * 0.55).toNumber();
+        var rangeY = (height * 0.68).toNumber();
 
         // Title
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
@@ -31,10 +36,13 @@ class CadenceTargetView extends WatchUi.View {
         dc.drawText(
             centerX,
             titleY,
-            Graphics.FONT_MEDIUM,
+            titleFont,
             "Target Cadence",
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );
+
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(centerX, (height * 0.84).toNumber(), Graphics.FONT_XTINY, "UP/DOWN | START to save", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         // Cadence Number
         dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_TRANSPARENT);
@@ -55,6 +63,15 @@ class CadenceTargetView extends WatchUi.View {
             unitY,
             Graphics.FONT_SMALL,
             "spm",
+            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
+        );
+
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(
+            centerX,
+            rangeY,
+            Graphics.FONT_XTINY,
+            "Min " + minCadence.toString() + "  Max " + maxCadence.toString(),
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );
     }

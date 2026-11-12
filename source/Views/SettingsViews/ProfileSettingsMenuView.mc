@@ -3,28 +3,18 @@ import Toybox.WatchUi;
 
 class ProfileSettingsMenuView extends WatchUi.View {
 
-    function initialize() {
-        View.initialize();
-    }
+function initialize() {
+    View.initialize();
+}
 
-    function onUpdate(dc as Dc) as Void {
-        
-        // Makes screen black and clears it
-        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
-        dc.clear();
-
-        // gets screen dimensions
-        var width = dc.getWidth();
-        var height = dc.getHeight();
-
-        // draws "Settings" text in the center of the screen
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(
-            width / 2,
-            height / 2,
-            Graphics.FONT_MEDIUM,
-            "Profile Settings",
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
+function onUpdate(dc as Dc) as Void { 
+        var icon = WatchUi.loadResource(
+            dc.getWidth() < 300
+                ? Rez.Drawables.ProfileSettingsIconCompact
+                : Rez.Drawables.ProfileSettingsIcon
         );
+        SettingsCardRenderer.draw(dc, icon, "Profile", "START to open");
     }
 }
+
+

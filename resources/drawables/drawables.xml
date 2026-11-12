@@ -4,16 +4,42 @@
     <bitmap id="IconDistance" filename="distance_icon_50.png" />
     <bitmap id="IconCadence" filename="cadence_icon_50.png" />
     <bitmap id="IconHeartRate" filename="heart-rate_50.png" />
+    <bitmap id="MainHeartRateIcon" filename="heart-rate-ui-v2.png" scaleX="48" scaleY="44" />
+    <bitmap id="MainHeartRateIconCompact" filename="heart-rate-ui-v2.png" scaleX="30" scaleY="28" />
+    <bitmap id="FeedbackHeartRateIcon" filename="heart-rate-ui-v2.png" scaleX="34" scaleY="31" />
+    <bitmap id="FeedbackHeartRateIconCompact" filename="heart-rate-ui-v2.png" scaleX="24" scaleY="22" />
     <bitmap id="IconSteps" filename="cadence_icon_v2_50.png" />
     <bitmap id="IconTime" filename="clock_icon_50.png" />
 
     <bitmap id="TickIcon" filename="Tick_Icon.png" />
     <bitmap id="CrossIcon" filename="Cross_Icon.png" />
     <bitmap id="RecIcon" filename="Rec_Icon.png" />
+    <bitmap id="RecIconCompact" filename="Rec_Icon.png" scaleX="42" scaleY="42" />
     <bitmap id="ResetIcon" filename="reset_icon.png" />
+    <bitmap id="ResetIconCompact" filename="reset_icon.png" scaleX="56" scaleY="56" />
     <bitmap id="CheckMarkIcon" filename="check_mark.png" />
     <bitmap id="BarChartIcon" filename="bar_chart_icon.png"/>
+    <bitmap id="BarChartIconCompact" filename="bar_chart_icon.png" scaleX="62" scaleY="62"/>
     <bitmap id="SummaryIcon" filename="summary_icon.png"/>
+    <bitmap id="SummaryIconCompact" filename="summary_icon.png" scaleX="52" scaleY="52"/>
+    <bitmap id="PostFeedbackIcon" filename="post_feedback_icon.png" scaleX="92" scaleY="92"/>
+    <bitmap id="PostFeedbackIconCompact" filename="post_feedback_icon.png" scaleX="58" scaleY="58"/>
     <bitmap id="SetCadenceIcon" filename="set_cadence_icon.png"/>
+    <bitmap id="SetCadenceIconCompact" filename="set_cadence_icon.png" scaleX="62" scaleY="62"/>
     <bitmap id="SettingsIcon" filename="settings_icon.png"/>
+    <bitmap id="SettingsIconCompact" filename="settings_icon.png" scaleX="58" scaleY="58"/>
+    <bitmap id="ProfileSettingsIcon" filename="profile_settings_icon.png"/>
+    <bitmap id="ProfileSettingsIconCompact" filename="profile_settings_icon.png" scaleX="54" scaleY="54"/>
+    <bitmap id="VibrationsOnIcon" filename="Vibration_On_Icon.png"/>
+    <bitmap id="VibrationsOnIconCompact" filename="Vibration_On_Icon.png" scaleX="54" scaleY="54"/>
+    <bitmap id="VibrationsOffIcon" filename="Vibration_Off_Icon.png"/>
+    <bitmap id="VibrationsOffIconCompact" filename="Vibration_Off_Icon.png" scaleX="54" scaleY="54"/>
+    <!-- Compact SVG status icons for the main activity screen. -->
+    <bitmap id="MainVibrationOnIcon" filename="main_vibration_on.svg" scaleX="34" scaleY="34"/>
+    <bitmap id="MainVibrationOffIcon" filename="main_vibration_off.svg" scaleX="34" scaleY="34"/>
+    <bitmap id="MainVibrationOnIconCompact" filename="main_vibration_on.svg" scaleX="24" scaleY="24"/>
+    <bitmap id="MainVibrationOffIconCompact" filename="main_vibration_off.svg" scaleX="24" scaleY="24"/>
+    <!-- Scale at build time so every target receives a device-native bitmap. -->
+    <bitmap id="PaceIcon" filename="shoe_icon.png" scaleX="50" scaleY="38"/>
+    <bitmap id="PaceIconCompact" filename="shoe_icon.png" scaleX="34" scaleY="26"/>
 </drawables>

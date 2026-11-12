@@ -13,13 +13,9 @@ class CadenceSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
     // Handles the BACK button
     function onBack() as Boolean {
 
-        System.println("Back pressed: Returning to main view");
+        System.println("Back pressed: Returning to previous view");
 
-        WatchUi.switchToView(
-            new SimpleView(),
-            new SimpleViewDelegate(),
-            WatchUi.SLIDE_DOWN
-        );
+        WatchUi.popView(WatchUi.SLIDE_DOWN);
 
         return true;
     }
@@ -40,11 +36,11 @@ class CadenceSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
 
     // Handles the DOWN button (or swipe up)
     function onNextPage() {
-    System.println("Down button pressed: Opening Bar Chart Settings");
+    System.println("Down button pressed: Opening Profile Settings");
 
-    WatchUi.pushView(
-        new BarChartSettingsMenuView(),
-        new BarChartSettingsMenuDelegate(),
+    WatchUi.switchToView(
+        new ProfileSettingsMenuView(),
+        new ProfileSettingsMenuDelegate(),
         WatchUi.SLIDE_UP
     );
 
@@ -52,31 +48,19 @@ class CadenceSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
 }
 
     // Handles the UP button (or swipe down)
-   function onPreviousPage() {
-    System.println("Up button pressed: Opening Reset Settings");
-
-    var resetView = new ResetSettingsView();
-
-    WatchUi.pushView(
-        resetView,
-        new ResetSettingsDelegate(resetView),
-        WatchUi.SLIDE_DOWN
-    );
-
-    return true;
-}
-
-    // Handles the UP button
+    // Consolidated behavior: navigate to Reset Settings by default when swiping down.
     function onPreviousPage() as Boolean {
+        System.println("Up button pressed: Opening Reset Settings");
 
-        System.println("Up button pressed");
-
+        var resetView = new ResetSettingsView();
+        
         WatchUi.switchToView(
-            new SummarySettingsMenuView(),
-            new SummarySettingsMenuDelegate(),
+            resetView,
+            new ResetSettingsDelegate(resetView),
             WatchUi.SLIDE_DOWN
         );
 
-        return true; 
+        return true;
     }
+    // Removed duplicate onPreviousPage: consolidated behavior handled above
 }
