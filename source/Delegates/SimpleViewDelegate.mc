@@ -5,7 +5,6 @@ import Toybox.Timer;
 
 class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
-    private var _currentView = null;
     private var _initTime = null;
     private var _menuActive = false;
 
@@ -17,6 +16,14 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
     // Timer variables
     private var _longPressTimer = null;
     private var _handledLongPress = false;
+
+    // Timer variables for BACK button
+    private var _backLongPressTimer = null;
+    private var _handledBackLongPress = false;
+
+    // Ignore releases that originated in a screen which has just been popped.
+    private var _escPressed = false;
+    private var _downPressed = false;
 
     function initialize() {
         BehaviorDelegate.initialize();
@@ -73,24 +80,77 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
+    // Consume the physical BACK key here so the long-press timer gets a chance
+    // to fire. Other keys retain the platform's normal behavior mapping.
+    function onKey(keyEvent as WatchUi.KeyEvent) as Boolean {
+        if (keyEvent.getKey() == WatchUi.KEY_ESC) {
+            return true;
+        }
+        return BehaviorDelegate.onKey(keyEvent);
+    }
+
     function onKeyPressed(keyEvent as WatchUi.KeyEvent) as Boolean {
         var key = keyEvent.getKey();
 
         if (key == WatchUi.KEY_UP) {
             // 1. Reset the flag
             _handledLongPress = false;
-            
+
+            // A repeated physical key event must not leak the previous timer.
+            stopLongPressTimer();
+
             // 2. Start the stopwatch timer
             _longPressTimer = new Timer.Timer();
             _longPressTimer.start(method(:triggerLongPress), _longPressThreshold, false); 
             return true;
         }
 
+        if (key == WatchUi.KEY_DOWN) {
+            _downPressed = true;
+            return true;
+        }
+
+        if (key == WatchUi.KEY_ESC){
+            _escPressed = true;
+            _handledBackLongPress = false;
+
+            stopBackLongPressTimer();
+            if (_backLongPressTimer == null) {
+                _backLongPressTimer = new Timer.Timer();
+            }
+            // Match the existing UP-button long-press duration.
+            _backLongPressTimer.start(
+                method(:triggerBackLongPress),
+                _longPressThreshold,
+                false
+            );
+            return true;
+        }
+
         return false;
+    }
+
+    function triggerBackLongPress() as Void {
+        _handledBackLongPress = true;
+        _escPressed = false;
+
+        var app = getApp();
+        if (!app.isIdle()) {
+            System.println("[FEEDBACK] Finish the current run before changing mode");
+            return;
+        }
+
+        var enabled = app.toggleFeedbackMode();
+        System.println(
+            "[UI] Long BACK press - Feedback Mode " +
+            (enabled ? "ON" : "OFF")
+        );
+        openFeedbackMode();
     }
 
     // This function fires instantly while the button is still held down
     function triggerLongPress() as Void {
+        _longPressTimer = null;
         System.println("[DEBUG] Long press UP detected (Live) -> Settings");
         _handledLongPress = true; // Tell onKeyReleased to ignore the upcoming release
         _lastUpReleaseTime = 0;   // Reset double click math
@@ -105,10 +165,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         if (key == WatchUi.KEY_UP) {
             
             // 1. Cancel the timer! If they let go before the threshold, stop it from firing.
-            if (_longPressTimer != null) {
-                _longPressTimer.stop();
-                _longPressTimer = null;
-            }
+            stopLongPressTimer();
 
             // 2. If the long press already triggered, do NOTHING on release.
             if (_handledLongPress) {
@@ -133,11 +190,45 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         }
 
         //  HANDLE DOWN BUTTON
+        if (key == WatchUi.KEY_ESC) {
+            stopBackLongPressTimer();
+
+            if (!_escPressed && !_handledBackLongPress) {
+                return true;
+            }
+            _escPressed = false;
+
+            // If the long press already triggered, do nothing on release.
+            if (_handledBackLongPress) {
+                _handledBackLongPress = false;
+                return true;
+            }
+
+            return handleShortBack();
+        }
+
+
         if (key == WatchUi.KEY_DOWN) {
-            _currentView = new AdvancedView();
+            if (!_downPressed) {
+                return true;
+            }
+            _downPressed = false;
+
+            var app = getApp();
+            if (app.isFeedbackHidden()) {
+                // The main view already owns the single hidden-feedback notice.
+                // Do not open a second version of that screen.
+                System.println("[FEEDBACK] DOWN ignored while feedback is hidden");
+                WatchUi.requestUpdate();
+                return true;
+            }
+
+            // Open the merged cadence-quality screen. Do not route back to
+            // AdvancedView, which is the obsolete graph UI.
+            System.println("[UI] DOWN pressed - opening cadence display");
             WatchUi.pushView(
-                _currentView,
-                new AdvancedViewDelegate(_currentView),
+                new CadenceQualityView(),
+                new CadenceQualityDelegate(),
                 WatchUi.SLIDE_DOWN
             );
             return true;
@@ -155,23 +246,52 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
         var statusText = newEnabled ? "Vibration ON" : "Vibration OFF";
         System.println("[UI] " + statusText);
+        WatchUi.requestUpdate();
 
         WatchUi.pushView(
-            new VibrationView(newEnabled), 
-            new WatchUi.BehaviorDelegate(), 
-            WatchUi.SLIDE_UP 
+            new VibrationView(newEnabled),
+            new WatchUi.BehaviorDelegate(),
+            WatchUi.SLIDE_UP
+        );
+    }
+
+    function stopLongPressTimer() as Void {
+        if (_longPressTimer != null) {
+            _longPressTimer.stop();
+            _longPressTimer = null;
+        }
+    }
+
+    function stopBackLongPressTimer() as Void {
+        if (_backLongPressTimer != null) {
+            _backLongPressTimer.stop();
+        }
+    }
+
+    function openFeedbackMode() as Void {
+        WatchUi.pushView(
+            new FeedbackModeView(),
+            new WatchUi.BehaviorDelegate(),
+            WatchUi.SLIDE_UP
         );
     }
 
     function onSwipe(event as WatchUi.SwipeEvent) as Boolean {
         var direction = event.getDirection();
 
-        if (direction == WatchUi.SWIPE_UP) {
-            _currentView = new AdvancedView();
+        if (direction == WatchUi.SWIPE_UP ||
+            direction == WatchUi.SWIPE_DOWN) {
+            if (getApp().isFeedbackHidden()) {
+                System.println("[FEEDBACK] Swipe ignored while feedback is hidden");
+                WatchUi.requestUpdate();
+                return true;
+            }
+
+            System.println("[UI] Vertical swipe - opening cadence display");
             WatchUi.pushView(
-                _currentView,
-                new AdvancedViewDelegate(_currentView),
-                WatchUi.SLIDE_DOWN
+                new CadenceQualityView(),
+                new CadenceQualityDelegate(),
+                direction == WatchUi.SWIPE_UP ? WatchUi.SLIDE_UP : WatchUi.SLIDE_DOWN
             );
             return true;
         }
@@ -204,7 +324,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function pushSettingsView() as Void {
-        WatchUi.switchToView(new SettingsView(), new SettingsMenuDelegate(), WatchUi.SLIDE_UP);
+        WatchUi.pushView(new SettingsView(), new SettingsMenuDelegate(), WatchUi.SLIDE_UP);
     }
 
     function setMenuActive(active as Boolean) as Void {
@@ -212,7 +332,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         System.println("[DEBUG] Menu active state set to: " + active);
     }
 
-    function onBack() as Boolean {
+    function handleShortBack() as Boolean {
         var app = getApp();
 
         if (app.isRecording() || app.isPaused() || app.isStopped()) {
@@ -221,14 +341,20 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
            return true;
         }
 
-        // FULL RESET TO SIMPLE VIEW
-        WatchUi.switchToView(
-            new SimpleView(),
-            new SimpleViewDelegate(),
-            WatchUi.SLIDE_IMMEDIATE
-        );
+        System.println("[UI] Short BACK at idle - exiting app");
+        System.exit();
+    }
 
-        return true;
+    function onBack() as Boolean {
+        var app = getApp();
+
+        if (app.isRecording() || app.isPaused() || app.isStopped()) {
+           System.println("[UI] Finish or discard current session first");
+           return true;
+        }
+
+        // Non-key BACK input can use the platform's default exit behavior.
+        return false;
     }
 }
 
@@ -248,7 +374,11 @@ class ActivityControlMenuDelegate extends WatchUi.Menu2InputDelegate {
         System.println("[DEBUG] Menu item selected: " + id);
 
         if (id == :pause_activity) {
-            app.pauseRecording();
+            if (!app.pauseRecording()) {
+                System.println("[UI] Activity could not be paused; keeping control menu open");
+                WatchUi.requestUpdate();
+                return;
+            }
             System.println("[UI] Activity paused");
             _parentDelegate.setMenuActive(false);
             WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
@@ -256,7 +386,11 @@ class ActivityControlMenuDelegate extends WatchUi.Menu2InputDelegate {
             
         } else if (id == :resume_activity) {
             if (app.isPaused()) {
-                app.resumeRecording();
+                if (!app.resumeRecording()) {
+                    System.println("[UI] Activity could not be resumed; keeping control menu open");
+                    WatchUi.requestUpdate();
+                    return;
+                }
                 System.println("[UI] Activity resumed");
             }
             _parentDelegate.setMenuActive(false);
@@ -264,7 +398,11 @@ class ActivityControlMenuDelegate extends WatchUi.Menu2InputDelegate {
             WatchUi.requestUpdate();
             
         } else if (id == :stop_activity) {
-            app.stopRecording();
+            if (!app.stopRecording()) {
+                System.println("[UI] Activity could not be stopped; keeping control menu open");
+                WatchUi.requestUpdate();
+                return;
+            }
             System.println("[UI] Activity stopped");
             WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
             _parentDelegate.setMenuActive(false);
@@ -298,19 +436,34 @@ class SaveDiscardMenuDelegate extends WatchUi.Menu2InputDelegate {
         System.println("[DEBUG] Save/Discard selected: " + id);
 
         if (id == :save_session) {
-             app.saveSession();
-             System.println("[UI] Activity saved");
+            if (!app.saveSession()) {
+                System.println("[UI] Activity was not saved; staying on Save/Discard screen");
+                WatchUi.requestUpdate();
+                return;
+            }
+
+            System.println("[UI] Activity saved");
             _parentDelegate.setMenuActive(false);
 
             if (app.getSummaryEnabled()) {
-                // SHOW SUMMARY SCREEN ON SAVE
-                WatchUi.switchToView(
-                    new SummaryView(),
-                    new SummaryViewDelegate(),
-                    WatchUi.SLIDE_UP
-                );
+                if (app.hasFeedbackSummaryData()) {
+                    // Feedback performance is shown first; SELECT/BACK then
+                    // continues to the existing complete workout summary.
+                    WatchUi.switchToView(
+                        new FeedbackSummaryView(false),
+                        new FeedbackSummaryDelegate(),
+                        WatchUi.SLIDE_UP
+                    );
+                } else {
+                    WatchUi.switchToView(
+                        new SummaryView(),
+                        new SummaryViewDelegate(),
+                        WatchUi.SLIDE_UP
+                    );
+                }
             } else {
                 System.println("[UI] Summary screen skipped by user preference");
+                app.resetSession();
                 WatchUi.switchToView(
                     new SimpleView(),
                     new SimpleViewDelegate(),
@@ -318,7 +471,11 @@ class SaveDiscardMenuDelegate extends WatchUi.Menu2InputDelegate {
                 );
             }
         } else if (id == :discard_session) {
-            app.discardSession();
+            if (!app.discardSession()) {
+                System.println("[UI] Activity could not be discarded; staying on Save/Discard screen");
+                WatchUi.requestUpdate();
+                return;
+            }
             System.println("[UI] Activity discarded");
             _parentDelegate.setMenuActive(false);
             
@@ -353,6 +510,32 @@ class ConfirmationDelegate extends WatchUi.Menu2InputDelegate {
     function onBack() as Void {
         _parentDelegate.setMenuActive(false);
         WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+        WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+    }
+}
+
+class CustomBackMenuDelegate extends WatchUi.Menu2InputDelegate {
+    
+    private var _parentDelegate;
+
+    function initialize(parentDelegate) {
+        Menu2InputDelegate.initialize();
+        _parentDelegate = parentDelegate;
+    }
+
+    function onSelect(item as WatchUi.MenuItem) as Void {
+        var id = item.getId();
+        System.println("[DEBUG] Custom back menu item selected: " + id);
+
+        if (id == :custom_opt_1) {
+            // Add action code for Option 1 here
+        } else if (id == :custom_opt_2) {
+            // Add action code for Option 2 here
+        }
+    }
+
+    function onBack() as Void {
+        _parentDelegate.setMenuActive(false);
         WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
     }
 }

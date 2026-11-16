@@ -37,9 +37,9 @@ class SelectGenderDelegate extends WatchUi.Menu2InputDelegate {
         var id = item.getId();
         var app = Application.getApp() as GarminApp;
 
-        if (id == :user_male) { app._userGender = 0; }
-        else if (id == :user_female) { app._userGender = 1; }
-        else { app._userGender = 2; }
+        if (id == :user_male) { app.setUserGender(0); }
+        else if (id == :user_female) { app.setUserGender(1); }
+        else { app.setUserGender(2); }
 
         System.println("Gender updated to: " + app._userGender);
         WatchUi.popView(WatchUi.SLIDE_RIGHT);

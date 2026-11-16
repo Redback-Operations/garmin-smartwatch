@@ -53,7 +53,11 @@ private var _confirmView;
 
         if (_confirmView.getSelectedOption() == 0) {
             // YES Selected - Start recording and close the menu.
-            app.startRecording();
+            if (!app.startRecording()) {
+                System.println("[UI] Activity could not be started; staying on confirmation screen");
+                WatchUi.requestUpdate();
+                return true;
+            }
             System.println("[UI] Activity started from confirmation screen");
             WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
             WatchUi.requestUpdate();

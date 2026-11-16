@@ -18,7 +18,7 @@ class ResetSettingsView extends WatchUi.View {
 
         _screenState = 0;
         _selectedButton = 0; // 0 = YES, 1 = NO
-        _resetIcon = WatchUi.loadResource(Rez.Drawables.ResetIcon);
+        _resetIcon = null;
     }
 
     function onUpdate(dc as Dc) {
@@ -93,25 +93,9 @@ class ResetSettingsView extends WatchUi.View {
     function resetAllSettings() {
         var app = Application.getApp() as GarminApp;
 
-        // Existing app settings
-        app.setMinCadence(120);
-        app.setMaxCadence(150);
-        app.setUserHeight(0);
-        app.setUserSpeed(0.0);
-        app.setUserGender(0);
-        app.setExperienceLvl(0.0);
-        app.setChartDuration(10);
-        app.setVibrationEnabled(true);
-
-        // Required reset defaults
-        Application.Storage.setValue("training_mode", "Warm Up");
-        Application.Storage.setValue("summary_preferences", true);
-        Application.Storage.setValue("profile_height", 0);
-        Application.Storage.setValue("profile_speed", 0.0);
-        Application.Storage.setValue("profile_gender", 0);
-        Application.Storage.setValue("profile_experience", 0.0);
-
-        app.saveSettings();
+        if (app != null) {
+            app.resetAllSettings();
+        }
 
         System.println("[RESET] All settings restored to default");
     }
@@ -126,17 +110,25 @@ class ResetSettingsView extends WatchUi.View {
 
         var centerX = screenW / 2;
 
+        if (_resetIcon == null) {
+            _resetIcon = WatchUi.loadResource(
+                screenW < 300
+                    ? Rez.Drawables.ResetIconCompact
+                    : Rez.Drawables.ResetIcon
+            );
+        }
+
         // This keeps the whole group visually centered.
-        var iconSize = 80;
-        var iconY = (screenH / 2) - 92;
+        var iconSize = _resetIcon.getWidth();
+        var iconY = (screenH * 0.22).toNumber();
 
         dc.drawBitmap(centerX - (iconSize / 2), iconY, _resetIcon);
 
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
             centerX,
-            iconY + 94,
-            Graphics.FONT_MEDIUM,
+            (screenH * 0.57).toNumber(),
+            screenW < 300 ? Graphics.FONT_SMALL : Graphics.FONT_MEDIUM,
             "Reset Settings",
             Graphics.TEXT_JUSTIFY_CENTER
         );
@@ -144,9 +136,9 @@ class ResetSettingsView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
             centerX,
-            iconY + 132,
+            (screenH * 0.72).toNumber(),
             Graphics.FONT_XTINY,
-            "tap to open",
+            "START to open",
             Graphics.TEXT_JUSTIFY_CENTER
         );
     }
@@ -160,50 +152,52 @@ class ResetSettingsView extends WatchUi.View {
         var screenH = dc.getHeight();
 
         var centerX = screenW / 2;
+        var questionFont = screenW < 300 ? Graphics.FONT_XTINY : Graphics.FONT_SMALL;
 
         // Question block
-        var questionTop = (screenH / 2) - 125;
+        var questionTop = (screenH * 0.20).toNumber();
+        var lineGap = (screenH * 0.11).toNumber();
 
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
         dc.drawText(
             centerX,
             questionTop,
-            Graphics.FONT_SMALL,
+            questionFont,
             "Are you sure",
             Graphics.TEXT_JUSTIFY_CENTER
         );
 
         dc.drawText(
             centerX,
-            questionTop + 34,
-            Graphics.FONT_SMALL,
+            questionTop + lineGap,
+            questionFont,
             "you want to reset",
             Graphics.TEXT_JUSTIFY_CENTER
         );
 
         dc.drawText(
             centerX,
-            questionTop + 68,
-            Graphics.FONT_SMALL,
+            questionTop + (lineGap * 2),
+            questionFont,
             "all settings?",
             Graphics.TEXT_JUSTIFY_CENTER
         );
 
-        drawButtons(dc, questionTop + 125);
+        drawButtons(dc, (screenH * 0.59).toNumber());
     }
 
     function drawButtons(dc as Dc, startY) {
         var centerX = dc.getWidth() / 2;
 
-        var buttonW = 145;
-        var buttonH = 34;
+        var buttonW = (dc.getWidth() * 0.55).toNumber();
+        var buttonH = (dc.getHeight() * 0.11).toNumber();
         var radius = 8;
 
         var buttonX = centerX - (buttonW / 2);
 
         var yesY = startY;
-        var noY = startY + 48;
+        var noY = startY + (dc.getHeight() * 0.15).toNumber();
 
         if (_selectedButton == 0) {
             drawButton(
@@ -265,10 +259,10 @@ class ResetSettingsView extends WatchUi.View {
         // Text is slightly adjusted to sit visually centered inside the button.
         dc.drawText(
             x + (w / 2),
-            y + 7,
+            y + (h / 2),
             Graphics.FONT_XTINY,
             label,
-            Graphics.TEXT_JUSTIFY_CENTER
+            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );
     }
 
@@ -282,14 +276,14 @@ class ResetSettingsView extends WatchUi.View {
 
         var centerX = screenW / 2;
 
-        var tickTopY = (screenH / 2) - 110;
+        var tickTopY = (screenH * 0.21).toNumber();
 
         drawLargeTick(dc, centerX, tickTopY);
 
         dc.setColor(0x55D86A, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
             centerX,
-            tickTopY + 78,
+            (screenH * 0.48).toNumber(),
             Graphics.FONT_SMALL,
             "Settings Reset",
             Graphics.TEXT_JUSTIFY_CENTER
@@ -298,7 +292,7 @@ class ResetSettingsView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
             centerX,
-            tickTopY + 122,
+            (screenH * 0.62).toNumber(),
             Graphics.FONT_XTINY,
             "All values restored",
             Graphics.TEXT_JUSTIFY_CENTER
@@ -306,7 +300,7 @@ class ResetSettingsView extends WatchUi.View {
 
         dc.drawText(
             centerX,
-            tickTopY + 148,
+            (screenH * 0.70).toNumber(),
             Graphics.FONT_XTINY,
             "to default",
             Graphics.TEXT_JUSTIFY_CENTER
@@ -315,7 +309,7 @@ class ResetSettingsView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
             centerX,
-            tickTopY + 198,
+            (screenH * 0.82).toNumber(),
             Graphics.FONT_XTINY,
             "press BACK to return",
             Graphics.TEXT_JUSTIFY_CENTER
@@ -323,11 +317,23 @@ class ResetSettingsView extends WatchUi.View {
     }
 
     function drawLargeTick(dc as Dc, centerX, topY) {
+        var compact = dc.getWidth() < 300;
+        var scale = compact ? 0.65 : 1.0;
         dc.setColor(0x55D86A, Graphics.COLOR_TRANSPARENT);
-        dc.setPenWidth(10);
+        dc.setPenWidth(compact ? 6 : 10);
 
-        dc.drawLine(centerX - 34, topY + 32, centerX - 12, topY + 54);
-        dc.drawLine(centerX - 12, topY + 54, centerX + 40, topY + 4);
+        dc.drawLine(
+            centerX - (34 * scale).toNumber(),
+            topY + (32 * scale).toNumber(),
+            centerX - (12 * scale).toNumber(),
+            topY + (54 * scale).toNumber()
+        );
+        dc.drawLine(
+            centerX - (12 * scale).toNumber(),
+            topY + (54 * scale).toNumber(),
+            centerX + (40 * scale).toNumber(),
+            topY + (4 * scale).toNumber()
+        );
 
         dc.setPenWidth(1);
     }
@@ -344,3 +350,4 @@ class ResetSettingsView extends WatchUi.View {
         return _screenState == 1;
     }
 }
+

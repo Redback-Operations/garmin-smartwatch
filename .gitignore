@@ -218,3 +218,19 @@ developer_key
 developer_key.der
 developer_key.pem
 .vscode/launch.json
+*.mir
+*.mir
+*.mir
+*.mir
+*.mir
+*.mir
+*.mir
+bin/mir/source/GarminApp.mir
+/bin/mir/source
+/bin/mir/source
+bin/mir/source/GarminApp.mir
+/bin/mir
+/bin
+
+# Garmin generated build files
+bin/

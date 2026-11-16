@@ -35,17 +35,19 @@ function onUpdate(dc as Dc) as Void {
     var centerX = width / 2;
 
     // ✅ PUSH EVERYTHING LOWER + MORE SPACE
-    var titleY = 40;
-    var startY = 60;
-    var gap = 28;  
+    var titleY = (height * 0.10).toNumber();
+    var startY = (height * 0.25).toNumber();
+    var gap = (height * 0.075).toNumber();
 
     dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
 
     // TITLE (tiny)
     dc.drawText(centerX, titleY, Graphics.FONT_XTINY,
         "Workout Summary",
-        Graphics.TEXT_JUSTIFY_CENTER
+        Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
     );
+    dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+    dc.drawLine((width * 0.18).toNumber(), (height * 0.18).toNumber(), (width * 0.82).toNumber(), (height * 0.18).toNumber());
 
     //add for other metrics such as steps
     var duration = app.getSessionDuration();
@@ -70,32 +72,35 @@ function onUpdate(dc as Dc) as Void {
                   s.format("%02d");
 
     // ===== METRICS =====
-    var km = distance / 100000.0;
+    // Activity.Info.elapsedDistance is reported in metres.
+    var km = distance / 1000.0;
 
-        drawRow(dc, width, startY + gap, timeStr, _iconTime, "TIME");
-        drawRow(dc, width, startY + gap * 2, km.format("%.2f"), _iconDistance, "DISTANCE");
-        drawRow(dc, width, startY + gap * 3, "--", _iconCadence, "CADENCE");
-        drawRow(dc, width, startY + gap * 4, hr + "", _iconHR, "BPM (AVG)");
-        drawRow(dc, width, startY + gap * 5, "--", _iconSteps, "STEPS");
-
-        drawRow(dc, width, startY + gap * 6, pace, _iconCadence, "AVG PACE");
-        drawRow(dc, width, startY + gap * 7, qcScore, _iconHR, "QC SCORE");
-        drawRow(dc, width, startY + gap * 8, temperature, _iconSteps, "TEMP");
+        drawRow(dc, width, startY, timeStr, :time, "TIME");
+        // Number.format() only accepts the numeric conversion pattern. Keeping
+        // units inside that pattern raises "Invalid Value" when this view is
+        // first drawn after a save.
+        drawRow(dc, width, startY + gap, km.format("%.2f") + " km", :distance, "DISTANCE");
+        drawRow(dc, width, startY + gap * 2, app.getAverageCadence().format("%.0f") + " spm", :cadence, "CADENCE");
+        drawRow(dc, width, startY + gap * 3, hr + " bpm", :quality, "HEART RATE");
+        drawRow(dc, width, startY + gap * 4, "--", :distance, "STEPS");
+        drawRow(dc, width, startY + gap * 5, pace, :pace, "AVG PACE");
+        drawRow(dc, width, startY + gap * 6, qcScore, :quality, "QC SCORE");
+        drawRow(dc, width, startY + gap * 7, temperature, :distance, "TEMP");
 }
 
 function drawRow(dc as Dc, width as Number, y as Number, value as String, iconType as Symbol, label as String) as Void {
-    var leftMargin = 10;
-    var rightMargin = width - 15;
-    var iconX = leftMargin + 15;
+    var leftMargin = (width * 0.12).toNumber();
+    var rightMargin = (width * 0.88).toNumber();
+    var iconX = leftMargin;
     var iconY = y;
 
     dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
     if (iconType == :time) {
         dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
-        dc.drawCircle(iconX, iconY, 12);
-        dc.drawLine(iconX, iconY, iconX, iconY - 8);
-        dc.drawLine(iconX, iconY, iconX + 6, iconY);
+        dc.drawCircle(iconX, iconY, 7);
+        dc.drawLine(iconX, iconY, iconX, iconY - 5);
+        dc.drawLine(iconX, iconY, iconX + 4, iconY);
     } else if (iconType == :pace) {
         dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
         var pts = [[iconX+4, iconY-11], [iconX-3, iconY], [iconX+2, iconY], [iconX-4, iconY+11], [iconX+5, iconY-1], [iconX, iconY-1]];
@@ -123,7 +128,7 @@ function drawRow(dc as Dc, width as Number, y as Number, value as String, iconTy
     }
     dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
-    dc.drawText(leftMargin + 35, y, Graphics.FONT_XTINY, label, Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
+    dc.drawText(leftMargin + 15, y, Graphics.FONT_XTINY, label, Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
     dc.drawText(rightMargin, y, Graphics.FONT_XTINY, value, Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER);
 }
 
@@ -353,7 +358,7 @@ function drawRow(dc as Dc, width as Number, y as Number, value as String, iconTy
         // Distance
         var distance = app.getSessionDistance();
         if (distance != null) {
-            var distanceKm = distance / 100000.0;
+            var distanceKm = distance / 1000.0;
             
             dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
             dc.drawText(
