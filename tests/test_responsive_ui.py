@@ -22,7 +22,7 @@ class ResponsiveUiTests(unittest.TestCase):
         }
 
         compact = {
-            "fenix7", "fenix7pro", "fenix7s", "fr245", "fr255",
+            "fenix7", "fenix7pro", "fenix7s", "fr245", "fr245m", "fr255",
             "fr255m", "fr255s", "fr255sm", "fr955",
         }
         large = {"fr165", "fr165m", "fr265", "fr265s", "vivoactive5"}
