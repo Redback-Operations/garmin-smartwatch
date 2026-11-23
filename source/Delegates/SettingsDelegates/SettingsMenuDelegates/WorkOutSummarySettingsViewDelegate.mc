@@ -11,12 +11,8 @@ class WorkOutSummarySettingsViewDelegate extends WatchUi.BehaviorDelegate {
 
     function onBack() {
         System.println("Back pressed: Returning to main view");
-
-        WatchUi.pushView(
-            new SimpleView(),
-            new SimpleViewDelegate(),
-            WatchUi.SLIDE_DOWN
-        );
+        
+        WatchUi.popView(WatchUi.SLIDE_DOWN);
 
         return true;
     }

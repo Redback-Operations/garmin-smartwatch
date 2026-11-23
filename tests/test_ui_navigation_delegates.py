@@ -186,6 +186,22 @@ class UiNavigationDelegateTests(unittest.TestCase):
         summary = source(SETTINGS_RING / "SummarySettingsMenuDelegate.mc")
         self.assertIn("WatchUi.popView(WatchUi.SLIDE_DOWN)", method(summary, "onBack", "handleUp"))
 
+    def test_returning_to_main_screen_does_not_create_another_one(self):
+        # WCH-03: each extra SimpleView left on the stack holds 4 bitmaps.
+        # After a few saved runs the FR245 ran Out Of Memory on DOWN.
+        summary = source(DELEGATES / "SummaryViewDelegate.mc")
+        dismiss = method(summary, "dismissSummary")
+        self.assertIn("WatchUi.popView(WatchUi.SLIDE_DOWN)", dismiss)
+        self.assertNotIn("new SimpleView()", dismiss)
+
+        delegates = source(DELEGATES / "SimpleViewDelegate.mc")
+        save_menu = delegates[delegates.index("class SaveDiscardMenuDelegate"):delegates.index("class ConfirmationDelegate")]
+        self.assertNotIn("new SimpleView()", save_menu)
+
+        summary_card = source(SETTINGS_RING / "WorkOutSummarySettingsViewDelegate.mc")
+        on_back = method(summary_card, "onBack", "onSelect")
+        self.assertIn("WatchUi.popView(WatchUi.SLIDE_DOWN)", on_back)
+        self.assertNotIn("new SimpleView()", on_back)
 
 if __name__ == "__main__":
     unittest.main()
