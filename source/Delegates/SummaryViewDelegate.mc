@@ -11,7 +11,7 @@ class SummaryViewDelegate extends WatchUi.BehaviorDelegate {
     // // SELECT or any key to dismiss and return to SimpleView
     // function onSelect() as Boolean {
     //     System.println("[SUMMARY] Returning to main view");
-    //     // switches view to the simple view (restarting the app from the beginning)
+    //   x  // switches view to the simple view (restarting the app from the beginning)
     //     WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
     //     return true;
     // }
@@ -63,6 +63,8 @@ class SummaryViewDelegate extends WatchUi.BehaviorDelegate {
     function dismissSummary() as Void {
         var app = getApp();
         app.resetSession();
-        WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
+        // The main screen is still underneath. Pop back to it instead of
+        // creating a second one (FR245 Out Of Memory after several runs).
+        WatchUi.popView(WatchUi.SLIDE_DOWN);
     }
 }

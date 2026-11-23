@@ -464,11 +464,8 @@ class SaveDiscardMenuDelegate extends WatchUi.Menu2InputDelegate {
             } else {
                 System.println("[UI] Summary screen skipped by user preference");
                 app.resetSession();
-                WatchUi.switchToView(
-                    new SimpleView(),
-                    new SimpleViewDelegate(),
-                    WatchUi.SLIDE_DOWN
-                );
+                // Close the Save menu and return to the existing main screen.
+                WatchUi.popView(WatchUi.SLIDE_DOWN);
             }
         } else if (id == :discard_session) {
             if (!app.discardSession()) {
