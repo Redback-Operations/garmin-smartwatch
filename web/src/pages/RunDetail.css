@@ -1,0 +1,167 @@
+.run {
+    --run-fg: #17222d;
+    --run-muted: #4d5e6e;
+    --run-line: #d5dde5;
+    --run-surface: #ffffff;
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    text-align: left;
+    color: var(--run-fg);
+    font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-color-scheme: dark) {
+    .run {
+        --run-fg: #e6edf3;
+        --run-muted: #9db0c1;
+        --run-line: #334454;
+        --run-surface: #18222c;
+    }
+}
+
+.run h1 {
+    margin: 0;
+    font-size: 30px;
+    line-height: 1.2;
+    color: var(--run-fg);
+}
+
+.run h2 {
+    margin: 0;
+    font-size: 19px;
+    color: var(--run-fg);
+}
+
+.run p {
+    margin: 0;
+}
+
+.run-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.run-muted {
+    color: var(--run-muted);
+}
+
+.run-status {
+    padding: 24px;
+}
+
+.run-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+}
+
+.run-tile,
+.run-card {
+    background: var(--run-surface);
+    border: 1px solid var(--run-line);
+    border-radius: 8px;
+}
+
+.run-tile {
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.run-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--run-muted);
+}
+
+.run-value {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.run-card {
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+}
+
+.run-columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.run-columns>.run-card {
+    flex: 1 1 420px;
+}
+
+.run-scroll {
+    overflow-x: auto;
+}
+
+.run-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.run-table th,
+.run-table td {
+    padding: 10px 12px;
+    text-align: right;
+    border-bottom: 1px solid var(--run-line);
+}
+
+.run-table th:first-child,
+.run-table td:first-child {
+    text-align: left;
+    padding-left: 0;
+}
+
+.run-table th:last-child,
+.run-table td:last-child {
+    padding-right: 0;
+}
+
+.run-table th {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--run-muted);
+}
+
+.run-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.run-list {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.run-list dt,
+.run-list dd {
+    margin: 0;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--run-line);
+}
+
+.run-list dd {
+    text-align: right;
+    font-weight: 600;
+}
+
+.run-list dt:nth-last-of-type(1),
+.run-list dd:nth-last-of-type(1) {
+    border-bottom: 0;
+}
